@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Section } from './ui/Section';
 import { GlassCard } from './ui/GlassCard';
-import { Briefcase, Calendar } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 
 const experiences = [
     {

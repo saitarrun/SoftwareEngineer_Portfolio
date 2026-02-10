@@ -1,8 +1,6 @@
 import { motion } from 'framer-motion';
-import { useRef } from 'react';
 
 export const Hero = () => {
-    const scrollRef = useRef(null);
 
     return (
         <section id="about" className="min-h-screen flex flex-col justify-center relative pt-20 px-6">

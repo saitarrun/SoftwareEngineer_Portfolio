@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import { motion } from 'framer-motion';
 
-interface ShinyButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ShinyButtonProps {
     children: React.ReactNode;
     variant?: 'primary' | 'secondary' | 'outline';
     className?: string;
+    onClick?: () => void;
+    type?: 'button' | 'submit' | 'reset';
 }
 
-export const ShinyButton = ({ children, className = '', variant = 'primary', ...props }: ShinyButtonProps) => {
+export const ShinyButton = ({ children, className = '', variant = 'primary', onClick, type = 'button' }: ShinyButtonProps) => {
     // Minimalist button styles for Light Theme
     const baseStyles = "relative px-8 py-3 rounded-full font-medium transition-all duration-300 overflow-hidden flex items-center justify-center gap-2";
 
@@ -21,7 +23,8 @@ export const ShinyButton = ({ children, className = '', variant = 'primary', ...
         <motion.button
             whileTap={{ scale: 0.98 }}
             className={`${baseStyles} ${variants[variant]} ${className}`}
-            {...props}
+            onClick={onClick}
+            type={type}
         >
             {children}
         </motion.button>
