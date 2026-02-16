@@ -5,15 +5,15 @@ import { Calendar } from 'lucide-react';
 
 const experiences = [
     {
-        company: "Germania Farm Mutual Insurance Association",
+        company: "Pacific Life Insurance",
         role: "Software Engineer Intern",
         period: "May 2025 – Dec 2025",
-        location: "Remote",
+        location: "Newport Beach, CA",
         description: [
-            "Designed and implemented Claim Intel, an AI-driven claims risk analytics platform with Angular and React dashboards, reducing average claim triage time by 35% and saving ~5 minutes per claim by surfacing actionable risk signals.",
-            "Scaled the platform to support up to 50 adjusters processing up to 5,000 claims/week by integrating RESTful services and real-time updates into responsive UI workflows, improving throughput and triage consistency during peak volume.",
-            "Improved dashboard performance by 30% by building reusable UI components, optimizing client-side rendering, and hardening data-fetch pipelines using TypeScript, HTML5, and CSS3, reducing time-to-insight for claim reviewers.",
-            "Reduced regression cycles by 40% by implementing automated UI regression suites and CI validation gates using Selenium and JUnit, lowering defect escape rate by up to 25% and reducing hotfixes by up to 3 per release in an Agile Scrum environment."
+            "Engineered a real-time risk inference engine using Python and XGBoost, reducing triage time by 35% by surfacing risk signals via systematized feature engineering.",
+            "Architected high-throughput Kafka data pipelines to ingest and process 5,000+ weekly claims, optimizing consumer group rebalancing to maintain sub-second data freshness for 50+ concurrent adjusters.",
+            "Optimized API aggregation layers to reduce p99 latency by 30%, implementing intelligent caching and reusable TypeScript components to support high-concurrency visualization.",
+            "Standardized automated testing across 5+ teams by designing a modular framework integrated into CI/CD pipelines, cutting time-to-production by 40% and reducing defect escapes."
         ]
     },
     {
@@ -22,22 +22,21 @@ const experiences = [
         period: "Jan 2022 – May 2024",
         location: "Hyderabad, India",
         description: [
-            "Engineered secure backend services for high-frequency payments and wallet operations using Node.js REST and gRPC microservices, sustaining up to 1,000 transactions per minute and processing up to 2M transactions/day.",
-            "Achieved 99.9% availability by deploying containerized services on AWS EKS, implementing Kafka-based event-driven processing and Redis caching to improve resiliency, reducing incident pages by up to 25% and decreasing MTTR by 30%.",
-            "Reduced end-to-end transaction latency by 20% through batching, cache strategy, and data-structure efficiency, plus observability-led tuning with Prometheus and Grafana, reducing payment timeouts by up to 40% and improving transaction success rate by up to 50 bps.",
-            "Reduced AWS infrastructure costs by 35% per month by right-sizing EKS workloads and optimizing cache utilization while maintaining SLA adherence and peak-load performance."
+            "Architected a high-concurrency gRPC wallet service using distributed locking and optimistic concurrency control, sustaining 99.9% availability during peak traffic and processing 2M+ daily transactions.",
+            "Reduced monthly AWS spend by 35% by rightsizing EKS workloads and implementing multi-tier caching (local + Redis).",
+            "Reduced end-to-end latency by 20% by implementing request batching and tuning PostgreSQL query execution plans, eliminating 40% of timeout errors.",
+            "Defined SLOs and established observability via Splunk and Prometheus, reducing Mean Time To Resolution (MTTR) by 25% for mission-critical financial services."
         ]
     },
     {
-        company: "Cognizant Technology Solutions",
+        company: "Cognizant",
         role: "Software Engineer",
         period: "Feb 2021 – Jan 2022",
         location: "Hyderabad, India",
         description: [
-            "Developed Spring Boot REST APIs for core workflows with authentication and CRUD services backed by MySQL on AWS, reducing response time by 30% and improved p95 latency to ~150 ms through query optimization and efficient in-memory data handling.",
-            "Strengthened release engineering by implementing CI/CD pipelines and containerized AWS deployments, reducing deployment duration from ~60 minutes to ~10 minutes and minimizing environment drift and manual deployment failures.",
-            "Supported up to 300 internal users across up to 25 workflows by stabilizing service behavior across environments and devices, improving operational reliability for day-to-day execution.",
-            "Improved security and reliability by enforcing role-based UI access controls, validating and sanitizing inputs, and implementing secure API patterns, reducing access-related defects by up to 50% and cutting production UI incidents by up to 25%."
+            "Optimized PostgreSQL performance for Spring Boot APIs by addressing index fragmentation and lock contention, improving p99 latency by 30% for high-read workloads.",
+            "Built CI/CD pipelines using GitHub Actions and Docker, enabling daily production deployments with standardized rollback and reducing release lead time by 50%.",
+            "Improved API security by implementing RBAC and strict input validation aligned to OWASP guidance, reducing access-related vulnerabilities by 50%."
         ]
     }
 ];

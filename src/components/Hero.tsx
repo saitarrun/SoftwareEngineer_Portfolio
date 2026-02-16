@@ -24,7 +24,7 @@ export const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                         className="text-lg text-slate-700 max-w-lg font-light leading-relaxed mb-10"
                     >
-                        Software Engineer with 3+ years of experience building scalable backend services and web applications. Proficient in Python, Java, and JavaScript.
+                        Software Engineer with 3+ years of experience specializing in high-concurrency distributed systems and cloud-native architecture. Expert in building low-latency backend services using Java, Python, and gRPC, with a focus on reliability, scalability, and cost optimization in AWS environments.
                     </motion.p>
 
                     <motion.a
