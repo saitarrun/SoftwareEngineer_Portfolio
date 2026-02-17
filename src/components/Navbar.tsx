@@ -20,7 +20,7 @@ export const Navbar = () => {
                     <div className="hidden md:flex items-center gap-6">
                         <a href="#experience" className="text-sm font-medium text-[#1d1d1f] hover:text-[#06c] transition-colors">Experience</a>
                         <a href="#projects" className="text-sm font-medium text-[#1d1d1f] hover:text-[#06c] transition-colors">Projects</a>
-                        <a href="#publications" className="text-sm font-medium text-[#1d1d1f] hover:text-[#06c] transition-colors">Publications</a>
+                        <a href="#skills" className="text-sm font-medium text-[#1d1d1f] hover:text-[#06c] transition-colors">Skills</a>
                         <a href="#contact" className="text-sm font-medium text-[#1d1d1f] hover:text-[#06c] transition-colors">Contact</a>
                     </div>
 
