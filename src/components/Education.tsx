@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Section } from './ui/Section';
 import { GlassCard } from './ui/GlassCard';
-import { GraduationCap } from 'lucide-react';
+
 
 export const Education = () => {
     return (
