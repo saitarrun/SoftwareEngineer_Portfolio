@@ -1,5 +1,5 @@
 import { lazy, Suspense, useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const HeroScene = lazy(() =>
     import('../three/HeroScene').then(m => ({ default: m.HeroScene }))
@@ -11,7 +11,7 @@ const stats = [
     { value: '3', label: 'Companies' },
 ];
 
-const FluidLetter = ({ char, index, total, isGradient = false }: { char: string, index: number, total: number, isGradient?: boolean }) => {
+const FluidLetter = ({ char, index, isGradient = false }: { char: string, index: number, isGradient?: boolean }) => {
     const ref = useRef<HTMLSpanElement>(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -127,7 +127,7 @@ export const Hero = () => {
                     style={{ lineHeight: 0.88, fontFamily: 'var(--font-display)' }}
                 >
                     {firstName.split("").map((char, index) => (
-                        <FluidLetter key={index} char={char} index={index} total={firstName.length} />
+                        <FluidLetter key={index} char={char} index={index} />
                     ))}
                 </h1>
                 <div className="flex items-end gap-6 mt-1 overflow-hidden">
@@ -139,7 +139,7 @@ export const Hero = () => {
                         }}
                     >
                         {lastName.split("").map((char, index) => (
-                            <FluidLetter key={index} char={char} index={index + firstName.length} total={lastName.length} isGradient />
+                            <FluidLetter key={index} char={char} index={index + firstName.length} isGradient />
                         ))}
                     </h1>
                 </div>
