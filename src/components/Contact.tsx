@@ -83,12 +83,8 @@ export const Contact = () => {
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8 pt-12 border-t border-white/05">
                     <div className="flex items-center gap-10">
                         <div className="flex flex-col">
-                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/40 mb-1" style={{ fontFamily: 'var(--font-label)' }}>Design Strategy</span>
-                            <span className="text-on-surface-variant font-medium text-xs">The Neon Architect v1.0</span>
-                        </div>
-                        <div className="flex flex-col">
                             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/40 mb-1" style={{ fontFamily: 'var(--font-label)' }}>Engineered By</span>
-                            <span className="text-on-surface-variant font-medium text-xs">Tarun Pitta</span>
+                            <span className="text-on-surface-variant font-medium text-xs text-center md:text-left">Tarun Pitta</span>
                         </div>
                     </div>
                     <p className="text-on-surface-variant/40 text-[10px] uppercase tracking-[0.2em] font-medium" style={{ fontFamily: 'var(--font-label)' }}>

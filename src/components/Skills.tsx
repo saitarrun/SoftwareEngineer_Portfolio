@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import { 
-    Code2, 
     Database, 
     Layout, 
     Terminal, 
