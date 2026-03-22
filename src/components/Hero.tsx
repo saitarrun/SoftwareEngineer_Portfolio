@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react';
-import { motion } from 'framer-motion';
+import { lazy, Suspense, useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const HeroScene = lazy(() =>
     import('../three/HeroScene').then(m => ({ default: m.HeroScene }))
@@ -11,19 +11,78 @@ const stats = [
     { value: '3', label: 'Companies' },
 ];
 
+const FluidLetter = ({ char, index, total, isGradient = false }: { char: string, index: number, total: number, isGradient?: boolean }) => {
+    const ref = useRef<HTMLSpanElement>(null);
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const springX = useSpring(x, { stiffness: 200, damping: 20 });
+    const springY = useSpring(y, { stiffness: 200, damping: 20 });
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!ref.current) return;
+        const rect = ref.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const distanceX = e.clientX - centerX;
+        const distanceY = e.clientY - centerY;
+        
+        // Only react if close
+        if (Math.abs(distanceX) < 100 && Math.abs(distanceY) < 100) {
+            x.set(distanceX * 0.2);
+            y.set(distanceY * 0.2);
+        } else {
+            x.set(0);
+            y.set(0);
+        }
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    return (
+        <motion.span
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            initial={{ opacity: 0, y: 100, rotate: index % 2 === 0 ? 10 : -10 }}
+            animate={{ opacity: 1, y: 0, rotate: 0 }}
+            transition={{ 
+                duration: 1.2, 
+                delay: index * 0.03, // Delicate stagger
+                ease: [0.22, 1, 0.36, 1] 
+            }}
+            style={{ 
+                x: springX, 
+                y: springY, 
+                display: 'inline-block',
+                ...(isGradient ? {
+                    background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                } : {})
+            }}
+            className="cursor-default"
+        >
+            {char === " " ? "\u00A0" : char}
+        </motion.span>
+    );
+};
+
 export const Hero = () => {
+    const firstName = "Sai Tarrun";
+    const lastName = "Pitta";
+
     return (
         <section id="about" className="relative overflow-hidden pt-20 grid-mesh">
-
-            {/* 3D Hero Scene */}
             <Suspense fallback={null}>
                 <HeroScene />
             </Suspense>
 
-            {/* Top band: badge + location + stats */}
             <div className="max-w-7xl mx-auto px-6 pt-12 flex flex-col md:flex-row md:items-start md:justify-between gap-6 relative z-10">
-
-                {/* Left: badge + location */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -47,7 +106,6 @@ export const Hero = () => {
                     </p>
                 </motion.div>
 
-                {/* Right: stats */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -63,40 +121,30 @@ export const Hero = () => {
                 </motion.div>
             </div>
 
-            {/* Massive name */}
-            <div className="relative z-10 mt-4 overflow-hidden max-w-7xl mx-auto px-6">
-                <motion.h1
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-[16vw] md:text-[12vw] font-black leading-none tracking-tighter text-white whitespace-nowrap select-none"
+            <div className="relative z-10 mt-4 max-w-7xl mx-auto px-6">
+                <h1
+                    className="text-[16vw] md:text-[12vw] font-black leading-none tracking-tighter text-white whitespace-nowrap select-none flex flex-wrap"
                     style={{ lineHeight: 0.88, fontFamily: 'var(--font-display)' }}
                 >
-                    Sai Tarrun
-                </motion.h1>
-                <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="flex items-end gap-6 mt-1"
-                >
+                    {firstName.split("").map((char, index) => (
+                        <FluidLetter key={index} char={char} index={index} total={firstName.length} />
+                    ))}
+                </h1>
+                <div className="flex items-end gap-6 mt-1 overflow-hidden">
                     <h1
-                        className="text-[16vw] md:text-[12vw] font-black leading-none tracking-tighter whitespace-nowrap select-none"
+                        className="text-[16vw] md:text-[12vw] font-black leading-none tracking-tighter whitespace-nowrap select-none flex flex-wrap"
                         style={{
                             lineHeight: 0.88,
                             fontFamily: 'var(--font-display)',
-                            background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text',
                         }}
                     >
-                        Pitta
+                        {lastName.split("").map((char, index) => (
+                            <FluidLetter key={index} char={char} index={index + firstName.length} total={lastName.length} isGradient />
+                        ))}
                     </h1>
-                </motion.div>
+                </div>
             </div>
 
-            {/* Bottom: tagline + CTA */}
             <div className="max-w-7xl mx-auto px-6 mt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-8 pb-10 relative z-10">
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
@@ -121,11 +169,8 @@ export const Hero = () => {
                     >
                         See my work
                     </a>
-
                 </motion.div>
             </div>
-
-            {/* Section spacer */}
             <div className="h-6" />
         </section>
     );
