@@ -6,9 +6,9 @@ const HeroScene = lazy(() =>
 );
 
 const stats = [
-    { value: 'Top 1%', label: 'TryHackMe Rank' },
-    { value: 'MS CS', label: 'CSU Fullerton' },
-    { value: '3+ Yrs', label: 'Industry Exp' },
+    { value: 'Top 1%', label: 'THM Rank' },
+    { value: 'MS CS', label: "Master's" },
+    { value: '3+ Yrs', label: 'Experience' },
 ];
 
 const FluidLetter = ({ char, index, isGradient = false }: { char: string, index: number, isGradient?: boolean }) => {
