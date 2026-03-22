@@ -3,11 +3,14 @@ import { motion } from 'framer-motion';
 const education = [
     {
         num: '01',
-        school: "Southern Methodist University",
-        degree: "Master of Science in Computer Science",
+        school: "California State University, Fullerton",
+        degree: "Master of Science, Computer Science",
         period: "Aug 2024 – May 2026",
-        location: "Dallas, TX",
-        description: "Specializing in AI and Distributed Systems. Research focused on RAG optimization and high-throughput backend architectures."
+        location: "Fullerton, CA",
+        description: [
+            "Published peer-reviewed IEEE conference paper: “Hardware Trojan Detection with Machine Learning and Power Side-Channels: A Post-Deployment Analysis” (IEEE CNS 2025)",
+            "Coursework: Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence"
+        ]
     },
     {
         num: '02',
@@ -15,7 +18,9 @@ const education = [
         degree: "Bachelor of Technology in CSE",
         period: "Aug 2018 – May 2022",
         location: "Warangal, India",
-        description: "Core computer science foundation with emphasis on algorithms, data structures, and database management systems."
+        description: [
+            "Core computer science foundation with emphasis on algorithms, data structures, and database management systems."
+        ]
     }
 ];
 
@@ -67,7 +72,11 @@ export const Education = () => {
                                     </span>
                                 </div>
  
-                                <p className="text-xl text-on-surface-variant leading-relaxed max-w-4xl" style={{ fontFamily: 'var(--font-body)' }}>{edu.description}</p>
+                                <div className="space-y-4 max-w-4xl">
+                                    {(Array.isArray(edu.description) ? edu.description : [edu.description]).map((item, i) => (
+                                        <p key={i} className="text-xl text-on-surface-variant leading-relaxed" style={{ fontFamily: 'var(--font-body)' }}>{item}</p>
+                                    ))}
+                                </div>
                             </div>
                         </motion.div>
                     ))}
