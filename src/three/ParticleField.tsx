@@ -12,9 +12,9 @@ export function ParticleField() {
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       arr.push({
         position: new THREE.Vector3(
-          (Math.random() - 0.5) * 20,
-          (Math.random() - 0.5) * 20,
-          (Math.random() - 0.5) * 12
+          (Math.random() - 0.5) * 100,
+          (Math.random() - 0.5) * 100,
+          (Math.random() - 0.5) * 20
         ),
         speed: 0.002 + Math.random() * 0.006,
         offset: Math.random() * Math.PI * 2,

@@ -55,7 +55,7 @@ export const Navbar = () => {
 
             {/* Mobile menu */}
             {menuOpen && (
-                <div className="md:hidden px-6 py-4 flex flex-col gap-4" style={{ background: 'var(--surface-container-low)' }}>
+                <div className="md:hidden px-6 py-10 flex flex-col gap-8 bg-surface/80 backdrop-blur-[20px] border-b border-white/10">
                     {['Experience', 'Projects', 'Skills', 'Contact'].map(item => (
                         <a key={item} href={`#${item.toLowerCase()}`} className="text-sm hover:text-white transition-colors" style={{ color: 'var(--on-surface-variant)' }} onClick={() => setMenuOpen(false)}>
                             {item}

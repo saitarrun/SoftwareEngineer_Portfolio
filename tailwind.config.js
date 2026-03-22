@@ -7,26 +7,38 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Satoshi', 'Inter', 'sans-serif'],
-                serif: ['Satoshi', 'Inter', 'sans-serif'],
+                display: ['Plus Jakarta Sans', 'sans-serif'],
+                body: ['Inter', 'sans-serif'],
+                label: ['Space Grotesk', 'monospace'],
             },
             colors: {
-                accent: {
-                    DEFAULT: '#F97316',
-                    light: '#FB923C',
-                    dark: '#EA580C',
+                primary: {
+                    DEFAULT: '#ff9249',
+                    fixed: '#FF7A00',
+                    container: '#ff7b04',
+                    dim: '#fb7800',
                 },
                 surface: {
-                    DEFAULT: '#0F1528',
-                    2: '#151D35',
-                    3: '#1C2540',
+                    DEFAULT: '#0e0e0e',
+                    variant: 'rgba(32, 31, 31, 0.6)',
+                    container: {
+                        lowest: '#000000',
+                        low: '#131313',
+                        DEFAULT: '#1a1a1a',
+                        high: '#201f1f',
+                        highest: '#2a2828',
+                    }
                 },
-                glass: {
-                    4: 'rgba(255, 255, 255, 0.04)',
-                    8: 'rgba(255, 255, 255, 0.08)',
-                    12: 'rgba(255, 255, 255, 0.12)',
-                    20: 'rgba(255, 255, 255, 0.20)',
-                }
+                'on-surface': {
+                    DEFAULT: '#ffffff',
+                    variant: '#adaaaa',
+                },
+                'outline-variant': 'rgba(119, 117, 115, 0.1)',
+                error: '#ff7351',
+            },
+            spacing: {
+                '18': '4.5rem',
+                '22': '5.5rem',
             },
             animation: {
                 'float': 'float 8s ease-in-out infinite',
