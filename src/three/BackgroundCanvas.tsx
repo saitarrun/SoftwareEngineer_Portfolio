@@ -2,6 +2,7 @@ import { Canvas } from '@react-three/fiber';
 import { ParticleField } from './ParticleField';
 import { GridPlane } from './GridPlane';
 import { LiquidBackground } from './LiquidBackground';
+
 export function BackgroundCanvas() {
   return (
     <div
@@ -13,6 +14,9 @@ export function BackgroundCanvas() {
         height: '100%',
         zIndex: 0,
         pointerEvents: 'none',
+        transform: 'translate3d(0, 0, 0)',
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
       }}
     >
       <Canvas
