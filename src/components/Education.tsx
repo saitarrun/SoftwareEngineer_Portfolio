@@ -46,7 +46,7 @@ const EducationCard = ({ edu, index }: { edu: any, index: number }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-            className="group grid md:grid-cols-[100px_1fr] gap-8 md:gap-16 p-10 md:p-14 rounded-[2.5rem] transition-all duration-700 bg-surface-container-low/40 backdrop-blur-xl ghost-border hover:bg-surface-container-low hover:border-primary/40 hover:shadow-[0_0_50px_rgba(255,146,73,0.1)] w-full relative"
+            className="group grid md:grid-cols-[100px_1fr] gap-8 md:gap-16 p-10 md:p-14 rounded-[2.5rem] transition-all duration-700 bg-surface-container-low/40 ghost-border hover:bg-surface-container-low hover:border-primary/40 hover:shadow-[0_0_50px_rgba(255,146,73,0.1)] w-full relative"
         >
             {/* Number Layer */}
             <div style={{ transform: "translateZ(50px)" }} className="pt-2">

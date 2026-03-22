@@ -50,7 +50,7 @@ export const Contact = () => {
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative rounded-[3rem] overflow-hidden mb-32 p-12 md:p-24 bg-surface-container-low/40 backdrop-blur-2xl ghost-border group transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_80px_rgba(255,146,73,0.1)]"
+                    className="relative rounded-[3rem] overflow-hidden mb-32 p-12 md:p-24 bg-surface-container-low/40 ghost-border group transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_80px_rgba(255,146,73,0.1)]"
                 >
                     <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
                         <div style={{ transform: "translateZ(40px)" }}>
