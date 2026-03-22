@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { Mail, Github, Linkedin, ArrowRight, Shield } from 'lucide-react';
 import { useRef } from 'react';
 

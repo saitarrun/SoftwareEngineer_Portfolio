@@ -8,6 +8,7 @@ import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Education } from './components/Education';
+import { CustomCursor } from './components/CustomCursor';
 
 const BackgroundCanvas = lazy(() =>
     import('./three/BackgroundCanvas').then(m => ({ default: m.BackgroundCanvas }))
@@ -45,8 +46,9 @@ function App() {
                 </Suspense>
 
                 <Navbar />
+            <CustomCursor />
 
-                <main className="relative z-10">
+            <main className="relative z-10">
                     <Hero />
                     <SectionWrapper><Experience /></SectionWrapper>
                     <SectionWrapper><Projects /></SectionWrapper>
