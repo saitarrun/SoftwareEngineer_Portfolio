@@ -143,7 +143,7 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.5 }}
-                        className="flex items-center gap-4"
+                        className="flex flex-wrap items-center gap-4"
                     >
                         <a
                             href="#projects"
@@ -151,6 +151,12 @@ export const Hero = () => {
                             style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}
                         >
                             See my work
+                        </a>
+                        <a
+                            href="#contact"
+                            className="px-8 py-4 text-white font-bold text-sm rounded-full border border-white/20 transition-all duration-300 hover:border-primary hover:text-primary backdrop-blur-sm"
+                        >
+                            Let's connect
                         </a>
                     </motion.div>
                 </div>
