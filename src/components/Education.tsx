@@ -43,7 +43,7 @@ export const Education = () => {
                             </span>
                         </div>
                         <p className="text-white/50 font-medium mb-4">Master of Science, Computer Science</p>
-                        <p className="text-white/50 text-sm leading-relaxed">
+                        <p className="text-white/70 text-sm leading-relaxed">
                             <span className="text-white/50 font-semibold">Relevant Coursework:</span> Advanced Algorithms, Distributed Systems, Cloud Computing, System Design, Machine Learning
                         </p>
                     </div>

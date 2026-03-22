@@ -102,7 +102,7 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-white/50 text-base leading-relaxed max-w-md"
+                    className="text-white/70 text-base leading-relaxed max-w-md"
                 >
                     Building high-concurrency distributed systems and cloud-native architecture.
                     Specializing in low-latency backend services with Java, Python & gRPC.

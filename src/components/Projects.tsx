@@ -88,7 +88,7 @@ export const Projects = () => {
                                     </h3>
                                 </div>
                                 <p className="text-[#F97316]/50 text-xs font-semibold uppercase tracking-wide mb-2">{project.tech}</p>
-                                <p className="text-white/50 text-sm leading-relaxed">{project.description}</p>
+                                <p className="text-white/70 text-sm leading-relaxed">{project.description}</p>
                             </div>
 
                             {/* Arrow link */}

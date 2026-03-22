@@ -97,7 +97,7 @@ export const Experience = () => {
 
                                 <ul className="mt-4 space-y-2">
                                     {exp.description.map((item, i) => (
-                                        <li key={i} className="flex gap-3 text-white/50 text-sm leading-relaxed">
+                                        <li key={i} className="flex gap-3 text-white/70 text-sm leading-relaxed">
                                             <span className="w-1 h-1 rounded-full bg-[#F97316]/60 mt-2.5 shrink-0" />
                                             {item}
                                         </li>

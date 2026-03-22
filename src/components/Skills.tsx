@@ -72,7 +72,7 @@ export const Skills = () => {
                                 <h3 className="text-xl font-black text-white mb-2 group-hover:text-[#F97316] transition-colors duration-300">
                                     {svc.title}
                                 </h3>
-                                <p className="text-white/50 text-sm leading-relaxed">{svc.desc}</p>
+                                <p className="text-white/70 text-sm leading-relaxed">{svc.desc}</p>
                             </div>
 
                             {/* Tags */}
