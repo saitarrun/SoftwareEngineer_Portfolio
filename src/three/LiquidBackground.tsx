@@ -65,24 +65,25 @@ const fragmentShader = `
     float n2 = fbm(uv * 2.0 - vec2(t * 0.4, t * 0.8) + n1 * 0.5);
     float n3 = fbm(uv * 4.0 + vec2(t * 0.3, -t * 0.6) + n2 * 0.3);
 
-    // Combine noise layers for liquid effect
+    // Combine noise layers and boost contrast for a more dramatic 'smoke' effect
     float liquid = n1 * 0.4 + n2 * 0.35 + n3 * 0.25;
+    liquid = smoothstep(0.1, 0.9, liquid); 
 
     // Neon Architect Radiant Accents (Primary: #ff9249)
     vec3 deepBlack = vec3(0.0, 0.0, 0.0);
-    vec3 darkOrange = vec3(0.1, 0.04, 0.0);
+    vec3 darkOrange = vec3(0.12, 0.05, 0.0);
     vec3 orange = vec3(1.0, 0.57, 0.28); // #ff9249
     vec3 brightOrange = vec3(1.0, 0.65, 0.4);
 
-    // Create color bands based on liquid noise
-    float band1 = smoothstep(-0.3, 0.1, liquid);
-    float band2 = smoothstep(0.1, 0.4, liquid);
-    float band3 = smoothstep(0.35, 0.6, liquid);
+    // Create higher contrast color bands
+    float band1 = smoothstep(0.0, 0.25, liquid);
+    float band2 = smoothstep(0.25, 0.55, liquid);
+    float band3 = smoothstep(0.55, 0.95, liquid);
 
     vec3 color = deepBlack;
-    color = mix(color, darkOrange, band1 * 0.6);
-    color = mix(color, orange * 0.15, band2 * 0.5);
-    color = mix(color, brightOrange * 0.08, band3 * 0.3);
+    color = mix(color, darkOrange, band1 * 0.8);
+    color = mix(color, orange * 0.2, band2 * 0.6);
+    color = mix(color, brightOrange * 0.12, band3 * 0.4);
 
     // Subtle vignette
     float vignette = 1.0 - length((uv - 0.5) * 1.4);
