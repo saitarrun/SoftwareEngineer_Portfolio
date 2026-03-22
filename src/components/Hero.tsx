@@ -71,7 +71,7 @@ export const Hero = () => {
     const lastName = "Pitta";
 
     return (
-        <section id="about" className="relative overflow-hidden pt-20 grid-mesh">
+        <section id="about" className="relative overflow-hidden pt-20">
             <Suspense fallback={null}>
                 <HeroScene />
             </Suspense>
