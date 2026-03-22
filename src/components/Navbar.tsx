@@ -9,50 +9,45 @@ export const Navbar = () => {
         <motion.nav
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            className="fixed top-0 left-0 right-0 z-50 transition-all duration-200"
-            style={{
-                background: 'rgba(10, 15, 30, 0.85)',
-                backdropFilter: 'blur(20px)',
-                WebkitBackdropFilter: 'blur(20px)',
-                borderBottom: '1px solid rgba(255,255,255,0.06)',
-            }}
+            className="fixed top-0 left-0 right-0 z-50 glass-nav"
         >
             <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
                 {/* Logo */}
                 <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 rounded-full bg-[#F97316] flex items-center justify-center">
-                        <span className="text-white text-xs font-black">S</span>
+                    <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}>
+                        <span className="text-black text-xs font-black">S</span>
                     </div>
                     <div className="flex flex-col leading-none">
-                        <span className="font-black text-base text-white tracking-tight">Sai Tarrun Pitta</span>
-                        <span className="text-[10px] uppercase tracking-widest text-white/30 mt-0.5">Software Engineer</span>
+                        <span className="font-black text-base text-white tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>Sai Tarrun Pitta</span>
+                        <span className="text-[10px] uppercase tracking-widest mt-0.5" style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-label)' }}>Software Engineer</span>
                     </div>
                 </div>
 
                 {/* Desktop Nav */}
                 <div className="hidden md:flex items-center gap-8">
-                    <a href="#experience" className="text-sm font-medium text-white/50 hover:text-white transition-colors">Experience</a>
-                    <a href="#projects" className="text-sm font-medium text-white/50 hover:text-white transition-colors">Projects</a>
-                    <a href="#skills" className="text-sm font-medium text-white/50 hover:text-white transition-colors">Skills</a>
-                    <a href="#contact" className="text-sm font-medium text-white/50 hover:text-white transition-colors">Contact</a>
+                    {['Experience', 'Projects', 'Skills', 'Contact'].map(item => (
+                        <a key={item} href={`#${item.toLowerCase()}`} className="text-sm font-medium transition-all duration-200 hover:text-white" style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}>
+                            {item}
+                        </a>
+                    ))}
                 </div>
 
                 {/* Right: socials + resume */}
                 <div className="flex items-center gap-4">
                     <a href="https://github.com/saitarrun" target="_blank" rel="noopener noreferrer"
-                        className="hidden md:flex text-white/40 hover:text-white transition-colors">
+                        className="hidden md:flex hover:text-white transition-colors" style={{ color: 'var(--on-surface-variant)' }}>
                         <Github className="w-4 h-4" />
                     </a>
                     <a href="https://linkedin.com/in/saitarrunpitta" target="_blank" rel="noopener noreferrer"
-                        className="hidden md:flex text-white/40 hover:text-white transition-colors">
+                        className="hidden md:flex hover:text-white transition-colors" style={{ color: 'var(--on-surface-variant)' }}>
                         <Linkedin className="w-4 h-4" />
                     </a>
                     <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
-                        <span className="px-4 py-2 bg-[#F97316] text-white text-xs font-bold uppercase tracking-wider rounded-lg hover:bg-[#FB923C] transition-all duration-200">
+                        <span className="px-5 py-2 text-black text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-200 hover:shadow-[0_0_15px_#fb7800]" style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}>
                             Resume
                         </span>
                     </a>
-                    <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-white/60 hover:text-white">
+                    <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden hover:text-white" style={{ color: 'var(--on-surface-variant)' }}>
                         <Menu className="w-5 h-5" />
                     </button>
                 </div>
@@ -60,11 +55,12 @@ export const Navbar = () => {
 
             {/* Mobile menu */}
             {menuOpen && (
-                <div className="md:hidden border-t border-white/[0.06] px-6 py-4 flex flex-col gap-4" style={{ background: 'rgba(10,15,30,0.95)' }}>
-                    <a href="#experience" className="text-sm text-white/60 hover:text-white" onClick={() => setMenuOpen(false)}>Experience</a>
-                    <a href="#projects" className="text-sm text-white/60 hover:text-white" onClick={() => setMenuOpen(false)}>Projects</a>
-                    <a href="#skills" className="text-sm text-white/60 hover:text-white" onClick={() => setMenuOpen(false)}>Skills</a>
-                    <a href="#contact" className="text-sm text-white/60 hover:text-white" onClick={() => setMenuOpen(false)}>Contact</a>
+                <div className="md:hidden px-6 py-4 flex flex-col gap-4" style={{ background: 'var(--surface-container-low)' }}>
+                    {['Experience', 'Projects', 'Skills', 'Contact'].map(item => (
+                        <a key={item} href={`#${item.toLowerCase()}`} className="text-sm hover:text-white transition-colors" style={{ color: 'var(--on-surface-variant)' }} onClick={() => setMenuOpen(false)}>
+                            {item}
+                        </a>
+                    ))}
                 </div>
             )}
         </motion.nav>

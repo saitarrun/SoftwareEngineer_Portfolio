@@ -1,7 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { ParticleField } from './ParticleField';
 import { GridPlane } from './GridPlane';
-
+import { LiquidBackground } from './LiquidBackground';
 export function BackgroundCanvas() {
   return (
     <div
@@ -21,6 +21,7 @@ export function BackgroundCanvas() {
         dpr={[1, 1.5]}
         style={{ background: 'transparent' }}
       >
+        <LiquidBackground />
         <ParticleField />
         <GridPlane />
       </Canvas>

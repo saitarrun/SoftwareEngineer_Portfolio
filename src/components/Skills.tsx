@@ -3,52 +3,74 @@ import { motion } from 'framer-motion';
 const services = [
     {
         num: '01',
-        title: 'Languages & Frameworks',
-        desc: 'Java (Multithreading, Spring Boot), Python (FastAPI, Django), SQL, JavaScript (Node.js / React)',
-        tags: ['Java', 'Python', 'SQL', 'JavaScript', 'Spring Boot', 'FastAPI'],
+        title: 'Programming Languages',
+        desc: 'Python, Java, JavaScript, SQL, C++, TypeScript',
+        tags: ['Python', 'Java', 'JavaScript', 'SQL', 'C++', 'TypeScript'],
     },
     {
         num: '02',
-        title: 'Databases & Storage',
-        desc: 'PostgreSQL (performance tuning, indexing), Redis (caching), DynamoDB, schema design for high-throughput workloads.',
-        tags: ['PostgreSQL', 'Redis', 'DynamoDB', 'Schema Design'],
+        title: 'Frontend Development',
+        desc: 'React, Next.js, HTML5/CSS3, Tailwind CSS, Material UI',
+        tags: ['React', 'Next.js', 'Tailwind CSS', 'Material UI'],
     },
     {
         num: '03',
-        title: 'Distributed Systems',
-        desc: 'Microservices, gRPC, event-driven design, high availability, load balancing, CAP theorem, distributed locking.',
-        tags: ['Microservices', 'gRPC', 'Kafka', 'Event-Driven', 'Load Balancing'],
+        title: 'Backend & APIs',
+        desc: 'Spring Boot, Node.js, FastAPI, Django, gRPC, GraphQL, REST APIs, Microservices',
+        tags: ['Spring Boot', 'Node.js', 'FastAPI', 'gRPC', 'GraphQL'],
     },
     {
         num: '04',
-        title: 'Cloud & DevOps',
-        desc: 'AWS (EKS, RDS, S3), Kubernetes, Docker, Terraform (IaC), GitHub Actions CI/CD pipelines.',
-        tags: ['AWS', 'Kubernetes', 'Docker', 'Terraform', 'GitHub Actions'],
+        title: 'Data & Caching',
+        desc: 'Redis, PostgreSQL, MongoDB, DynamoDB, Elasticsearch, Kafka, RabbitMQ',
+        tags: ['Redis', 'PostgreSQL', 'MongoDB', 'Kafka', 'Elasticsearch'],
     },
     {
         num: '05',
-        title: 'Security & SRE',
-        desc: 'RBAC, OWASP threat modeling, Prometheus monitoring, Splunk observability, SLOs/SLIs, distributed tracing.',
-        tags: ['RBAC', 'OWASP', 'Prometheus', 'Splunk', 'SLOs/SLIs'],
+        title: 'Cloud & Infrastructure',
+        desc: 'AWS (EC2, Lambda, RDS, S3, DynamoDB, API Gateway), GCP, Azure, Docker, Kubernetes',
+        tags: ['AWS', 'GCP', 'Docker', 'Kubernetes'],
+    },
+    {
+        num: '06',
+        title: 'DevOps & Observability',
+        desc: 'Terraform, Jenkins, GitHub Actions, Prometheus, Grafana, Splunk',
+        tags: ['Terraform', 'GitHub Actions', 'Prometheus', 'Grafana', 'Splunk'],
+    },
+    {
+        num: '07',
+        title: 'Machine Learning & AI',
+        desc: 'TensorFlow, PyTorch, Langchain, LLMs (GPT-4, Claude), RAG Systems, Feature Engineering',
+        tags: ['TensorFlow', 'PyTorch', 'Langchain', 'LLMs', 'RAG'],
+    },
+    {
+        num: '08',
+        title: 'Testing & Quality Assurance',
+        desc: 'Pytest, Selenium, Performance Testing, Performance Optimization, Postman, Debugging',
+        tags: ['Pytest', 'Selenium', 'Postman', 'Performance Testing'],
+    },
+    {
+        num: '09',
+        title: 'Compliance & Security',
+        desc: 'SOC 2, Role-Based Access Control (RBAC), ISO 27001, OAuth 2.0, JWT, OWASP',
+        tags: ['SOC 2', 'RBAC', 'OAuth 2.0', 'JWT', 'OWASP'],
     },
 ];
 
 export const Skills = () => {
     return (
-        <section id="skills" className="py-24">
+        <section id="skills" className="py-8">
             <div className="max-w-7xl mx-auto px-6">
                 {/* Section header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16 flex items-end justify-between border-b border-white/[0.06] pb-8"
+                    className="mb-6 flex items-end justify-between border-b border-white/[0.06] pb-4"
                 >
                     <div>
-                        <p className="text-[#F97316] text-xs font-bold uppercase tracking-widest mb-2">What I Do</p>
                         <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">Expertise</h2>
                     </div>
-                    <span className="hidden md:block text-white/10 text-8xl font-black select-none">SKL</span>
                 </motion.div>
 
                 {/* Services list */}
@@ -72,7 +94,7 @@ export const Skills = () => {
                                 <h3 className="text-xl font-black text-white mb-2 group-hover:text-[#F97316] transition-colors duration-300">
                                     {svc.title}
                                 </h3>
-                                <p className="text-white/70 text-sm leading-relaxed">{svc.desc}</p>
+                                <p className="text-white/90 text-lg leading-relaxed">{svc.desc}</p>
                             </div>
 
                             {/* Tags */}
@@ -80,7 +102,7 @@ export const Skills = () => {
                                 {svc.tags.map((tag, i) => (
                                     <span
                                         key={i}
-                                        className="px-2.5 py-1 text-xs text-white/40 border border-white/[0.08] rounded-full bg-white/[0.03] group-hover:border-[#F97316]/30 group-hover:text-white/60 transition-all duration-300"
+                                        className="px-2.5 py-1 text-xs text-white/80 border border-white/[0.08] rounded-full bg-white/[0.03] group-hover:border-[#F97316]/30 group-hover:text-white/80 transition-all duration-300"
                                     >
                                         {tag}
                                     </span>

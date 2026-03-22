@@ -2,20 +2,18 @@ import { motion } from 'framer-motion';
 
 export const Education = () => {
     return (
-        <section id="education" className="py-24">
+        <section id="education" className="py-8">
             <div className="max-w-7xl mx-auto px-6">
                 {/* Section header */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16 flex items-end justify-between border-b border-white/[0.06] pb-8"
+                    className="mb-6 flex items-end justify-between border-b border-white/[0.06] pb-4"
                 >
                     <div>
-                        <p className="text-[#F97316] text-xs font-bold uppercase tracking-widest mb-2">Academic Background</p>
                         <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight">Education</h2>
                     </div>
-                    <span className="hidden md:block text-white/10 text-8xl font-black select-none">EDU</span>
                 </motion.div>
 
                 <motion.div
@@ -34,16 +32,19 @@ export const Education = () => {
                             California State University, Fullerton
                         </h3>
                         <div className="flex flex-wrap gap-4 mb-4">
-                            <span className="text-xs text-white/60 font-medium bg-white/[0.08] border border-white/[0.12] px-3 py-1.5 rounded-full whitespace-nowrap">
+                            <span className="text-xs text-white/80 font-medium bg-white/[0.08] border border-white/[0.12] px-3 py-1.5 rounded-full whitespace-nowrap">
                                 Aug 2024 – May 2026
                             </span>
-                            <span className="text-xs text-white/60 font-medium bg-white/[0.08] border border-white/[0.12] px-3 py-1.5 rounded-full whitespace-nowrap">
+                            <span className="text-xs text-white/80 font-medium bg-white/[0.08] border border-white/[0.12] px-3 py-1.5 rounded-full whitespace-nowrap">
                                 Fullerton, CA
                             </span>
                         </div>
-                        <p className="text-white/50 font-medium mb-4">Master of Science, Computer Science</p>
-                        <p className="text-white/70 text-sm leading-relaxed">
-                            <span className="text-white/50 font-semibold">Relevant Coursework:</span> Advanced Algorithms, Distributed Systems, Cloud Computing, System Design, Machine Learning
+                        <p className="text-white/90 font-medium mb-4">Master of Science, Computer Science</p>
+                        <p className="text-white/90 text-lg leading-relaxed mb-3">
+                            <span className="text-white/90 font-semibold">Achievements:</span> Published peer-reviewed IEEE conference paper: "Hardware Trojan Detection with Machine Learning and Power Side-Channels: A Post-Deployment Analysis" (IEEE CNS 2025)
+                        </p>
+                        <p className="text-white/90 text-lg leading-relaxed">
+                            <span className="text-white/90 font-semibold">Coursework:</span> Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence
                         </p>
                     </div>
                 </motion.div>

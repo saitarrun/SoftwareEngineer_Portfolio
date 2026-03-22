@@ -36,8 +36,6 @@ export function HeroScene() {
         style={{ background: 'transparent' }}
       >
         <Suspense fallback={null}>
-          <WireframeGlobe mouse={mouse} />
-          <FloatingGeometry />
           <PostEffects />
         </Suspense>
       </Canvas>
