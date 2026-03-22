@@ -66,8 +66,8 @@ export const Contact = () => {
  
                         <div className="flex flex-col gap-10 items-center lg:items-center" style={{ transform: "translateZ(60px)" }}>
                             <MagneticElement className="w-full lg:w-fit">
-                                <a 
-                                    href="mailto:contact@example.com"
+                                <a
+                                    href="mailto:saitarrunpitta@gmail.com"
                                     className="flex items-center gap-4 px-10 py-8 bg-primary text-on-primary font-black uppercase tracking-widest rounded-3xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full lg:w-fit text-center justify-center shadow-[0_20px_40px_rgba(255,123,4,0.3)]"
                                     style={{ fontFamily: 'var(--font-display)' }}
                                 >
