@@ -62,7 +62,7 @@ export const CustomCursor = () => {
                     borderColor: isHovered ? 'rgba(255, 146, 73, 0.5)' : 'rgba(255, 146, 73, 0.3)',
                 }}
                 transition={{ type: 'spring', stiffness: 250, damping: 20 }}
-                className="absolute border rounded-full backdrop-blur-[2px]"
+                className="absolute border rounded-full"
             />
 
             {/* Precision Dot */}

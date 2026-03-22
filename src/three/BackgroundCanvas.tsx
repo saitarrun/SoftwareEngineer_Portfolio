@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber';
 import { ParticleField } from './ParticleField';
 import { GridPlane } from './GridPlane';
+import { OrangeSmoke } from './OrangeSmoke';
 
 export function BackgroundCanvas() {
   return (
@@ -11,7 +12,7 @@ export function BackgroundCanvas() {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: -10,
+        zIndex: 0,
         pointerEvents: 'none',
         transform: 'translate3d(0, 0, 0)',
         WebkitBackfaceVisibility: 'hidden',
@@ -24,6 +25,7 @@ export function BackgroundCanvas() {
         dpr={[1, 1.5]}
         style={{ background: 'transparent' }}
       >
+        <OrangeSmoke />
         <ParticleField />
         <GridPlane />
       </Canvas>
