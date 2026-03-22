@@ -1,4 +1,9 @@
+import { lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
+
+const HeroScene = lazy(() =>
+    import('../three/HeroScene').then(m => ({ default: m.HeroScene }))
+);
 
 const stats = [
     { value: '3+', label: 'Years Experience' },
@@ -9,6 +14,11 @@ const stats = [
 export const Hero = () => {
     return (
         <section id="about" className="min-h-screen relative overflow-hidden pt-20">
+
+            {/* 3D Hero Scene */}
+            <Suspense fallback={null}>
+                <HeroScene />
+            </Suspense>
 
             {/* Top band: badge + location + stats */}
             <div className="max-w-7xl mx-auto px-6 pt-12 flex flex-col md:flex-row md:items-start md:justify-between gap-6">

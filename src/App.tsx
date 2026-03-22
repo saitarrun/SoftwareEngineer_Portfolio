@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Experience } from './components/Experience';
@@ -6,16 +7,25 @@ import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Education } from './components/Education';
 
+const BackgroundCanvas = lazy(() =>
+    import('./three/BackgroundCanvas').then(m => ({ default: m.BackgroundCanvas }))
+);
+
 function App() {
     return (
         <div className="min-h-screen font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
 
-            {/* Dark gradient background with animated orange orbs */}
+            {/* CSS orb fallback (shown while 3D loads or on low-end devices) */}
             <div className="gradient-bg">
                 <div className="orb-1" />
                 <div className="orb-2" />
                 <div className="orb-3" />
             </div>
+
+            {/* 3D particle background */}
+            <Suspense fallback={null}>
+                <BackgroundCanvas />
+            </Suspense>
 
             <Navbar />
 
