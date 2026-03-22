@@ -24,7 +24,7 @@ export const Contact = () => {
                             </p>
                         </div>
  
-                        <div className="flex flex-col gap-6 lg:items-end">
+                        <div className="flex flex-col gap-8 lg:items-end">
                             <a 
                                 href="mailto:contact@example.com"
                                 className="flex items-center gap-4 px-10 py-8 bg-primary text-on-primary font-black uppercase tracking-widest rounded-3xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full lg:w-fit text-center justify-center"
@@ -35,34 +35,42 @@ export const Contact = () => {
                                 <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform" />
                             </a>
                             
-                            <div className="flex gap-4">
-                                <a 
-                                    href="https://github.com/saitarrun" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social"
-                                    title="GitHub"
-                                >
-                                    <Github className="w-6 h-6" />
-                                </a>
-                                <a 
-                                    href="https://linkedin.com/in/saitarrun" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social"
-                                    title="LinkedIn"
-                                >
-                                    <Linkedin className="w-6 h-6" />
-                                </a>
-                                <a 
-                                    href="https://tryhackme.com/p/TarrunXploit404" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social"
-                                    title="TryHackMe"
-                                >
-                                    <Shield className="w-6 h-6" />
-                                </a>
+                            <div className="flex gap-6">
+                                <div className="flex flex-col items-center gap-3 group/social-wrapper">
+                                    <a 
+                                        href="https://github.com/saitarrun" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social"
+                                    >
+                                        <Github className="w-6 h-6" />
+                                    </a>
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300" style={{ fontFamily: 'var(--font-label)' }}>GitHub</span>
+                                </div>
+
+                                <div className="flex flex-col items-center gap-3 group/social-wrapper">
+                                    <a 
+                                        href="https://linkedin.com/in/saitarrun" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social"
+                                    >
+                                        <Linkedin className="w-6 h-6" />
+                                    </a>
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300" style={{ fontFamily: 'var(--font-label)' }}>LinkedIn</span>
+                                </div>
+
+                                <div className="flex flex-col items-center gap-3 group/social-wrapper">
+                                    <a 
+                                        href="https://tryhackme.com/p/TarrunXploit404" 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social"
+                                    >
+                                        <Shield className="w-6 h-6" />
+                                    </a>
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300" style={{ fontFamily: 'var(--font-label)' }}>TryHackMe</span>
+                                </div>
                             </div>
                         </div>
                     </div>
