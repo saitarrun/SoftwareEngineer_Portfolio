@@ -12,7 +12,7 @@ export function BackgroundCanvas() {
         left: 0,
         width: '100%',
         height: '100%',
-        zIndex: 0,
+        zIndex: -10,
         pointerEvents: 'none',
         transform: 'translate3d(0, 0, 0)',
         WebkitBackfaceVisibility: 'hidden',
