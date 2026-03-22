@@ -24,9 +24,9 @@ export const Hero = () => {
                         <span className="w-1.5 h-1.5 rounded-full bg-[#F97316] animate-pulse" />
                         Available for work
                     </div>
-                    <p className="text-white/40 text-sm font-medium">
+                    <p className="text-white/50 text-sm font-medium">
                         Software Engineer based in<br />
-                        <span className="text-white/70 font-semibold">California</span>
+                        <span className="text-white/80 font-semibold">California</span>
                     </p>
                 </motion.div>
 
@@ -102,7 +102,7 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-white/40 text-base leading-relaxed max-w-md"
+                    className="text-white/50 text-base leading-relaxed max-w-md"
                 >
                     Building high-concurrency distributed systems and cloud-native architecture.
                     Specializing in low-latency backend services with Java, Python & gRPC.

@@ -31,7 +31,7 @@ export const Contact = () => {
                                     backgroundClip: 'text',
                                 }}>Exceptional</span>
                             </h2>
-                            <p className="text-white/40 text-base leading-relaxed">
+                            <p className="text-white/50 text-base leading-relaxed">
                                 I'm currently available for new opportunities. Whether you have a question, a project in mind, or just want to connect — feel free to reach out.
                             </p>
                         </div>

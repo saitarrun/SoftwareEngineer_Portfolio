@@ -87,17 +87,17 @@ export const Experience = () => {
 
                                 {/* Period + Location */}
                                 <div className="flex flex-wrap gap-4 mb-4">
-                                    <span className="text-xs text-white/30 font-medium bg-white/[0.04] border border-white/[0.08] px-3 py-1.5 rounded-full whitespace-nowrap">
+                                    <span className="text-xs text-white/60 font-medium bg-white/[0.08] border border-white/[0.12] px-3 py-1.5 rounded-full whitespace-nowrap">
                                         {exp.period}
                                     </span>
-                                    <span className="text-xs text-white/30 font-medium bg-white/[0.04] border border-white/[0.08] px-3 py-1.5 rounded-full whitespace-nowrap">
+                                    <span className="text-xs text-white/60 font-medium bg-white/[0.08] border border-white/[0.12] px-3 py-1.5 rounded-full whitespace-nowrap">
                                         {exp.location}
                                     </span>
                                 </div>
 
                                 <ul className="mt-4 space-y-2">
                                     {exp.description.map((item, i) => (
-                                        <li key={i} className="flex gap-3 text-white/40 text-sm leading-relaxed">
+                                        <li key={i} className="flex gap-3 text-white/50 text-sm leading-relaxed">
                                             <span className="w-1 h-1 rounded-full bg-[#F97316]/60 mt-2.5 shrink-0" />
                                             {item}
                                         </li>

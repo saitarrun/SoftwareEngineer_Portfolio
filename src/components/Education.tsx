@@ -35,15 +35,15 @@ export const Education = () => {
                             California State University, Fullerton
                         </h3>
                         <div className="flex flex-wrap gap-4 mb-4">
-                            <span className="text-xs text-white/30 font-medium bg-white/[0.04] border border-white/[0.08] px-3 py-1.5 rounded-full whitespace-nowrap">
+                            <span className="text-xs text-white/60 font-medium bg-white/[0.08] border border-white/[0.12] px-3 py-1.5 rounded-full whitespace-nowrap">
                                 Aug 2024 – May 2026
                             </span>
-                            <span className="text-xs text-white/30 font-medium bg-white/[0.04] border border-white/[0.08] px-3 py-1.5 rounded-full whitespace-nowrap">
+                            <span className="text-xs text-white/60 font-medium bg-white/[0.08] border border-white/[0.12] px-3 py-1.5 rounded-full whitespace-nowrap">
                                 Fullerton, CA
                             </span>
                         </div>
                         <p className="text-white/50 font-medium mb-4">Master of Science, Computer Science</p>
-                        <p className="text-white/30 text-sm leading-relaxed">
+                        <p className="text-white/50 text-sm leading-relaxed">
                             <span className="text-white/50 font-semibold">Relevant Coursework:</span> Advanced Algorithms, Distributed Systems, Cloud Computing, System Design, Machine Learning
                         </p>
                     </div>
