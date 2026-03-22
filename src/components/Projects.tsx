@@ -5,16 +5,30 @@ const projects = [
     {
         num: '01',
         title: "LLM-Powered Knowledge Retrieval Platform",
-        tech: "LLMs · RAG · Semantic Search · Vector DB",
-        description: "Developed a RAG-based application using LLMs, semantic search, and vector retrieval, improving answer relevance by 25% and reducing manual search time by 40%. Optimized retrieval latency through document chunking and vector database indexing, cutting response times by 30%.",
-        link: "#"
+        tech: "LLMs · RAG · Vector DB · Semantic Search",
+        description: "A high-performance RAG platform built with premium UI, semantic search indexing, and real-time feedback cycles. Optimized for retrieval accuracy and low-latency document processing.",
+        link: "https://github.com/saitarrun/LLM-Powered-Knowledge-Retrieval-Platform"
     },
     {
         num: '02',
-        title: "Event-Driven E-Commerce Modernization",
-        tech: "Django · FastAPI · Strangler Pattern · Microservices",
-        description: "Migrated a Django monolith to FastAPI microservices using the Strangler pattern, demonstrating zero-downtime migration, improved modularity, and scalable service design.",
-        link: "#"
+        title: "Brain Tumor Prediction & Big Data Pipeline",
+        tech: "TensorFlow · Apache Spark · GCP · OpenCV",
+        description: "An end-to-end distributed ML pipeline for MRI scan classification. Leverages big data processing with Spark and cloud-native inference on GCP to achieve clinical-grade tumor detection.",
+        link: "https://github.com/saitarrun/Brain-Tumor-Prediction-Using-Machine-Learning-and-Big-Data"
+    },
+    {
+        num: '03',
+        title: "Serverless Deployment Platform",
+        tech: "AWS · Docker · Kafka · PostgreSQL · Redis",
+        description: "Scalable, self-hosted deployment engine inspired by Vercel. Features real-time log collection with Kafka, persistent analytics with ClickHouse, and containerized orchestration via AWS ECS.",
+        link: "https://github.com/saitarrun/Serverless-Deployment-Platform"
+    },
+    {
+        num: '04',
+        title: "Monolith to Microservices Migration",
+        tech: "Node.js · FastAPI · Redis · System Design",
+        description: "Architectural transformation of a legacy monolith into a modern, event-driven microservices ecosystem. Implements the Strangler pattern for zero-downtime migration and high scalability.",
+        link: "https://github.com/saitarrun/Monolith-to-microservices"
     },
 ];
 
