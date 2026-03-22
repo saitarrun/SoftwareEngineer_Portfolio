@@ -1,18 +1,14 @@
-import { lazy, Suspense, useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { MagneticElement } from './MagneticElement';
-
-const HeroScene = lazy(() =>
-    import('../three/HeroScene').then(m => ({ default: m.HeroScene }))
-);
 
 const FluidLetter = ({ char, index, isGradient = false }: { char: string, index: number, isGradient?: boolean }) => {
     const ref = useRef<HTMLSpanElement>(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
-    const springX = useSpring(x, { stiffness: 200, damping: 20 });
-    const springY = useSpring(y, { stiffness: 200, damping: 20 });
+    const springX = useSpring(x, { stiffness: 120, damping: 25, mass: 0.5 });
+    const springY = useSpring(y, { stiffness: 120, damping: 25, mass: 0.5 });
 
     const handleMouseMove = (e: React.MouseEvent) => {
         if (!ref.current) return;
@@ -21,10 +17,10 @@ const FluidLetter = ({ char, index, isGradient = false }: { char: string, index:
         const centerY = rect.top + rect.height / 2;
         const distanceX = e.clientX - centerX;
         const distanceY = e.clientY - centerY;
-        
+
         if (Math.abs(distanceX) < 100 && Math.abs(distanceY) < 100) {
-            x.set(distanceX * 0.2);
-            y.set(distanceY * 0.2);
+            x.set(distanceX * 0.15);
+            y.set(distanceY * 0.15);
         } else {
             x.set(0);
             y.set(0);
@@ -41,16 +37,16 @@ const FluidLetter = ({ char, index, isGradient = false }: { char: string, index:
             ref={ref}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            initial={{ opacity: 0, y: 100, rotate: index % 2 === 0 ? 10 : -10 }}
-            animate={{ opacity: 1, y: 0, rotate: 0 }}
-            transition={{ 
-                duration: 1.2, 
+            initial={{ opacity: 0, y: 60 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+                duration: 0.8,
                 delay: index * 0.03,
-                ease: [0.22, 1, 0.36, 1] 
+                ease: [0.25, 0.1, 0.25, 1]
             }}
-            style={{ 
-                x: springX, 
-                y: springY, 
+            style={{
+                x: springX,
+                y: springY,
                 display: 'inline-block',
                 ...(isGradient ? {
                     background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
@@ -72,10 +68,6 @@ export const Hero = () => {
 
     return (
         <section id="about" className="relative overflow-hidden pt-20">
-            <Suspense fallback={null}>
-                <HeroScene />
-            </Suspense>
-
             {/* Content Container */}
             <div className="max-w-7xl mx-auto px-6 pt-12 relative z-10">
                 

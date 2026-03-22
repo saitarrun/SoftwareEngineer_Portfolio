@@ -16,11 +16,10 @@ const BackgroundCanvas = lazy(() =>
 
 const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
     <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-12% 0px -12% 0px" }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        style={{ willChange: 'transform, opacity' }}
+        viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+        transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
     >
         {children}
     </motion.div>
@@ -28,18 +27,15 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
 
 function App() {
     return (
-        <ReactLenis root options={{ 
-            lerp: 0.1, 
-            duration: 1.5,
+        <ReactLenis root options={{
+            lerp: 0.12,
+            duration: 1.2,
             smoothWheel: true,
-            wheelMultiplier: 1.0, 
-            touchMultiplier: 1.5,
+            wheelMultiplier: 0.8,
+            touchMultiplier: 1.2,
             infinite: false,
         }}>
             <div className="min-h-screen font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
-
-                {/* Background */}
-                <div className="gradient-bg" />
 
                 {/* 3D particle background */}
                 <Suspense fallback={null}>
