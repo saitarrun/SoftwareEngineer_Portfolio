@@ -1,4 +1,6 @@
 import { lazy, Suspense } from 'react';
+import { ReactLenis } from '@studio-freight/react-lenis';
+import { motion } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Experience } from './components/Experience';
@@ -11,29 +13,42 @@ const BackgroundCanvas = lazy(() =>
     import('./three/BackgroundCanvas').then(m => ({ default: m.BackgroundCanvas }))
 );
 
+const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
+    <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+    >
+        {children}
+    </motion.div>
+);
+
 function App() {
     return (
-        <div className="min-h-screen font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
+        <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
+            <div className="min-h-screen font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
 
-            {/* Background */}
-            <div className="gradient-bg" />
+                {/* Background */}
+                <div className="gradient-bg" />
 
-            {/* 3D particle background */}
-            <Suspense fallback={null}>
-                <BackgroundCanvas />
-            </Suspense>
+                {/* 3D particle background */}
+                <Suspense fallback={null}>
+                    <BackgroundCanvas />
+                </Suspense>
 
-            <Navbar />
+                <Navbar />
 
-            <main className="relative z-10">
-                <Hero />
-                <Experience />
-                <Projects />
-                <Skills />
-                <Education />
-                <Contact />
-            </main>
-        </div>
+                <main className="relative z-10">
+                    <Hero />
+                    <SectionWrapper><Experience /></SectionWrapper>
+                    <SectionWrapper><Projects /></SectionWrapper>
+                    <SectionWrapper><Skills /></SectionWrapper>
+                    <SectionWrapper><Education /></SectionWrapper>
+                    <SectionWrapper><Contact /></SectionWrapper>
+                </main>
+            </div>
+        </ReactLenis>
     )
 }
 

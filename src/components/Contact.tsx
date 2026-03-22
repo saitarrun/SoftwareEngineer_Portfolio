@@ -24,7 +24,7 @@ export const Contact = () => {
                             </p>
                         </div>
  
-                        <div className="flex flex-col gap-10 lg:items-end">
+                        <div className="flex flex-col gap-10 items-center lg:items-center"> {/* Centered both button and socials for alignment */}
                             <a 
                                 href="mailto:contact@example.com"
                                 className="flex items-center gap-4 px-10 py-8 bg-primary text-on-primary font-black uppercase tracking-widest rounded-3xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full lg:w-fit text-center justify-center"
@@ -35,7 +35,7 @@ export const Contact = () => {
                                 <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform" />
                             </a>
                             
-                            <div className="flex gap-6 lg:mr-2"> {/* Added slight margin as the wide labels can look off-center if parent is lg:items-end */}
+                            <div className="flex gap-6">
                                 <div className="flex flex-col items-center gap-3 w-16 group/social-wrapper">
                                     <a 
                                         href="https://github.com/saitarrun" 
