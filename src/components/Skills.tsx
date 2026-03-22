@@ -57,7 +57,7 @@ const SkillCard = ({ group, index }: { group: any, index: number }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-            className="group p-8 md:p-10 rounded-[2rem] bg-surface-container-low/40 backdrop-blur-xl ghost-border hover:bg-surface-container-low transition-all duration-500 hover:border-primary/40 hover:shadow-[0_20px_50px_rgba(255,146,73,0.1)] h-full"
+            className="group p-8 md:p-10 rounded-[2rem] bg-surface-container-low/40 ghost-border hover:bg-surface-container-low transition-all duration-500 hover:border-primary/40 hover:shadow-[0_20px_50px_rgba(255,146,73,0.1)] h-full"
         >
             <div style={{ transform: "translateZ(30px)" }}>
                 <div className="flex items-start justify-between mb-8">
