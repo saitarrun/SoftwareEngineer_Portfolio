@@ -17,9 +17,9 @@ export default {
                     dark: '#EA580C',
                 },
                 surface: {
-                    DEFAULT: '#141414',
-                    2: '#1A1A1A',
-                    3: '#222222',
+                    DEFAULT: '#0F1528',
+                    2: '#151D35',
+                    3: '#1C2540',
                 },
                 glass: {
                     4: 'rgba(255, 255, 255, 0.04)',

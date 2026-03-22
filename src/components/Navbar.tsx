@@ -11,7 +11,7 @@ export const Navbar = () => {
             animate={{ y: 0, opacity: 1 }}
             className="fixed top-0 left-0 right-0 z-50 transition-all duration-200"
             style={{
-                background: 'rgba(10, 10, 10, 0.85)',
+                background: 'rgba(10, 15, 30, 0.85)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
                 borderBottom: '1px solid rgba(255,255,255,0.06)',
@@ -60,7 +60,7 @@ export const Navbar = () => {
 
             {/* Mobile menu */}
             {menuOpen && (
-                <div className="md:hidden border-t border-white/[0.06] px-6 py-4 flex flex-col gap-4" style={{ background: 'rgba(10,10,10,0.95)' }}>
+                <div className="md:hidden border-t border-white/[0.06] px-6 py-4 flex flex-col gap-4" style={{ background: 'rgba(10,15,30,0.95)' }}>
                     <a href="#experience" className="text-sm text-white/60 hover:text-white" onClick={() => setMenuOpen(false)}>Experience</a>
                     <a href="#projects" className="text-sm text-white/60 hover:text-white" onClick={() => setMenuOpen(false)}>Projects</a>
                     <a href="#skills" className="text-sm text-white/60 hover:text-white" onClick={() => setMenuOpen(false)}>Skills</a>
