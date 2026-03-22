@@ -49,7 +49,7 @@ function App() {
                 <Navbar />
             <CustomCursor />
 
-            <main className="relative z-10">
+            <main className="relative z-10 grid-mesh min-h-screen">
                     <Hero />
                     <SectionWrapper><Experience /></SectionWrapper>
                     <SectionWrapper><Projects /></SectionWrapper>
