@@ -1,5 +1,6 @@
 import { lazy, Suspense, useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { MagneticElement } from './MagneticElement';
 
 const HeroScene = lazy(() =>
     import('../three/HeroScene').then(m => ({ default: m.HeroScene }))
@@ -145,19 +146,32 @@ export const Hero = () => {
                         transition={{ duration: 0.5, delay: 0.5 }}
                         className="flex flex-wrap items-center gap-4"
                     >
-                        <a
-                            href="#projects"
-                            className="px-8 py-4 text-black font-bold text-sm rounded-full transition-all duration-300 hover:shadow-[0_0_20px_var(--primary-dim)] hover:-translate-y-0.5"
-                            style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}
-                        >
-                            See my work
-                        </a>
-                        <a
-                            href="#contact"
-                            className="px-8 py-4 text-white font-bold text-sm rounded-full border border-white/20 transition-all duration-300 hover:border-primary hover:text-primary backdrop-blur-sm"
-                        >
-                            Let's connect
-                        </a>
+                        <MagneticElement>
+                            <a
+                                href="#projects"
+                                className="px-8 py-4 text-black font-bold text-sm rounded-full transition-all duration-300 hover:shadow-[0_0_20px_var(--primary-dim)] hover:-translate-y-0.5 block"
+                                style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}
+                            >
+                                See my work
+                            </a>
+                        </MagneticElement>
+                        <MagneticElement>
+                            <motion.a
+                                href="#contact"
+                                animate={{ 
+                                    boxShadow: ["0 0 0px rgba(255,146,73,0)", "0 0 15px rgba(255,146,73,0.3)", "0 0 0px rgba(255,146,73,0)"],
+                                    borderColor: ["rgba(255,255,255,0.2)", "rgba(255,146,73,0.5)", "rgba(255,255,255,0.2)"]
+                                }}
+                                transition={{ 
+                                    duration: 2, 
+                                    repeat: Infinity, 
+                                    ease: "easeInOut" 
+                                }}
+                                className="px-8 py-4 text-white font-bold text-sm rounded-full border border-white/20 transition-all duration-300 hover:border-primary hover:text-primary backdrop-blur-sm block"
+                            >
+                                Let's connect
+                            </motion.a>
+                        </MagneticElement>
                     </motion.div>
                 </div>
             </div>
