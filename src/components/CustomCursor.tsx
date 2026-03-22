@@ -5,9 +5,8 @@ export const CustomCursor = () => {
     const [isHovered, setIsHovered] = useState(false);
     const [isHidden, setIsHidden] = useState(true);
 
-    // High-stiffness springs for "weightless" laser tracking
-    const mouseX = useSpring(0, { stiffness: 1000, damping: 50 });
-    const mouseY = useSpring(0, { stiffness: 1000, damping: 50 });
+    const mouseX = useSpring(0, { stiffness: 500, damping: 28 });
+    const mouseY = useSpring(0, { stiffness: 500, damping: 28 });
 
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
@@ -48,7 +47,7 @@ export const CustomCursor = () => {
 
     return (
         <div className="fixed inset-0 pointer-events-none z-[9999] hidden md:block">
-            {/* Outer Laser Bloom */}
+            {/* Main Ring */}
             <motion.div
                 style={{
                     x: mouseX,
@@ -57,19 +56,16 @@ export const CustomCursor = () => {
                     translateY: '-50%',
                 }}
                 animate={{
-                    width: isHovered ? 120 : 60,
-                    height: isHovered ? 120 : 60,
-                    opacity: isHovered ? 0.3 : 0.15,
-                    scale: [1, 1.1, 1], // Subtle breathing
+                    width: isHovered ? 80 : 40,
+                    height: isHovered ? 80 : 40,
+                    backgroundColor: isHovered ? 'rgba(255, 146, 73, 0.15)' : 'rgba(255,146,73,0)',
+                    borderColor: isHovered ? 'rgba(255, 146, 73, 0.5)' : 'rgba(255, 146, 73, 0.3)',
                 }}
-                transition={{ 
-                    scale: { repeat: Infinity, duration: 2, ease: "easeInOut" },
-                    default: { type: 'spring', stiffness: 400, damping: 30 } 
-                }}
-                className="absolute rounded-full bg-primary/20 blur-[20px]"
+                transition={{ type: 'spring', stiffness: 250, damping: 20 }}
+                className="absolute border rounded-full backdrop-blur-[2px]"
             />
 
-            {/* Inner Ring (Visual Focus) */}
+            {/* Precision Dot */}
             <motion.div
                 style={{
                     x: mouseX,
@@ -78,28 +74,10 @@ export const CustomCursor = () => {
                     translateY: '-50%',
                 }}
                 animate={{
-                    width: isHovered ? 40 : 12,
-                    height: isHovered ? 40 : 12,
-                    borderColor: 'rgba(255, 146, 73, 0.4)',
+                    scale: isHovered ? 1.5 : 1,
+                    backgroundColor: 'rgba(255, 146, 73, 1)',
                 }}
-                className="absolute border border-primary/30 rounded-full"
-            />
-
-            {/* Radiant Laser Core */}
-            <motion.div
-                style={{
-                    x: mouseX,
-                    y: mouseY,
-                    translateX: '-50%',
-                    translateY: '-50%',
-                }}
-                animate={{
-                    scale: isHovered ? 2 : 1,
-                    boxShadow: isHovered 
-                        ? '0 0 25px 8px rgba(255, 146, 73, 0.8)' 
-                        : '0 0 15px 4px rgba(255, 146, 73, 0.6)',
-                }}
-                className="absolute w-1 h-1 bg-white rounded-full"
+                className="absolute w-1.5 h-1.5 rounded-full"
             />
         </div>
     );
