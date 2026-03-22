@@ -1,12 +1,8 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { WireframeGlobe } from './WireframeGlobe';
-import { FloatingGeometry } from './FloatingGeometry';
 import { PostEffects } from './PostEffects';
-import { useMousePosition } from './useMousePosition';
 
 export function HeroScene() {
-  const mouse = useMousePosition();
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {

@@ -68,11 +68,11 @@ const fragmentShader = `
     // Combine noise layers for liquid effect
     float liquid = n1 * 0.4 + n2 * 0.35 + n3 * 0.25;
 
-    // Orange color palette
-    vec3 deepBlack = vec3(0.04, 0.04, 0.04);
-    vec3 darkOrange = vec3(0.15, 0.04, 0.0);
-    vec3 orange = vec3(0.976, 0.451, 0.086);
-    vec3 brightOrange = vec3(0.984, 0.573, 0.235);
+    // Neon Architect Radiant Accents (Primary: #ff9249)
+    vec3 deepBlack = vec3(0.0, 0.0, 0.0);
+    vec3 darkOrange = vec3(0.1, 0.04, 0.0);
+    vec3 orange = vec3(1.0, 0.57, 0.28); // #ff9249
+    vec3 brightOrange = vec3(1.0, 0.65, 0.4);
 
     // Create color bands based on liquid noise
     float band1 = smoothstep(-0.3, 0.1, liquid);
@@ -115,7 +115,7 @@ export function LiquidBackground() {
   });
 
   return (
-    <mesh ref={meshRef} position={[0, 0, -5]} scale={[20, 12, 1]}>
+    <mesh ref={meshRef} position={[0, 0, -5]} scale={[100, 100, 1]}>
       <planeGeometry args={[1, 1]} />
       <shaderMaterial
         vertexShader={vertexShader}

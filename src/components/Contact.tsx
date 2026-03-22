@@ -1,124 +1,71 @@
-import { Mail, Phone, Github, Linkedin, ArrowUpRight, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Mail, Github, Linkedin, ArrowRight } from 'lucide-react';
 
 export const Contact = () => {
     return (
-        <section id="contact" className="py-8">
+        <section id="contact" className="py-32 bg-surface-container-low">
             <div className="max-w-7xl mx-auto px-6">
-                {/* Big CTA block */}
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                {/* CTA Block */}
+                <motion.div 
+                    initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative rounded-3xl overflow-hidden mb-20 p-12 md:p-20"
-                    style={{
-                        background: 'rgba(255,255,255,0.03)',
-                        border: '1px solid rgba(255,255,255,0.07)',
-                    }}
+                    className="relative rounded-[3rem] overflow-hidden mb-32 p-12 md:p-24 bg-surface-container-high ghost-border group"
                 >
-                    {/* Background orange glow */}
-                    <div className="absolute top-0 right-0 w-96 h-96 bg-[#F97316]/10 rounded-full blur-3xl pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#F97316]/06 rounded-full blur-3xl pointer-events-none" />
-
-                    <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
-                        <div className="max-w-xl">
-                            <h2 className="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
-                                Let's Build Something <span style={{
-                                    background: 'linear-gradient(135deg, #F97316, #FB923C)',
-                                    WebkitBackgroundClip: 'text',
-                                    WebkitTextFillColor: 'transparent',
-                                    backgroundClip: 'text',
-                                }}>Exceptional</span>
+                    <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+                        <div>
+                            <span className="text-primary font-bold uppercase tracking-[0.4em] mb-6 block" style={{ fontFamily: 'var(--font-label)' }}>Available for projects</span>
+                            <h2 className="text-6xl md:text-8xl font-black text-on-surface leading-[0.9] tracking-tighter uppercase mb-8" style={{ fontFamily: 'var(--font-display)' }}>
+                                Let's architect <br />
+                                <span className="text-gradient">the future.</span>
                             </h2>
-                            <p className="text-white/90 text-lg leading-relaxed">
-                                I'm currently available for new opportunities. Whether you have a question, a project in mind, or just want to connect — feel free to reach out.
+                            <p className="text-on-surface-variant text-xl leading-relaxed max-w-md" style={{ fontFamily: 'var(--font-body)' }}>
+                                Currently looking for Software Engineer roles where I can build high-performance distributed systems and AI-powered solutions.
                             </p>
                         </div>
-
-                        <div className="flex flex-col gap-4 shrink-0">
-                            <a
-                                href="mailto:saitarrunpitta@gmail.com"
-                                className="flex items-center gap-3 px-6 py-4 bg-[#F97316] text-white font-bold rounded-2xl hover:bg-[#FB923C] transition-all duration-300 shadow-lg hover:shadow-[#F97316]/30 hover:-translate-y-0.5 group"
+ 
+                        <div className="flex flex-col gap-6 lg:items-end">
+                            <a 
+                                href="mailto:contact@example.com"
+                                className="flex items-center gap-4 px-10 py-8 bg-primary text-on-primary font-black uppercase tracking-widest rounded-3xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full lg:w-fit text-center justify-center"
+                                style={{ fontFamily: 'var(--font-display)' }}
                             >
-                                <Mail className="w-5 h-5" />
-                                <span>saitarrunpitta@gmail.com</span>
-                                <ArrowUpRight className="w-4 h-4 ml-auto group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                                <Mail className="w-6 h-6" />
+                                Start a Conversation
+                                <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform" />
                             </a>
-                            <a
-                                href="tel:+16577519260"
-                                className="flex items-center gap-3 px-6 py-4 border border-white/10 text-white/80 font-medium rounded-2xl hover:border-[#F97316]/30 hover:text-white transition-all duration-300 group"
-                            >
-                                <Phone className="w-5 h-5" />
-                                <span>+1 (657) 751-9260</span>
-                                <ArrowUpRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
-                            </a>
-
-                            {/* Social profiles */}
-                            <div className="flex gap-3 mt-1">
-                                <a
-                                    href="https://linkedin.com/in/saitarrunpitta"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 flex-1 px-4 py-3 border border-white/10 text-white/80 font-medium rounded-2xl hover:border-[#F97316]/30 hover:text-white transition-all duration-300 group"
-                                >
-                                    <Linkedin className="w-5 h-5" />
-                                    <span className="text-sm">LinkedIn</span>
-                                    <ArrowUpRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                            
+                            <div className="flex gap-4">
+                                <a href="#" className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300">
+                                    <Github className="w-6 h-6" />
                                 </a>
-                                <a
-                                    href="https://github.com/saitarrun"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 flex-1 px-4 py-3 border border-white/10 text-white/80 font-medium rounded-2xl hover:border-[#F97316]/30 hover:text-white transition-all duration-300 group"
-                                >
-                                    <Github className="w-5 h-5" />
-                                    <span className="text-sm">GitHub</span>
-                                    <ArrowUpRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </a>
-                                <a
-                                    href="https://tryhackme.com/p/TarrunXploit404"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-2 flex-1 px-4 py-3 border border-white/10 text-white/80 font-medium rounded-2xl hover:border-[#F97316]/30 hover:text-white transition-all duration-300 group"
-                                >
-                                    <Shield className="w-5 h-5" />
-                                    <span className="text-sm">TryHackMe</span>
-                                    <ArrowUpRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <a href="#" className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300">
+                                    <Linkedin className="w-6 h-6" />
                                 </a>
                             </div>
                         </div>
                     </div>
+ 
+                    {/* Visual Flare */}
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/20 transition-all duration-700" />
                 </motion.div>
-
-                {/* Footer */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    className="border-t border-white/[0.06] pt-10 flex flex-col md:flex-row items-center justify-between gap-6"
-                >
-                    <div className="flex items-center gap-3">
-                        <div className="w-6 h-6 rounded-full bg-[#F97316] flex items-center justify-center">
-                            <span className="text-white text-[10px] font-black">S</span>
+ 
+                {/* Footer Metadata */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8 pt-12 border-t border-white/05">
+                    <div className="flex items-center gap-10">
+                        <div className="flex flex-col">
+                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/40 mb-1" style={{ fontFamily: 'var(--font-label)' }}>Design Strategy</span>
+                            <span className="text-on-surface-variant font-medium text-xs">The Neon Architect v1.0</span>
                         </div>
-                        <span className="text-white/90 text-sm">© {new Date().getFullYear()} Sai Tarrun Pitta. All rights reserved.</span>
+                        <div className="flex flex-col">
+                            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary/40 mb-1" style={{ fontFamily: 'var(--font-label)' }}>Engineered By</span>
+                            <span className="text-on-surface-variant font-medium text-xs">Tarun Pitta</span>
+                        </div>
                     </div>
-
-                    <div className="flex items-center gap-4">
-                        <a href="https://github.com/saitarrun" target="_blank" rel="noopener noreferrer"
-                            className="text-white/90 hover:text-white transition-colors">
-                            <Github className="w-4 h-4" />
-                        </a>
-                        <a href="https://linkedin.com/in/saitarrunpitta" target="_blank" rel="noopener noreferrer"
-                            className="text-white/90 hover:text-white transition-colors">
-                            <Linkedin className="w-4 h-4" />
-                        </a>
-                        <a href="/resume.pdf" download
-                            className="px-4 py-2 bg-white/[0.05] border border-white/10 text-white/90 text-xs font-semibold rounded-lg hover:border-[#F97316]/30 hover:text-white transition-all duration-200">
-                            Download Resume
-                        </a>
-                    </div>
-                </motion.div>
+                    <p className="text-on-surface-variant/40 text-[10px] uppercase tracking-[0.2em] font-medium" style={{ fontFamily: 'var(--font-label)' }}>
+                        © 2026 / SMU MSCS
+                    </p>
+                </div>
             </div>
         </section>
     );

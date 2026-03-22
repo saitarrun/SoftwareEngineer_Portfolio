@@ -13,7 +13,7 @@ const stats = [
 
 export const Hero = () => {
     return (
-        <section id="about" className="relative overflow-hidden pt-20">
+        <section id="about" className="relative overflow-hidden pt-20 grid-mesh">
 
             {/* 3D Hero Scene */}
             <Suspense fallback={null}>
@@ -121,18 +121,12 @@ export const Hero = () => {
                     >
                         See my work
                     </a>
-                    <a
-                        href="#contact"
-                        className="px-8 py-4 font-medium text-sm rounded-full transition-all duration-300 ghost-border hover:text-white group"
-                        style={{ color: 'var(--on-surface-variant)' }}
-                    >
-                        Let's talk
-                    </a>
+
                 </motion.div>
             </div>
 
             {/* Section spacer */}
-            <div className="h-6" style={{ background: 'linear-gradient(to bottom, transparent, var(--surface-container-low))' }} />
+            <div className="h-6" />
         </section>
     );
 };

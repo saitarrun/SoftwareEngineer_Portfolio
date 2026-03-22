@@ -14,15 +14,14 @@
     --surface-container-highest: #2a2828;
     --surface-variant: rgba(32, 31, 31, 0.6);
 
-    /* Primary */
+    /* Primary Accent */
     --primary: #ff9249;
     --primary-fixed: #FF7A00;
     --primary-container: #ff7b04;
     --primary-dim: #fb7800;
     --on-primary: #000000;
-    --on-primary-fixed: #000000;
 
-    /* Text */
+    /* Text & Content */
     --on-surface: #ffffff;
     --on-surface-variant: #adaaaa;
     --outline-variant: rgba(119, 117, 115, 0.1);
@@ -41,6 +40,21 @@
         box-sizing: border-box;
     }
 
+    body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--on-surface-variant);
+        background-color: var(--surface);
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--on-surface);
+        font-family: var(--font-display);
+        margin: 0;
+    }
+
     ::-webkit-scrollbar {
         width: 6px;
     }
@@ -51,9 +65,6 @@
         background: rgba(255, 146, 73, 0.4);
         border-radius: 3px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-        background: rgba(255, 146, 73, 0.7);
-    }
 }
 
 @layer utilities {
@@ -63,7 +74,14 @@
         -webkit-backdrop-filter: blur(20px);
     }
 
-    .text-gradient-static {
+    .grid-mesh {
+        background-size: 50px 50px;
+        background-image: 
+            linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    }
+
+    .text-gradient {
         background: linear-gradient(135deg, var(--primary), var(--primary-container));
         -webkit-background-clip: text;
         background-clip: text;
@@ -81,36 +99,14 @@
     .surface-card {
         background: var(--surface-container-high);
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        transition: all 0.3s ease;
-    }
-
-    .surface-card:hover {
-        background: var(--surface-container-highest);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 }
 
-body {
-    margin: 0;
-    min-width: 320px;
-    min-height: 100vh;
-    color: var(--on-surface-variant);
-    background-color: var(--surface);
-    font-family: var(--font-body);
-}
-
-/* Background base */
 .gradient-bg {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     z-index: -1;
     background: var(--surface);
     overflow: hidden;
-}
-
-@keyframes shimmer {
-    0%   { background-position: -200% center; }
-    100% { background-position: 200% center; }
 }

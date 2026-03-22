@@ -46,65 +46,57 @@ const experiences = [
 
 export const Experience = () => {
     return (
-        <section id="experience" className="py-10" style={{ background: 'var(--surface-container-low)' }}>
+        <section id="experience" className="py-20 bg-surface-container-low">
             <div className="max-w-7xl mx-auto px-6">
                 {/* Section header */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="mb-10 pb-4"
+                    className="mb-16"
                 >
-                    <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight" style={{ fontFamily: 'var(--font-display)' }}>Experience</h2>
+                    <h2 className="text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase" style={{ fontFamily: 'var(--font-display)' }}>Experience</h2>
                 </motion.div>
-
+ 
                 {/* Experience list */}
-                <div className="space-y-8">
+                <div className="flex flex-col gap-10">
                     {experiences.map((exp, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
-                            className="group grid md:grid-cols-[100px_1fr] gap-6 md:gap-10 items-start p-8 rounded-2xl transition-all duration-300"
-                            style={{ background: 'var(--surface-container)' }}
-                            onMouseEnter={e => {
-                                e.currentTarget.style.background = 'var(--surface-container-high)';
-                            }}
-                            onMouseLeave={e => {
-                                e.currentTarget.style.background = 'var(--surface-container)';
-                            }}
+                            transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
+                            className="group grid md:grid-cols-[100px_1fr] gap-8 md:gap-16 p-10 md:p-14 rounded-[2.5rem] transition-all duration-500 bg-surface-container-high ghost-border hover:bg-surface-container-highest hover:-translate-y-1"
                         >
                             {/* Number */}
-                            <span className="text-5xl font-black leading-none transition-colors duration-300" style={{ color: 'rgba(255, 146, 73, 0.2)', fontFamily: 'var(--font-display)' }}>
+                            <span className="text-6xl md:text-7xl font-black leading-none text-primary/20 group-hover:text-primary/40 transition-colors duration-500 pt-2" style={{ fontFamily: 'var(--font-display)' }}>
                                 {exp.num}
                             </span>
-
+ 
                             {/* Content */}
                             <div>
-                                <div className="flex flex-wrap items-center gap-3 mb-3">
-                                    <h3 className="text-2xl font-black text-white group-hover:text-[--primary] transition-colors duration-300" style={{ fontFamily: 'var(--font-display)' }}>
+                                <div className="flex flex-wrap items-baseline gap-4 mb-6">
+                                    <h3 className="text-3xl md:text-5xl font-black text-on-surface group-hover:text-primary transition-colors duration-500" style={{ fontFamily: 'var(--font-display)' }}>
                                         {exp.company}
                                     </h3>
-                                    <span style={{ color: 'var(--on-surface-variant)' }}>·</span>
-                                    <span className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)' }}>{exp.role}</span>
+                                    <span className="text-primary-dim font-bold text-lg uppercase tracking-[0.2em] opacity-80" style={{ fontFamily: 'var(--font-label)' }}>{exp.role}</span>
                                 </div>
-
-                                {/* Period + Location */}
-                                <div className="flex flex-wrap gap-3 mb-4">
-                                    <span className="text-xs font-medium px-3 py-1.5 rounded-md whitespace-nowrap" style={{ background: 'var(--surface-container-highest)', color: 'var(--on-surface-variant)', fontFamily: 'var(--font-label)' }}>
+ 
+                                {/* Period + Location Chips */}
+                                <div className="flex flex-wrap gap-3 mb-10">
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] px-5 py-2.5 rounded-lg bg-surface-container-highest text-on-surface-variant border border-white/05" style={{ fontFamily: 'var(--font-label)' }}>
                                         {exp.period}
                                     </span>
-                                    <span className="text-xs font-medium px-3 py-1.5 rounded-md whitespace-nowrap" style={{ background: 'var(--surface-container-highest)', color: 'var(--on-surface-variant)', fontFamily: 'var(--font-label)' }}>
+                                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] px-5 py-2.5 rounded-lg bg-surface-container-highest text-on-surface-variant border border-white/05" style={{ fontFamily: 'var(--font-label)' }}>
                                         {exp.location}
                                     </span>
                                 </div>
-
-                                <ul className="mt-4 space-y-3">
+ 
+                                <ul className="space-y-6 max-w-4xl">
                                     {exp.description.map((item, i) => (
-                                        <li key={i} className="flex gap-3 text-lg leading-relaxed" style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}>
-                                            <span className="w-1.5 h-1.5 rounded-full mt-2.5 shrink-0" style={{ background: 'var(--primary-dim)', boxShadow: '0 0 6px var(--primary-dim)' }} />
+                                        <li key={i} className="flex gap-6 text-lg leading-relaxed text-on-surface-variant group-hover:text-on-surface/90 transition-colors duration-500" style={{ fontFamily: 'var(--font-body)' }}>
+                                            <span className="w-1.5 h-1.5 rounded-full mt-3 shrink-0 bg-primary neon-glow opacity-80" />
                                             {item}
                                         </li>
                                     ))}
