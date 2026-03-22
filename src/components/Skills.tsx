@@ -52,7 +52,7 @@ export const Skills = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-                            className={`group p-10 md:p-14 rounded-[2.5rem] bg-surface-container-low hover:bg-surface-container ghost-border transition-all duration-500 hover:-translate-y-1 ${index % 2 !== 0 ? 'md:mt-12' : ''}`}
+                            className="group p-10 md:p-14 rounded-[2.5rem] bg-surface-container-low hover:bg-surface-container ghost-border transition-all duration-500 hover:-translate-y-1"
                         >
                             <div className="flex items-start justify-between mb-10">
                                 <div>
