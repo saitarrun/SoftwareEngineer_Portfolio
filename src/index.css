@@ -130,4 +130,11 @@
     z-index: -1;
     background: var(--surface);
     overflow: hidden;
+    animation: liquid-float 20s ease-in-out infinite alternate;
+}
+
+@keyframes liquid-float {
+    0% { transform: scale(1) translate(0, 0); }
+    50% { transform: scale(1.05) translate(-1%, 2%); }
+    100% { transform: scale(1) translate(1%, -1%); }
 }

@@ -58,17 +58,17 @@ const fragmentShader = `
 
   void main() {
     vec2 uv = vUv;
-    float t = uTime * 0.15;
+    float t = uTime * 0.18; // Slightly faster for more 'fluidity'
 
-    // Layered liquid distortion
-    float n1 = fbm(uv * 3.0 + vec2(t * 0.7, t * 0.5));
-    float n2 = fbm(uv * 2.0 - vec2(t * 0.4, t * 0.8) + n1 * 0.5);
-    float n3 = fbm(uv * 4.0 + vec2(t * 0.3, -t * 0.6) + n2 * 0.3);
+    // Layered liquid distortion with subtle drift
+    float n1 = fbm(uv * 3.2 + vec2(t * 0.6, t * 0.4));
+    float n2 = fbm(uv * 2.2 - vec2(t * 0.3, t * 0.7) + n1 * 0.4);
+    float n3 = fbm(uv * 4.2 + vec2(t * 0.2, -t * 0.5) + n2 * 0.2);
 
     // Combine noise layers and boost contrast aggressively for a sharp 'smoke' effect
     float liquid = n1 * 0.4 + n2 * 0.35 + n3 * 0.25;
-    liquid = smoothstep(0.35, 0.65, liquid); 
-    liquid = pow(liquid, 1.5); // Push towards deeper contrasts
+    liquid = smoothstep(0.32, 0.68, liquid); 
+    liquid = pow(liquid, 1.4); // Slightly rounded power for smoother flow
 
     // Neon Architect Radiant Accents (Primary: #ff9249)
     vec3 deepBlack = vec3(0.0, 0.0, 0.0);
