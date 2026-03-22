@@ -5,12 +5,6 @@ const HeroScene = lazy(() =>
     import('../three/HeroScene').then(m => ({ default: m.HeroScene }))
 );
 
-const stats = [
-    { value: 'Top 1%', label: 'THM Rank' },
-    { value: 'MS CS', label: "Master's" },
-    { value: '3+ Yrs', label: 'Experience' },
-];
-
 const FluidLetter = ({ char, index, isGradient = false }: { char: string, index: number, isGradient?: boolean }) => {
     const ref = useRef<HTMLSpanElement>(null);
     const x = useMotionValue(0);
@@ -27,7 +21,6 @@ const FluidLetter = ({ char, index, isGradient = false }: { char: string, index:
         const distanceX = e.clientX - centerX;
         const distanceY = e.clientY - centerY;
         
-        // Only react if close
         if (Math.abs(distanceX) < 100 && Math.abs(distanceY) < 100) {
             x.set(distanceX * 0.2);
             y.set(distanceY * 0.2);
@@ -51,7 +44,7 @@ const FluidLetter = ({ char, index, isGradient = false }: { char: string, index:
             animate={{ opacity: 1, y: 0, rotate: 0 }}
             transition={{ 
                 duration: 1.2, 
-                delay: index * 0.03, // Delicate stagger
+                delay: index * 0.03,
                 ease: [0.22, 1, 0.36, 1] 
             }}
             style={{ 
@@ -82,12 +75,15 @@ export const Hero = () => {
                 <HeroScene />
             </Suspense>
 
-            <div className="max-w-7xl mx-auto px-6 pt-12 flex flex-col md:flex-row md:items-start md:justify-between gap-6 relative z-10">
+            {/* Content Container */}
+            <div className="max-w-7xl mx-auto px-6 pt-12 relative z-10">
+                
+                {/* Available Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="flex flex-col gap-3"
+                    className="flex flex-col gap-3 mb-12"
                 >
                     <div
                         className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest w-fit"
@@ -106,71 +102,60 @@ export const Hero = () => {
                     </p>
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="flex gap-10 md:gap-16"
-                >
-                    {stats.map((stat, i) => (
-                        <div key={i} className="flex flex-col">
-                            <span className="text-2xl md:text-3xl font-black leading-none" style={{ color: 'var(--primary)', fontFamily: 'var(--font-display)' }}>{stat.value}</span>
-                            <span className="text-[10px] uppercase tracking-wider mt-1.5 leading-tight font-bold opacity-60" style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-label)' }}>{stat.label}</span>
-                        </div>
-                    ))}
-                </motion.div>
-            </div>
-
-            <div className="relative z-10 mt-4 max-w-7xl mx-auto px-6">
-                <h1
-                    className="text-[16vw] md:text-[12vw] font-black leading-none tracking-tighter text-white whitespace-nowrap select-none flex flex-wrap"
-                    style={{ lineHeight: 0.88, fontFamily: 'var(--font-display)' }}
-                >
-                    {firstName.split("").map((char, index) => (
-                        <FluidLetter key={index} char={char} index={index} />
-                    ))}
-                </h1>
-                <div className="flex items-end gap-6 mt-1 overflow-hidden">
+                {/* Massive Kinetic Typography */}
+                <div className="relative mb-8">
                     <h1
-                        className="text-[16vw] md:text-[12vw] font-black leading-none tracking-tighter whitespace-nowrap select-none flex flex-wrap"
-                        style={{
-                            lineHeight: 0.88,
-                            fontFamily: 'var(--font-display)',
-                        }}
+                        className="text-[16vw] md:text-[12vw] font-black leading-none tracking-tighter text-white whitespace-nowrap select-none flex flex-wrap"
+                        style={{ lineHeight: 0.88, fontFamily: 'var(--font-display)' }}
                     >
-                        {lastName.split("").map((char, index) => (
-                            <FluidLetter key={index} char={char} index={index + firstName.length} isGradient />
+                        {firstName.split("").map((char, index) => (
+                            <FluidLetter key={index} char={char} index={index} />
                         ))}
                     </h1>
+                    <div className="flex items-end gap-6 mt-1 overflow-hidden">
+                        <h1
+                            className="text-[16vw] md:text-[12vw] font-black leading-none tracking-tighter whitespace-nowrap select-none flex flex-wrap"
+                            style={{
+                                lineHeight: 0.88,
+                                fontFamily: 'var(--font-display)',
+                            }}
+                        >
+                            {lastName.split("").map((char, index) => (
+                                <FluidLetter key={index} char={char} index={index + firstName.length} isGradient />
+                            ))}
+                        </h1>
+                    </div>
+                </div>
+
+                {/* Tagline & CTA */}
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 pb-10">
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="text-base leading-relaxed max-w-md"
+                        style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}
+                    >
+                        Software engineer with 3+ years building production-scale backend systems and AI-driven applications. Specialized in deploying ML models, scalable APIs, and cloud-native infrastructure.
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        className="flex items-center gap-4"
+                    >
+                        <a
+                            href="#projects"
+                            className="px-8 py-4 text-black font-bold text-sm rounded-full transition-all duration-300 hover:shadow-[0_0_20px_var(--primary-dim)] hover:-translate-y-0.5"
+                            style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}
+                        >
+                            See my work
+                        </a>
+                    </motion.div>
                 </div>
             </div>
-
-            <div className="max-w-7xl mx-auto px-6 mt-8 flex flex-col md:flex-row md:items-end md:justify-between gap-8 pb-10 relative z-10">
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-base leading-relaxed max-w-md"
-                    style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}
-                >
-                    Software engineer with 3+ years building production-scale backend systems and AI-driven applications. Specialized in deploying ML models, scalable APIs, and cloud-native infrastructure.
-                </motion.p>
-
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    className="flex items-center gap-4"
-                >
-                    <a
-                        href="#projects"
-                        className="px-8 py-4 text-black font-bold text-sm rounded-full transition-all duration-300 hover:shadow-[0_0_20px_var(--primary-dim)] hover:-translate-y-0.5"
-                        style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}
-                    >
-                        See my work
-                    </a>
-                </motion.div>
-            </div>
+            
             <div className="h-6" />
         </section>
     );
