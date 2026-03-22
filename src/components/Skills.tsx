@@ -82,7 +82,7 @@ export const Skills = () => {
                     <h2 className="text-6xl md:text-9xl font-black text-on-surface tracking-tighter uppercase mb-4" style={{ fontFamily: 'var(--font-display)' }}>Technical Stack</h2>
                     <p className="text-primary-dim text-lg md:text-xl font-bold uppercase tracking-[0.5em]" style={{ fontFamily: 'var(--font-label)' }}>Engineered for Performance</p>
                 </motion.div>
- 
+
                 {/* Skills Grid */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {skillGroups.map((group, index) => (
@@ -92,7 +92,7 @@ export const Skills = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.05, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-                            className="group p-8 md:p-10 rounded-[2rem] bg-surface-container-low hover:bg-surface-container ghost-border transition-all duration-500 hover:-translate-y-1"
+                            className="group p-8 md:p-10 rounded-[2rem] bg-surface-container-low hover:bg-surface-container-high/60 ghost-border transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
                         >
                             <div className="flex items-start justify-between mb-8">
                                 <div>
@@ -103,16 +103,23 @@ export const Skills = () => {
                                     {group.icon}
                                 </div>
                             </div>
- 
+
                             <div className="flex flex-wrap gap-2">
                                 {group.skills.map(skill => (
-                                    <span
+                                    <motion.span
                                         key={skill}
-                                        className="px-4 py-2 text-[9px] font-bold uppercase tracking-[0.15em] text-on-surface-variant bg-surface-container-highest rounded-lg border border-white/05 hover:border-primary/30 hover:text-primary transition-all duration-300"
+                                        whileHover={{ 
+                                            scale: 1.08, 
+                                            borderColor: "rgba(255, 146, 73, 0.5)", 
+                                            color: "rgba(255, 146, 73, 1)",
+                                            backgroundColor: "rgba(255, 146, 73, 0.05)"
+                                        }}
+                                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                                        className="px-4 py-2 text-[9px] font-bold uppercase tracking-[0.15em] text-on-surface-variant bg-surface-container-highest rounded-lg border border-white/05 cursor-default"
                                         style={{ fontFamily: 'var(--font-label)' }}
                                     >
                                         {skill}
-                                    </span>
+                                    </motion.span>
                                 ))}
                             </div>
                         </motion.div>
