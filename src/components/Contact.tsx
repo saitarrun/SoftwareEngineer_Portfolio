@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mail, Github, Linkedin, ArrowRight } from 'lucide-react';
+import { Mail, Github, Linkedin, ArrowRight, Shield } from 'lucide-react';
 
 export const Contact = () => {
     return (
@@ -20,7 +20,7 @@ export const Contact = () => {
                                 <span className="text-gradient">the future.</span>
                             </h2>
                             <p className="text-on-surface-variant text-xl leading-relaxed max-w-md" style={{ fontFamily: 'var(--font-body)' }}>
-                                Currently looking for Software Engineer roles where I can build high-performance distributed systems and AI-powered solutions.
+                                Currently looking for Software Engineer roles where I can build high-performance distributed systems, cybersecurity solutions, and AI-powered platforms.
                             </p>
                         </div>
  
@@ -36,11 +36,32 @@ export const Contact = () => {
                             </a>
                             
                             <div className="flex gap-4">
-                                <a href="#" className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300">
+                                <a 
+                                    href="https://github.com/saitarrun" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social"
+                                    title="GitHub"
+                                >
                                     <Github className="w-6 h-6" />
                                 </a>
-                                <a href="#" className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300">
+                                <a 
+                                    href="https://linkedin.com/in/saitarrun" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social"
+                                    title="LinkedIn"
+                                >
                                     <Linkedin className="w-6 h-6" />
+                                </a>
+                                <a 
+                                    href="https://tryhackme.com/p/TarrunXploit404" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social"
+                                    title="TryHackMe"
+                                >
+                                    <Shield className="w-6 h-6" />
                                 </a>
                             </div>
                         </div>
@@ -63,7 +84,7 @@ export const Contact = () => {
                         </div>
                     </div>
                     <p className="text-on-surface-variant/40 text-[10px] uppercase tracking-[0.2em] font-medium" style={{ fontFamily: 'var(--font-label)' }}>
-                        © 2026 / SMU MSCS
+                        © 2026 / CSU Fullerton MSCS
                     </p>
                 </div>
             </div>
