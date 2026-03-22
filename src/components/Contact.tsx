@@ -1,9 +1,9 @@
-import { Mail, Phone, Github, Linkedin, ArrowUpRight } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, ArrowUpRight, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const Contact = () => {
     return (
-        <section id="contact" className="py-24">
+        <section id="contact" className="py-8">
             <div className="max-w-7xl mx-auto px-6">
                 {/* Big CTA block */}
                 <motion.div
@@ -22,7 +22,6 @@ export const Contact = () => {
 
                     <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-10">
                         <div className="max-w-xl">
-                            <p className="text-[#F97316] text-xs font-bold uppercase tracking-widest mb-4">Get In Touch</p>
                             <h2 className="text-4xl md:text-6xl font-black text-white leading-tight tracking-tight mb-6">
                                 Let's Build Something <span style={{
                                     background: 'linear-gradient(135deg, #F97316, #FB923C)',
@@ -31,7 +30,7 @@ export const Contact = () => {
                                     backgroundClip: 'text',
                                 }}>Exceptional</span>
                             </h2>
-                            <p className="text-white/70 text-base leading-relaxed">
+                            <p className="text-white/90 text-lg leading-relaxed">
                                 I'm currently available for new opportunities. Whether you have a question, a project in mind, or just want to connect — feel free to reach out.
                             </p>
                         </div>
@@ -47,12 +46,46 @@ export const Contact = () => {
                             </a>
                             <a
                                 href="tel:+16577519260"
-                                className="flex items-center gap-3 px-6 py-4 border border-white/10 text-white/60 font-medium rounded-2xl hover:border-[#F97316]/30 hover:text-white transition-all duration-300 group"
+                                className="flex items-center gap-3 px-6 py-4 border border-white/10 text-white/80 font-medium rounded-2xl hover:border-[#F97316]/30 hover:text-white transition-all duration-300 group"
                             >
                                 <Phone className="w-5 h-5" />
                                 <span>+1 (657) 751-9260</span>
                                 <ArrowUpRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
                             </a>
+
+                            {/* Social profiles */}
+                            <div className="flex gap-3 mt-1">
+                                <a
+                                    href="https://linkedin.com/in/saitarrunpitta"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 flex-1 px-4 py-3 border border-white/10 text-white/80 font-medium rounded-2xl hover:border-[#F97316]/30 hover:text-white transition-all duration-300 group"
+                                >
+                                    <Linkedin className="w-5 h-5" />
+                                    <span className="text-sm">LinkedIn</span>
+                                    <ArrowUpRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </a>
+                                <a
+                                    href="https://github.com/saitarrun"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 flex-1 px-4 py-3 border border-white/10 text-white/80 font-medium rounded-2xl hover:border-[#F97316]/30 hover:text-white transition-all duration-300 group"
+                                >
+                                    <Github className="w-5 h-5" />
+                                    <span className="text-sm">GitHub</span>
+                                    <ArrowUpRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </a>
+                                <a
+                                    href="https://tryhackme.com/p/TarrunXploit404"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 flex-1 px-4 py-3 border border-white/10 text-white/80 font-medium rounded-2xl hover:border-[#F97316]/30 hover:text-white transition-all duration-300 group"
+                                >
+                                    <Shield className="w-5 h-5" />
+                                    <span className="text-sm">TryHackMe</span>
+                                    <ArrowUpRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </motion.div>
@@ -68,20 +101,20 @@ export const Contact = () => {
                         <div className="w-6 h-6 rounded-full bg-[#F97316] flex items-center justify-center">
                             <span className="text-white text-[10px] font-black">S</span>
                         </div>
-                        <span className="text-white/30 text-sm">© {new Date().getFullYear()} Sai Tarrun Pitta. All rights reserved.</span>
+                        <span className="text-white/90 text-sm">© {new Date().getFullYear()} Sai Tarrun Pitta. All rights reserved.</span>
                     </div>
 
                     <div className="flex items-center gap-4">
                         <a href="https://github.com/saitarrun" target="_blank" rel="noopener noreferrer"
-                            className="text-white/30 hover:text-white transition-colors">
+                            className="text-white/90 hover:text-white transition-colors">
                             <Github className="w-4 h-4" />
                         </a>
                         <a href="https://linkedin.com/in/saitarrunpitta" target="_blank" rel="noopener noreferrer"
-                            className="text-white/30 hover:text-white transition-colors">
+                            className="text-white/90 hover:text-white transition-colors">
                             <Linkedin className="w-4 h-4" />
                         </a>
                         <a href="/resume.pdf" download
-                            className="px-4 py-2 bg-white/[0.05] border border-white/10 text-white/50 text-xs font-semibold rounded-lg hover:border-[#F97316]/30 hover:text-white transition-all duration-200">
+                            className="px-4 py-2 bg-white/[0.05] border border-white/10 text-white/90 text-xs font-semibold rounded-lg hover:border-[#F97316]/30 hover:text-white transition-all duration-200">
                             Download Resume
                         </a>
                     </div>

@@ -15,12 +15,8 @@ function App() {
     return (
         <div className="min-h-screen font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
 
-            {/* CSS orb fallback (shown while 3D loads or on low-end devices) */}
-            <div className="gradient-bg">
-                <div className="orb-1" />
-                <div className="orb-2" />
-                <div className="orb-3" />
-            </div>
+            {/* Background */}
+            <div className="gradient-bg" />
 
             {/* 3D particle background */}
             <Suspense fallback={null}>
