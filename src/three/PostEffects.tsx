@@ -4,10 +4,10 @@ export function PostEffects() {
   return (
     <EffectComposer>
       <Bloom
-        intensity={0.8}
-        luminanceThreshold={0.2}
+        intensity={0.6}
+        luminanceThreshold={0.3}
         luminanceSmoothing={0.9}
-        mipmapBlur
+        mipmapBlur={false}
       />
       <Vignette eskil={false} offset={0.1} darkness={0.6} />
     </EffectComposer>
