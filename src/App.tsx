@@ -8,10 +8,14 @@ import { Education } from './components/Education';
 
 function App() {
     return (
-        <div className="min-h-screen font-sans selection:bg-purple-200 selection:text-purple-900 transition-colors duration-300">
+        <div className="min-h-screen font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
 
-            {/* Gradient Background Layer */}
-            <div className="gradient-bg"></div>
+            {/* Dark gradient background with animated orange orbs */}
+            <div className="gradient-bg">
+                <div className="orb-1" />
+                <div className="orb-2" />
+                <div className="orb-3" />
+            </div>
 
             <Navbar />
 

@@ -17,7 +17,7 @@ export const Section = ({ children, id, className = '', title }: SectionProps) =
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-3xl md:text-5xl font-serif font-bold mb-16 text-center text-slate-900"
+                        className="text-3xl md:text-5xl font-bold mb-16 text-center text-white tracking-tight"
                     >
                         {title}
                     </motion.h2>

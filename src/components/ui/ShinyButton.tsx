@@ -10,18 +10,18 @@ interface ShinyButtonProps {
 }
 
 export const ShinyButton = ({ children, className = '', variant = 'primary', onClick, type = 'button' }: ShinyButtonProps) => {
-    // Minimalist button styles for Light Theme
-    const baseStyles = "relative px-8 py-3 rounded-full font-medium transition-all duration-300 overflow-hidden flex items-center justify-center gap-2";
+    const baseStyles = "relative px-8 py-3 rounded-full font-semibold transition-all duration-300 overflow-hidden flex items-center justify-center gap-2 text-sm tracking-wide";
 
     const variants = {
-        primary: "bg-slate-900 text-white hover:bg-slate-800 shadow-lg hover:shadow-xl",
-        secondary: "bg-white text-slate-900 border border-slate-200 hover:border-slate-900 hover:bg-slate-50",
-        outline: "border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white"
+        primary: "bg-[#F97316] text-white hover:bg-[#FB923C] shadow-lg hover:shadow-[#F97316]/30 hover:shadow-xl",
+        secondary: "bg-white/[0.06] text-white border border-white/10 hover:border-white/20 hover:bg-white/10",
+        outline: "border border-[#F97316] text-[#F97316] hover:bg-[#F97316] hover:text-white"
     };
 
     return (
         <motion.button
-            whileTap={{ scale: 0.98 }}
+            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 1.02 }}
             className={`${baseStyles} ${variants[variant]} ${className}`}
             onClick={onClick}
             type={type}

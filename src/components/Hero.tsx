@@ -1,67 +1,136 @@
 import { motion } from 'framer-motion';
 
+const stats = [
+    { value: '3+', label: 'Years Experience' },
+    { value: '6+', label: 'Projects Shipped' },
+    { value: '3', label: 'Companies' },
+];
+
 export const Hero = () => {
-
     return (
-        <section id="about" className="min-h-screen flex flex-col justify-center relative pt-20 px-6">
-            <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+        <section id="about" className="min-h-screen relative overflow-hidden pt-20">
 
-                {/* Left: Typography */}
-                <div className="order-2 md:order-1 relative z-10">
-                    <motion.h1
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="text-7xl md:text-9xl font-serif font-black tracking-tight leading-none mb-6 text-slate-900"
-                    >
-                        Software <br />
-                        <span className="italic font-normal text-slate-800">Engineer</span>
-                    </motion.h1>
+            {/* Top band: badge + location + stats */}
+            <div className="max-w-7xl mx-auto px-6 pt-12 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
 
-                    <motion.p
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                        className="text-lg text-slate-700 max-w-lg font-light leading-relaxed mb-10"
-                    >
-                        Software Engineer with 3+ years of experience specializing in high-concurrency distributed systems and cloud-native architecture. Expert in building low-latency backend services using Java, Python, and gRPC, with a focus on reliability, scalability, and cost optimization in AWS environments.
-                    </motion.p>
+                {/* Left: badge + location */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="flex flex-col gap-3"
+                >
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#F97316]/30 bg-[#F97316]/10 text-[#F97316] text-xs font-semibold uppercase tracking-widest w-fit">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#F97316] animate-pulse" />
+                        Available for work
+                    </div>
+                    <p className="text-white/40 text-sm font-medium">
+                        Software Engineer based in<br />
+                        <span className="text-white/70 font-semibold">California</span>
+                    </p>
+                </motion.div>
 
-                    <motion.a
-                        href="#projects"
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        className="group flex items-center gap-6 cursor-pointer"
-                    >
-                        <div className="w-20 h-20 rounded-full border border-slate-900/20 flex items-center justify-center group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="transform rotate-45 group-hover:rotate-90 transition-transform duration-300"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                {/* Right: stats */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                    className="flex gap-10 md:gap-16"
+                >
+                    {stats.map((stat, i) => (
+                        <div key={i} className="flex flex-col">
+                            <span className="text-4xl md:text-5xl font-black text-[#F97316] leading-none">{stat.value}</span>
+                            <span className="text-xs text-white/40 mt-1 leading-tight">{stat.label}</span>
                         </div>
-                        <span className="text-sm font-medium tracking-widest uppercase text-slate-900 group-hover:translate-x-2 transition-transform duration-300">View Projects</span>
-                    </motion.a>
-                </div>
+                    ))}
+                </motion.div>
+            </div>
 
-                {/* Right: Visual Abstract  */}
-                {/* Using CSS gradient blobs instead of image for abstract feel */}
-                <div className="order-1 md:order-2 relative flex justify-center items-center">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative"
+            {/* Massive name */}
+            <div className="relative mt-4 overflow-hidden">
+                <motion.h1
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-[18vw] md:text-[14vw] font-black leading-none tracking-tighter text-white whitespace-nowrap px-4 select-none"
+                    style={{ lineHeight: 0.88 }}
+                >
+                    Sai Tarrun
+                </motion.h1>
+                <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                    className="flex items-end gap-6 px-4 mt-1"
+                >
+                    <h1
+                        className="text-[18vw] md:text-[14vw] font-black leading-none tracking-tighter whitespace-nowrap select-none"
+                        style={{
+                            lineHeight: 0.88,
+                            background: 'linear-gradient(135deg, #F97316, #FB923C)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                        }}
                     >
-                        <div className="relative w-64 h-80 md:w-72 md:h-96 group">
-                            <div className="absolute inset-0 bg-slate-200 rounded-3xl transform rotate-3 transition-transform group-hover:rotate-6"></div>
+                        Pitta
+                    </h1>
+
+                    {/* Profile image floated right inside the name row */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                        className="hidden md:block ml-auto mb-2 shrink-0"
+                    >
+                        <div className="relative w-44 h-56 group">
+                            <div className="absolute inset-0 bg-[#F97316]/20 rounded-2xl blur-xl" />
                             <img
                                 src="/profile.jpg"
                                 alt="Sai Tarrun Pitta"
-                                className="w-full h-full object-cover object-top rounded-3xl shadow-xl relative z-10 transition-all duration-500 ease-in-out"
+                                className="w-full h-full object-cover object-top rounded-2xl relative z-10"
+                                style={{ boxShadow: '0 20px 60px rgba(0,0,0,0.7)' }}
                             />
                         </div>
                     </motion.div>
-                </div>
-
+                </motion.div>
             </div>
+
+            {/* Bottom: tagline + CTA */}
+            <div className="max-w-7xl mx-auto px-6 mt-10 flex flex-col md:flex-row md:items-end md:justify-between gap-8 pb-16">
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    className="text-white/40 text-base leading-relaxed max-w-md"
+                >
+                    Building high-concurrency distributed systems and cloud-native architecture.
+                    Specializing in low-latency backend services with Java, Python & gRPC.
+                </motion.p>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    className="flex items-center gap-4"
+                >
+                    <a
+                        href="#projects"
+                        className="px-8 py-4 bg-[#F97316] text-white font-bold text-sm rounded-full hover:bg-[#FB923C] transition-all duration-300 shadow-lg hover:shadow-[#F97316]/30 hover:shadow-xl hover:-translate-y-0.5"
+                    >
+                        See my work
+                    </a>
+                    <a
+                        href="#contact"
+                        className="px-8 py-4 border border-white/10 text-white/60 font-medium text-sm rounded-full hover:border-white/30 hover:text-white transition-all duration-300"
+                    >
+                        Let's talk
+                    </a>
+                </motion.div>
+            </div>
+
+            {/* Divider line */}
+            <div className="border-t border-white/[0.06]" />
         </section>
     );
 };
