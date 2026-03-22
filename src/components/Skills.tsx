@@ -1,30 +1,71 @@
 import { motion } from 'framer-motion';
-import { Code2, Database, Layout, Terminal } from 'lucide-react';
+import { 
+    Code2, 
+    Database, 
+    Layout, 
+    Terminal, 
+    Server, 
+    Cloud, 
+    Activity, 
+    Brain, 
+    Shield, 
+    Lock 
+} from 'lucide-react';
 
 const skillGroups = [
     {
         num: '01',
-        title: "Backend Core",
+        title: "Programming Languages",
         icon: <Terminal className="w-6 h-6" />,
-        skills: ["Python", "FastAPI", "Django", "Go", "Java", "Spring Boot", "gRPC", "Redis"]
+        skills: ["Python", "Java", "JavaScript", "SQL", "C++", "TypeScript"]
     },
     {
         num: '02',
-        title: "ML & AI Systems",
-        icon: <Database className="w-6 h-6" />,
-        skills: ["TensorFlow", "PyTorch", "LLMs", "RAG", "LangChain", "Vector DBs", "Cuda"]
+        title: "Frontend Development",
+        icon: <Layout className="w-6 h-6" />,
+        skills: ["React", "Next.js", "HTML5/CSS3", "Tailwind CSS", "Material UI"]
     },
     {
         num: '03',
-        title: "Cloud & DevOps",
-        icon: <Code2 className="w-6 h-6" />,
-        skills: ["AWS", "Kubernetes", "Docker", "Terraform", "Kafka", "PostgreSQL", "CI/CD", "Prometheus"]
+        title: "Backend & APIs",
+        icon: <Server className="w-6 h-6" />,
+        skills: ["Spring Boot", "Node.js", "FastAPI", "Django", "gRPC", "GraphQL", "REST APIs", "Microservices"]
     },
     {
         num: '04',
-        title: "Frontend & Tooling",
-        icon: <Layout className="w-6 h-6" />,
-        skills: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Three.js", "Redux", "Vite"]
+        title: "Data & Caching",
+        icon: <Database className="w-6 h-6" />,
+        skills: ["Redis", "PostgreSQL", "MongoDB", "DynamoDB", "Elasticsearch", "Kafka", "RabbitMQ"]
+    },
+    {
+        num: '05',
+        title: "Cloud & Infrastructure",
+        icon: <Cloud className="w-6 h-6" />,
+        skills: ["AWS", "GCP", "Azure", "Docker", "Kubernetes", "Lambda", "S3", "API Gateway"]
+    },
+    {
+        num: '06',
+        title: "DevOps & Observability",
+        icon: <Activity className="w-6 h-6" />,
+        skills: ["Terraform", "Jenkins", "GitHub Actions", "Prometheus", "Grafana", "Splunk"]
+    },
+    {
+        num: '07',
+        title: "Machine Learning & AI",
+        icon: <Brain className="w-6 h-6" />,
+        skills: ["TensorFlow", "PyTorch", "Langchain", "LLMs", "RAG Systems", "Feature Engineering"]
+    },
+    {
+        num: '08',
+        title: "Testing & QA",
+        icon: <Shield className="w-6 h-6" />,
+        skills: ["Pytest", "Selenium", "Performance Testing", "Optimization", "Postman", "Debugging"]
+    },
+    {
+        num: '09',
+        title: "Compliance & Security",
+        icon: <Lock className="w-6 h-6" />,
+        skills: ["SOC 2", "RBAC", "ISO 27001", "OAuth 2.0", "JWT", "OWASP"]
     }
 ];
 
@@ -44,31 +85,31 @@ export const Skills = () => {
                 </motion.div>
  
                 {/* Skills Grid */}
-                <div className="grid md:grid-cols-2 gap-10">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {skillGroups.map((group, index) => (
                         <motion.div
                             key={index}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-                            className="group p-10 md:p-14 rounded-[2.5rem] bg-surface-container-low hover:bg-surface-container ghost-border transition-all duration-500 hover:-translate-y-1"
+                            transition={{ delay: index * 0.05, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
+                            className="group p-8 md:p-10 rounded-[2rem] bg-surface-container-low hover:bg-surface-container ghost-border transition-all duration-500 hover:-translate-y-1"
                         >
-                            <div className="flex items-start justify-between mb-10">
+                            <div className="flex items-start justify-between mb-8">
                                 <div>
-                                    <span className="text-primary-dim text-[10px] font-bold uppercase tracking-[0.4em] mb-4 block" style={{ fontFamily: 'var(--font-label)' }}>{group.num} / Technical Module</span>
-                                    <h3 className="text-3xl md:text-5xl font-black text-on-surface" style={{ fontFamily: 'var(--font-display)' }}>{group.title}</h3>
+                                    <span className="text-primary-dim text-[10px] font-bold uppercase tracking-[0.4em] mb-3 block" style={{ fontFamily: 'var(--font-label)' }}>{group.num} / Technical Module</span>
+                                    <h3 className="text-2xl md:text-3xl font-black text-on-surface" style={{ fontFamily: 'var(--font-display)' }}>{group.title}</h3>
                                 </div>
-                                <div className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center border border-white/05 text-primary/40 group-hover:text-primary transition-colors">
+                                <div className="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border border-white/05 text-primary/40 group-hover:text-primary transition-colors">
                                     {group.icon}
                                 </div>
                             </div>
  
-                            <div className="flex flex-wrap gap-2.5">
+                            <div className="flex flex-wrap gap-2">
                                 {group.skills.map(skill => (
                                     <span
                                         key={skill}
-                                        className="px-5 py-2.5 text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant bg-surface-container-highest rounded-lg border border-white/05 hover:border-primary/30 hover:text-primary transition-all duration-300"
+                                        className="px-4 py-2 text-[9px] font-bold uppercase tracking-[0.15em] text-on-surface-variant bg-surface-container-highest rounded-lg border border-white/05 hover:border-primary/30 hover:text-primary transition-all duration-300"
                                         style={{ fontFamily: 'var(--font-label)' }}
                                     >
                                         {skill}
