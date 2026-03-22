@@ -114,8 +114,8 @@ export const Hero = () => {
                 >
                     {stats.map((stat, i) => (
                         <div key={i} className="flex flex-col">
-                            <span className="text-4xl md:text-5xl font-black leading-none" style={{ color: 'var(--primary)', fontFamily: 'var(--font-display)' }}>{stat.value}</span>
-                            <span className="text-xs mt-1 leading-tight" style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-label)' }}>{stat.label}</span>
+                            <span className="text-2xl md:text-3xl font-black leading-none" style={{ color: 'var(--primary)', fontFamily: 'var(--font-display)' }}>{stat.value}</span>
+                            <span className="text-[10px] uppercase tracking-wider mt-1.5 leading-tight font-bold opacity-60" style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-label)' }}>{stat.label}</span>
                         </div>
                     ))}
                 </motion.div>
