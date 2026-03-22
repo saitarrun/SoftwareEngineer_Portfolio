@@ -15,10 +15,10 @@ const BackgroundCanvas = lazy(() =>
 
 const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
     <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 40 }} // Slightly more Y for a more flowing entrance
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        viewport={{ once: true, margin: "-12% 0px -12% 0px" }} // Better trigger margin
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} // More viscous easing
     >
         {children}
     </motion.div>
@@ -26,7 +26,14 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
 
 function App() {
     return (
-        <ReactLenis root options={{ lerp: 0.1, duration: 1.5, smoothWheel: true }}>
+        <ReactLenis root options={{ 
+            lerp: 0.08, // Slightly more "weight"
+            duration: 1.8, // Longer, smoother scroll
+            smoothWheel: true,
+            wheelMultiplier: 0.9, // Avoid jarring speed
+            touchMultiplier: 1.5,
+            infinite: false,
+        }}>
             <div className="min-h-screen font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
 
                 {/* Background */}
