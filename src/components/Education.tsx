@@ -11,16 +11,6 @@ const education = [
             "Published peer-reviewed IEEE conference paper: “Hardware Trojan Detection with Machine Learning and Power Side-Channels: A Post-Deployment Analysis” (IEEE CNS 2025)",
             "Coursework: Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence"
         ]
-    },
-    {
-        num: '02',
-        school: "Kakatiya Institute of Technology and Science",
-        degree: "Bachelor of Technology in CSE",
-        period: "Aug 2018 – May 2022",
-        location: "Warangal, India",
-        description: [
-            "Core computer science foundation with emphasis on algorithms, data structures, and database management systems."
-        ]
     }
 ];
 
