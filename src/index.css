@@ -48,6 +48,18 @@
         font-family: var(--font-body);
         -webkit-font-smoothing: antialiased;
         scroll-behavior: auto !important; /* Disable native to let Lenis handle it */
+        cursor: none; /* Hide default cursor */
+    }
+
+    /* Restore cursor for interactive elements if custom fails, but usually we hide it all */
+    a, button, [role="button"] {
+        cursor: none;
+    }
+
+    @media (max-width: 768px) {
+        body, a, button {
+            cursor: auto;
+        }
     }
 
     html.lenis, html.lenis body {
