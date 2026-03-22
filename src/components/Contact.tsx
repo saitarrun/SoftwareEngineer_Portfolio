@@ -1,59 +1,20 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Mail, Github, Linkedin, ArrowRight, Shield } from 'lucide-react';
-import { useRef } from 'react';
 import { MagneticElement } from './MagneticElement';
 
 export const Contact = () => {
-    const cardRef = useRef<HTMLDivElement>(null);
-    
-    // Mouse tracking for magnetic effect
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
-    const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
-
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
-
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        if (!cardRef.current) return;
-        const rect = cardRef.current.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        const xPct = (mouseX / width) - 0.5;
-        const yPct = (mouseY / height) - 0.5;
-        x.set(xPct);
-        y.set(yPct);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
     return (
-        <section id="contact" className="py-32 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                {/* CTA Block with 3D Tilt */}
+        <section id="contact" className="py-32 bg-surface-container-low">
+            <div className="max-w-7xl mx-auto px-6">
+                {/* CTA Block */}
                 <motion.div 
-                    ref={cardRef}
-                    onMouseMove={handleMouseMove}
-                    onMouseLeave={handleMouseLeave}
-                    style={{ 
-                        rotateX, 
-                        rotateY,
-                        transformStyle: "preserve-3d" 
-                    }}
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative rounded-[3rem] overflow-hidden mb-32 p-12 md:p-24 bg-surface-container-low/40 backdrop-blur-2xl ghost-border group transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_80px_rgba(255,146,73,0.1)]"
+                    className="relative rounded-[3rem] overflow-hidden mb-32 p-12 md:p-24 bg-surface-container-high ghost-border group"
                 >
                     <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
-                        <div style={{ transform: "translateZ(40px)" }}>
+                        <div>
                             <span className="text-primary font-bold uppercase tracking-[0.4em] mb-6 block" style={{ fontFamily: 'var(--font-label)' }}>Available for projects</span>
                             <h2 className="text-6xl md:text-8xl font-black text-on-surface leading-[0.9] tracking-tighter uppercase mb-8" style={{ fontFamily: 'var(--font-display)' }}>
                                 Let's architect <br />
@@ -64,11 +25,11 @@ export const Contact = () => {
                             </p>
                         </div>
  
-                        <div className="flex flex-col gap-10 items-center lg:items-center" style={{ transform: "translateZ(60px)" }}>
+                        <div className="flex flex-col gap-10 items-center lg:items-center">
                             <MagneticElement className="w-full lg:w-fit">
                                 <a 
                                     href="mailto:contact@example.com"
-                                    className="flex items-center gap-4 px-10 py-8 bg-primary text-on-primary font-black uppercase tracking-widest rounded-3xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full lg:w-fit text-center justify-center shadow-[0_20px_40px_rgba(255,123,4,0.3)]"
+                                    className="flex items-center gap-4 px-10 py-8 bg-primary text-on-primary font-black uppercase tracking-widest rounded-3xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full lg:w-fit text-center justify-center"
                                     style={{ fontFamily: 'var(--font-display)' }}
                                 >
                                     <Mail className="w-6 h-6" />
@@ -89,7 +50,7 @@ export const Contact = () => {
                                                 href={social.href} 
                                                 target="_blank" 
                                                 rel="noopener noreferrer"
-                                                className="w-16 h-16 rounded-2xl bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social shadow-xl"
+                                                className="w-16 h-16 rounded-2xl bg-surface-container-highest flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social"
                                             >
                                                 {social.icon}
                                             </a>
