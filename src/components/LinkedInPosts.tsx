@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Loader } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import './LinkedInPosts.css';
 
 declare global {
   interface Window {
@@ -138,7 +139,7 @@ export function LinkedInPosts() {
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                   className="w-full"
                 >
-                  <div className="rounded-2xl overflow-hidden" style={{ height: '420px' }}>
+                  <div className="linkedin-embed-container rounded-2xl">
                     <iframe
                       src={`https://www.linkedin.com/embed/feed/update/urn:li:share:${post.id}`}
                       height="420"
@@ -146,14 +147,6 @@ export function LinkedInPosts() {
                       frameBorder="0"
                       allowFullScreen={true}
                       title={`LinkedIn Post ${post.id}`}
-                      style={{
-                        border: 'none',
-                        margin: 0,
-                        padding: 0,
-                        height: '420px !important',
-                        width: '100% !important',
-                        display: 'block'
-                      }}
                     />
                   </div>
                 </motion.div>
