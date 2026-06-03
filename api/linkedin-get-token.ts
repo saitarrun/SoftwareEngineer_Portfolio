@@ -39,7 +39,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     `);
   }
 
-  const clientId = process.env.LINKEDIN_CLIENT_ID;
+  const clientId = process.env.LINKEDIN_CLIENT_ID || '86x6nknxq3qk6g';
   const clientSecret = process.env.LINKEDIN_CLIENT_SECRET;
   const redirectUri = 'https://software-engineer-portfolio-wuzw.vercel.app/api/linkedin-get-token';
 
