@@ -93,7 +93,7 @@ export function LinkedInPosts() {
         {/* Posts Grid */}
         {!loading && !error && posts.length > 0 && (
           <>
-            <div className="grid gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {posts.map((post, index) => (
                 <motion.div
                   key={post.id}
@@ -101,11 +101,11 @@ export function LinkedInPosts() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="bg-surface-container-low/40 ghost-border rounded-2xl p-8 hover:bg-surface-container-low/60 transition-all duration-300"
+                  className="bg-surface-container-low/40 ghost-border rounded-2xl p-6 hover:bg-surface-container-low/60 transition-all duration-300 flex flex-col h-full"
                 >
-                  <div className="flex justify-between items-start mb-4">
-                    <div className="flex-1">
-                      <p className="text-gray-300 leading-relaxed">
+                  <div className="flex justify-between items-start mb-4 flex-1">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-gray-300 leading-relaxed line-clamp-5">
                         {post.text || 'Posted on LinkedIn'}
                       </p>
                     </div>
@@ -113,13 +113,13 @@ export function LinkedInPosts() {
                       href={`https://linkedin.com/feed/`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="ml-4 text-orange-500 hover:text-orange-400 transition-colors flex-shrink-0"
+                      className="ml-2 text-orange-500 hover:text-orange-400 transition-colors flex-shrink-0"
                     >
                       <ExternalLink size={20} />
                     </a>
                   </div>
                   {post.createdTime && (
-                    <time className="text-sm text-gray-500">
+                    <time className="text-sm text-gray-500 mt-auto">
                       {new Date(post.createdTime).toLocaleDateString()}
                     </time>
                   )}
