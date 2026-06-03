@@ -1,12 +1,22 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Loader } from 'lucide-react';
+import { Loader } from 'lucide-react';
 import { useEffect, useState } from 'react';
+
+declare global {
+  interface Window {
+    IN: {
+      parse: () => void;
+      init: () => void;
+    };
+  }
+}
 
 interface Post {
   id: string;
   text?: string;
   createdTime?: number;
   visibility?: string;
+  url?: string;
 }
 
 export function LinkedInPosts() {
@@ -16,7 +26,32 @@ export function LinkedInPosts() {
 
   useEffect(() => {
     fetchPosts();
+    // Load LinkedIn embed script
+    loadLinkedInScript();
   }, []);
+
+  useEffect(() => {
+    // Re-process LinkedIn embeds after posts load
+    if (!loading && posts.length > 0 && window.IN) {
+      window.IN.parse();
+    }
+  }, [loading, posts]);
+
+  const loadLinkedInScript = () => {
+    if (document.getElementById('linkedin-jssdk')) return;
+
+    const script = document.createElement('script');
+    script.id = 'linkedin-jssdk';
+    script.src = 'https://platform.linkedin.com/in.js';
+    script.async = true;
+    script.defer = true;
+    script.onload = () => {
+      if (window.IN) {
+        window.IN.init();
+      }
+    };
+    document.body.appendChild(script);
+  };
 
   const fetchPosts = async () => {
     setLoading(true);
@@ -101,28 +136,17 @@ export function LinkedInPosts() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="bg-surface-container-low/40 ghost-border rounded-2xl p-6 hover:bg-surface-container-low/60 transition-all duration-300 flex flex-col h-full"
+                  className="flex flex-col h-full overflow-hidden"
                 >
-                  <div className="flex justify-between items-start mb-4 flex-1">
-                    <div className="flex-1 min-w-0">
-                      <p className="text-gray-300 leading-relaxed line-clamp-5">
-                        {post.text || 'Posted on LinkedIn'}
-                      </p>
-                    </div>
-                    <a
-                      href={`https://linkedin.com/feed/`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ml-2 text-orange-500 hover:text-orange-400 transition-colors flex-shrink-0"
-                    >
-                      <ExternalLink size={20} />
-                    </a>
-                  </div>
-                  {post.createdTime && (
-                    <time className="text-sm text-gray-500 mt-auto">
-                      {new Date(post.createdTime).toLocaleDateString()}
-                    </time>
-                  )}
+                  <iframe
+                    src={`https://www.linkedin.com/embed/feed/update/urn:li:share:${post.id}`}
+                    height="300"
+                    width="100%"
+                    frameBorder="0"
+                    allowFullScreen={true}
+                    title={`LinkedIn Post ${post.id}`}
+                    className="rounded-2xl"
+                  />
                 </motion.div>
               ))}
             </div>
