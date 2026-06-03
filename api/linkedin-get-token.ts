@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       <body>
         <h1>LinkedIn Access Token Generator</h1>
         <p>Step 1: Click below to authorize</p>
-        <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86x6nkxq3qk6g&redirect_uri=http://localhost:3000/api/linkedin-get-token&scope=profile,openid">
+        <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86x6nknxq3qk6g&redirect_uri=http://localhost:3000/api/linkedin-get-token&scope=profile,openid">
           Authorize with LinkedIn
         </a>
 
