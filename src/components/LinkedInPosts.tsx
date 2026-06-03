@@ -38,6 +38,28 @@ export function LinkedInPosts() {
     }
   }, [loading, posts]);
 
+  useEffect(() => {
+    // Force uniform height after LinkedIn embeds render
+    const enforceHeight = () => {
+      const containers = document.querySelectorAll('.linkedin-embed-container');
+      containers.forEach(container => {
+        container.style.height = '420px !important';
+        container.style.maxHeight = '420px !important';
+        const iframe = container.querySelector('iframe');
+        if (iframe) {
+          iframe.style.height = '420px !important';
+          iframe.style.maxHeight = '420px !important';
+        }
+      });
+    };
+
+    // Run immediately and then periodically
+    enforceHeight();
+    const interval = setInterval(enforceHeight, 500);
+
+    return () => clearInterval(interval);
+  }, [loading, posts]);
+
   const loadLinkedInScript = () => {
     if (document.getElementById('linkedin-jssdk')) return;
 
