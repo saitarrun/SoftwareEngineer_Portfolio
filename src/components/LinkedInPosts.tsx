@@ -44,8 +44,9 @@ export function LinkedInPosts() {
     const enforceHeight = () => {
       const containers = document.querySelectorAll('.linkedin-embed-container');
       containers.forEach(container => {
-        container.style.cssText = `height: ${targetHeight}px !important; max-height: ${targetHeight}px !important; overflow: hidden !important;`;
-        const iframe = container.querySelector('iframe');
+        const el = container as HTMLElement;
+        el.style.cssText = `height: ${targetHeight}px !important; max-height: ${targetHeight}px !important; overflow: hidden !important;`;
+        const iframe = el.querySelector('iframe') as HTMLElement;
         if (iframe) {
           iframe.style.cssText = `height: ${targetHeight}px !important; max-height: ${targetHeight}px !important; min-height: ${targetHeight}px !important; width: 100% !important; border: none !important; margin: 0 !important; padding: 0 !important;`;
         }
@@ -62,7 +63,7 @@ export function LinkedInPosts() {
 
     const containers = document.querySelectorAll('.linkedin-embed-container');
     containers.forEach(container => {
-      observer.observe(container, {
+      observer.observe(container as HTMLElement, {
         attributes: true,
         attributeFilter: ['style', 'height', 'width'],
         subtree: true
