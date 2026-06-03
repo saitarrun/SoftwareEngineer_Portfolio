@@ -1,0 +1,17 @@
+.linkedin-embed-container {
+  height: 420px !important;
+  max-height: 420px !important;
+  overflow: hidden !important;
+}
+
+.linkedin-embed-container iframe {
+  height: 420px !important;
+  max-height: 420px !important;
+  min-height: 420px !important;
+  width: 100% !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: block !important;
+  overflow: hidden !important;
+}
