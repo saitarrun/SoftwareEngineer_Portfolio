@@ -138,16 +138,22 @@ export function LinkedInPosts() {
                   transition={{ delay: index * 0.1, duration: 0.6 }}
                   className="w-full"
                 >
-                  <div className="h-96 overflow-hidden rounded-2xl">
+                  <div className="rounded-2xl overflow-hidden" style={{ height: '420px' }}>
                     <iframe
                       src={`https://www.linkedin.com/embed/feed/update/urn:li:share:${post.id}`}
-                      height="400"
+                      height="420"
                       width="100%"
                       frameBorder="0"
                       allowFullScreen={true}
                       title={`LinkedIn Post ${post.id}`}
-                      className="w-full h-full"
-                      style={{ border: 'none', margin: 0, padding: 0 }}
+                      style={{
+                        border: 'none',
+                        margin: 0,
+                        padding: 0,
+                        height: '420px !important',
+                        width: '100% !important',
+                        display: 'block'
+                      }}
                     />
                   </div>
                 </motion.div>
