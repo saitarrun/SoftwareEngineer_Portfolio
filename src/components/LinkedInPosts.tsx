@@ -11,63 +11,30 @@ interface Post {
 
 export function LinkedInPosts() {
   const [posts, setPosts] = useState<Post[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [accessToken, setAccessToken] = useState<string | null>(null);
-  const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  // Check for token on mount
   useEffect(() => {
-    const token = localStorage.getItem('linkedin_access_token');
-    if (token) {
-      setAccessToken(token);
-      setAuthenticated(true);
-      fetchPosts(token);
-    }
+    fetchPosts();
   }, []);
 
-  const fetchPosts = async (token: string) => {
+  const fetchPosts = async () => {
     setLoading(true);
+    setError(null);
     try {
-      const response = await fetch(`/api/linkedin-posts?access_token=${token}`);
-      const data = await response.json();
-      if (data.posts) {
-        setPosts(data.posts);
+      const response = await fetch('/api/linkedin-posts');
+      if (!response.ok) {
+        throw new Error(`Failed to fetch posts: ${response.statusText}`);
       }
-    } catch (error) {
-      console.error('Failed to fetch posts:', error);
+      const data = await response.json();
+      setPosts(data.posts || []);
+    } catch (err) {
+      console.error('Error fetching posts:', err);
+      setError(err instanceof Error ? err.message : 'Failed to load posts');
     } finally {
       setLoading(false);
     }
   };
-
-  const handleAuth = async () => {
-    window.location.href = '/api/linkedin-auth';
-  };
-
-  const handleAuthCallback = async () => {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
-
-    if (code) {
-      try {
-        const response = await fetch(`/api/linkedin-callback?code=${code}`);
-        const data = await response.json();
-        if (data.access_token) {
-          localStorage.setItem('linkedin_access_token', data.access_token);
-          setAccessToken(data.access_token);
-          setAuthenticated(true);
-          fetchPosts(data.access_token);
-          window.history.replaceState({}, document.title, window.location.pathname);
-        }
-      } catch (error) {
-        console.error('Auth failed:', error);
-      }
-    }
-  };
-
-  useEffect(() => {
-    handleAuthCallback();
-  }, []);
 
   return (
     <section className="px-4 md:px-8 lg:px-12 py-20 md:py-32 relative">
@@ -88,8 +55,15 @@ export function LinkedInPosts() {
           </p>
         </motion.div>
 
-        {/* Auth State */}
-        {!authenticated ? (
+        {/* Loading */}
+        {loading && (
+          <div className="flex justify-center items-center py-12">
+            <Loader className="animate-spin text-orange-500" size={32} />
+          </div>
+        )}
+
+        {/* Error */}
+        {error && !loading && (
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -97,32 +71,29 @@ export function LinkedInPosts() {
             transition={{ duration: 0.5 }}
             className="bg-surface-container-low/40 ghost-border rounded-3xl p-12 text-center"
           >
-            <p className="text-gray-300 mb-6">
-              Connect your LinkedIn account to display your latest posts
+            <p className="text-red-400 mb-4">
+              {error}
             </p>
             <button
-              onClick={handleAuth}
+              onClick={fetchPosts}
               className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/30"
             >
-              Connect LinkedIn
+              Retry
             </button>
           </motion.div>
-        ) : (
+        )}
+
+        {/* No Posts */}
+        {!loading && !error && posts.length === 0 && (
+          <div className="text-center py-12 text-gray-400">
+            No posts found
+          </div>
+        )}
+
+        {/* Posts Grid */}
+        {!loading && !error && posts.length > 0 && (
           <>
-            {/* Posts Grid */}
             <div className="grid gap-6 md:gap-8">
-              {loading && (
-                <div className="flex justify-center items-center py-12">
-                  <Loader className="animate-spin text-orange-500" size={32} />
-                </div>
-              )}
-
-              {!loading && posts.length === 0 && (
-                <div className="text-center py-12 text-gray-400">
-                  No posts found
-                </div>
-              )}
-
               {posts.map((post, index) => (
                 <motion.div
                   key={post.id}
@@ -142,7 +113,7 @@ export function LinkedInPosts() {
                       href={`https://linkedin.com/feed/`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="ml-4 text-orange-500 hover:text-orange-400 transition-colors"
+                      className="ml-4 text-orange-500 hover:text-orange-400 transition-colors flex-shrink-0"
                     >
                       <ExternalLink size={20} />
                     </a>
