@@ -39,9 +39,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     `);
   }
 
-  const clientId = process.env.VITE_LINKEDIN_CLIENT_ID;
+  const clientId = process.env.LINKEDIN_CLIENT_ID;
   const clientSecret = process.env.LINKEDIN_CLIENT_SECRET;
-  const redirectUri = 'http://localhost:3000/api/linkedin-get-token';
+  const redirectUri = 'https://software-engineer-portfolio-wuzw.vercel.app/api/linkedin-get-token';
 
   try {
     const tokenResponse = await fetch('https://www.linkedin.com/oauth/v2/accessToken', {
