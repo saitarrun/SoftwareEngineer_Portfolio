@@ -40,24 +40,42 @@ export function LinkedInPosts() {
 
   useEffect(() => {
     // Force uniform height after LinkedIn embeds render
+    const targetHeight = 420;
     const enforceHeight = () => {
       const containers = document.querySelectorAll('.linkedin-embed-container');
       containers.forEach(container => {
-        container.style.height = '420px !important';
-        container.style.maxHeight = '420px !important';
+        container.style.cssText = `height: ${targetHeight}px !important; max-height: ${targetHeight}px !important; overflow: hidden !important;`;
         const iframe = container.querySelector('iframe');
         if (iframe) {
-          iframe.style.height = '420px !important';
-          iframe.style.maxHeight = '420px !important';
+          iframe.style.cssText = `height: ${targetHeight}px !important; max-height: ${targetHeight}px !important; min-height: ${targetHeight}px !important; width: 100% !important; border: none !important; margin: 0 !important; padding: 0 !important;`;
         }
       });
     };
 
-    // Run immediately and then periodically
+    // Enforce immediately
     enforceHeight();
-    const interval = setInterval(enforceHeight, 500);
 
-    return () => clearInterval(interval);
+    // Set up MutationObserver to watch for height changes
+    const observer = new MutationObserver(() => {
+      enforceHeight();
+    });
+
+    const containers = document.querySelectorAll('.linkedin-embed-container');
+    containers.forEach(container => {
+      observer.observe(container, {
+        attributes: true,
+        attributeFilter: ['style', 'height', 'width'],
+        subtree: true
+      });
+    });
+
+    // Periodic enforcement as fallback
+    const interval = setInterval(enforceHeight, 300);
+
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
   }, [loading, posts]);
 
   const loadLinkedInScript = () => {
