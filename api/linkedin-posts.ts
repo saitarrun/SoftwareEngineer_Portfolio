@@ -7,7 +7,7 @@ interface LinkedInPost {
   visibility?: string;
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(_req: VercelRequest, res: VercelResponse) {
   const accessToken = process.env.LINKEDIN_ACCESS_TOKEN;
 
   if (!accessToken) {
