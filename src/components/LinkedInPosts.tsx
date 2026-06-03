@@ -128,7 +128,7 @@ export function LinkedInPosts() {
         {/* Posts Grid */}
         {!loading && !error && posts.length > 0 && (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-max">
               {posts.map((post, index) => (
                 <motion.div
                   key={post.id}
@@ -136,17 +136,20 @@ export function LinkedInPosts() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1, duration: 0.6 }}
-                  className="flex flex-col h-full overflow-hidden"
+                  className="w-full"
                 >
-                  <iframe
-                    src={`https://www.linkedin.com/embed/feed/update/urn:li:share:${post.id}`}
-                    height="300"
-                    width="100%"
-                    frameBorder="0"
-                    allowFullScreen={true}
-                    title={`LinkedIn Post ${post.id}`}
-                    className="rounded-2xl"
-                  />
+                  <div className="h-96 overflow-hidden rounded-2xl">
+                    <iframe
+                      src={`https://www.linkedin.com/embed/feed/update/urn:li:share:${post.id}`}
+                      height="400"
+                      width="100%"
+                      frameBorder="0"
+                      allowFullScreen={true}
+                      title={`LinkedIn Post ${post.id}`}
+                      className="w-full h-full"
+                      style={{ border: 'none', margin: 0, padding: 0 }}
+                    />
+                  </div>
                 </motion.div>
               ))}
             </div>
