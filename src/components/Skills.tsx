@@ -57,31 +57,31 @@ const SkillCard = ({ group, index }: { group: any, index: number }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-            className="group p-8 md:p-10 rounded-[2rem] bg-surface-container-low/40 ghost-border hover:bg-surface-container-low transition-all duration-500 hover:border-primary/40 hover:shadow-[0_20px_50px_rgba(255,146,73,0.1)] h-full"
+            className="group p-6 sm:p-8 md:p-10 rounded-[2rem] bg-surface-container-low/40 ghost-border hover:bg-surface-container-low transition-all duration-500 hover:border-primary/40 hover:shadow-[0_20px_50px_rgba(255,146,73,0.1)] h-full"
         >
             <div style={{ transform: "translateZ(30px)" }}>
-                <div className="flex items-start justify-between mb-8">
-                    <div>
-                        <span className="text-primary-dim text-[10px] font-bold uppercase tracking-[0.4em] mb-3 block" style={{ fontFamily: 'var(--font-label)' }}>{group.num} / Technical Module</span>
-                        <h3 className="text-2xl md:text-3xl font-black text-on-surface" style={{ fontFamily: 'var(--font-display)' }}>{group.title}</h3>
+                <div className="flex items-start justify-between mb-6 sm:mb-8 gap-4">
+                    <div className="flex-1">
+                        <span className="text-primary-dim text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.4em] mb-2 sm:mb-3 block" style={{ fontFamily: 'var(--font-label)' }}>{group.num} / Technical Module</span>
+                        <h3 className="text-lg sm:text-2xl md:text-3xl font-black text-on-surface" style={{ fontFamily: 'var(--font-display)' }}>{group.title}</h3>
                     </div>
-                    <div className="w-10 h-10 rounded-full bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 text-primary/40 group-hover:text-primary transition-colors">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 md:w-10 md:h-10 rounded-full bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 text-primary/40 group-hover:text-primary transition-colors flex-shrink-0">
                         {group.icon}
                     </div>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {group.skills.map((skill: string) => (
                         <motion.span
                             key={skill}
-                            whileHover={{ 
-                                scale: 1.08, 
-                                borderColor: "rgba(255, 146, 73, 0.5)", 
+                            whileHover={{
+                                scale: 1.08,
+                                borderColor: "rgba(255, 146, 73, 0.5)",
                                 color: "rgba(255, 146, 73, 1)",
                                 backgroundColor: "rgba(255, 146, 73, 0.05)"
                             }}
                             transition={{ type: "spring", stiffness: 400, damping: 25 }}
-                            className="px-4 py-2 text-[9px] font-bold uppercase tracking-[0.15em] text-on-surface-variant bg-surface-container-highest/40 rounded-lg border border-white/05 cursor-default backdrop-blur-sm"
+                            className="px-2.5 sm:px-4 py-1.5 sm:py-2 text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.15em] text-on-surface-variant bg-surface-container-highest/40 rounded-lg border border-white/05 cursor-default backdrop-blur-sm"
                             style={{ fontFamily: 'var(--font-label)' }}
                         >
                             {skill}

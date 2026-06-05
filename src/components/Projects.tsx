@@ -47,34 +47,34 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-            className={`group grid md:grid-cols-[120px_1fr_auto] gap-8 md:gap-20 items-center p-10 md:p-14 rounded-[2.5rem] transition-all duration-700 bg-surface-container-low/40 hover:bg-surface-container-low ghost-border w-full md:max-w-[90%] lg:max-w-[85%] hover:border-primary/40 hover:shadow-[0_0_50px_rgba(255,146,73,0.1)] ${index % 2 === 0 ? 'mr-auto' : 'ml-auto'}`}
+            className={`group grid grid-cols-1 md:grid-cols-[120px_1fr_auto] gap-6 md:gap-20 items-start md:items-center p-6 sm:p-10 md:p-14 rounded-[2.5rem] transition-all duration-700 bg-surface-container-low/40 hover:bg-surface-container-low ghost-border w-full md:max-w-[90%] lg:max-w-[85%] hover:border-primary/40 hover:shadow-[0_0_50px_rgba(255,146,73,0.1)] ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}
         >
             {/* Number */}
-            <span 
+            <span
                 style={{ transform: "translateZ(50px)" }}
-                className="text-6xl md:text-8xl font-black text-primary/10 group-hover:text-primary/30 transition-colors duration-500 leading-none"
+                className="text-4xl sm:text-6xl md:text-8xl font-black text-primary/10 group-hover:text-primary/30 transition-colors duration-500 leading-none md:col-span-1"
             >
                 {project.num}
             </span>
 
             {/* Content */}
             <div style={{ transform: "translateZ(30px)" }}>
-                <p className="text-primary-dim text-[10px] font-bold uppercase tracking-[0.4em] mb-4" style={{ fontFamily: 'var(--font-label)' }}>{project.tech}</p>
-                <h3 className="text-3xl md:text-5xl font-black text-on-surface mb-6 transition-all duration-500 group-hover:translate-x-2" style={{ fontFamily: 'var(--font-display)' }}>
+                <p className="text-primary-dim text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.4em] mb-2 sm:mb-4" style={{ fontFamily: 'var(--font-label)' }}>{project.tech}</p>
+                <h3 className="text-xl sm:text-3xl md:text-5xl font-black text-on-surface mb-4 sm:mb-6 transition-all duration-500 group-hover:translate-x-2" style={{ fontFamily: 'var(--font-display)' }}>
                     <span className="group-hover:text-gradient leading-[1.1] inline-block">{project.title}</span>
                 </h3>
-                <p className="text-on-surface-variant text-xl leading-relaxed max-w-2xl" style={{ fontFamily: 'var(--font-body)' }}>{project.description}</p>
+                <p className="text-on-surface-variant text-sm sm:text-base md:text-xl leading-relaxed max-w-2xl" style={{ fontFamily: 'var(--font-body)' }}>{project.description}</p>
             </div>
 
             {/* Arrow link */}
-            <div className="md:pl-8" style={{ transform: "translateZ(40px)" }}>
+            <div className="md:pl-8 col-span-1 md:col-span-1" style={{ transform: "translateZ(40px)" }}>
                 <a
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-20 h-20 rounded-full ghost-border flex items-center justify-center text-on-surface-variant group-hover:border-primary group-hover:text-primary group-hover:bg-primary/5 transition-all duration-500 group-hover:rotate-45"
+                    className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full ghost-border flex items-center justify-center text-on-surface-variant group-hover:border-primary group-hover:text-primary group-hover:bg-primary/5 transition-all duration-500 group-hover:rotate-45 inline-flex flex-shrink-0"
                 >
-                    <ArrowUpRight className="w-10 h-10" />
+                    <ArrowUpRight className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
                 </a>
             </div>
         </motion.div>

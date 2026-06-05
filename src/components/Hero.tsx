@@ -32,11 +32,19 @@ const FluidLetter = ({ char, index, isGradient = false }: { char: string, index:
         y.set(0);
     };
 
+    const handleFocus = () => {
+        // Reset on focus for keyboard users
+        x.set(0);
+        y.set(0);
+    };
+
     return (
         <motion.span
             ref={ref}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
+            onFocus={handleFocus}
+            tabIndex={-1}
             initial={{ opacity: 0, y: 60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -79,7 +87,7 @@ export const Hero = () => {
                     className="flex flex-col gap-3 mb-12"
                 >
                     <div
-                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest w-fit"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-widest w-fit"
                         style={{
                             background: 'rgba(255, 146, 73, 0.1)',
                             color: 'var(--primary)',
@@ -89,7 +97,7 @@ export const Hero = () => {
                         <span className="w-1.5 h-1.5 rounded-full animate-pulse neon-glow" style={{ background: 'var(--primary-dim)' }} />
                         Available for work
                     </div>
-                    <p className="text-sm font-medium" style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}>
+                    <p className="text-xs sm:text-sm font-medium" style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}>
                         Software Engineer based in<br />
                         <span className="text-white font-semibold">California</span>
                     </p>
@@ -98,16 +106,16 @@ export const Hero = () => {
                 {/* Massive Kinetic Typography */}
                 <div className="relative mb-8">
                     <h1
-                        className="text-[16vw] md:text-[12vw] font-black leading-none tracking-tighter text-white whitespace-nowrap select-none flex flex-wrap"
+                        className="text-6xl sm:text-8xl md:text-[12vw] font-black leading-none tracking-tighter text-white whitespace-wrap sm:whitespace-nowrap select-none flex flex-wrap"
                         style={{ lineHeight: 0.88, fontFamily: 'var(--font-display)' }}
                     >
                         {firstName.split("").map((char, index) => (
                             <FluidLetter key={index} char={char} index={index} />
                         ))}
                     </h1>
-                    <div className="flex items-end gap-6 mt-1 overflow-hidden">
+                    <div className="flex items-end gap-2 sm:gap-6 mt-1 overflow-hidden">
                         <h1
-                            className="text-[16vw] md:text-[12vw] font-black leading-none tracking-tighter whitespace-nowrap select-none flex flex-wrap"
+                            className="text-6xl sm:text-8xl md:text-[12vw] font-black leading-none tracking-tighter whitespace-wrap sm:whitespace-nowrap select-none flex flex-wrap"
                             style={{
                                 lineHeight: 0.88,
                                 fontFamily: 'var(--font-display)',
@@ -121,12 +129,12 @@ export const Hero = () => {
                 </div>
 
                 {/* Tagline & CTA */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 pb-10">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 sm:gap-8 pb-10">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="text-base leading-relaxed max-w-md"
+                        className="text-xs sm:text-sm md:text-base leading-relaxed max-w-md"
                         style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}
                     >
                         Software engineer with 3+ years building production-scale backend systems and AI-driven applications. Specialized in deploying ML models, scalable APIs, and cloud-native infrastructure.
@@ -136,12 +144,12 @@ export const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.5 }}
-                        className="flex flex-wrap items-center gap-4"
+                        className="flex flex-col sm:flex-row flex-wrap items-center sm:items-center gap-3 sm:gap-4"
                     >
                         <MagneticElement>
                             <a
                                 href="#projects"
-                                className="px-8 py-4 text-black font-bold text-sm rounded-full transition-all duration-300 hover:shadow-[0_0_20px_var(--primary-dim)] hover:-translate-y-0.5 block"
+                                className="px-6 sm:px-8 py-3 sm:py-4 text-black font-bold text-xs sm:text-sm rounded-full transition-all duration-300 hover:shadow-[0_0_20px_var(--primary-dim)] hover:-translate-y-0.5 block w-full sm:w-auto text-center min-h-[44px] flex items-center justify-center"
                                 style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}
                             >
                                 See my work

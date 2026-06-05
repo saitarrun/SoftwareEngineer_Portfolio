@@ -39,12 +39,19 @@ export const MagneticElement = ({ children, className, distance = 0.4 }: Magneti
         rectRef.current = null;
     };
 
+    const handleBlur = () => {
+        x.set(0);
+        y.set(0);
+        rectRef.current = null;
+    };
+
     return (
         <motion.div
             ref={ref}
             onMouseEnter={handleMouseEnter}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
+            onBlur={handleBlur}
             style={{ x: springX, y: springY }}
             className={className}
         >

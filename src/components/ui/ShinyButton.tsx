@@ -10,7 +10,7 @@ interface ShinyButtonProps {
 }
 
 export const ShinyButton = ({ children, className = '', variant = 'primary', onClick, type = 'button' }: ShinyButtonProps) => {
-    const baseStyles = "relative px-8 py-3 rounded-full font-semibold transition-all duration-300 overflow-hidden flex items-center justify-center gap-2 text-sm tracking-wide";
+    const baseStyles = "relative px-8 py-3 rounded-full font-semibold transition-all duration-300 overflow-hidden flex items-center justify-center gap-2 text-sm tracking-wide focus-visible:ring-2 focus-visible:ring-white outline-none";
 
     const variants = {
         primary: "bg-[#F97316] text-white hover:bg-[#FB923C] shadow-lg hover:shadow-[#F97316]/30 hover:shadow-xl",

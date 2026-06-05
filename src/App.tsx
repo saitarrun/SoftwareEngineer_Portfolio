@@ -8,7 +8,6 @@ import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { Contact } from './components/Contact';
 import { Education } from './components/Education';
-import { LinkedInPosts } from './components/LinkedInPosts';
 import { CustomCursor } from './components/CustomCursor';
 
 const BackgroundCanvas = lazy(() =>
@@ -52,7 +51,6 @@ function App() {
                     <SectionWrapper><Projects /></SectionWrapper>
                     <SectionWrapper><Skills /></SectionWrapper>
                     <SectionWrapper><Education /></SectionWrapper>
-                    <SectionWrapper><LinkedInPosts /></SectionWrapper>
                     <SectionWrapper><Contact /></SectionWrapper>
                 </main>
             </div>
