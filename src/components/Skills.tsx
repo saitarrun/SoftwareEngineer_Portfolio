@@ -1,14 +1,14 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { 
-    Database, 
-    Layout, 
-    Terminal, 
-    Server, 
-    Cloud, 
-    Activity, 
-    Brain, 
-    Shield, 
-    Lock 
+import {
+    Database,
+    Layout,
+    Terminal,
+    Server,
+    Cloud,
+    Activity,
+    Brain,
+    Shield,
+    Lock
 } from 'lucide-react';
 import { useRef } from 'react';
 
@@ -48,16 +48,16 @@ const SkillCard = ({ group, index }: { group: any, index: number }) => {
             ref={cardRef}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            style={{ 
-                rotateX, 
+            style={{
+                rotateX,
                 rotateY,
-                transformStyle: "preserve-3d" 
+                transformStyle: "preserve-3d"
             }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.05, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-            className="group p-6 sm:p-8 md:p-10 rounded-[2rem] bg-surface-container-low/40 ghost-border hover:bg-surface-container-low transition-all duration-500 hover:border-primary/40 hover:shadow-[0_20px_50px_rgba(255,146,73,0.1)] h-full"
+            className="group p-8 md:p-12 rounded-card bg-surface-container-low/40 ghost-border hover:bg-surface-container-low transition-all duration-500 hover:border-primary/40 hover:shadow-card-hover h-full"
         >
             <div style={{ transform: "translateZ(30px)" }}>
                 <div className="flex items-start justify-between mb-6 sm:mb-8 gap-4">
@@ -159,14 +159,14 @@ export const Skills = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-20 text-center"
+                    className="mb-24 text-center"
                 >
-                    <h2 className="text-6xl md:text-9xl font-black text-on-surface tracking-tighter uppercase mb-4" style={{ fontFamily: 'var(--font-display)' }}>Technical Stack</h2>
-                    <p className="text-primary-dim text-lg md:text-xl font-bold uppercase tracking-[0.5em]" style={{ fontFamily: 'var(--font-label)' }}>Engineered for Performance</p>
+                    <h2 className="text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase mb-4" style={{ fontFamily: 'var(--font-display)' }}>Technical Stack</h2>
+                    <p className="text-primary-dim text-base md:text-lg font-bold uppercase tracking-[0.5em]" style={{ fontFamily: 'var(--font-label)' }}>Engineered for Performance</p>
                 </motion.div>
  
                 {/* Skills Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     {skillGroups.map((group, index) => (
                         <SkillCard key={index} group={group} index={index} />
                     ))}

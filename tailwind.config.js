@@ -40,6 +40,16 @@ export default {
                 '18': '4.5rem',
                 '22': '5.5rem',
             },
+            borderRadius: {
+                card: '2rem',
+                'card-lg': '2.5rem',
+            },
+            boxShadow: {
+                'card-hover': '0 0 50px rgba(255, 146, 73, 0.1)',
+                'button-hover': '0 0 20px var(--primary-dim)',
+                subtle: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                medium: '0 10px 15px rgba(0, 0, 0, 0.2)',
+            },
             animation: {
                 'float': 'float 8s ease-in-out infinite',
                 'float-slow': 'float 12s ease-in-out infinite reverse',
