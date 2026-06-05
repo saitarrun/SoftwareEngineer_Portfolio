@@ -43,9 +43,9 @@ function App() {
                 </Suspense>
 
                 <Navbar />
-            <CustomCursor />
+                <CustomCursor />
 
-            <main className="relative z-10 grid-mesh min-h-screen">
+                <main id="main" className="relative z-10 grid-mesh min-h-screen" role="main">
                     <Hero />
                     <SectionWrapper><Experience /></SectionWrapper>
                     <SectionWrapper><Projects /></SectionWrapper>

@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 interface MagneticElementProps {
     children: React.ReactNode;
@@ -10,7 +10,16 @@ interface MagneticElementProps {
 export const MagneticElement = ({ children, className, distance = 0.4 }: MagneticElementProps) => {
     const ref = useRef<HTMLDivElement>(null);
     const rectRef = useRef<DOMRect | null>(null);
-    
+    const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setPrefersReducedMotion(mediaQuery.matches);
+        const handleChange = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches);
+        mediaQuery.addEventListener('change', handleChange);
+        return () => mediaQuery.removeEventListener('change', handleChange);
+    }, []);
+
     const x = useMotionValue(0);
     const y = useMotionValue(0);
 
@@ -18,12 +27,13 @@ export const MagneticElement = ({ children, className, distance = 0.4 }: Magneti
     const springY = useSpring(y, { stiffness: 150, damping: 15 });
 
     const handleMouseEnter = () => {
-        if (ref.current) {
+        if (ref.current && !prefersReducedMotion) {
             rectRef.current = ref.current.getBoundingClientRect();
         }
     };
 
     const handleMouseMove = (e: React.MouseEvent) => {
+        if (prefersReducedMotion) return;
         const { clientX, clientY } = e;
         if (!rectRef.current) return;
         const { left, top, width, height } = rectRef.current;
@@ -52,7 +62,7 @@ export const MagneticElement = ({ children, className, distance = 0.4 }: Magneti
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onBlur={handleBlur}
-            style={{ x: springX, y: springY }}
+            style={{ x: prefersReducedMotion ? 0 : springX, y: prefersReducedMotion ? 0 : springY }}
             className={className}
         >
             {children}
