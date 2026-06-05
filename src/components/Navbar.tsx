@@ -74,7 +74,11 @@ export const Navbar = () => {
           >
             <Linkedin className="w-4 h-4" />
           </a>
-          <a href="/SaiTarrunPitta_Resume.html" target="_blank" rel="noopener noreferrer">
+          <a
+            href="/SaiTarrunPitta_SoftwareEngineer_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span
               className="px-3 sm:px-5 py-2 text-black text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-200 hover:shadow-[0_0_15px_#fb7800] focus-visible:ring-2 focus-visible:ring-orange-500 inline-block outline-none min-h-[44px] flex items-center"
               style={{
