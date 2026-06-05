@@ -78,25 +78,25 @@ export const Contact = () => {
                                 </a>
                             </MagneticElement>
                             
-                            <div className="flex gap-4 sm:gap-10">
+                            <div className="flex justify-center sm:justify-start gap-6 sm:gap-10 w-full sm:w-auto">
                                 {[
-                                    { icon: <Github className="w-5 h-5 sm:w-6 sm:h-6" />, label: "GitHub", href: "https://github.com/saitarrun" },
-                                    { icon: <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />, label: "LinkedIn", href: "https://linkedin.com/in/saitarrun" },
-                                    { icon: <Shield className="w-5 h-5 sm:w-6 sm:h-6" />, label: "TryHackMe", href: "https://tryhackme.com/p/TarrunXploit404" }
+                                    { icon: <Github className="w-6 h-6" />, label: "GitHub", href: "https://github.com/saitarrun" },
+                                    { icon: <Linkedin className="w-6 h-6" />, label: "LinkedIn", href: "https://linkedin.com/in/saitarrun" },
+                                    { icon: <Shield className="w-6 h-6" />, label: "TryHackMe", href: "https://tryhackme.com/p/TarrunXploit404" }
                                 ].map((social, i) => (
-                                    <div key={i} className="flex flex-col items-center gap-2 sm:gap-3 w-12 sm:w-16 group/social-wrapper">
+                                    <div key={i} className="flex flex-col items-center gap-3 group/social-wrapper">
                                         <MagneticElement>
                                             <a
                                                 href={social.href}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 aria-label={social.label}
-                                                className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social shadow-xl focus-visible:ring-2 focus-visible:ring-primary outline-none"
+                                                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social shadow-xl focus-visible:ring-2 focus-visible:ring-primary outline-none"
                                             >
                                                 {social.icon}
                                             </a>
                                         </MagneticElement>
-                                        <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300 text-center w-max" style={{ fontFamily: 'var(--font-label)' }}>{social.label}</span>
+                                        <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300 text-center" style={{ fontFamily: 'var(--font-label)' }}>{social.label}</span>
                                     </div>
                                 ))}
                             </div>
