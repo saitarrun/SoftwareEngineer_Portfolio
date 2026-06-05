@@ -46,10 +46,20 @@
         border-bottom: 1px solid #000;
         letter-spacing: 0.5px;
       }
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 4px;
+      }
       .job-title {
         font-weight: 700;
         font-size: 11px;
-        margin-bottom: 0px;
+        margin: 0;
+      }
+      .dates {
+        font-size: 10px;
+        margin: 0;
       }
       .job-subtitle {
         font-size: 10px;
@@ -57,17 +67,16 @@
         color: #000;
         margin-bottom: 4px;
       }
-      .dates {
-        font-size: 10px;
-        float: right;
-        margin-top: -20px;
+      .location-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 6px;
       }
       .location {
         font-size: 10px;
         color: #000;
-        margin-bottom: 6px;
-        float: right;
-        margin-top: -14px;
+        margin: 0;
       }
       .description {
         font-size: 10px;
@@ -175,9 +184,15 @@
 
     <div class="section-title">PROFESSIONAL EXPERIENCE</div>
 
-    <div class="job-title">Pacific Life <span class="dates">May 2025 - Dec 2025</span></div>
+    <div class="job-header">
+      <div class="job-title">Pacific Life</div>
+      <div class="dates">May 2025 - Dec 2025</div>
+    </div>
     <div class="job-subtitle">Software Engineer Intern</div>
-    <div class="location">Newport Beach, CA</div>
+    <div class="location-header">
+      <div />
+      <div class="location">Newport Beach, CA</div>
+    </div>
     <ul class="description">
       <li>
         Automated 98% of claims triage workflows by architecting a serverless ML/LLM service with
@@ -202,9 +217,15 @@
       </li>
     </ul>
 
-    <div class="job-title">Accenture <span class="dates">Jul 2022 - Jun 2024</span></div>
+    <div class="job-header">
+      <div class="job-title">Accenture</div>
+      <div class="dates">Jul 2022 - Jun 2024</div>
+    </div>
     <div class="job-subtitle">Software Engineer</div>
-    <div class="location">Hyderabad, India</div>
+    <div class="location-header">
+      <div />
+      <div class="location">Hyderabad, India</div>
+    </div>
     <ul class="description">
       <li>
         Scaled a gRPC transaction microservice to process 2M+ daily transactions with 20K
@@ -225,9 +246,15 @@
       </li>
     </ul>
 
-    <div class="job-title">Cognizant <span class="dates">May 2021 - Apr 2022</span></div>
+    <div class="job-header">
+      <div class="job-title">Cognizant</div>
+      <div class="dates">May 2021 - Apr 2022</div>
+    </div>
     <div class="job-subtitle">Software Engineer</div>
-    <div class="location">Hyderabad, India</div>
+    <div class="location-header">
+      <div />
+      <div class="location">Hyderabad, India</div>
+    </div>
     <ul class="description">
       <li>
         Engineered ML churn prediction system using scikit-learn and TensorFlow with React
