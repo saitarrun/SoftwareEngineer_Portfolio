@@ -58,7 +58,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }).toString(),
     });
 
-    const data = await tokenResponse.json() as any;
+    const data = (await tokenResponse.json()) as any;
 
     if (!tokenResponse.ok) {
       return res.status(400).json({ error: data.error_description || 'Token exchange failed' });

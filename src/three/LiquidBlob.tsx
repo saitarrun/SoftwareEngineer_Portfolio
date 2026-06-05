@@ -105,13 +105,16 @@ interface Props {
 export function LiquidBlob({ position = [-4, 0, -3], scale = 2.5, speed = 1 }: Props) {
   const meshRef = useRef<THREE.Mesh>(null!);
 
-  const uniforms = useMemo(() => ({
-    uTime: { value: 0 },
-    uAmplitude: { value: 0.3 },
-    uFrequency: { value: 1.2 },
-    uColor1: { value: new THREE.Color('#F97316') },
-    uColor2: { value: new THREE.Color('#FB923C') },
-  }), []);
+  const uniforms = useMemo(
+    () => ({
+      uTime: { value: 0 },
+      uAmplitude: { value: 0.3 },
+      uFrequency: { value: 1.2 },
+      uColor1: { value: new THREE.Color('#F97316') },
+      uColor2: { value: new THREE.Color('#FB923C') },
+    }),
+    []
+  );
 
   useFrame((state) => {
     const t = state.clock.elapsedTime * speed;

@@ -42,23 +42,12 @@ export function WireframeGlobe({ mouse }: Props) {
       {/* Wireframe sphere */}
       <mesh>
         <icosahedronGeometry args={[GLOBE_RADIUS, GLOBE_DETAIL]} />
-        <meshBasicMaterial
-          color="#F97316"
-          wireframe
-          transparent
-          opacity={0.08}
-        />
+        <meshBasicMaterial color="#F97316" wireframe transparent opacity={0.08} />
       </mesh>
 
       {/* Glowing dots at vertices */}
       <points ref={pointsRef} geometry={pointsGeometry}>
-        <pointsMaterial
-          color="#F97316"
-          size={0.04}
-          transparent
-          opacity={0.6}
-          sizeAttenuation
-        />
+        <pointsMaterial color="#F97316" size={0.04} transparent opacity={0.6} sizeAttenuation />
       </points>
 
       {/* Inner glow sphere */}

@@ -16,6 +16,7 @@ Production-ready GitHub configuration for deployment automation.
    - ✓ Dismiss stale pull request approvals
 
 This prevents:
+
 - Direct commits to main
 - Merging without passing CI
 - Merging without review (optional)
@@ -65,17 +66,20 @@ git push origin feature/your-feature
 Automated via GitHub Actions (`.github/workflows/deploy.yml`):
 
 **On PR:**
+
 - Build check
 - Type check
 - Generate preview deployment
 
 **On Merge to main:**
+
 - Build check
 - Type check
 - Deploy to production
 
 **Status Badges:**
 Add to README.md:
+
 ```markdown
 [![Deploy Status](https://github.com/saitarrun/SoftwareEngineer_Portfolio/workflows/Deploy%20to%20Vercel/badge.svg)](https://github.com/saitarrun/SoftwareEngineer_Portfolio/actions)
 ```
@@ -87,15 +91,18 @@ Add to README.md:
 Settings → Secrets and variables → Actions
 
 Required secrets:
+
 - `VERCEL_TOKEN` - Vercel personal access token
 - `VERCEL_ORG_ID` - Vercel organization ID
 - `VERCEL_PROJECT_ID` - Vercel project ID
 
 Optional secrets:
+
 - `VITE_CONTACT_EMAIL` - Contact form email
 - `VITE_TURNSTILE_SITE_KEY` - CAPTCHA key
 
 **Never commit:**
+
 - `.env.local` files
 - API keys
 - Credentials
@@ -108,6 +115,7 @@ Use `.gitignore` to prevent accidental commits.
 **Workflow file:** `.github/workflows/deploy.yml`
 
 Features:
+
 - Runs on push to main and PRs
 - Type checks with TypeScript
 - Builds production bundle
@@ -115,6 +123,7 @@ Features:
 - Posts deployment URLs as PR comments
 
 **View workflow runs:**
+
 1. GitHub → Actions
 2. Select "Deploy to Vercel"
 3. Click run to see logs
@@ -154,6 +163,7 @@ Features:
 - Run tests before merging
 
 **Manual updates:**
+
 ```bash
 npm update              # Update to latest versions
 npm audit fix          # Fix security vulnerabilities
@@ -162,6 +172,7 @@ npm audit fix          # Fix security vulnerabilities
 ## Labels & Issues
 
 **Suggested labels:**
+
 - `bug` - Bug reports
 - `feature` - Feature requests
 - `enhancement` - Improvements
@@ -183,11 +194,13 @@ Vercel automatically creates release deployment.
 ## Monitoring
 
 **GitHub:**
+
 - Actions → View workflow runs
 - Check build/deploy status
 - Review PR checks
 
 **Vercel:**
+
 - Dashboard → Deployments
 - Monitor production deployment
 - Check Web Vitals
@@ -226,6 +239,7 @@ Maintain these files:
 - ✓ Code reviews (optional)
 
 **Audit:**
+
 ```bash
 npm audit
 npm audit fix
@@ -234,16 +248,19 @@ npm audit fix
 ## Troubleshooting
 
 **Workflow not triggering:**
+
 - Check `.github/workflows/*.yml` syntax
 - Verify branch name matches
 - Check GitHub Actions enabled
 
 **PR checks failing:**
+
 - Run `npm run build` locally
 - Check Vercel deploy logs
 - Review GitHub Actions output
 
 **Secrets not working:**
+
 - Verify secret name matches env var
 - Re-create secret if needed
 - Check Vercel env vars separately

@@ -18,8 +18,10 @@ interface ButtonProps {
 
 const variantStyles = {
   primary: 'bg-primary text-on-primary hover:bg-primary-fixed hover:neon-glow',
-  secondary: 'bg-surface-container-high text-on-surface hover:bg-surface-container-highest border border-white/10 hover:border-primary/50',
-  ghost: 'text-on-surface-variant hover:text-primary border border-white/10 hover:border-primary/40',
+  secondary:
+    'bg-surface-container-high text-on-surface hover:bg-surface-container-highest border border-white/10 hover:border-primary/50',
+  ghost:
+    'text-on-surface-variant hover:text-primary border border-white/10 hover:border-primary/40',
 };
 
 const sizeStyles = {

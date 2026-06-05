@@ -5,202 +5,215 @@
 /* ── Design System: "The Neon Architect" ── */
 
 :root {
-    /* Surface hierarchy */
-    --surface: #0e0e0e;
-    --surface-container-lowest: #000000;
-    --surface-container-low: #131313;
-    --surface-container: #1a1a1a;
-    --surface-container-high: #201f1f;
-    --surface-container-highest: #2a2828;
-    --surface-variant: rgba(32, 31, 31, 0.6);
+  /* Surface hierarchy */
+  --surface: #0e0e0e;
+  --surface-container-lowest: #000000;
+  --surface-container-low: #131313;
+  --surface-container: #1a1a1a;
+  --surface-container-high: #201f1f;
+  --surface-container-highest: #2a2828;
+  --surface-variant: rgba(32, 31, 31, 0.6);
 
-    /* Primary Accent */
-    --primary: #ff9249;
-    --primary-fixed: #FF7A00;
-    --primary-container: #ff7b04;
-    --primary-dim: #fb7800;
-    --on-primary: #000000;
+  /* Primary Accent */
+  --primary: #ff9249;
+  --primary-fixed: #ff7a00;
+  --primary-container: #ff7b04;
+  --primary-dim: #fb7800;
+  --on-primary: #000000;
 
-    /* Text & Content */
-    --on-surface: #ffffff;
-    --on-surface-variant: #adaaaa;
-    --outline-variant: rgba(119, 117, 115, 0.1);
+  /* Text & Content */
+  --on-surface: #ffffff;
+  --on-surface-variant: #adaaaa;
+  --outline-variant: rgba(119, 117, 115, 0.1);
 
-    /* Error */
-    --error: #ff7351;
+  /* Error */
+  --error: #ff7351;
 
-    /* Typography */
-    --font-display: 'Plus Jakarta Sans', sans-serif;
-    --font-body: 'Inter', sans-serif;
-    --font-label: 'Space Grotesk', monospace;
+  /* Typography */
+  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-label: 'Space Grotesk', monospace;
 }
 
 @layer base {
-    * {
-        box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-        margin: 0;
-        min-height: 100vh;
-        color: var(--on-surface-variant);
-        background-color: var(--surface);
-        font-family: var(--font-body);
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        scroll-behavior: auto !important;
-        cursor: none;
-        overflow-x: hidden;
-    }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: var(--on-surface-variant);
+    background-color: var(--surface);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: auto !important;
+    cursor: none;
+    overflow-x: hidden;
+  }
 
-    /* Restore cursor for interactive elements if custom fails, but usually we hide it all */
-    a, button, [role="button"] {
-        cursor: none;
-    }
+  /* Restore cursor for interactive elements if custom fails, but usually we hide it all */
+  a,
+  button,
+  [role='button'] {
+    cursor: none;
+  }
 
-    @media (max-width: 768px) {
-        body, a, button {
-            cursor: auto;
-        }
+  @media (max-width: 768px) {
+    body,
+    a,
+    button {
+      cursor: auto;
     }
+  }
 
-    html.lenis, html.lenis body {
-        height: auto;
-    }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
 
-    .lenis.lenis-smooth {
-        scroll-behavior: auto !important;
-    }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
 
-    .lenis.lenis-smooth [data-lenis-prevent] {
-        overscroll-behavior: contain;
-    }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
 
-    .lenis.lenis-stopped {
-        overflow: hidden;
-    }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
 
-    .lenis.lenis-scrolling iframe {
-        pointer-events: none;
-    }
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
 
-    h1, h2, h3, h4, h5, h6 {
-        color: var(--on-surface);
-        font-family: var(--font-display);
-        margin: 0;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--on-surface);
+    font-family: var(--font-display);
+    margin: 0;
+  }
 
-    ::-webkit-scrollbar {
-        width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-        background: var(--surface);
-    }
-    ::-webkit-scrollbar-thumb {
-        background: rgba(255, 146, 73, 0.4);
-        border-radius: 3px;
-    }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--surface);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 146, 73, 0.4);
+    border-radius: 3px;
+  }
 }
 
 @layer utilities {
-    .glass-nav {
-        background: var(--surface-variant);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-    }
+  .glass-nav {
+    background: var(--surface-variant);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
 
-    .grid-mesh {
-        background-size: 50px 50px;
-        background-image:
-            linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    }
+  .grid-mesh {
+    background-size: 50px 50px;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
 
-    .text-gradient {
-        background: linear-gradient(135deg, var(--primary), var(--primary-container));
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+  .text-gradient {
+    background: linear-gradient(135deg, var(--primary), var(--primary-container));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 
-    .neon-glow {
-        box-shadow: 0 0 15px var(--primary-dim);
-    }
+  .neon-glow {
+    box-shadow: 0 0 15px var(--primary-dim);
+  }
 
-    .ghost-border {
-        border: 1px solid var(--outline-variant);
-    }
+  .ghost-border {
+    border: 1px solid var(--outline-variant);
+  }
 
-    .surface-card {
-        background: var(--surface-container-high);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+  .surface-card {
+    background: var(--surface-container-high);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
-    .depth-shadow {
-        text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 146, 73, 0.1);
-    }
+  .depth-shadow {
+    text-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(255, 146, 73, 0.1);
+  }
 
-    @keyframes float {
-        0%, 100% {
-            transform: translateY(0px) scale(1);
-        }
-        50% {
-            transform: translateY(-40px) scale(1.1);
-        }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px) scale(1);
     }
+    50% {
+      transform: translateY(-40px) scale(1.1);
+    }
+  }
 }
 
 .gradient-bg {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background: var(--surface);
-    overflow: hidden;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: var(--surface);
+  overflow: hidden;
 }
 
 /* Accessibility: Respect user motion preferences */
 @media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 
-    .float {
-        animation: none !important;
-    }
+  .float {
+    animation: none !important;
+  }
 
-    .float-slow {
-        animation: none !important;
-    }
+  .float-slow {
+    animation: none !important;
+  }
 
-    .shimmer {
-        animation: none !important;
-    }
+  .shimmer {
+    animation: none !important;
+  }
 }
 
 /* Skip to main content link (screen reader only, visible on focus) */
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 .focus\:not-sr-only:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    padding: inherit;
-    margin: inherit;
-    overflow: visible;
-    clip: auto;
-    white-space: normal;
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
 }

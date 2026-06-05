@@ -2,83 +2,83 @@ import { useEffect, useState } from 'react';
 import { motion, useSpring } from 'framer-motion';
 
 export const CustomCursor = () => {
-    const [isHovered, setIsHovered] = useState(false);
-    const [isHidden, setIsHidden] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
 
-    const mouseX = useSpring(0, { stiffness: 500, damping: 28 });
-    const mouseY = useSpring(0, { stiffness: 500, damping: 28 });
+  const mouseX = useSpring(0, { stiffness: 500, damping: 28 });
+  const mouseY = useSpring(0, { stiffness: 500, damping: 28 });
 
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            mouseX.set(e.clientX);
-            mouseY.set(e.clientY);
-            if (isHidden) setIsHidden(false);
-        };
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+      if (isHidden) setIsHidden(false);
+    };
 
-        const handleMouseOver = (e: MouseEvent) => {
-            const target = e.target as HTMLElement;
-            const isInteractive = 
-                target.tagName === 'A' || 
-                target.tagName === 'BUTTON' || 
-                target.closest('a') || 
-                target.closest('button') ||
-                target.closest('[role="button"]') ||
-                target.classList.contains('group');
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const isInteractive =
+        target.tagName === 'A' ||
+        target.tagName === 'BUTTON' ||
+        target.closest('a') ||
+        target.closest('button') ||
+        target.closest('[role="button"]') ||
+        target.classList.contains('group');
 
-            setIsHovered(!!isInteractive);
-        };
+      setIsHovered(!!isInteractive);
+    };
 
-        const handleMouseOut = () => {
-            setIsHidden(true);
-        };
+    const handleMouseOut = () => {
+      setIsHidden(true);
+    };
 
-        window.addEventListener('mousemove', handleMouseMove);
-        window.addEventListener('mouseover', handleMouseOver);
-        window.addEventListener('mouseleave', handleMouseOut);
-        
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('mouseover', handleMouseOver);
-            window.removeEventListener('mouseleave', handleMouseOut);
-        };
-    }, [mouseX, mouseY, isHidden]);
+    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mouseover', handleMouseOver);
+    window.addEventListener('mouseleave', handleMouseOut);
 
-    if (isHidden) return null;
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseover', handleMouseOver);
+      window.removeEventListener('mouseleave', handleMouseOut);
+    };
+  }, [mouseX, mouseY, isHidden]);
 
-    return (
-        <div className="fixed inset-0 pointer-events-none z-[9999] hidden md:block">
-            {/* Main Ring */}
-            <motion.div
-                style={{
-                    x: mouseX,
-                    y: mouseY,
-                    translateX: '-50%',
-                    translateY: '-50%',
-                }}
-                animate={{
-                    width: isHovered ? 80 : 40,
-                    height: isHovered ? 80 : 40,
-                    backgroundColor: isHovered ? 'rgba(255, 146, 73, 0.15)' : 'rgba(255,146,73,0)',
-                    borderColor: isHovered ? 'rgba(255, 146, 73, 0.5)' : 'rgba(255, 146, 73, 0.3)',
-                }}
-                transition={{ type: 'spring', stiffness: 250, damping: 20 }}
-                className="absolute border rounded-full"
-            />
+  if (isHidden) return null;
 
-            {/* Precision Dot */}
-            <motion.div
-                style={{
-                    x: mouseX,
-                    y: mouseY,
-                    translateX: '-50%',
-                    translateY: '-50%',
-                }}
-                animate={{
-                    scale: isHovered ? 1.5 : 1,
-                    backgroundColor: 'rgba(255, 146, 73, 1)',
-                }}
-                className="absolute w-1.5 h-1.5 rounded-full"
-            />
-        </div>
-    );
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[9999] hidden md:block">
+      {/* Main Ring */}
+      <motion.div
+        style={{
+          x: mouseX,
+          y: mouseY,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+        animate={{
+          width: isHovered ? 80 : 40,
+          height: isHovered ? 80 : 40,
+          backgroundColor: isHovered ? 'rgba(255, 146, 73, 0.15)' : 'rgba(255,146,73,0)',
+          borderColor: isHovered ? 'rgba(255, 146, 73, 0.5)' : 'rgba(255, 146, 73, 0.3)',
+        }}
+        transition={{ type: 'spring', stiffness: 250, damping: 20 }}
+        className="absolute border rounded-full"
+      />
+
+      {/* Precision Dot */}
+      <motion.div
+        style={{
+          x: mouseX,
+          y: mouseY,
+          translateX: '-50%',
+          translateY: '-50%',
+        }}
+        animate={{
+          scale: isHovered ? 1.5 : 1,
+          backgroundColor: 'rgba(255, 146, 73, 1)',
+        }}
+        className="absolute w-1.5 h-1.5 rounded-full"
+      />
+    </div>
+  );
 };

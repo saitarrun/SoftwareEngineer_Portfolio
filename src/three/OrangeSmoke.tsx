@@ -105,20 +105,29 @@ const fragmentShader = `
 export function OrangeSmoke() {
   const groupRef = useRef<THREE.Group>(null);
 
-  const uniforms1 = useMemo(() => ({
-    uTime: { value: 0 },
-    uOpacity: { value: 0.3 },
-  }), []);
+  const uniforms1 = useMemo(
+    () => ({
+      uTime: { value: 0 },
+      uOpacity: { value: 0.3 },
+    }),
+    []
+  );
 
-  const uniforms2 = useMemo(() => ({
-    uTime: { value: 100 },
-    uOpacity: { value: 0.25 },
-  }), []);
+  const uniforms2 = useMemo(
+    () => ({
+      uTime: { value: 100 },
+      uOpacity: { value: 0.25 },
+    }),
+    []
+  );
 
-  const uniforms3 = useMemo(() => ({
-    uTime: { value: 200 },
-    uOpacity: { value: 0.2 },
-  }), []);
+  const uniforms3 = useMemo(
+    () => ({
+      uTime: { value: 200 },
+      uOpacity: { value: 0.2 },
+    }),
+    []
+  );
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;

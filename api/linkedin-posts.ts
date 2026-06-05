@@ -18,8 +18,8 @@ export default async function handler(_req: VercelRequest, res: VercelResponse) 
     const response = await fetch('https://api.linkedin.com/v2/me/posts?count=10', {
       method: 'GET',
       headers: {
-        'Authorization': `Bearer ${accessToken}`,
-        'Accept': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+        Accept: 'application/json',
       },
     });
 
@@ -28,7 +28,7 @@ export default async function handler(_req: VercelRequest, res: VercelResponse) 
       return res.status(response.status).json({ error: 'Failed to fetch posts' });
     }
 
-    const data = await response.json() as any;
+    const data = (await response.json()) as any;
     const posts: LinkedInPost[] = data.elements || [];
 
     res.setHeader('Cache-Control', 'public, max-age=300');

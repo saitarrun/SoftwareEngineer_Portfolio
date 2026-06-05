@@ -1,15 +1,8 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import crypto from 'crypto';
 
-function validateLinkedInSignature(
-  signature: string,
-  body: string,
-  clientSecret: string
-): boolean {
-  const hash = crypto
-    .createHmac('sha256', clientSecret)
-    .update(body)
-    .digest('base64');
+function validateLinkedInSignature(signature: string, body: string, clientSecret: string): boolean {
+  const hash = crypto.createHmac('sha256', clientSecret).update(body).digest('base64');
 
   return hash === signature;
 }

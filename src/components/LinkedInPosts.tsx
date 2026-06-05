@@ -13,10 +13,12 @@ interface LinkedInPost {
 
 const LINKEDIN_POSTS: LinkedInPost[] = [
   {
-    embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:share:7459827604435439616?collapsed=1'
+    embedUrl:
+      'https://www.linkedin.com/embed/feed/update/urn:li:share:7459827604435439616?collapsed=1',
   },
   {
-    embedUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7443167826288422912?collapsed=1'
+    embedUrl:
+      'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7443167826288422912?collapsed=1',
   },
 ];
 
@@ -41,9 +43,7 @@ export function LinkedInPosts() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             Latest <span className="text-orange-500">LinkedIn Posts</span>
           </h2>
-          <p className="text-gray-400 text-lg">
-            Featured posts from my LinkedIn profile
-          </p>
+          <p className="text-gray-400 text-lg">Featured posts from my LinkedIn profile</p>
         </motion.div>
 
         {/* LinkedIn Embeds Grid */}
@@ -105,11 +105,7 @@ export function LinkedInPosts() {
       </div>
 
       {/* LinkedIn SDK */}
-      <script
-        async
-        src="https://platform.linkedin.com/in.js"
-        charSet="utf-8"
-      />
+      <script async src="https://platform.linkedin.com/in.js" charSet="utf-8" />
     </section>
   );
 }
