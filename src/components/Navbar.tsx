@@ -76,7 +76,7 @@ export const Navbar = () => {
           </a>
           <a
             href="/SaiTarrunPitta_SoftwareEngineer_Resume.pdf"
-            download="SaiTarrunPitta_SoftwareEngineer_Resume.pdf"
+            target="_blank"
             rel="noopener noreferrer"
           >
             <span
