@@ -4,10 +4,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "vite",
-  "env": {
-    "VITE_CONTACT_EMAIL": "@saitarrunpitta_contact_email",
-    "VITE_TURNSTILE_SITE_KEY": "@saitarrunpitta_turnstile_key"
-  },
   "headers": [
     {
       "source": "/(.*)",
