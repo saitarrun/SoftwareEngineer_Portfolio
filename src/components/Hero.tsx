@@ -137,7 +137,7 @@ export const Hero = () => {
                         className="flex flex-col gap-6"
                     >
                         <p
-                            className="text-sm sm:text-base md:text-lg leading-relaxed"
+                            className="text-sm sm:text-base md:text-lg leading-relaxed text-center sm:text-left"
                             style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}
                         >
                             Software engineer with 3+ years building production-scale backend systems and AI-driven applications. Specialized in deploying ML models, scalable APIs, and cloud-native infrastructure.
@@ -147,30 +147,30 @@ export const Hero = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.5 }}
-                            className="flex flex-col sm:flex-row flex-wrap items-center sm:items-start gap-3 sm:gap-4 w-fit"
+                            className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-fit"
                         >
-                        <MagneticElement>
+                        <MagneticElement className="w-full sm:w-auto">
                             <a
                                 href="#projects"
-                                className="px-6 sm:px-8 py-3 sm:py-4 text-black font-bold text-xs sm:text-sm rounded-full transition-all duration-300 hover:shadow-[0_0_20px_var(--primary-dim)] hover:-translate-y-0.5 block w-full sm:w-auto text-center min-h-[44px] flex items-center justify-center"
+                                className="px-6 sm:px-8 py-3 sm:py-4 text-black font-bold text-sm rounded-full transition-all duration-300 hover:shadow-[0_0_20px_var(--primary-dim)] hover:-translate-y-0.5 w-full sm:w-auto text-center min-h-[44px] flex items-center justify-center"
                                 style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}
                             >
                                 See my work
                             </a>
                         </MagneticElement>
-                        <MagneticElement>
+                        <MagneticElement className="w-full sm:w-auto">
                             <motion.a
                                 href="#contact"
-                                animate={{ 
+                                animate={{
                                     boxShadow: ["0 0 0px rgba(255,146,73,0)", "0 0 15px rgba(255,146,73,0.3)", "0 0 0px rgba(255,146,73,0)"],
                                     borderColor: ["rgba(255,255,255,0.2)", "rgba(255,146,73,0.5)", "rgba(255,255,255,0.2)"]
                                 }}
-                                transition={{ 
-                                    duration: 2, 
-                                    repeat: Infinity, 
-                                    ease: "easeInOut" 
+                                transition={{
+                                    duration: 2,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
                                 }}
-                                className="px-8 py-4 text-white font-bold text-sm rounded-full border border-white/20 transition-all duration-300 hover:border-primary hover:text-primary backdrop-blur-sm block"
+                                className="px-8 py-4 text-white font-bold text-sm rounded-full border border-white/20 transition-all duration-300 hover:border-primary hover:text-primary backdrop-blur-sm w-full sm:w-auto text-center min-h-[44px] flex items-center justify-center"
                             >
                                 Let's connect
                             </motion.a>
