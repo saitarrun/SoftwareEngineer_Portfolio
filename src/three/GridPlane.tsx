@@ -12,13 +12,13 @@ export function GridPlane() {
       opacity: 0.12,
     });
   }, []);
- 
+
   useFrame((state) => {
     if (ref.current) {
       ref.current.position.z = -((state.clock.elapsedTime * 0.1) % 2);
     }
   });
- 
+
   return (
     <group position={[0, -8, -6]} rotation={[-Math.PI * 0.08, 0, 0]}>
       <group ref={ref}>

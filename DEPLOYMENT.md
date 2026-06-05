@@ -47,6 +47,7 @@ VITE_ANALYTICS_ID=your-analytics-id
 ```
 
 **Setup in Vercel:**
+
 1. Project Settings → Environment Variables
 2. Add variable name and value
 3. Select environments (Development, Preview, Production)
@@ -62,6 +63,7 @@ GitHub branch `main` is protected:
 - ✓ Require branches to be up to date
 
 **Setup (if needed):**
+
 1. GitHub → Settings → Branches
 2. Add rule for `main`
 3. Enable protection options
@@ -99,6 +101,7 @@ git push origin main  # Automatically triggers deploy
 Current: https://saitarrun.dev (configured)
 
 **To change domain:**
+
 1. Vercel → Project Settings → Domains
 2. Add new domain
 3. Update DNS records (provided by Vercel)
@@ -112,6 +115,7 @@ Current: https://saitarrun.dev (configured)
 ✓ Security headers implemented
 
 **Verify:**
+
 ```bash
 curl -I https://saitarrun.dev
 # Check for Strict-Transport-Security header
@@ -122,12 +126,14 @@ curl -I https://saitarrun.dev
 Optional: Add analytics to track visitors
 
 **Google Analytics (if enabled):**
+
 1. Create account: https://analytics.google.com
 2. Get tracking ID
 3. Set VITE_ANALYTICS_ID in Vercel env vars
 4. Reference in code: `window.gtag` (if implemented)
 
 **Vercel Analytics:**
+
 - Available in Project → Analytics
 - No configuration needed
 - Free tier: 1,000 events/month
@@ -135,6 +141,7 @@ Optional: Add analytics to track visitors
 ## Monitoring
 
 **Vercel Dashboard:**
+
 - https://vercel.com/dashboard
 - Deployment history
 - Build logs
@@ -142,11 +149,13 @@ Optional: Add analytics to track visitors
 - Error tracking
 
 **Deployment Logs:**
+
 1. Vercel Dashboard → Project
 2. Deployments tab
 3. Select deployment → View logs
 
 **Errors:**
+
 - Check Vercel build logs
 - Run `npm run build` locally to reproduce
 - Review error message + line numbers
@@ -154,11 +163,13 @@ Optional: Add analytics to track visitors
 ## Performance Monitoring
 
 **Web Vitals:**
+
 - Vercel Analytics → Web Vitals
 - Tracks LCP, CLS, INP
 - Real user monitoring
 
 **Local Testing:**
+
 ```bash
 npm run build
 npm run preview  # Test production build locally
@@ -192,6 +203,7 @@ GitHub Actions workflow (`.github/workflows/deploy.yml`):
    - `VERCEL_PROJECT_ID` (project ID)
 
 **Setup Secrets (GitHub):**
+
 1. GitHub → Settings → Secrets → Actions
 2. Add:
    - VERCEL_TOKEN (from https://vercel.com/account/tokens)
@@ -244,15 +256,18 @@ curl -I https://saitarrun.dev
 ## Maintenance
 
 **Weekly:**
+
 - Monitor Vercel Analytics for errors
 - Check Web Vitals scores
 
 **Monthly:**
+
 - Review deployment logs
 - Check for security updates: `npm audit`
 - Update dependencies: `npm update`
 
 **Quarterly:**
+
 - Review performance metrics
 - Analyze user analytics
 - Plan feature updates

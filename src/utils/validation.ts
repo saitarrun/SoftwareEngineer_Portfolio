@@ -46,21 +46,21 @@ export const validateContactForm = (data: ContactFormData): ValidationError[] =>
   if (!validateName(data.name)) {
     errors.push({
       field: 'name',
-      message: 'Name must be 2-100 characters (letters, spaces, hyphens only)'
+      message: 'Name must be 2-100 characters (letters, spaces, hyphens only)',
     });
   }
 
   if (!validateEmail(data.email)) {
     errors.push({
       field: 'email',
-      message: 'Please enter a valid email address'
+      message: 'Please enter a valid email address',
     });
   }
 
   if (!validateMessage(data.message)) {
     errors.push({
       field: 'message',
-      message: 'Message must be 10-5000 characters'
+      message: 'Message must be 10-5000 characters',
     });
   }
 
@@ -83,7 +83,7 @@ export class RateLimiter {
     const attempts = this.attempts.get(key) || [];
 
     // Remove old attempts outside the window
-    const recentAttempts = attempts.filter(time => now - time < this.windowMs);
+    const recentAttempts = attempts.filter((time) => now - time < this.windowMs);
 
     if (recentAttempts.length >= this.maxAttempts) {
       return false;

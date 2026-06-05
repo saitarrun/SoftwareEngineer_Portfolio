@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { validateContactForm, sanitizeInput, RateLimiter, type ValidationError } from '../utils/validation';
+import {
+  validateContactForm,
+  sanitizeInput,
+  RateLimiter,
+  type ValidationError,
+} from '../utils/validation';
 import { Button } from './ui/Button';
 import { Mail } from 'lucide-react';
 
@@ -16,27 +21,27 @@ export const ContactForm = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
   });
 
   const [state, setState] = useState<FormState>({
     loading: false,
     success: false,
     error: null,
-    errors: []
+    errors: [],
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: sanitizeInput(value)
+      [name]: sanitizeInput(value),
     }));
     // Clear errors on input change
-    setState(prev => ({
+    setState((prev) => ({
       ...prev,
-      errors: prev.errors.filter(err => err.field !== name),
-      error: null
+      errors: prev.errors.filter((err) => err.field !== name),
+      error: null,
     }));
   };
 
@@ -50,7 +55,7 @@ export const ContactForm = () => {
         loading: false,
         success: false,
         error: `Too many requests. Please try again in ${Math.ceil(remaining / 1000)} seconds.`,
-        errors: []
+        errors: [],
       });
       return;
     }
@@ -62,7 +67,7 @@ export const ContactForm = () => {
         loading: false,
         success: false,
         error: 'Please fix the errors below',
-        errors: validationErrors
+        errors: validationErrors,
       });
       return;
     }
@@ -71,7 +76,8 @@ export const ContactForm = () => {
 
     try {
       // Fallback: Open email client if no backend
-      const contactEmail = (import.meta as any).env?.VITE_CONTACT_EMAIL || 'saitarrunpitta@gmail.com';
+      const contactEmail =
+        (import.meta as any).env?.VITE_CONTACT_EMAIL || 'saitarrunpitta@gmail.com';
       const mailtoLink = `mailto:${contactEmail}?subject=Portfolio Contact: ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
 
       // Try to send via API if available
@@ -79,7 +85,7 @@ export const ContactForm = () => {
         const response = await fetch('/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData)
+          body: JSON.stringify(formData),
         });
 
         if (!response.ok) throw new Error('Failed to send');
@@ -88,7 +94,7 @@ export const ContactForm = () => {
           loading: false,
           success: true,
           error: null,
-          errors: []
+          errors: [],
         });
         setFormData({ name: '', email: '', message: '' });
       } catch {
@@ -98,21 +104,21 @@ export const ContactForm = () => {
           loading: false,
           success: true,
           error: null,
-          errors: []
+          errors: [],
         });
       }
-    } catch (err) {
+    } catch {
       setState({
         loading: false,
         success: false,
         error: 'Failed to send message. Please try again.',
-        errors: []
+        errors: [],
       });
     }
   };
 
   const getFieldError = (fieldName: string) => {
-    return state.errors.find(err => err.field === fieldName)?.message;
+    return state.errors.find((err) => err.field === fieldName)?.message;
   };
 
   return (
@@ -178,9 +184,7 @@ export const ContactForm = () => {
           className="px-4 py-3 bg-surface-container-low/40 border border-white/10 rounded-lg text-on-surface placeholder-on-surface-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
           maxLength={5000}
         />
-        <div className="text-xs text-on-surface-variant">
-          {formData.message.length}/5000
-        </div>
+        <div className="text-xs text-on-surface-variant">{formData.message.length}/5000</div>
         {getFieldError('message') && (
           <span className="text-xs text-error">{getFieldError('message')}</span>
         )}

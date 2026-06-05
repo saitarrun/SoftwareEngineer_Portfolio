@@ -47,6 +47,7 @@ Current vulnerabilities in production dependencies are tracked and updated.
 **Never commit secrets to GitHub.**
 
 Use `.env.local` (not committed) for:
+
 - `VITE_CONTACT_EMAIL`: Contact form destination
 - `VITE_TURNSTILE_SITE_KEY`: CAPTCHA key (optional)
 
@@ -61,6 +62,7 @@ Redirect from HTTP to HTTPS is automatic on Vercel.
 ## Content Security Policy
 
 CSP allows only:
+
 - Scripts: Self, unsafe-inline (Framer Motion), LinkedIn embed, Turnstile
 - Styles: Self, unsafe-inline, Google Fonts
 - Fonts: Self, Google Fonts
@@ -95,6 +97,7 @@ Found a vulnerability? **Do not open a public issue.**
 Contact: saitarrunpitta@gmail.com
 
 Include:
+
 - Type of vulnerability
 - Location in code
 - Steps to reproduce
