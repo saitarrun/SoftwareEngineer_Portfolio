@@ -55,11 +55,11 @@ export const Contact = () => {
                     <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
                         <div style={{ transform: "translateZ(40px)" }}>
                             <span className="text-primary font-bold uppercase tracking-[0.4em] mb-6 block" style={{ fontFamily: 'var(--font-label)' }}>Available for projects</span>
-                            <h2 className="text-6xl md:text-8xl font-black text-on-surface leading-[0.9] tracking-tighter uppercase mb-8" style={{ fontFamily: 'var(--font-display)' }}>
+                            <h2 className="text-3xl sm:text-5xl md:text-8xl font-black text-on-surface leading-[0.9] tracking-tighter uppercase mb-8" style={{ fontFamily: 'var(--font-display)' }}>
                                 Let's architect <br />
                                 <span className="text-gradient">the future.</span>
                             </h2>
-                            <p className="text-on-surface-variant text-xl leading-relaxed max-w-md" style={{ fontFamily: 'var(--font-body)' }}>
+                            <p className="text-sm sm:text-base md:text-xl text-on-surface-variant leading-relaxed max-w-md" style={{ fontFamily: 'var(--font-body)' }}>
                                 Currently looking for Software Engineer roles where I can build high-performance distributed systems, cybersecurity solutions, and AI-powered platforms.
                             </p>
                         </div>
@@ -68,33 +68,35 @@ export const Contact = () => {
                             <MagneticElement className="w-full lg:w-fit">
                                 <a
                                     href="mailto:saitarrunpitta@gmail.com"
-                                    className="flex items-center gap-4 px-10 py-8 bg-primary text-on-primary font-black uppercase tracking-widest rounded-3xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full lg:w-fit text-center justify-center shadow-[0_20px_40px_rgba(255,123,4,0.3)]"
+                                    className="flex items-center justify-center gap-2 sm:gap-4 px-4 sm:px-10 py-3 sm:py-8 bg-primary text-on-primary font-black uppercase tracking-widest rounded-3xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full lg:w-fit text-xs sm:text-base shadow-[0_20px_40px_rgba(255,123,4,0.3)] focus-visible:ring-2 focus-visible:ring-white outline-none min-h-[44px]"
                                     style={{ fontFamily: 'var(--font-display)' }}
                                 >
-                                    <Mail className="w-6 h-6" />
-                                    Start a Conversation
-                                    <ArrowRight className="w-6 h-6 group-hover/btn:translate-x-1 transition-transform" />
+                                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
+                                    <span className="hidden sm:inline">Start a Conversation</span>
+                                    <span className="sm:hidden">Connect</span>
+                                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover/btn:translate-x-1 transition-transform flex-shrink-0" />
                                 </a>
                             </MagneticElement>
                             
-                            <div className="flex gap-10">
+                            <div className="flex gap-4 sm:gap-10">
                                 {[
-                                    { icon: <Github className="w-6 h-6" />, label: "GitHub", href: "https://github.com/saitarrun" },
-                                    { icon: <Linkedin className="w-6 h-6" />, label: "LinkedIn", href: "https://linkedin.com/in/saitarrun" },
-                                    { icon: <Shield className="w-6 h-6" />, label: "TryHackMe", href: "https://tryhackme.com/p/TarrunXploit404" }
+                                    { icon: <Github className="w-5 h-5 sm:w-6 sm:h-6" />, label: "GitHub", href: "https://github.com/saitarrun" },
+                                    { icon: <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />, label: "LinkedIn", href: "https://linkedin.com/in/saitarrun" },
+                                    { icon: <Shield className="w-5 h-5 sm:w-6 sm:h-6" />, label: "TryHackMe", href: "https://tryhackme.com/p/TarrunXploit404" }
                                 ].map((social, i) => (
-                                    <div key={i} className="flex flex-col items-center gap-3 w-16 group/social-wrapper">
+                                    <div key={i} className="flex flex-col items-center gap-2 sm:gap-3 w-12 sm:w-16 group/social-wrapper">
                                         <MagneticElement>
-                                            <a 
-                                                href={social.href} 
-                                                target="_blank" 
+                                            <a
+                                                href={social.href}
+                                                target="_blank"
                                                 rel="noopener noreferrer"
-                                                className="w-16 h-16 rounded-2xl bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social shadow-xl"
+                                                aria-label={social.label}
+                                                className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social shadow-xl focus-visible:ring-2 focus-visible:ring-primary outline-none"
                                             >
                                                 {social.icon}
                                             </a>
                                         </MagneticElement>
-                                        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300 text-center w-max" style={{ fontFamily: 'var(--font-label)' }}>{social.label}</span>
+                                        <span className="text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300 text-center w-max" style={{ fontFamily: 'var(--font-label)' }}>{social.label}</span>
                                     </div>
                                 ))}
                             </div>
