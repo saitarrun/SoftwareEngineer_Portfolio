@@ -46,7 +46,7 @@ const ExperienceCard = ({ exp, index }: { exp: any; index: number }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-      className="group grid md:grid-cols-[100px_1fr] gap-8 md:gap-16 p-10 md:p-14 rounded-[2.5rem] transition-all duration-700 bg-surface-container-low/40 ghost-border hover:bg-surface-container-low hover:border-primary/40 hover:shadow-[0_0_50px_rgba(255,146,73,0.1)] w-full relative h-full"
+      className="group grid grid-cols-[60px_1fr] md:grid-cols-[100px_1fr] gap-6 md:gap-8 lg:gap-16 p-6 md:p-10 lg:p-14 rounded-[2.5rem] transition-all duration-700 bg-surface-container-low/40 ghost-border hover:bg-surface-container-low hover:border-primary/40 hover:shadow-[0_0_50px_rgba(255,146,73,0.1)] w-full relative h-full"
     >
       {/* Number Layer */}
       <div style={{ transform: 'translateZ(50px)' }} className="pt-2">
@@ -171,8 +171,8 @@ export const Experience = () => {
           </h2>
         </motion.div>
 
-        {/* Experience grid: full width on mobile, 2-3 columns on desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
+        {/* Experience grid: full width cards stacked vertically */}
+        <div className="grid grid-cols-1 gap-12 md:gap-16">
           {experiences.map((exp, index) => (
             <ExperienceCard key={index} exp={exp} index={index} />
           ))}

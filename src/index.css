@@ -49,15 +49,15 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: auto !important;
-    cursor: none;
+    cursor: auto;
     overflow-x: hidden;
   }
 
-  /* Restore cursor for interactive elements if custom fails, but usually we hide it all */
+  /* Default cursor for interactive elements */
   a,
   button,
   [role='button'] {
-    cursor: none;
+    cursor: pointer;
   }
 
   @media (max-width: 768px) {
