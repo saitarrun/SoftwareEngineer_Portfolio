@@ -77,3 +77,34 @@ ehthumbs.db
 *.bak
 *.tmp
 *.swp
+
+# Secrets & Certificates (NEVER commit)
+*.key
+*.pem
+*.p12
+*.pfx
+*.cer
+*.crt
+*.pub
+secrets/
+.secrets
+credentials.json
+service-account-*.json
+firebase-*.json
+google-*.json
+aws-credentials
+.aws/
+.gcp/
+
+# Documentation & Standards (internal, non-code)
+*STANDARDS*.md
+*GUIDELINES*.md
+*CODE-*.md
+SECURITY*.md
+PRODUCTION*.md
+*.standards.md
+*.guidelines.md
+docs/standards/
+docs/guidelines/
+.standards/
+.guidelines/

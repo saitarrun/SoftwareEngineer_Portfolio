@@ -30,7 +30,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Handle LinkedIn webhook event
     // event.eventId, event.timestamp, event.triggerId, etc.
-    console.log('Webhook received:', event);
+    console.warn('Webhook received:', event);
 
     // TODO: Update post cache or trigger re-fetch
     // For now, just acknowledge receipt
