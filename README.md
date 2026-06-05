@@ -210,4 +210,3 @@ MIT License - © 2026 Sai Tarrun Pitta
 
 ---
 
-Built with ❤️ • Deployed on Vercel • Optimized for performance & accessibility
