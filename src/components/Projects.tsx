@@ -100,34 +100,34 @@ const projects = [
   {
     num: '01',
     title: 'LLM-Powered Knowledge Retrieval Platform',
-    tech: 'LLMs · RAG · Vector DB · Semantic Search',
+    tech: 'LangChain · Pinecone · FastAPI · React · TypeScript',
     description:
-      'A high-performance RAG platform built with premium UI, semantic search indexing, and real-time feedback cycles. Optimized for retrieval accuracy and low-latency document processing.',
+      'Distributed full-stack knowledge retrieval platform with semantic search, vector indexing, and NLP-driven query matching. Improved information retrieval accuracy by 25% and reduced user search time by 40%.',
     link: 'https://github.com/saitarrun/LLM-Powered-Knowledge-Retrieval-Platform',
   },
   {
     num: '02',
-    title: 'Brain Tumor Prediction & Big Data Pipeline',
-    tech: 'TensorFlow · Apache Spark · GCP · OpenCV',
+    title: 'Production Portfolio & Personal Website',
+    tech: 'React · Vite · Tailwind · TypeScript · Vercel',
     description:
-      'An end-to-end distributed ML pipeline for MRI scan classification. Leverages big data processing with Spark and cloud-native inference on GCP to achieve clinical-grade tumor detection.',
-    link: 'https://github.com/saitarrun/Brain-Tumor-Prediction-Using-Machine-Learning-and-Big-Data',
+      'Performance-optimized portfolio with security-first engineering, responsive design, and comprehensive code quality tooling. Features TypeScript strict mode, ESLint security rules, Prettier formatting, and git pre-commit/pre-push hooks.',
+    link: 'https://github.com/saitarrun/SoftwareEngineer_Portfolio',
   },
   {
     num: '03',
-    title: 'Serverless Deployment Platform',
-    tech: 'AWS · Docker · Kafka · PostgreSQL · Redis',
+    title: 'Event-Driven E-Commerce Modernization',
+    tech: 'Node.js · Kafka · PostgreSQL · Docker · Kubernetes',
     description:
-      'Scalable, self-hosted deployment engine inspired by Vercel. Features real-time log collection with Kafka, persistent analytics with ClickHouse, and containerized orchestration via AWS ECS.',
-    link: 'https://github.com/saitarrun/Serverless-Deployment-Platform',
+      'Monolith-to-microservices migration using Strangler pattern with REST APIs and event-driven design. Enables zero-downtime canary deployments, service-level isolation, and scalable order, payment, and inventory workflows.',
+    link: 'https://github.com/saitarrun/Event-Driven-Architecture',
   },
   {
     num: '04',
-    title: 'Monolith to Microservices Migration',
-    tech: 'Node.js · FastAPI · Redis · System Design',
+    title: 'Brain Tumor Detection Pipeline',
+    tech: 'TensorFlow · Apache Spark · GCP · OpenCV',
     description:
-      'Architectural transformation of a legacy monolith into a modern, event-driven microservices ecosystem. Implements the Strangler pattern for zero-downtime migration and high scalability.',
-    link: 'https://github.com/saitarrun/Monolith-to-microservices',
+      'End-to-end distributed ML pipeline for MRI scan classification. Leverages Spark for big data processing and cloud-native inference on GCP to achieve clinical-grade tumor detection accuracy.',
+    link: 'https://github.com/saitarrun/Brain-Tumor-Prediction-Using-Machine-Learning-and-Big-Data',
   },
 ];
 
