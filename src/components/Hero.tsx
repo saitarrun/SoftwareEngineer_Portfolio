@@ -128,24 +128,27 @@ export const Hero = () => {
                     </div>
                 </div>
 
-                {/* Tagline & CTA */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 pb-16">
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.4 }}
-                        className="text-sm sm:text-base md:text-lg leading-relaxed max-w-md"
-                        style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}
-                    >
-                        Software engineer with 3+ years building production-scale backend systems and AI-driven applications. Specialized in deploying ML models, scalable APIs, and cloud-native infrastructure.
-                    </motion.p>
-
+                {/* Tagline & CTA - 2 column on desktop */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-end pb-16">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
-                        className="flex flex-col sm:flex-row flex-wrap items-center sm:items-center gap-3 sm:gap-4"
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="flex flex-col gap-6"
                     >
+                        <p
+                            className="text-sm sm:text-base md:text-lg leading-relaxed"
+                            style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}
+                        >
+                            Software engineer with 3+ years building production-scale backend systems and AI-driven applications. Specialized in deploying ML models, scalable APIs, and cloud-native infrastructure.
+                        </p>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.5 }}
+                            className="flex flex-col sm:flex-row flex-wrap items-center sm:items-start gap-3 sm:gap-4 w-fit"
+                        >
                         <MagneticElement>
                             <a
                                 href="#projects"
@@ -172,6 +175,27 @@ export const Hero = () => {
                                 Let's connect
                             </motion.a>
                         </MagneticElement>
+                        </motion.div>
+                    </motion.div>
+
+                    {/* Right column: Stats (desktop only) */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                        className="hidden lg:grid grid-cols-2 gap-4"
+                    >
+                        {[
+                            { label: '3+', desc: 'Years Experience' },
+                            { label: '20+', desc: 'Projects Shipped' },
+                            { label: '5+', desc: 'Tech Stacks' },
+                            { label: '100%', desc: 'Uptime Avg' }
+                        ].map((stat, idx) => (
+                            <div key={idx} className="p-6 rounded-card bg-surface-container-low/40 ghost-border text-center">
+                                <div className="text-2xl font-black text-primary mb-2">{stat.label}</div>
+                                <div className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">{stat.desc}</div>
+                            </div>
+                        ))}
                     </motion.div>
                 </div>
             </div>
