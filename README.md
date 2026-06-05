@@ -126,14 +126,6 @@ npm run build
 npm run preview
 ```
 
-## Environment Variables
-
-Create a `.env` file for LinkedIn integration:
-
-```env
-VITE_LINKEDIN_ACCESS_TOKEN=your_token_here
-```
-
 ## Key Components
 
 ### Hero Section
@@ -205,10 +197,4 @@ Modify `src/three/` files to customize animations and effects. Each file control
 
 This project is personal work. Feel free to use it as a template for your own portfolio.
 
-## Contact
 
-For questions or feedback, reach out through the contact form on the site or via email.
-
----
-
-Built with ❤️ using React, TypeScript, and Three.js
