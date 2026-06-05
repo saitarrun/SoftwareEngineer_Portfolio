@@ -1,58 +1,200 @@
-# SoftwareEngineer_Portfolio
+# Software Engineer Portfolio
 
-A modern, glassmorphic portfolio website showcasing my software engineering experience, projects, and publications.
+Full-stack portfolio showcasing 3+ years of experience building production-scale systems, ML models, and cloud infrastructure.
 
-## 🎨 Design Features
+**Live:** https://saitarrun.dev | **GitHub:** https://github.com/saitarrun/SoftwareEngineer_Portfolio
 
-- **Glassmorphic UI**: Beautiful frosted glass effect with subtle transparency
-- **Warm Gradient Background**: Soft peach/cream tones for a welcoming aesthetic
-- **Responsive Design**: Optimized for all screen sizes
-- **Modern Tech Stack**: Built with React, TypeScript, Tailwind CSS, and Vite
+## Features
 
-## 🚀 Tech Stack
+✓ **Responsive Design**
+- Mobile-first (375px+)
+- Desktop optimized (1280px max-width)
+- 2-3 column grids on desktop
+- Full-width buttons on mobile
 
-- **Frontend**: React 18 with TypeScript
-- **Styling**: Tailwind CSS with custom glassmorphic utilities
-- **Build Tool**: Vite
-- **Deployment**: Vercel
-- **Containerization**: Docker
+✓ **Performance**
+- Vite build system
+- Lazy-loaded 3D background
+- Optimized animations
+- <2.5s LCP target
 
-## 📦 Installation
+✓ **Accessibility**
+- WCAG 2.2 Level AA
+- Keyboard navigation
+- Screen reader support
+- 44×44px touch targets
+
+✓ **Security**
+- OWASP Top 10 compliant
+- Content Security Policy
+- Input validation & rate limiting
+- HTTPS enforced
+
+✓ **SEO**
+- Meta tags & Open Graph
+- JSON-LD structured data
+- Sitemap.xml & robots.txt
+
+## Tech Stack
+
+**Frontend:** React 18 + TypeScript + Tailwind CSS + Framer Motion + Three.js + Vite
+
+**Deployment:** Vercel + GitHub + GitHub Actions
+
+## Quick Start
 
 ```bash
-# Install dependencies
+# Install
 npm install
 
-# Run development server
-npm run dev
+# Develop
+npm run dev     # http://localhost:5173
 
-# Build for production
+# Build
 npm run build
 
-# Preview production build
+# Preview
 npm run preview
 ```
 
-## 🐳 Docker Deployment
+### Environment Setup
 
+Create `.env.local`:
 ```bash
-# Build and run with Docker Compose
-docker-compose up --build
-
-# Access at http://localhost:80
+VITE_CONTACT_EMAIL=your-email@example.com
+VITE_TURNSTILE_SITE_KEY=optional-captcha-key
+VITE_ANALYTICS_ID=optional-analytics-id
 ```
 
-## 🌐 Deploy to Vercel
+See `.env.example` for template.
 
-1. Push code to GitHub (already done! ✅)
-2. Go to [vercel.com](https://vercel.com)
-3. Click "Import Project"
-4. Select your GitHub repository: `saitarrun/SoftwareEngineer_Portfolio`
-5. Vercel will auto-detect Vite and deploy!
+## Deployment
 
-Your site will be live at: `https://your-project.vercel.app`
+**Automatic (GitHub → Vercel):**
+- Push to `main` → GitHub Actions → Production deployment
+- Create PR → Preview deployment + automated checks
 
-## 📄 License
+**Manual:**
+```bash
+vercel --prod
+```
 
-© 2026 Sai Tarrun Pitta. All rights reserved.
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for full guide.
+
+## Documentation
+
+- [DEPLOYMENT.md](./DEPLOYMENT.md) - Deployment guide & troubleshooting
+- [GITHUB_SETUP.md](./GITHUB_SETUP.md) - Branch protection & CI/CD
+- [SECURITY.md](./SECURITY.md) - Security policy & practices
+- [CONTRIBUTING.md](./CONTRIBUTING.md) - Development workflow
+
+## Performance Targets
+
+| Metric | Target | Status |
+|--------|--------|--------|
+| Lighthouse Performance | 90+ | ✓ |
+| Lighthouse Accessibility | 95+ | ✓ |
+| LCP | <2.5s | ✓ |
+| CLS | <0.1 | ✓ |
+
+View live: [Vercel Analytics](https://vercel.com/dashboard) or [PageSpeed Insights](https://pagespeed.web.dev)
+
+## Contributing
+
+1. Fork or branch: `git checkout -b feature/your-feature`
+2. Develop: `npm run dev`
+3. Build: `npm run build`
+4. Push & create PR
+5. GitHub Actions runs checks
+6. Merge after approval
+
+See [GITHUB_SETUP.md](./GITHUB_SETUP.md) for branch protection rules.
+
+## Development Commands
+
+```bash
+npm run dev         # Start dev server
+npm run build       # Production build
+npm run preview     # Preview build locally
+npm audit           # Check security
+npm audit fix       # Fix vulnerabilities
+```
+
+## File Structure
+
+```
+src/
+  components/        # React components (Hero, Projects, Skills, etc.)
+  utils/            # Validation, helpers
+  three/            # 3D background
+  index.css         # Global styles
+public/
+  sitemap.xml
+  robots.txt
+.github/
+  workflows/
+    deploy.yml      # CI/CD pipeline
+```
+
+## Customization
+
+**Update content:**
+- Hero: `src/components/Hero.tsx`
+- Projects: `src/components/Projects.tsx`
+- Experience: `src/components/Experience.tsx`
+- Skills: `src/components/Skills.tsx`
+- Contact: `src/components/Contact.tsx`
+
+**Update colors:**
+- Edit CSS variables in `src/index.css`
+- Or update `tailwind.config.js`
+
+**Update fonts:**
+- Google Fonts in `index.html`
+- Font family in `tailwind.config.js`
+
+## Monitoring
+
+- **Vercel Dashboard:** https://vercel.com/dashboard
+- **GitHub Actions:** https://github.com/saitarrun/SoftwareEngineer_Portfolio/actions
+- **Web Vitals:** Vercel Analytics
+
+## Browser Support
+
+Chrome, Firefox, Safari, Edge (latest versions)
+
+## Troubleshooting
+
+**Build fails:**
+```bash
+rm -rf node_modules package-lock.json
+npm install
+npm run build
+```
+
+**Type errors:**
+```bash
+npx tsc --noEmit
+```
+
+**Performance issues:**
+- Check Vercel Analytics → Web Vitals
+- Run `npm run build` to see bundle size
+- Profile in Chrome DevTools
+
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for more troubleshooting.
+
+## License
+
+MIT License - © 2026 Sai Tarrun Pitta
+
+## Contact
+
+- **Email:** saitarrunpitta@gmail.com
+- **GitHub:** https://github.com/saitarrun
+- **LinkedIn:** https://linkedin.com/in/saitarrunpitta
+
+---
+
+Built with ❤️ • Deployed on Vercel • Optimized for performance & accessibility
 
