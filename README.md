@@ -2,6 +2,8 @@
 
 A modern, interactive personal portfolio website built with React, TypeScript, and Three.js. Features 3D graphics, smooth animations, and a responsive design showcasing professional experience, projects, and skills.
 
+**[🚀 Live Demo](https://saitarrun.vercel.app)** | [Repository](https://github.com/saitarrun/SoftwareEngineer_Portfolio)
+
 ## Features
 
 - **3D Interactive Background** — Particle effects, wireframe globe, matrix rain, and liquid blob animations powered by Three.js
@@ -9,7 +11,6 @@ A modern, interactive personal portfolio website built with React, TypeScript, a
 - **Responsive Design** — Mobile-optimized layouts using Tailwind CSS
 - **Dark Mode** — Beautiful dark theme with orange accents
 - **Multi-section Layout** — Hero, Experience, Projects, Skills, Education, and Contact sections
-- **LinkedIn Integration** — Fetch and display recent LinkedIn posts
 - **Contact Form** — Built-in contact form with validation
 - **High Performance** — Lazy loading, code splitting, and optimized bundle size
 
@@ -43,7 +44,6 @@ A modern, interactive personal portfolio website built with React, TypeScript, a
 │   │   ├── Education.tsx    # Education history
 │   │   ├── Experience.tsx   # Work experience section
 │   │   ├── Hero.tsx         # Hero section
-│   │   ├── LinkedInPosts.tsx# LinkedIn integration
 │   │   ├── Navbar.tsx       # Navigation bar
 │   │   ├── Projects.tsx     # Project showcase
 │   │   ├── Skills.tsx       # Technical skills
@@ -196,5 +196,3 @@ Modify `src/three/` files to customize animations and effects. Each file control
 ## License
 
 This project is personal work. Feel free to use it as a template for your own portfolio.
-
-
