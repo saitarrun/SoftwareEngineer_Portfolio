@@ -78,13 +78,13 @@ export const Hero = () => {
         <section id="about" className="relative overflow-hidden pt-20">
             {/* Content Container */}
             <div className="max-w-7xl mx-auto px-6 pt-12 relative z-10">
-                
+
                 {/* Available Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="flex flex-col gap-3 mb-12"
+                    className="flex flex-col gap-4 mb-16"
                 >
                     <div
                         className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-widest w-fit"
@@ -129,12 +129,12 @@ export const Hero = () => {
                 </div>
 
                 {/* Tagline & CTA */}
-                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 sm:gap-8 pb-10">
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 pb-16">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="text-xs sm:text-sm md:text-base leading-relaxed max-w-md"
+                        className="text-sm sm:text-base md:text-lg leading-relaxed max-w-md"
                         style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}
                     >
                         Software engineer with 3+ years building production-scale backend systems and AI-driven applications. Specialized in deploying ML models, scalable APIs, and cloud-native infrastructure.

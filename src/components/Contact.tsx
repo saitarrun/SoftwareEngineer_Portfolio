@@ -38,19 +38,19 @@ export const Contact = () => {
         <section id="contact" className="py-32 relative overflow-hidden">
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 {/* CTA Block with 3D Tilt */}
-                <motion.div 
+                <motion.div
                     ref={cardRef}
                     onMouseMove={handleMouseMove}
                     onMouseLeave={handleMouseLeave}
-                    style={{ 
-                        rotateX, 
+                    style={{
+                        rotateX,
                         rotateY,
-                        transformStyle: "preserve-3d" 
+                        transformStyle: "preserve-3d"
                     }}
                     initial={{ opacity: 0, y: 40 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative rounded-[3rem] overflow-hidden mb-32 p-12 md:p-24 bg-surface-container-low/40 ghost-border group transition-all duration-700 hover:border-primary/40 hover:shadow-[0_0_80px_rgba(255,146,73,0.1)]"
+                    className="relative rounded-card-lg overflow-hidden mb-24 p-12 md:p-16 bg-surface-container-low/40 ghost-border group transition-all duration-700 hover:border-primary/40 hover:shadow-card-hover"
                 >
                     <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
                         <div style={{ transform: "translateZ(40px)" }}>
