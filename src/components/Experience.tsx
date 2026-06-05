@@ -140,13 +140,13 @@ export const Experience = () => {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="mb-16"
+                    className="mb-24"
                 >
-                    <h2 className="text-5xl md:text-8xl font-black text-on-surface tracking-tighter uppercase" style={{ fontFamily: 'var(--font-display)' }}>Experience</h2>
+                    <h2 className="text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase" style={{ fontFamily: 'var(--font-display)' }}>Experience</h2>
                 </motion.div>
- 
-                {/* Experience list */}
-                <div className="flex flex-col gap-24">
+
+                {/* Experience grid: full width on mobile, 2-3 columns on desktop */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
                     {experiences.map((exp, index) => (
                         <ExperienceCard key={index} exp={exp} index={index} />
                     ))}

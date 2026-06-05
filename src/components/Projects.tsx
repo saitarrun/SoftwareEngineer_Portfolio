@@ -47,7 +47,7 @@ const ProjectCard = ({ project, index }: { project: any, index: number }) => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-            className={`group grid grid-cols-1 md:grid-cols-[120px_1fr_auto] gap-6 md:gap-16 items-start md:items-center p-8 md:p-12 rounded-card-lg transition-all duration-700 bg-surface-container-low/40 hover:bg-surface-container-low ghost-border w-full md:max-w-[90%] lg:max-w-[85%] hover:border-primary/40 hover:shadow-card-hover ${index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto'}`}
+            className="group grid grid-cols-1 gap-6 items-start p-8 md:p-12 rounded-card-lg transition-all duration-700 bg-surface-container-low/40 hover:bg-surface-container-low ghost-border hover:border-primary/40 hover:shadow-card-hover h-full"
         >
             {/* Number */}
             <span
@@ -125,7 +125,8 @@ export const Projects = () => {
                     <h2 className="text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase" style={{ fontFamily: 'var(--font-display)' }}>Selected Projects</h2>
                 </motion.div>
 
-                <div className="flex flex-col gap-16 md:gap-24">
+                {/* Desktop: 2-3 column grid | Mobile: single column */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
                     {projects.map((project, index) => (
                         <ProjectCard key={index} project={project} index={index} />
                     ))}
