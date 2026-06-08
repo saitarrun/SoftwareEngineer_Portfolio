@@ -31,6 +31,9 @@ const ALLOWED_ORIGINS = new Set([
   'https://saitarrun.dev',
   'https://www.saitarrun.dev',
   'http://localhost:5173',
+  'https://software-engineer-portfolio.vercel.app',
+  'https://software-engineer-portfolio-wuzw.vercel.app',
+  'https://software-engineer-portfolio-brown.vercel.app',
 ]);
 
 function isAllowedOrigin(origin: string | undefined): boolean {
