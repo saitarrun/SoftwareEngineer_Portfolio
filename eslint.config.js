@@ -34,6 +34,7 @@ export default [
         clearTimeout: true,
         setInterval: true,
         clearInterval: true,
+        getComputedStyle: true,
         React: true,
       },
     },
