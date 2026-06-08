@@ -276,7 +276,7 @@ export const ChatWidget = () => {
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close chat"
-                className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors text-white/50 hover:text-white outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+                className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors text-white/50 hover:text-white outline-none focus-visible:ring-2 focus-visible:ring-orange-500 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -301,10 +301,10 @@ export const ChatWidget = () => {
                     </div>
                   )}
                   <div
-                    className={`max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${
+                    className={`max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed select-text ${
                       msg.role === 'user'
-                        ? 'rounded-tr-sm text-black font-medium'
-                        : 'rounded-tl-sm text-white/90'
+                        ? 'rounded-tr-sm text-black font-medium cursor-default'
+                        : 'rounded-tl-sm text-white/90 cursor-text'
                     }`}
                     style={{
                       background:
@@ -394,7 +394,7 @@ export const ChatWidget = () => {
                   aria-label="Send message"
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.92 }}
-                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed outline-none focus-visible:ring-2 focus-visible:ring-orange-500 transition-opacity"
+                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed outline-none focus-visible:ring-2 focus-visible:ring-orange-500 transition-opacity"
                   style={{
                     background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
                   }}
