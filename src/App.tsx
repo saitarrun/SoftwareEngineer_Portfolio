@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { ReactLenis } from '@studio-freight/react-lenis';
+import { ReactLenis } from 'lenis/react';
 import { motion } from 'framer-motion';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
