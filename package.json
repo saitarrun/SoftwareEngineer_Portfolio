@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@react-three/drei": "^9.122.0",
-    "@react-three/fiber": "^8.18.0",
+    "@react-three/fiber": "^9.6.1",
     "@react-three/postprocessing": "^2.19.1",
     "@studio-freight/react-lenis": "^0.0.47",
     "@vercel/node": "^5.8.12",
