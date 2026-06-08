@@ -13,6 +13,10 @@ const BackgroundCanvas = lazy(() =>
   import('./three/BackgroundCanvas').then((m) => ({ default: m.BackgroundCanvas }))
 );
 
+const ChatWidget = lazy(() =>
+  import('./components/ChatWidget').then((m) => ({ default: m.ChatWidget }))
+);
+
 const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
@@ -44,6 +48,10 @@ function App() {
         </Suspense>
 
         <Navbar />
+
+        <Suspense fallback={null}>
+          <ChatWidget />
+        </Suspense>
 
         <main id="main" className="relative z-10 grid-mesh min-h-screen" role="main">
           <Hero />
