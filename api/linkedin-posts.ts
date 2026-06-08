@@ -25,8 +25,7 @@ function isRateLimited(ip: string): boolean {
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const ip =
-    (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 'unknown';
+  const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 'unknown';
 
   if (isRateLimited(ip)) {
     return res.status(429).json({ error: 'Too many requests. Please wait a moment.' });

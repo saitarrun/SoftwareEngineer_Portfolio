@@ -7,10 +7,14 @@ import { Hero } from './components/Hero';
 const BackgroundCanvas = lazy(() =>
   import('./three/BackgroundCanvas').then((m) => ({ default: m.BackgroundCanvas }))
 );
-const Experience = lazy(() => import('./components/Experience').then((m) => ({ default: m.Experience })));
+const Experience = lazy(() =>
+  import('./components/Experience').then((m) => ({ default: m.Experience }))
+);
 const Projects = lazy(() => import('./components/Projects').then((m) => ({ default: m.Projects })));
 const Skills = lazy(() => import('./components/Skills').then((m) => ({ default: m.Skills })));
-const Education = lazy(() => import('./components/Education').then((m) => ({ default: m.Education })));
+const Education = lazy(() =>
+  import('./components/Education').then((m) => ({ default: m.Education }))
+);
 const Contact = lazy(() => import('./components/Contact').then((m) => ({ default: m.Contact })));
 
 const CanvasLoader = () => (

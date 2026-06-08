@@ -39,84 +39,66 @@
     "id": "education-csuf",
     "topic": "education",
     "title": "California State University, Fullerton - Master of Science Computer Science",
-    "text": "Sai is pursuing a Master of Science in Computer Science at California State University, Fullerton from August 2024 to May 2026. He published a peer-reviewed IEEE conference paper titled 'Hardware Trojan Detection with Machine Learning and Power Side-Channels: A Post-Deployment Analysis' at IEEE CNS 2025. His coursework includes Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence, and Distributed Systems."
+    "text": "Sai is pursuing a Master of Science in Computer Science at California State University, Fullerton from August 2024 to May 2026. His coursework includes Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence, and Distributed Systems. He is focused on deep learning, security-first cloud architecture, and high-performance computing."
+  },
+  {
+    "id": "publication-ieee",
+    "topic": "education",
+    "title": "IEEE Publication: Hardware Trojan Detection",
+    "text": "Sai published a peer-reviewed IEEE conference paper titled 'Hardware Trojan Detection with Machine Learning and Power Side-Channels: A Post-Deployment Analysis' at IEEE CNS 2025. The research explores using power side-channel analysis and Random Forest models to detect dormant hardware Trojans in integrated circuits. By analyzing power consumption data from an Artix FPGA running AES-128, the model achieved 98% detection accuracy while reducing computational costs and improving noise robustness. Co-authored with Ashwin Koshy John, Jaya Dofe, and Jai Gopal Pandey."
   },
   {
     "id": "project-llm-knowledge-retrieval",
     "topic": "projects",
     "title": "LLM-Powered Knowledge Retrieval Platform",
-    "text": "Sai built a distributed full-stack LLM-Powered Knowledge Retrieval Platform using LangChain, Pinecone, FastAPI, React, and TypeScript. The platform features semantic search, vector indexing, and NLP-driven query matching. It improved information retrieval accuracy by 25% and reduced user search time by 40%. GitHub: https://github.com/saitarrun/LLM-Powered-Knowledge-Retrieval-Platform"
+    "text": "Sai built a distributed full-stack LLM-Powered Knowledge Retrieval Platform using LangChain, Pinecone, FastAPI, React, and TypeScript. The platform features semantic search, vector indexing, and NLP-driven query matching. It improved information retrieval accuracy by 25% and reduced user search time by 40% by leveraging RAG (Retrieval-Augmented Generation) architectures."
   },
   {
     "id": "project-portfolio",
     "topic": "projects",
     "title": "Production Portfolio & Personal Website",
-    "text": "Sai built his own production-grade portfolio and personal website using React, Vite, Tailwind CSS, TypeScript, and deployed on Vercel. It features performance optimization, security-first engineering, responsive design, and comprehensive code quality tooling including TypeScript strict mode, ESLint security rules, Prettier formatting, and git pre-commit and pre-push hooks. GitHub: https://github.com/saitarrun/SoftwareEngineer_Portfolio"
+    "text": "Sai's production-grade portfolio is built with React, Vite, Tailwind CSS, and TypeScript, deployed on Vercel. It features an advanced UI with Three.js 3D backgrounds (Orange Smoke, Particle Field, Grid Plane), Framer Motion animations, and Lenis smooth scrolling. The site includes a custom AI chatbot using a RAG architecture with OpenRouter API integration. It follows high code quality standards with TypeScript strict mode, ESLint security rules, and automated CI/CD via GitHub Actions."
   },
   {
     "id": "project-ecommerce",
     "topic": "projects",
     "title": "Event-Driven E-Commerce Modernization",
-    "text": "Sai built an event-driven e-commerce modernization project using Node.js, Kafka, PostgreSQL, Docker, and Kubernetes. He architected a monolith-to-microservices migration using the Strangler pattern, REST APIs, and event-driven design. This enables zero-downtime canary deployments, service-level isolation, and scalable order, payment, and inventory workflows for high-traffic e-commerce operations. GitHub: https://github.com/saitarrun/Event-Driven-Architecture"
+    "text": "Sai architected a monolith-to-microservices migration using the Strangler pattern, REST APIs, and event-driven design with Node.js, Kafka, and PostgreSQL. This project enables zero-downtime canary deployments and scalable order, payment, and inventory workflows, leveraging Docker and Kubernetes for container orchestration in high-traffic environments."
   },
   {
     "id": "project-brain-tumor",
     "topic": "projects",
     "title": "Brain Tumor Detection Pipeline",
-    "text": "Sai built an end-to-end brain tumor detection pipeline using TensorFlow, Apache Spark, GCP, and OpenCV. This is a distributed ML pipeline for MRI scan classification that leverages Spark for big data processing and cloud-native inference on Google Cloud Platform to achieve clinical-grade tumor detection accuracy. GitHub: https://github.com/saitarrun/Brain-Tumor-Prediction-Using-Machine-Learning-and-Big-Data"
+    "text": "Sai built an end-to-end brain tumor detection pipeline using TensorFlow, Apache Spark, GCP, and OpenCV. This distributed ML pipeline processes MRI scan data at scale, leveraging Spark for big data handling and GCP for cloud-native inference to achieve clinical-grade tumor detection accuracy."
   },
   {
-    "id": "skills-languages",
-    "topic": "skills",
-    "title": "Programming Languages",
-    "text": "Sai's programming languages include Python, Java, JavaScript, TypeScript, SQL, Go, and C++. He is proficient in both object-oriented and functional programming paradigms."
+    "id": "engineering-philosophy",
+    "topic": "profile",
+    "title": "Engineering Philosophy",
+    "text": "Sai's engineering philosophy centers on 'Performance by Design' and 'Security as a Default.' He prioritizes architectural reliability (99.99% uptime), observability (MTTR reduction), and performance optimization (reducing p99 latencies). He believes in building systems that are not just functional but also scalable, maintainable, and cost-efficient."
   },
   {
-    "id": "skills-frontend",
+    "id": "skills-comprehensive",
     "topic": "skills",
-    "title": "Frontend Development Skills",
-    "text": "Sai's frontend development skills include React, Next.js, HTML5, CSS3, Tailwind CSS, Material UI, and Redux. He builds responsive, accessible, and performance-optimized user interfaces."
+    "title": "Comprehensive Technical Skillset",
+    "text": "Sai is proficient in Python, Java, Go, TypeScript, and SQL. His backend expertise includes Spring Boot, Node.js, FastAPI, and gRPC. On the frontend, he specializes in React, Next.js, and Three.js. His infrastructure skills cover AWS, GCP, Docker, Kubernetes, and Terraform. He is also highly skilled in AI/ML tools like TensorFlow, LangChain, Pinecone, and RAG systems."
   },
   {
-    "id": "skills-backend",
+    "id": "skills-ai-ml-depth",
     "topic": "skills",
-    "title": "Backend and API Skills",
-    "text": "Sai's backend and API skills include Spring Boot, Node.js, FastAPI, Django, Express, gRPC, GraphQL, REST APIs, and Microservices architecture. He has experience building high-throughput distributed services."
+    "title": "AI/ML and RAG Expertise",
+    "text": "Sai has deep expertise in building RAG (Retrieval-Augmented Generation) systems and agentic AI workflows. He uses LangChain for multi-agent orchestration, Pinecone for vector search, and LLM embeddings for semantic retrieval. His experience includes automating claims triage and building knowledge retrieval platforms with human-in-the-loop validation."
   },
   {
-    "id": "skills-data",
+    "id": "skills-cloud-devops-depth",
     "topic": "skills",
-    "title": "Data and Caching Skills",
-    "text": "Sai's data and caching skills include Redis, PostgreSQL, MongoDB, DynamoDB, Elasticsearch, Kafka, and RabbitMQ. He has hands-on experience with both SQL and NoSQL databases at scale."
+    "title": "Cloud Infrastructure and DevOps",
+    "text": "Sai is expert in AWS and GCP cloud architectures. He has experience with serverless computing (AWS Lambda), container orchestration (EKS, Kubernetes), and infrastructure as code (Terraform). He specializes in cloud cost optimization, having saved $15,000/month by optimizing EKS and ElastiCache usage."
   },
   {
-    "id": "skills-cloud",
+    "id": "skills-security-compliance",
     "topic": "skills",
-    "title": "Cloud and Infrastructure Skills",
-    "text": "Sai's cloud and infrastructure skills include AWS (Lambda, EKS, ElastiCache, API Gateway, S3, CloudWatch), GCP, Azure, Docker, Kubernetes, and Terraform. He has led cloud cost optimization projects saving $15,000 per month."
-  },
-  {
-    "id": "skills-devops",
-    "topic": "skills",
-    "title": "DevOps and Observability Skills",
-    "text": "Sai's DevOps and observability skills include Terraform, Jenkins, GitHub Actions, Prometheus, Grafana, and Splunk. He has built monitoring pipelines and CI/CD workflows that reduced deployment lead time by 50%."
-  },
-  {
-    "id": "skills-ml-ai",
-    "topic": "skills",
-    "title": "Machine Learning and AI Skills",
-    "text": "Sai's machine learning and AI skills include TensorFlow, PyTorch, scikit-learn, LangChain, LLMs, RAG Systems, Agentic AI, agentic workflows, prompt engineering, and feature engineering. He has built production-scale ML pipelines and LLM-based retrieval systems."
-  },
-  {
-    "id": "skills-testing",
-    "topic": "skills",
-    "title": "Testing and QA Skills",
-    "text": "Sai's testing and QA skills include Pytest, Selenium, unit testing, integration testing, performance testing, test-driven development (TDD), Postman, and code reviews."
-  },
-  {
-    "id": "skills-security",
-    "topic": "skills",
-    "title": "Security and Compliance Skills",
-    "text": "Sai's security and compliance skills include SOC 2, RBAC, ISO 27001, OAuth 2.0, OpenID Connect, JWT, and OWASP security standards. He has remediated 40+ high-severity vulnerabilities and implemented secure authentication systems."
+    "title": "Security, Compliance and Identity",
+    "text": "Sai implements high security standards including SOC 2, ISO 27001, and OWASP. He is experienced in RBAC, OAuth 2.0, OpenID Connect, and JWT for secure identity management. He has a track record of remediating high-severity vulnerabilities and securing transaction systems."
   }
 ]
