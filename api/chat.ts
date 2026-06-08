@@ -154,7 +154,7 @@ function retrieveLocal(query: string, topK = 6): KnowledgeChunk[] {
 function buildSystemPrompt(chunks: KnowledgeChunk[], isListQuery: boolean): string {
   const context = chunks.map((c) => `[${c.title}]\n${c.text}`).join('\n\n');
   const lengthRule = isListQuery
-    ? '- When the visitor asks to list or enumerate multiple items (projects, skills, jobs, etc.), describe each one clearly. Cover all items provided in the context.'
+    ? '- When the visitor asks to list or enumerate multiple items (projects, skills, jobs, etc.), describe each one clearly. Cover all items provided in the context. Bold the name or title of each item at the start of its description.'
     : '- Keep answers concise — 2 to 4 sentences unless the visitor asks for more detail.';
   return `You are a friendly AI assistant on Sai Tarrun Pitta's portfolio website. Your job is to chat with visitors and answer questions about Sai's background, experience, projects, and skills.
 
