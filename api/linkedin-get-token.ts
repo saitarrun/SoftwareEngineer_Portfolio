@@ -1,5 +1,14 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;');
+}
+
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const { code } = req.query;
 
@@ -20,7 +29,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       <body>
         <h1>LinkedIn Access Token Generator</h1>
         <p>Step 1: Click below to authorize</p>
-        <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=86x6nknxq3qk6g&redirect_uri=http://localhost:3000/api/linkedin-get-token&scope=profile,openid">
+        <a href="https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=${escapeHtml(process.env.LINKEDIN_CLIENT_ID || '')}&redirect_uri=http://localhost:3000/api/linkedin-get-token&scope=profile,openid">
           Authorize with LinkedIn
         </a>
 
@@ -29,8 +38,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
         <h2>Instructions</h2>
         <ol>
-          <li>Click "Authorize with LinkedIn" above</li>
-          <li>You'll be redirected back with an access token</li>
+          <li>Click &ldquo;Authorize with LinkedIn&rdquo; above</li>
+          <li>You&rsquo;ll be redirected back with an access token</li>
           <li>Copy the token and add to Vercel env var: <code>LINKEDIN_ACCESS_TOKEN</code></li>
           <li>Redeploy and posts will display automatically</li>
         </ol>
@@ -39,9 +48,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     `);
   }
 
-  const clientId = process.env.LINKEDIN_CLIENT_ID || '86x6nknxq3qk6g';
+  const clientId = process.env.LINKEDIN_CLIENT_ID;
   const clientSecret = process.env.LINKEDIN_CLIENT_SECRET;
   const redirectUri = 'https://software-engineer-portfolio-wuzw.vercel.app/api/linkedin-get-token';
+
+  if (!clientId || !clientSecret) {
+    return res.status(500).json({ error: 'LinkedIn OAuth not configured.' });
+  }
 
   try {
     const tokenResponse = await fetch('https://www.linkedin.com/oauth/v2/accessToken', {
@@ -52,8 +65,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       body: new URLSearchParams({
         grant_type: 'authorization_code',
         code: code as string,
-        client_id: clientId!,
-        client_secret: clientSecret!,
+        client_id: clientId,
+        client_secret: clientSecret,
         redirect_uri: redirectUri,
       }).toString(),
     });
@@ -61,8 +74,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const data = (await tokenResponse.json()) as any;
 
     if (!tokenResponse.ok) {
-      return res.status(400).json({ error: data.error_description || 'Token exchange failed' });
+      console.error('LinkedIn token error:', data.error_description || data.error);
+      return res.status(400).json({ error: 'Token exchange failed' });
     }
+
+    const safeToken = escapeHtml(String(data.access_token ?? ''));
+    const safeExpiry = escapeHtml(String(data.expires_in ?? ''));
 
     res.setHeader('Content-Type', 'text/html');
     return res.send(`
@@ -77,16 +94,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         </style>
       </head>
       <body>
-        <h2>✓ Token Generated</h2>
+        <h2>&#10003; Token Generated</h2>
         <p>Copy this token and add to Vercel as <code>LINKEDIN_ACCESS_TOKEN</code>:</p>
-        <div class="token">${data.access_token}</div>
-        <p>Expires in: ${data.expires_in} seconds</p>
-        <button onclick="navigator.clipboard.writeText('${data.access_token}')">Copy Token</button>
+        <div class="token" id="tok">${safeToken}</div>
+        <p>Expires in: ${safeExpiry} seconds</p>
+        <button onclick="navigator.clipboard.writeText(document.getElementById('tok').textContent||'')">Copy Token</button>
       </body>
       </html>
     `);
   } catch (error) {
-    console.error('Token error:', error);
-    res.status(500).json({ error: 'Token generation failed' });
+    console.error('Token error:', error instanceof Error ? error.message : String(error));
+    try {
+      res.status(500).json({ error: 'Token generation failed' });
+    } catch {
+      // response already sent
+    }
   }
 }
