@@ -92,6 +92,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(403).json({ error: 'Forbidden' });
   }
 
+  // Set CORS headers now so ALL subsequent responses (errors included) reach the browser
+  if (origin) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
+
   const ip =
     (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 'unknown';
 
@@ -150,10 +156,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
-  if (origin) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-    res.setHeader('Vary', 'Origin');
-  }
 
   try {
     const upstream = await fetch('https://openrouter.ai/api/v1/chat/completions', {
