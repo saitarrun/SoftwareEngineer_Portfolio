@@ -17,12 +17,81 @@ interface Message {
 }
 
 // ── Local BM25-style retrieval ────────────────────────────────────────────────
+const STOP_WORDS = new Set([
+  'about',
+  'all',
+  'also',
+  'and',
+  'are',
+  'can',
+  'did',
+  'does',
+  'for',
+  'from',
+  'get',
+  'got',
+  'has',
+  'have',
+  'his',
+  'how',
+  'its',
+  'let',
+  'like',
+  'make',
+  'more',
+  'not',
+  'now',
+  'one',
+  'our',
+  'out',
+  'own',
+  'sai',
+  'say',
+  'she',
+  'some',
+  'tell',
+  'than',
+  'that',
+  'the',
+  'them',
+  'then',
+  'there',
+  'they',
+  'this',
+  'use',
+  'was',
+  'what',
+  'when',
+  'who',
+  'why',
+  'will',
+  'with',
+  'you',
+  'your',
+  'tarrun',
+  'pitta',
+]);
+
+function stem(word: string): string {
+  if (word.length <= 4) return word;
+  if (word.endsWith('ing')) return word.slice(0, -3);
+  if (word.endsWith('tion')) return word.slice(0, -4);
+  if (word.endsWith('ies')) return word.slice(0, -3) + 'y';
+  if (word.endsWith('ves')) return word.slice(0, -3) + 'f';
+  if (word.endsWith('ed') && word.length > 5) return word.slice(0, -2);
+  if (word.endsWith('er') && word.length > 5) return word.slice(0, -2);
+  if (word.endsWith('ly') && word.length > 5) return word.slice(0, -2);
+  if (word.endsWith('s') && !word.endsWith('ss')) return word.slice(0, -1);
+  return word;
+}
+
 function tokenize(text: string): string[] {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, ' ')
     .split(/\s+/)
-    .filter((t) => t.length > 2);
+    .filter((t) => t.length > 2 && !STOP_WORDS.has(t))
+    .map(stem);
 }
 
 function editDistance(a: string, b: string): number {
