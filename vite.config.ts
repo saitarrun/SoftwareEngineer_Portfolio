@@ -11,11 +11,11 @@ export default defineConfig({
     },
   },
   build: {
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 500,
     rollupOptions: {
       output: {
         manualChunks: {
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
+          three: ['three', '@react-three/fiber', '@react-three/drei', '@react-three/postprocessing'],
           lenis: ['lenis', '@studio-freight/react-lenis'],
         },
       },

@@ -1,7 +1,8 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useRef } from 'react';
+import { education, type Education as EducationData } from '../data/portfolio';
 
-const EducationCard = ({ edu, index }: { edu: any; index: number }) => {
+const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Mouse tracking for magnetic effect
@@ -108,20 +109,6 @@ const EducationCard = ({ edu, index }: { edu: any; index: number }) => {
     </motion.div>
   );
 };
-
-const education = [
-  {
-    num: '01',
-    school: 'California State University, Fullerton',
-    degree: 'Master of Science, Computer Science',
-    period: 'Aug 2024 – May 2026',
-    location: 'Fullerton, CA',
-    description: [
-      'Published peer-reviewed IEEE conference paper: “Hardware Trojan Detection with Machine Learning and Power Side-Channels: A Post-Deployment Analysis” (IEEE CNS 2025)',
-      'Coursework: Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence',
-    ],
-  },
-];
 
 export const Education = () => {
   return (
