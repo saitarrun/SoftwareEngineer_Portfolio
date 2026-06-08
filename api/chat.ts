@@ -1,8 +1,50 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
-import knowledgeBase from '../src/data/knowledge-base.json';
-import { retrieveChunks as retrieve, type KnowledgeChunk } from '../src/utils/retrieval';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const knowledgeBase = require('./knowledge-base.json') as Chunk[];
+
+interface KnowledgeChunk {
+  id: string;
+  topic: string;
+  title: string;
+  text: string;
+}
 
 type Chunk = KnowledgeChunk;
+
+function tokenize(text: string): string[] {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, ' ')
+    .split(/\s+/)
+    .filter((t) => t.length > 2);
+}
+
+function scoreChunk(chunk: KnowledgeChunk, queryTokens: string[]): number {
+  const chunkTokens = tokenize(chunk.title + ' ' + chunk.text);
+  const chunkSet = new Set(chunkTokens);
+  let score = 0;
+  for (const token of queryTokens) {
+    if (chunkSet.has(token)) {
+      if (tokenize(chunk.title).includes(token)) score += 2;
+      else score += 1;
+    }
+  }
+  return score / Math.max(queryTokens.length, 1);
+}
+
+function retrieveChunks(query: string, chunks: KnowledgeChunk[], topK = 4): KnowledgeChunk[] {
+  const queryTokens = tokenize(query);
+  if (queryTokens.length === 0) return chunks.slice(0, topK);
+
+  return chunks
+    .map((chunk) => ({ chunk, score: scoreChunk(chunk, queryTokens) }))
+    .filter(({ score }) => score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, topK)
+    .map(({ chunk }) => chunk);
+}
 
 interface Message {
   role: 'user' | 'assistant';
@@ -40,18 +82,18 @@ function isAllowedOrigin(origin: string | undefined): boolean {
   if (!origin) return false;
   if (ALLOWED_ORIGINS.has(origin)) return true;
   // Vercel preview deployments for this project
-  return /^https:\/\/software-engineer-portfolio[a-z0-9-]*-saitarruns-projects\.vercel\.app$/.test(origin);
+  return /^https:\/\/software-engineer-portfolio[a-z0-9-]*-saitarruns-projects\.vercel\.app$/.test(
+    origin
+  );
 }
 
 // ── RAG ───────────────────────────────────────────────────────────────────────
-function retrieveChunks(query: string, topK = 4): Chunk[] {
-  return retrieve(query, knowledgeBase as Chunk[], topK);
+function getRelevantChunks(query: string, topK = 4): Chunk[] {
+  return retrieveChunks(query, knowledgeBase, topK);
 }
 
 function buildSystemPrompt(chunks: Chunk[]): string {
-  const context = chunks
-    .map((c) => `[${c.title}]\n${c.text}`)
-    .join('\n\n');
+  const context = chunks.map((c) => `[${c.title}]\n${c.text}`).join('\n\n');
 
   return `You are a helpful assistant on Sai Tarrun Pitta's portfolio website. Your job is to answer visitor questions about Sai's background, experience, projects, and skills.
 
@@ -101,8 +143,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     res.setHeader('Vary', 'Origin');
   }
 
-  const ip =
-    (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 'unknown';
+  const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 'unknown';
 
   if (isRateLimited(ip)) {
     return res.status(429).json({ error: 'Too many requests. Please wait a moment.' });
@@ -139,7 +180,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       (m) =>
         (m.role === 'user' || m.role === 'assistant') &&
         typeof m.content === 'string' &&
-        m.content.trim().length > 0,
+        m.content.trim().length > 0
     )
     .map((m) => ({
       role: m.role,
@@ -147,7 +188,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }));
 
   // RAG: retrieve relevant chunks
-  const chunks = retrieveChunks(sanitized);
+  const chunks = getRelevantChunks(sanitized);
   const systemPrompt = buildSystemPrompt(chunks);
 
   const messages = [

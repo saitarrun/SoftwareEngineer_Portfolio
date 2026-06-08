@@ -39,9 +39,7 @@ test.describe('Portfolio – navigation', () => {
   test('section anchor links have correct hrefs', async ({ page }) => {
     const links = ['experience', 'projects', 'skills', 'contact'];
     for (const id of links) {
-      await expect(
-        page.locator(`nav a[href="#${id}"]`).first()
-      ).toBeAttached();
+      await expect(page.locator(`nav a[href="#${id}"]`).first()).toBeAttached();
     }
   });
 });
@@ -49,7 +47,6 @@ test.describe('Portfolio – navigation', () => {
 test.describe('Portfolio – Hero section', () => {
   test('hero contains engineer name', async ({ page }) => {
     await page.goto('/');
-    const hero = page.locator('section, [class*="hero"], main').first();
     await expect(page.getByText(/Sai/i).first()).toBeVisible({ timeout: 10_000 });
   });
 
@@ -131,9 +128,9 @@ test.describe('Portfolio – Education section', () => {
   });
 
   test('Cal State Fullerton is listed', async ({ page }) => {
-    await expect(
-      page.getByText(/California State University|Cal State Fullerton/i)
-    ).toBeVisible({ timeout: 8_000 });
+    await expect(page.getByText(/California State University|Cal State Fullerton/i)).toBeVisible({
+      timeout: 8_000,
+    });
   });
 });
 
