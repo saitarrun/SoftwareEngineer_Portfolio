@@ -112,6 +112,33 @@ CONTEXT:
 ${context}`;
 }
 
+function isGreeting(query: string): boolean {
+  return /^(hi|hello|hey|howdy|yo)\b/i.test(query.trim());
+}
+
+function sentenceLimit(text: string, maxSentences = 3): string {
+  const sentences = text.match(/[^.!?]+[.!?]+/g) ?? [text];
+  return sentences.slice(0, maxSentences).join(' ').replace(/\s+/g, ' ').trim();
+}
+
+function buildFallbackAnswer(query: string, chunks: Chunk[]): string {
+  if (isGreeting(query)) {
+    return "Hi! I'm Sai's AI assistant. Ask me about his experience, projects, skills, education, or contact details.";
+  }
+
+  if (chunks.length === 0) {
+    return "I don't have enough information to answer that from Sai's portfolio. Please check Sai's LinkedIn or GitHub for more details.";
+  }
+
+  const primary = chunks[0];
+  return sentenceLimit(primary.text, 3);
+}
+
+function writeSseAnswer(res: VercelResponse, answer: string): void {
+  res.write(`data: ${JSON.stringify({ delta: answer })}\n\n`);
+  res.write('data: [DONE]\n\n');
+}
+
 // ── Handler ───────────────────────────────────────────────────────────────────
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const origin = req.headers.origin as string | undefined;
@@ -150,9 +177,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   const apiKey = process.env.OPENROUTER_API_KEY;
-  if (!apiKey) {
-    return res.status(500).json({ error: 'Chat service is not configured.' });
-  }
 
   let message: string;
   let history: Message[];
@@ -201,6 +225,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Cache-Control', 'no-cache');
   res.setHeader('Connection', 'keep-alive');
 
+  const fallbackAnswer = buildFallbackAnswer(sanitized, chunks);
+
+  if (!apiKey) {
+    writeSseAnswer(res, fallbackAnswer);
+    return res.end();
+  }
+
   try {
     const upstream = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
@@ -222,12 +253,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!upstream.ok) {
       const errText = await upstream.text();
       console.error('OpenRouter error:', upstream.status, errText);
-      res.write(`data: ${JSON.stringify({ error: 'LLM service error' })}\n\n`);
+      writeSseAnswer(res, fallbackAnswer);
       return res.end();
     }
 
     if (!upstream.body) {
-      res.write(`data: ${JSON.stringify({ error: 'No response body' })}\n\n`);
+      writeSseAnswer(res, fallbackAnswer);
       return res.end();
     }
 
@@ -262,7 +293,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
   } catch (err) {
     console.error('Chat handler error:', err);
-    res.write(`data: ${JSON.stringify({ error: 'Unexpected error' })}\n\n`);
+    writeSseAnswer(res, fallbackAnswer);
   }
 
   res.end();
