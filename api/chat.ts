@@ -13,21 +13,59 @@ interface KnowledgeChunk {
 
 type Chunk = KnowledgeChunk;
 
+const STOP_WORDS = new Set([
+  'about',
+  'are',
+  'build',
+  'built',
+  'did',
+  'does',
+  'for',
+  'has',
+  'have',
+  'his',
+  'sai',
+  'tell',
+  'the',
+  'what',
+]);
+
+const TOPIC_ALIASES: Record<string, string[]> = {
+  contact: ['contact', 'email', 'linkedin', 'github', 'phone'],
+  education: ['education', 'school', 'university', 'degree', 'csuf'],
+  experience: ['experience', 'work', 'worked', 'company', 'companies', 'job'],
+  profile: ['about', 'summary', 'available', 'availability'],
+  projects: ['project', 'projects'],
+  skills: ['skill', 'skills', 'technology', 'technologies', 'tech', 'tool', 'tools'],
+};
+
+function normalizeToken(token: string): string {
+  if (token.length > 4 && token.endsWith('ies')) return `${token.slice(0, -3)}y`;
+  if (token.length > 3 && token.endsWith('s')) return token.slice(0, -1);
+  return token;
+}
+
 function tokenize(text: string): string[] {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9\s]/g, ' ')
     .split(/\s+/)
-    .filter((t) => t.length > 2);
+    .map(normalizeToken)
+    .filter((t) => t.length > 2 && !STOP_WORDS.has(t));
 }
 
 function scoreChunk(chunk: KnowledgeChunk, queryTokens: string[]): number {
   const chunkTokens = tokenize(chunk.title + ' ' + chunk.text);
   const chunkSet = new Set(chunkTokens);
+  const titleSet = new Set(tokenize(chunk.title));
+  const topicMatches = TOPIC_ALIASES[chunk.topic]?.some((alias) =>
+    queryTokens.includes(normalizeToken(alias))
+  );
   let score = 0;
+  if (topicMatches) score += 3;
   for (const token of queryTokens) {
     if (chunkSet.has(token)) {
-      if (tokenize(chunk.title).includes(token)) score += 2;
+      if (titleSet.has(token)) score += 2;
       else score += 1;
     }
   }
@@ -118,7 +156,17 @@ function isGreeting(query: string): boolean {
 
 function sentenceLimit(text: string, maxSentences = 3): string {
   const sentences = text.match(/[^.!?]+[.!?]+/g) ?? [text];
-  return sentences.slice(0, maxSentences).join(' ').replace(/\s+/g, ' ').trim();
+  return sentences
+    .slice(0, maxSentences)
+    .join(' ')
+    .replace(/\bNode\.\s+js\b/g, 'Node.js')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function asksForTopic(query: string, topic: keyof typeof TOPIC_ALIASES): boolean {
+  const tokens = tokenize(query);
+  return TOPIC_ALIASES[topic].some((alias) => tokens.includes(normalizeToken(alias)));
 }
 
 function buildFallbackAnswer(query: string, chunks: Chunk[]): string {
@@ -128,6 +176,14 @@ function buildFallbackAnswer(query: string, chunks: Chunk[]): string {
 
   if (chunks.length === 0) {
     return "I don't have enough information to answer that from Sai's portfolio. Please check Sai's LinkedIn or GitHub for more details.";
+  }
+
+  if (asksForTopic(query, 'projects')) {
+    const projectChunks = chunks.filter((chunk) => chunk.topic === 'projects').slice(0, 4);
+    if (projectChunks.length > 1) {
+      const projectTitles = projectChunks.map((chunk) => chunk.title).join(', ');
+      return `Sai's featured projects include ${projectTitles}. ${sentenceLimit(projectChunks[0].text, 2)}`;
+    }
   }
 
   const primary = chunks[0];
