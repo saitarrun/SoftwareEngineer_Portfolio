@@ -170,7 +170,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         'X-Title': 'Sai Tarrun Portfolio Chatbot',
       },
       body: JSON.stringify({
-        model: 'nvidia/nemotron-3-ultra-253b-v1:free',
+        model: 'nvidia/nemotron-3-ultra-550b-a55b:free',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         stream: true,
         max_tokens: 512,
