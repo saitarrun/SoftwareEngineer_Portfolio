@@ -84,7 +84,17 @@ export const ChatWidget = () => {
       });
 
       if (!res.ok || !res.body) {
-        throw new Error('Request failed');
+        let userMessage = 'Sorry, something went wrong. Please try again.';
+        if (res.status === 429) {
+          userMessage = "You've sent too many messages. Please wait a moment and try again.";
+        } else if (res.status === 500 || res.status === 503) {
+          userMessage = 'The chat service is temporarily unavailable. Please try again in a moment.';
+        } else if (res.status === 403) {
+          userMessage = 'Access denied. Please try refreshing the page.';
+        }
+        const e = new Error('Request failed') as Error & { userMessage: string };
+        e.userMessage = userMessage;
+        throw e;
       }
 
       const reader = res.body.getReader();
@@ -136,13 +146,16 @@ export const ChatWidget = () => {
       });
     } catch (err: unknown) {
       if (err instanceof Error && err.name === 'AbortError') return;
+      const userMessage =
+        (err as Error & { userMessage?: string })?.userMessage ??
+        'Sorry, something went wrong. Please try again.';
       setMessages((prev) => {
         const updated = [...prev];
         const last = updated[updated.length - 1];
         if (last.role === 'assistant') {
           updated[updated.length - 1] = {
             ...last,
-            content: "Sorry, something went wrong. Please try again.",
+            content: userMessage,
             streaming: false,
           };
         }
