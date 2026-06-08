@@ -1,0 +1,122 @@
+[
+  {
+    "id": "profile-summary",
+    "topic": "profile",
+    "title": "About Sai Tarrun Pitta",
+    "text": "Sai Tarrun Pitta is a Full-Stack Software Engineer with 3+ years of experience designing and delivering scalable backend systems, distributed cloud platforms, and AI-enabled applications. He is skilled in building high-volume payment platforms, cloud infrastructure, RAG retrieval pipelines, and secure production systems, with a strong focus on reliability, performance optimization, and security-first engineering. He is currently available for full-time software engineer roles."
+  },
+  {
+    "id": "contact-info",
+    "topic": "contact",
+    "title": "Contact Information",
+    "text": "Sai Tarrun Pitta can be reached at email: saitarrunpitta@gmail.com. LinkedIn: linkedin.com/in/saitarrunpitta. GitHub: github.com/saitarrun. Portfolio website: https://saitarrun.dev. Phone: +1 (657) 751-9260."
+  },
+  {
+    "id": "availability",
+    "topic": "profile",
+    "title": "Job Availability",
+    "text": "Sai Tarrun Pitta is currently available for work and actively seeking full-time software engineer positions. He is open to backend, full-stack, and AI/ML engineering roles. He is based in California and has experience working both in the US and India."
+  },
+  {
+    "id": "experience-pacific-life",
+    "topic": "experience",
+    "title": "Pacific Life - Software Engineer Intern",
+    "text": "Sai worked at Pacific Life as a Software Engineer Intern from May 2025 to December 2025 in Newport Beach, California. He automated 98% of claims triage workflows by architecting a serverless ML/LLM service using AWS Lambda, Amazon API Gateway, TensorFlow, and LangChain multi-agent orchestration. He reduced claims processing time by 75% (from 3 hours to 45 minutes) and workflow failures by 30% by implementing human-in-the-loop validation checkpoints. He accelerated policy lookup by 98% and boosted claims processor productivity by 50% by engineering a secure RAG pipeline with LLM embeddings, Pinecone semantic search, source-cited responses, and access-controlled retrieval. He built a TypeScript API aggregation layer with Redis distributed caching, reducing dashboard load time from 4 seconds to 2 seconds (50% improvement) and API p99 latency from 300ms to 210ms. He integrated ML inference into an event-driven Kafka pipeline achieving under 100ms latency for risk updates on 5,000+ weekly claims with 99.99% reliability."
+  },
+  {
+    "id": "experience-accenture",
+    "topic": "experience",
+    "title": "Accenture - Software Engineer",
+    "text": "Sai worked at Accenture as a Software Engineer from July 2022 to June 2024 in Hyderabad, India. He scaled a gRPC-based transaction microservice to process 2 million+ daily transactions with 20,000 transactions per second peak throughput and 99.99% uptime using Protocol Buffers, idempotency keys, and Redis distributed locking. He led AWS cloud infrastructure optimization using Amazon EKS auto-scaling and Amazon ElastiCache connection pooling, reducing compute costs by 50% and cloud spending by 35% (saving $15,000 per month). He optimized SQL queries across distributed transaction systems using composite indexes and query refactoring, reducing latency by 60% and database CPU usage by 73%. He designed a reliability architecture with Amazon CloudWatch, Prometheus, and Splunk monitoring pipelines with automated alerts, reducing mean time to recovery (MTTR) by 25 times for business-critical services."
+  },
+  {
+    "id": "experience-cognizant",
+    "topic": "experience",
+    "title": "Cognizant - Software Engineer",
+    "text": "Sai worked at Cognizant as a Software Engineer from May 2021 to April 2022 in Hyderabad, India. He improved PostgreSQL query performance and resolved lock contention in Spring Boot services, reducing API latency by 52% (from 2.5 seconds to 1.2 seconds) and lowering p99 latency by 30%. He engineered an ML churn prediction system using scikit-learn and TensorFlow with React dashboards across 50,000 customers, achieving 12% churn reduction and 87% forecast accuracy. He built REST APIs exposing real-time churn predictions for 5,000+ customers, enabling proactive retention operations. He implemented RBAC and input validation, remediating 40+ high-severity vulnerabilities for a clean security audit. He standardized CI/CD with Docker and GitHub Actions, reducing release lead time by 50% and enabling daily deployments."
+  },
+  {
+    "id": "education-csuf",
+    "topic": "education",
+    "title": "California State University, Fullerton - Master of Science Computer Science",
+    "text": "Sai is pursuing a Master of Science in Computer Science at California State University, Fullerton from August 2024 to May 2026. He published a peer-reviewed IEEE conference paper titled 'Hardware Trojan Detection with Machine Learning and Power Side-Channels: A Post-Deployment Analysis' at IEEE CNS 2025. His coursework includes Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence, and Distributed Systems."
+  },
+  {
+    "id": "project-llm-knowledge-retrieval",
+    "topic": "projects",
+    "title": "LLM-Powered Knowledge Retrieval Platform",
+    "text": "Sai built a distributed full-stack LLM-Powered Knowledge Retrieval Platform using LangChain, Pinecone, FastAPI, React, and TypeScript. The platform features semantic search, vector indexing, and NLP-driven query matching. It improved information retrieval accuracy by 25% and reduced user search time by 40%. GitHub: https://github.com/saitarrun/LLM-Powered-Knowledge-Retrieval-Platform"
+  },
+  {
+    "id": "project-portfolio",
+    "topic": "projects",
+    "title": "Production Portfolio & Personal Website",
+    "text": "Sai built his own production-grade portfolio and personal website using React, Vite, Tailwind CSS, TypeScript, and deployed on Vercel. It features performance optimization, security-first engineering, responsive design, and comprehensive code quality tooling including TypeScript strict mode, ESLint security rules, Prettier formatting, and git pre-commit and pre-push hooks. GitHub: https://github.com/saitarrun/SoftwareEngineer_Portfolio"
+  },
+  {
+    "id": "project-ecommerce",
+    "topic": "projects",
+    "title": "Event-Driven E-Commerce Modernization",
+    "text": "Sai built an event-driven e-commerce modernization project using Node.js, Kafka, PostgreSQL, Docker, and Kubernetes. He architected a monolith-to-microservices migration using the Strangler pattern, REST APIs, and event-driven design. This enables zero-downtime canary deployments, service-level isolation, and scalable order, payment, and inventory workflows for high-traffic e-commerce operations. GitHub: https://github.com/saitarrun/Event-Driven-Architecture"
+  },
+  {
+    "id": "project-brain-tumor",
+    "topic": "projects",
+    "title": "Brain Tumor Detection Pipeline",
+    "text": "Sai built an end-to-end brain tumor detection pipeline using TensorFlow, Apache Spark, GCP, and OpenCV. This is a distributed ML pipeline for MRI scan classification that leverages Spark for big data processing and cloud-native inference on Google Cloud Platform to achieve clinical-grade tumor detection accuracy. GitHub: https://github.com/saitarrun/Brain-Tumor-Prediction-Using-Machine-Learning-and-Big-Data"
+  },
+  {
+    "id": "skills-languages",
+    "topic": "skills",
+    "title": "Programming Languages",
+    "text": "Sai's programming languages include Python, Java, JavaScript, TypeScript, SQL, Go, and C++. He is proficient in both object-oriented and functional programming paradigms."
+  },
+  {
+    "id": "skills-frontend",
+    "topic": "skills",
+    "title": "Frontend Development Skills",
+    "text": "Sai's frontend development skills include React, Next.js, HTML5, CSS3, Tailwind CSS, Material UI, and Redux. He builds responsive, accessible, and performance-optimized user interfaces."
+  },
+  {
+    "id": "skills-backend",
+    "topic": "skills",
+    "title": "Backend and API Skills",
+    "text": "Sai's backend and API skills include Spring Boot, Node.js, FastAPI, Django, Express, gRPC, GraphQL, REST APIs, and Microservices architecture. He has experience building high-throughput distributed services."
+  },
+  {
+    "id": "skills-data",
+    "topic": "skills",
+    "title": "Data and Caching Skills",
+    "text": "Sai's data and caching skills include Redis, PostgreSQL, MongoDB, DynamoDB, Elasticsearch, Kafka, and RabbitMQ. He has hands-on experience with both SQL and NoSQL databases at scale."
+  },
+  {
+    "id": "skills-cloud",
+    "topic": "skills",
+    "title": "Cloud and Infrastructure Skills",
+    "text": "Sai's cloud and infrastructure skills include AWS (Lambda, EKS, ElastiCache, API Gateway, S3, CloudWatch), GCP, Azure, Docker, Kubernetes, and Terraform. He has led cloud cost optimization projects saving $15,000 per month."
+  },
+  {
+    "id": "skills-devops",
+    "topic": "skills",
+    "title": "DevOps and Observability Skills",
+    "text": "Sai's DevOps and observability skills include Terraform, Jenkins, GitHub Actions, Prometheus, Grafana, and Splunk. He has built monitoring pipelines and CI/CD workflows that reduced deployment lead time by 50%."
+  },
+  {
+    "id": "skills-ml-ai",
+    "topic": "skills",
+    "title": "Machine Learning and AI Skills",
+    "text": "Sai's machine learning and AI skills include TensorFlow, PyTorch, scikit-learn, LangChain, LLMs, RAG Systems, Agentic AI, agentic workflows, prompt engineering, and feature engineering. He has built production-scale ML pipelines and LLM-based retrieval systems."
+  },
+  {
+    "id": "skills-testing",
+    "topic": "skills",
+    "title": "Testing and QA Skills",
+    "text": "Sai's testing and QA skills include Pytest, Selenium, unit testing, integration testing, performance testing, test-driven development (TDD), Postman, and code reviews."
+  },
+  {
+    "id": "skills-security",
+    "topic": "skills",
+    "title": "Security and Compliance Skills",
+    "text": "Sai's security and compliance skills include SOC 2, RBAC, ISO 27001, OAuth 2.0, OpenID Connect, JWT, and OWASP security standards. He has remediated 40+ high-severity vulnerabilities and implemented secure authentication systems."
+  }
+]
