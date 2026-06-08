@@ -1,12 +1,8 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import knowledgeBase from '../src/data/knowledge-base.json';
+import { retrieveChunks as retrieve, type KnowledgeChunk } from '../src/utils/retrieval';
 
-interface Chunk {
-  id: string;
-  topic: string;
-  title: string;
-  text: string;
-}
+type Chunk = KnowledgeChunk;
 
 interface Message {
   role: 'user' | 'assistant';
@@ -30,40 +26,8 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
-// BM25-inspired keyword retrieval
-function tokenize(text: string): string[] {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, ' ')
-    .split(/\s+/)
-    .filter((t) => t.length > 2);
-}
-
-function scoreChunk(chunk: Chunk, queryTokens: string[]): number {
-  const chunkTokens = tokenize(chunk.title + ' ' + chunk.text);
-  const chunkSet = new Set(chunkTokens);
-  let score = 0;
-  for (const token of queryTokens) {
-    if (chunkSet.has(token)) {
-      // Title matches count double
-      if (tokenize(chunk.title).includes(token)) score += 2;
-      else score += 1;
-    }
-  }
-  // Normalise by query length so short focused queries rank well
-  return score / Math.max(queryTokens.length, 1);
-}
-
 function retrieveChunks(query: string, topK = 4): Chunk[] {
-  const queryTokens = tokenize(query);
-  if (queryTokens.length === 0) return (knowledgeBase as Chunk[]).slice(0, topK);
-
-  return (knowledgeBase as Chunk[])
-    .map((chunk) => ({ chunk, score: scoreChunk(chunk, queryTokens) }))
-    .filter(({ score }) => score > 0)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, topK)
-    .map(({ chunk }) => chunk);
+  return retrieve(query, knowledgeBase as Chunk[], topK);
 }
 
 function buildSystemPrompt(chunks: Chunk[]): string {
