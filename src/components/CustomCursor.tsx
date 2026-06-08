@@ -20,10 +20,15 @@ export const CustomCursor = () => {
       const isInteractive =
         target.tagName === 'A' ||
         target.tagName === 'BUTTON' ||
+        target.tagName === 'TEXTAREA' ||
+        target.tagName === 'INPUT' ||
+        target.tagName === 'SELECT' ||
         target.closest('a') ||
         target.closest('button') ||
         target.closest('[role="button"]') ||
-        target.classList.contains('group');
+        target.closest('[role="dialog"]') ||
+        target.classList.contains('group') ||
+        window.getComputedStyle(target).cursor === 'pointer';
 
       setIsHovered(!!isInteractive);
     };

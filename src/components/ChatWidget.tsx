@@ -16,15 +16,17 @@ function renderContent(text: string): React.ReactNode[] {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
     }
     // Strip stray markdown symbols: #, `, ~~, --, ---
-    const clean = part.replace(/^#{1,6}\s/gm, '').replace(/`{1,3}/g, '').replace(/~~|---/g, '');
+    const clean = part
+      .replace(/^#{1,6}\s/gm, '')
+      .replace(/`{1,3}/g, '')
+      .replace(/~~|---/g, '');
     return <span key={i}>{clean}</span>;
   });
 }
 
 const WELCOME: Message = {
   role: 'assistant',
-  content:
-    "Hi! I'm Sai's AI assistant. Ask me anything about his experience, projects, or skills.",
+  content: "Hi! I'm Sai's AI assistant. Ask me anything about his experience, projects, or skills.",
 };
 
 export const ChatWidget = () => {
@@ -63,7 +65,9 @@ export const ChatWidget = () => {
     setInput('');
     setSessionCount((c) => c + 1);
 
-    const history = messages.filter((m) => !m.streaming).map(({ role, content }) => ({ role, content }));
+    const history = messages
+      .filter((m) => !m.streaming)
+      .map(({ role, content }) => ({ role, content }));
 
     setMessages((prev) => [
       ...prev,
@@ -88,7 +92,8 @@ export const ChatWidget = () => {
         if (res.status === 429) {
           userMessage = "You've sent too many messages. Please wait a moment and try again.";
         } else if (res.status === 500 || res.status === 503) {
-          userMessage = 'The chat service is temporarily unavailable. Please try again in a moment.';
+          userMessage =
+            'The chat service is temporarily unavailable. Please try again in a moment.';
         } else if (res.status === 403) {
           userMessage = 'Access denied. Please try refreshing the page.';
         }
@@ -179,7 +184,7 @@ export const ChatWidget = () => {
       {/* Floating action button */}
       <motion.button
         onClick={() => setOpen((o) => !o)}
-        aria-label={open ? 'Close chat' : 'Open chat with Sai\'s AI assistant'}
+        aria-label={open ? 'Close chat' : "Open chat with Sai's AI assistant"}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg focus-visible:ring-2 focus-visible:ring-orange-500 outline-none"
         style={{
           background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
@@ -254,7 +259,9 @@ export const ChatWidget = () => {
             >
               <div
                 className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}
+                style={{
+                  background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
+                }}
               >
                 <Bot className="w-4 h-4 text-black" />
               </div>
@@ -269,7 +276,7 @@ export const ChatWidget = () => {
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close chat"
-                className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors text-white/50 hover:text-white outline-none focus-visible:ring-2 focus-visible:ring-orange-500"
+                className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors text-white/50 hover:text-white outline-none focus-visible:ring-2 focus-visible:ring-orange-500 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -285,16 +292,19 @@ export const ChatWidget = () => {
                   {msg.role === 'assistant' && (
                     <div
                       className="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 mr-2 mt-1"
-                      style={{ background: 'linear-gradient(135deg, var(--primary), var(--primary-container))' }}
+                      style={{
+                        background:
+                          'linear-gradient(135deg, var(--primary), var(--primary-container))',
+                      }}
                     >
                       <Bot className="w-3 h-3 text-black" />
                     </div>
                   )}
                   <div
-                    className={`max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed ${
+                    className={`max-w-[80%] px-3.5 py-2.5 rounded-2xl text-sm leading-relaxed select-text ${
                       msg.role === 'user'
-                        ? 'rounded-tr-sm text-black font-medium'
-                        : 'rounded-tl-sm text-white/90'
+                        ? 'rounded-tr-sm text-black font-medium cursor-default'
+                        : 'rounded-tl-sm text-white/90 cursor-text'
                     }`}
                     style={{
                       background:
@@ -346,13 +356,19 @@ export const ChatWidget = () => {
               style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
             >
               {sessionCount >= 20 && (
-                <p className="text-xs text-center mb-2" style={{ color: 'var(--on-surface-variant)' }}>
+                <p
+                  className="text-xs text-center mb-2"
+                  style={{ color: 'var(--on-surface-variant)' }}
+                >
                   Session limit reached. Refresh to continue.
                 </p>
               )}
               <div
                 className="flex items-end gap-2 rounded-xl px-3 py-2"
-                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.08)' }}
+                style={{
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                }}
               >
                 <textarea
                   ref={inputRef}
@@ -378,7 +394,7 @@ export const ChatWidget = () => {
                   aria-label="Send message"
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.92 }}
-                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 disabled:opacity-40 disabled:cursor-not-allowed outline-none focus-visible:ring-2 focus-visible:ring-orange-500 transition-opacity"
+                  className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed outline-none focus-visible:ring-2 focus-visible:ring-orange-500 transition-opacity"
                   style={{
                     background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
                   }}
