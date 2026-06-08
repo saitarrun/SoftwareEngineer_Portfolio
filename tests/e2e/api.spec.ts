@@ -1,5 +1,10 @@
 import { test, expect } from '@playwright/test';
-import { tokenize, scoreChunk, retrieveChunks, type KnowledgeChunk } from '../../src/utils/retrieval';
+import {
+  tokenize,
+  scoreChunk,
+  retrieveChunks,
+  type KnowledgeChunk,
+} from '../../src/utils/retrieval';
 import knowledgeBase from '../../src/data/knowledge-base.json';
 
 const chunks = knowledgeBase as KnowledgeChunk[];
@@ -188,7 +193,14 @@ test.describe('knowledge-base.json – schema', () => {
   });
 
   test('all topic values are valid enum members', () => {
-    const validTopics = new Set(['profile', 'experience', 'education', 'projects', 'skills', 'contact']);
+    const validTopics = new Set([
+      'profile',
+      'experience',
+      'education',
+      'projects',
+      'skills',
+      'contact',
+    ]);
     chunks.forEach((c) => {
       expect(validTopics.has(c.topic)).toBe(true);
     });

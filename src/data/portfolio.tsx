@@ -1,4 +1,14 @@
-import { Database, Layout, Terminal, Server, Cloud, Activity, Brain, Shield, Lock } from 'lucide-react';
+import {
+  Database,
+  Layout,
+  Terminal,
+  Server,
+  Cloud,
+  Activity,
+  Brain,
+  Shield,
+  Lock,
+} from 'lucide-react';
 
 export interface Experience {
   num: string;
@@ -129,7 +139,16 @@ export const skillGroups: SkillGroup[] = [
     num: '03',
     title: 'Backend & APIs',
     icon: <Server className="w-6 h-6" />,
-    skills: ['Spring Boot', 'Node.js', 'FastAPI', 'Django', 'gRPC', 'GraphQL', 'REST APIs', 'Microservices'],
+    skills: [
+      'Spring Boot',
+      'Node.js',
+      'FastAPI',
+      'Django',
+      'gRPC',
+      'GraphQL',
+      'REST APIs',
+      'Microservices',
+    ],
   },
   {
     num: '04',

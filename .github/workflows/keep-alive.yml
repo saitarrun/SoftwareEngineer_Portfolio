@@ -1,0 +1,22 @@
+name: Keep Supabase Alive
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight UTC
+  workflow_dispatch: # Allows you to run it manually from the Actions tab
+
+jobs:
+  ping_db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase Database
+        run: |
+          curl -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/rpc/match_documents" \
+          -H "apikey: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+          -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+            "query_embedding": [0.1],
+            "match_threshold": 0.5,
+            "match_count": 1
+          }'

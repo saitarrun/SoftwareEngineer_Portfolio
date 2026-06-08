@@ -7,8 +7,6 @@ const SSE_RESPONSE = [
   'data: [DONE]\n\n',
 ].join('');
 
-const SSE_EMPTY_RESPONSE = ['data: {"delta":"I don\'t have that information."}\n\n', 'data: [DONE]\n\n'].join('');
-
 async function mockChatAPI(page: import('@playwright/test').Page, body = SSE_RESPONSE) {
   await page.route('/api/chat', (route) =>
     route.fulfill({
@@ -63,10 +61,9 @@ test.describe('ChatWidget – panel open/close', () => {
 
   test('chat panel shows welcome message', async ({ page }) => {
     await page.getByLabel(/open chat/i).click();
-    await expect(page.getByRole('dialog')).toContainText(
-      "Hi! I'm Sai's AI assistant",
-      { timeout: 3_000 }
-    );
+    await expect(page.getByRole('dialog')).toContainText("Hi! I'm Sai's AI assistant", {
+      timeout: 3_000,
+    });
   });
 
   test('clicking X button closes the panel', async ({ page }) => {
@@ -164,7 +161,9 @@ test.describe('ChatWidget – streaming and rendering', () => {
     await expect(page.getByRole('dialog')).toContainText('Pacific Life', { timeout: 8_000 });
 
     // **Pacific Life** should render as <strong>Pacific Life</strong>
-    const boldEl = page.locator('dialog strong, [role="dialog"] strong').filter({ hasText: 'Pacific Life' });
+    const boldEl = page
+      .locator('dialog strong, [role="dialog"] strong')
+      .filter({ hasText: 'Pacific Life' });
     await expect(boldEl).toBeVisible({ timeout: 5_000 });
   });
 
@@ -210,7 +209,7 @@ test.describe('ChatWidget – streaming and rendering', () => {
     );
 
     const input = page.getByLabel('Chat message input');
-    await input.fill('What is Sai\'s email?');
+    await input.fill("What is Sai's email?");
     await input.press('Enter');
 
     await expect(page.getByRole('dialog')).toContainText("couldn't retrieve", { timeout: 5_000 });

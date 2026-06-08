@@ -15,6 +15,7 @@
     "test": "playwright test",
     "test:e2e": "playwright test",
     "test:report": "playwright show-report",
+    "seed:kb": "tsx scripts/seed-knowledge-base.ts",
     "check": "npm run type-check && npm run lint && npm run format:check && npm run build"
   },
   "dependencies": {
