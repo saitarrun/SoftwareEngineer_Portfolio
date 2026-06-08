@@ -178,6 +178,11 @@ function buildFallbackAnswer(query: string, chunks: Chunk[]): string {
     return "I don't have enough information to answer that from Sai's portfolio. Please check Sai's LinkedIn or GitHub for more details.";
   }
 
+  if (asksForTopic(query, 'contact')) {
+    const contactChunk = chunks.find((chunk) => chunk.topic === 'contact');
+    if (contactChunk) return contactChunk.text;
+  }
+
   if (asksForTopic(query, 'projects')) {
     const projectChunks = chunks.filter((chunk) => chunk.topic === 'projects').slice(0, 4);
     if (projectChunks.length > 1) {
