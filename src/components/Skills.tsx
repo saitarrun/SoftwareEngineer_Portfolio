@@ -1,18 +1,8 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import {
-  Database,
-  Layout,
-  Terminal,
-  Server,
-  Cloud,
-  Activity,
-  Brain,
-  Shield,
-  Lock,
-} from 'lucide-react';
 import { useRef } from 'react';
+import { skillGroups, type SkillGroup } from '../data/portfolio';
 
-const SkillCard = ({ group, index }: { group: any; index: number }) => {
+const SkillCard = ({ group, index }: { group: SkillGroup; index: number }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Mouse tracking for magnetic effect
@@ -102,72 +92,6 @@ const SkillCard = ({ group, index }: { group: any; index: number }) => {
     </motion.div>
   );
 };
-
-const skillGroups = [
-  {
-    num: '01',
-    title: 'Programming Languages',
-    icon: <Terminal className="w-6 h-6" />,
-    skills: ['Python', 'Java', 'JavaScript', 'SQL', 'C++', 'TypeScript'],
-  },
-  {
-    num: '02',
-    title: 'Frontend Development',
-    icon: <Layout className="w-6 h-6" />,
-    skills: ['React', 'Next.js', 'HTML5/CSS3', 'Tailwind CSS', 'Material UI'],
-  },
-  {
-    num: '03',
-    title: 'Backend & APIs',
-    icon: <Server className="w-6 h-6" />,
-    skills: [
-      'Spring Boot',
-      'Node.js',
-      'FastAPI',
-      'Django',
-      'gRPC',
-      'GraphQL',
-      'REST APIs',
-      'Microservices',
-    ],
-  },
-  {
-    num: '04',
-    title: 'Data & Caching',
-    icon: <Database className="w-6 h-6" />,
-    skills: ['Redis', 'PostgreSQL', 'MongoDB', 'DynamoDB', 'Elasticsearch', 'Kafka', 'RabbitMQ'],
-  },
-  {
-    num: '05',
-    title: 'Cloud & Infrastructure',
-    icon: <Cloud className="w-6 h-6" />,
-    skills: ['AWS', 'GCP', 'Azure', 'Docker', 'Kubernetes', 'Lambda', 'S3', 'API Gateway'],
-  },
-  {
-    num: '06',
-    title: 'DevOps & Observability',
-    icon: <Activity className="w-6 h-6" />,
-    skills: ['Terraform', 'Jenkins', 'GitHub Actions', 'Prometheus', 'Grafana', 'Splunk'],
-  },
-  {
-    num: '07',
-    title: 'Machine Learning & AI',
-    icon: <Brain className="w-6 h-6" />,
-    skills: ['TensorFlow', 'PyTorch', 'Langchain', 'LLMs', 'RAG Systems', 'Feature Engineering'],
-  },
-  {
-    num: '08',
-    title: 'Testing & QA',
-    icon: <Shield className="w-6 h-6" />,
-    skills: ['Pytest', 'Selenium', 'Performance Testing', 'Optimization', 'Postman', 'Debugging'],
-  },
-  {
-    num: '09',
-    title: 'Compliance & Security',
-    icon: <Lock className="w-6 h-6" />,
-    skills: ['SOC 2', 'RBAC', 'ISO 27001', 'OAuth 2.0', 'JWT', 'OWASP'],
-  },
-];
 
 export const Skills = () => {
   return (

@@ -1,8 +1,9 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useRef } from 'react';
+import { projects, type Project } from '../data/portfolio';
 
-const ProjectCard = ({ project, index }: { project: any; index: number }) => {
+const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Mouse tracking for magnetic effect
@@ -95,41 +96,6 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
     </motion.div>
   );
 };
-
-const projects = [
-  {
-    num: '01',
-    title: 'LLM-Powered Knowledge Retrieval Platform',
-    tech: 'LangChain · Pinecone · FastAPI · React · TypeScript',
-    description:
-      'Distributed full-stack knowledge retrieval platform with semantic search, vector indexing, and NLP-driven query matching. Improved information retrieval accuracy by 25% and reduced user search time by 40%.',
-    link: 'https://github.com/saitarrun/LLM-Powered-Knowledge-Retrieval-Platform',
-  },
-  {
-    num: '02',
-    title: 'Production Portfolio & Personal Website',
-    tech: 'React · Vite · Tailwind · TypeScript · Vercel',
-    description:
-      'Performance-optimized portfolio with security-first engineering, responsive design, and comprehensive code quality tooling. Features TypeScript strict mode, ESLint security rules, Prettier formatting, and git pre-commit/pre-push hooks.',
-    link: 'https://github.com/saitarrun/SoftwareEngineer_Portfolio',
-  },
-  {
-    num: '03',
-    title: 'Event-Driven E-Commerce Modernization',
-    tech: 'Node.js · Kafka · PostgreSQL · Docker · Kubernetes',
-    description:
-      'Monolith-to-microservices migration using Strangler pattern with REST APIs and event-driven design. Enables zero-downtime canary deployments, service-level isolation, and scalable order, payment, and inventory workflows.',
-    link: 'https://github.com/saitarrun/Event-Driven-Architecture',
-  },
-  {
-    num: '04',
-    title: 'Brain Tumor Detection Pipeline',
-    tech: 'TensorFlow · Apache Spark · GCP · OpenCV',
-    description:
-      'End-to-end distributed ML pipeline for MRI scan classification. Leverages Spark for big data processing and cloud-native inference on GCP to achieve clinical-grade tumor detection accuracy.',
-    link: 'https://github.com/saitarrun/Brain-Tumor-Prediction-Using-Machine-Learning-and-Big-Data',
-  },
-];
 
 export const Projects = () => {
   return (
