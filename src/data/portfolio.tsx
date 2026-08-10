@@ -98,6 +98,38 @@ export const experiences: Experience[] = [
 export const projects: Project[] = [
   {
     num: '01',
+    title: 'DevForge-AI',
+    tech: 'TypeScript · Node.js · Claude Code · Agentic SDLC Orchestrator',
+    description:
+      'An agentic SDLC orchestrator featuring 10 role-specific agents (PM, UX, Architect, Security, etc.) automating the complete build-to-operate delivery pipeline across structured feedback loops and quality gates.',
+    link: 'https://github.com/saitarrun/devforge-ai',
+  },
+  {
+    num: '02',
+    title: 'SDLC AI Workflow',
+    tech: 'Claude Code Plugin · JavaScript · Custom Commands · Knowledge Skills',
+    description:
+      'A comprehensive development plugin featuring 20 role-specific agents, 12 knowledge skills, and 8 commands configured to automate complex software engineering lifecycles and pipeline iterations.',
+    link: 'https://github.com/saitarrun/sdlc-ai-workflow',
+  },
+  {
+    num: '03',
+    title: 'Rent Application',
+    tech: 'Solidity · Ethereum · React · Vite · Node.js · Prisma',
+    description:
+      'Decentralized property management and rental agreement portal featuring smart contract rent collection, digital leases, secure e-signatures, and tenant repair workflows.',
+    link: 'https://github.com/saitarrun/Rent_Application',
+  },
+  {
+    num: '04',
+    title: 'Agentic Context Compression Framework',
+    tech: 'TypeScript · Node.js · LLM Context Optimization · Agentic Systems',
+    description:
+      'A Headroom-inspired context management framework that dynamically summarizes, prunes, and consolidates agent history and tool logs to prevent token rot and minimize api costs during long sessions.',
+    link: 'https://github.com/saitarrun/agentic_context_compression_framework',
+  },
+  {
+    num: '05',
     title: 'Semantic Code Intelligence Platform',
     tech: 'Python · RAG · BM25 · Dense Vector Search · Cross-Encoder Reranking',
     description:
@@ -105,14 +137,76 @@ export const projects: Project[] = [
     link: 'https://github.com/saitarrun',
   },
   {
-    num: '02',
+    num: '06',
     title: 'Open-SWE Open-Source Contributor',
     tech: 'Open-SWE · Docker · LLM Providers · Sandbox Integration',
     description:
       "Delivered 5 merged pull requests to LangChain's Open-SWE framework by implementing Docker sandbox integration and extending compatibility across multiple large language model providers.",
     link: 'https://github.com/langchain-ai/open-swe',
   },
+  {
+    num: '07',
+    title: 'OpenClaw Open-Source Contributor',
+    tech: 'OpenClaw · TypeScript · Node.js · Exa.ai API · Neural Web Search',
+    description:
+      'Contributed Exa.ai neural search provider integration to OpenClaw. Debugged and resolved configuration regression issues related to local dotenv parsing safety.',
+    link: 'https://github.com/saitarrun/openclaw',
+  },
+  {
+    num: '08',
+    title: 'LLM-Powered Knowledge Retrieval Platform',
+    tech: 'Python · FastAPI · Pinecone · LangChain · Vector DB',
+    description:
+      'High-performance knowledge retrieval platform featuring custom document parsing, dense embeddings vectorization, semantic caching, and citation-backed Q&A loops.',
+    link: 'https://github.com/saitarrun/LLM-Powered-Knowledge-Retrieval-Platform',
+  },
+  {
+    num: '09',
+    title: 'Sanctuary Personal Therapist',
+    tech: 'Python · LLMs · Speech-to-Text · AI Agents · Conversational AI',
+    description:
+      'Voice-enabled personal therapeutic assistant utilizing sentiment classification models, speech recognition, and empathetic response synthesis pipelines.',
+    link: 'https://github.com/saitarrun/Sanctuary-Personal-Therapist.git',
+  },
+  {
+    num: '10',
+    title: 'DeepGesture',
+    tech: 'Python · PyTorch · Computer Vision · Deep Learning · Real-time Inference',
+    description:
+      'Convolutional neural network model designed for high-accuracy, real-time hand gesture recognition and camera control triggers.',
+    link: 'https://github.com/saitarrun/DeepGesture',
+  },
+  {
+    num: '11',
+    title: 'ANPR Computer Vision',
+    tech: 'Python · OpenCV · YOLO · PyTesseract · OCR',
+    description:
+      'Automated Number Plate Recognition system combining YOLO-based object detection bounding boxes with PyTesseract OCR engines for high-speed capture.',
+    link: 'https://github.com/saitarrun/ANPR_ComputerVision',
+  },
+  {
+    num: '12',
+    title: 'Brain Tumor Prediction System',
+    tech: 'Python · Machine Learning · Big Data · Spark · Deep Learning',
+    description:
+      'Distributed machine learning pipeline built on Apache Spark processing large MRI medical imaging datasets to detect and predict brain tumor formations.',
+    link: 'https://github.com/saitarrun/Brain-Tumor-Prediction-Using-Machine-Learning-and-Big-Data',
+  },
+  {
+    num: '13',
+    title: 'Xploit404',
+    tech: 'Python · Penetration Testing · Network Security · Security Auditing',
+    description:
+      'A penetration testing toolkit designed for network security scanning, vulnerability identification, and automated security auditing operations.',
+    link: 'https://github.com/saitarrun/Xploit404',
+  },
 ];
+
+
+
+
+
+
 
 export const skillGroups: SkillGroup[] = [
   {

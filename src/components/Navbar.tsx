@@ -8,34 +8,46 @@ export const Navbar = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const { scrollYProgress } = useScroll();
 
-  const navItems = ['Experience', 'Projects', 'Skills', 'Publications', 'Contact'];
+  const navItems = ['About', 'Experience', 'Education', 'Projects', 'Skills', 'Publications', 'Contact'];
 
-  // Scroll spy active section tracker logic
+
+  // Scroll spy active section tracker logic using real-time viewport bounding rect calculations
   useEffect(() => {
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -45% 0px', // Focus window is top to middle region of viewport
-      threshold: 0.05,
-    };
+    const handleScroll = () => {
+      const sections = ['hero', 'experience', 'education', 'projects', 'skills', 'publications', 'contact'];
+      
+      // Target trigger line is 200px from the top of the viewport
+      const triggerPoint = 200; 
+      
+      let currentSection = 'hero';
 
-    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (!el) continue;
+
+        const rect = el.getBoundingClientRect();
+        
+        // If the top of the section has scrolled past the trigger point
+        // and the bottom of the section is still below the trigger point
+        if (rect.top <= triggerPoint && rect.bottom > triggerPoint) {
+          currentSection = sectionId;
+          break;
         }
-      });
+      }
+
+      // Map 'hero' back to 'about' for navbar activation comparison
+      setActiveSection(currentSection === 'hero' ? 'about' : currentSection);
     };
 
-    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Trigger immediately
+    handleScroll();
 
-    // Watch all matching page sections
-    ['hero', 'experience', 'projects', 'skills', 'publications', 'contact'].forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
-    return () => observer.disconnect();
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+
+
 
 
   return (
@@ -84,13 +96,14 @@ export const Navbar = () => {
             return (
               <MagneticElement key={item}>
                 <a
-                  href={`#${item.toLowerCase()}`}
+                  href={item.toLowerCase() === 'about' ? '#hero' : `#${item.toLowerCase()}`}
                   className={`text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-orange-500 rounded px-3 py-1.5 outline-none relative`}
                   style={{
                     color: isCurrent ? 'var(--primary)' : 'var(--on-surface-variant)',
                     fontFamily: 'var(--font-body)',
                   }}
                 >
+
                   {item}
                   {isCurrent && (
                     <>
@@ -98,16 +111,17 @@ export const Navbar = () => {
                       <motion.div
                         layoutId="activeIndicator"
                         className="absolute bottom-0 left-3 right-3 h-[2.5px] bg-primary rounded-full z-10 shadow-[0_0_12px_rgba(251,120,0,0.8)]"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        transition={{ type: 'spring', stiffness: 80, damping: 15, mass: 0.8 }}
                       />
                       {/* Highly visible ambient background glow */}
                       <motion.div
                         layoutId="activeGlow"
                         className="absolute inset-0 bg-primary/20 blur-[5px] rounded-lg -z-10 border border-primary/30"
-                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                        transition={{ type: 'spring', stiffness: 80, damping: 15, mass: 0.8 }}
                       />
                     </>
                   )}
+
 
 
                 </a>
@@ -169,10 +183,10 @@ export const Navbar = () => {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden px-4 sm:px-6 py-6 sm:py-10 flex flex-col gap-6 sm:gap-8 bg-surface/80 backdrop-blur-[20px] border-b border-white/10">
-          {['Experience', 'Projects', 'Skills', 'Publications', 'Contact'].map((item) => (
+          {['About', 'Experience', 'Education', 'Projects', 'Skills', 'Publications', 'Contact'].map((item) => (
             <a
               key={item}
-              href={`#${item.toLowerCase()}`}
+              href={item.toLowerCase() === 'about' ? '#hero' : `#${item.toLowerCase()}`}
               className="text-sm hover:text-white transition-colors py-2 px-3 -mx-3 rounded focus-visible:ring-2 focus-visible:ring-orange-500 outline-none min-h-[44px] flex items-center"
               style={{ color: 'var(--on-surface-variant)' }}
               onClick={() => setMenuOpen(false)}
@@ -182,6 +196,8 @@ export const Navbar = () => {
           ))}
         </div>
       )}
+
+
 
     </motion.nav>
   );

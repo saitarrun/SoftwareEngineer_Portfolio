@@ -36,19 +36,18 @@ const ChatWidget = lazy(() =>
 
 const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
   <motion.div
-    initial={{ opacity: 0, y: 30 }}
+    initial={{ opacity: 0, y: 15 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-8% 0px -8% 0px' }}
+    viewport={{ once: true, margin: '-20% 0px -20% 0px' }}
     transition={{
-      type: 'spring',
-      stiffness: 45,
-      damping: 20,
-      mass: 0.8,
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
     }}
   >
     {children}
   </motion.div>
 );
+
 
 function App() {
   return (
@@ -84,13 +83,13 @@ function App() {
               <Experience />
             </SectionWrapper>
             <SectionWrapper>
+              <Education />
+            </SectionWrapper>
+            <SectionWrapper>
               <Projects />
             </SectionWrapper>
             <SectionWrapper>
               <Skills />
-            </SectionWrapper>
-            <SectionWrapper>
-              <Education />
             </SectionWrapper>
             <SectionWrapper>
               <Publications />
@@ -98,6 +97,7 @@ function App() {
             <SectionWrapper>
               <Contact />
             </SectionWrapper>
+
 
           </Suspense>
         </main>

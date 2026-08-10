@@ -366,9 +366,11 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
         'X-Title': 'Sai Tarrun Portfolio',
       },
       body: JSON.stringify({
-        model: 'nvidia/nemotron-3-ultra-550b-a55b:free',
+        model: 'meta-llama/llama-3-8b-instruct:free',
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         stream: true,
+
+
         max_tokens: isListQuery ? 1024 : 512,
         temperature: 0.4,
       }),

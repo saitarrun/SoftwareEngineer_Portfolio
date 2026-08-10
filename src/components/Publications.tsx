@@ -21,7 +21,8 @@ export const Publications = () => {
             className="block group focus-visible:ring-2 focus-visible:ring-primary rounded-card-lg outline-none"
           >
 
-            <GlassCard className="p-8 border border-white/10 hover:border-primary/50 transition-all duration-300 cursor-pointer hover:shadow-[0_0_30px_rgba(255,146,73,0.1)]">
+            <GlassCard className="p-8 md:p-12 rounded-[2.5rem] border border-white/10 hover:border-primary/50 transition-all duration-300 cursor-pointer hover:shadow-[0_0_30px_rgba(255,146,73,0.1)]">
+
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center text-primary font-bold shrink-0 border border-primary/20">
