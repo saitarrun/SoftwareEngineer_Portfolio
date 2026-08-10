@@ -54,8 +54,15 @@ export const Navbar = () => {
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed top-0 left-0 right-0 z-50 glass-nav"
+      className="fixed top-0 left-0 right-0 z-50"
+      style={{
+        background: 'rgba(14, 14, 14, 0.45)',
+        backdropFilter: 'blur(25px) saturate(180%)',
+        WebkitBackdropFilter: 'blur(25px) saturate(180%)',
+        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+      }}
     >
+
       {/* Sleek Scroll-driven Reading Progress Bar */}
       <motion.div
         className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-orange-600 via-primary to-orange-400 origin-left"
