@@ -2,10 +2,12 @@ import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { PARTICLE_COUNT } from './constants';
+import { useMousePosition } from './useMousePosition';
 
 export function ParticleField() {
   const meshRef = useRef<THREE.InstancedMesh>(null!);
   const dummy = useMemo(() => new THREE.Object3D(), []);
+  const mouse = useMousePosition();
 
   const particles = useMemo(() => {
     const arr = [];
@@ -26,12 +28,26 @@ export function ParticleField() {
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
+    
+    // Normalized mouse position values
+    const mx = mouse.current.x;
+    const my = mouse.current.y;
+
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       const sx = Math.sin(t * p.speed + p.offset) * 0.5;
       const sy = Math.cos(t * p.speed * 0.6 + p.offset) * 0.4;
       const sz = Math.sin(t * p.speed * 0.3 + p.offset * 0.8) * 0.2;
-      dummy.position.set(p.position.x + sx, p.position.y + sy, p.position.z + sz);
+
+      // Mouse influence logic: subtle parallax offset based on distance to center
+      const mouseParallaxesX = mx * 2.5;
+      const mouseParallaxesY = my * 2.5;
+
+      dummy.position.set(
+        p.position.x + sx + mouseParallaxesX * (p.position.z / 15), 
+        p.position.y + sy + mouseParallaxesY * (p.position.z / 15), 
+        p.position.z + sz
+      );
       dummy.scale.setScalar(p.scale);
       dummy.updateMatrix();
       meshRef.current.setMatrixAt(i, dummy.matrix);
@@ -46,3 +62,4 @@ export function ParticleField() {
     </instancedMesh>
   );
 }
+

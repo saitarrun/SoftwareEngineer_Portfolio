@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 const SSE_RESPONSE = [
   'data: {"delta":"Sai worked at "}\n\n',
   'data: {"delta":"**Pacific Life**"}\n\n',
-  'data: {"delta":", **Accenture**, and **Cognizant**."}\n\n',
+  'data: {"delta":", **CSUF**, **Uber**, and **Cognizant**."}\n\n',
   'data: [DONE]\n\n',
 ].join('');
 
@@ -76,10 +76,12 @@ test.describe('ChatWidget – panel open/close', () => {
   });
 
   test('clicking FAB again closes the panel', async ({ page }) => {
-    const fab = page.getByLabel(/open chat/i);
-    await fab.click();
+    await page.getByLabel(/open chat/i).click();
     await expect(page.getByRole('dialog')).toBeVisible({ timeout: 3_000 });
-    await fab.click();
+    await page
+      .getByLabel(/close chat/i)
+      .first()
+      .click();
     await expect(page.getByRole('dialog')).not.toBeVisible({ timeout: 2_000 });
   });
 

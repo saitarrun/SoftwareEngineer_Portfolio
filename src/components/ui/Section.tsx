@@ -17,8 +17,10 @@ export const Section = ({ children, id, className = '', title }: SectionProps) =
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold mb-16 text-center text-white tracking-tight"
+            className="text-5xl md:text-7xl font-black mb-24 text-left text-on-surface tracking-tighter uppercase"
+            style={{ fontFamily: 'var(--font-display)' }}
           >
+
             {title}
           </motion.h2>
         )}

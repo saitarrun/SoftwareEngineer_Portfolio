@@ -68,15 +68,27 @@ test.describe('Portfolio – Experience section', () => {
   });
 
   test('Pacific Life experience card is visible', async ({ page }) => {
-    await expect(page.getByText('Pacific Life')).toBeVisible({ timeout: 8_000 });
+    await expect(page.locator('#experience').getByText('Pacific Life')).toBeVisible({
+      timeout: 8_000,
+    });
   });
 
-  test('Accenture experience card is visible', async ({ page }) => {
-    await expect(page.getByText('Accenture')).toBeVisible({ timeout: 8_000 });
+  test('CSUF software developer experience card is visible', async ({ page }) => {
+    await expect(
+      page.locator('#experience').getByText('California State University, Fullerton')
+    ).toBeVisible({ timeout: 8_000 });
+  });
+
+  test('Uber experience card is visible', async ({ page }) => {
+    await expect(page.locator('#experience').getByRole('heading', { name: 'Uber' })).toBeVisible({
+      timeout: 8_000,
+    });
   });
 
   test('Cognizant experience card is visible', async ({ page }) => {
-    await expect(page.getByText('Cognizant')).toBeVisible({ timeout: 8_000 });
+    await expect(page.locator('#experience').getByText('Cognizant')).toBeVisible({
+      timeout: 8_000,
+    });
   });
 });
 
@@ -90,8 +102,20 @@ test.describe('Portfolio – Projects section', () => {
     await expect(page.locator('#projects')).toBeVisible({ timeout: 8_000 });
   });
 
-  test('LLM Knowledge Retrieval project is listed', async ({ page }) => {
-    await expect(page.getByText(/LLM.*(Knowledge|Retrieval)/i)).toBeVisible({ timeout: 8_000 });
+  test('Semantic Code Intelligence project is listed', async ({ page }) => {
+    await expect(
+      page.locator('#projects').getByText('Semantic Code Intelligence Platform')
+    ).toBeVisible({
+      timeout: 8_000,
+    });
+  });
+
+  test('Open-SWE contribution project is listed', async ({ page }) => {
+    await expect(
+      page.locator('#projects').getByText('Open-SWE Open-Source Contributor')
+    ).toBeVisible({
+      timeout: 8_000,
+    });
   });
 
   test('project GitHub links are present', async ({ page }) => {
@@ -111,7 +135,7 @@ test.describe('Portfolio – Skills section', () => {
   });
 
   test('key technologies are listed', async ({ page }) => {
-    for (const tech of ['Python', 'React', 'AWS', 'Docker']) {
+    for (const tech of ['Python', 'React.js', 'AWS', 'Docker']) {
       await expect(page.getByText(tech, { exact: true }).first()).toBeVisible({ timeout: 8_000 });
     }
   });
@@ -128,9 +152,23 @@ test.describe('Portfolio – Education section', () => {
   });
 
   test('Cal State Fullerton is listed', async ({ page }) => {
-    await expect(page.getByText(/California State University|Cal State Fullerton/i)).toBeVisible({
+    await expect(
+      page.locator('#education').getByText(/California State University|Cal State Fullerton/i)
+    ).toBeVisible({ timeout: 8_000 });
+  });
+
+  test('GITAM bachelor degree is listed', async ({ page }) => {
+    await expect(page.locator('#education').getByText('GITAM University')).toBeVisible({
       timeout: 8_000,
     });
+    await expect(
+      page.locator('#education').getByText('Bachelor of Technology, Computer Science')
+    ).toBeVisible({ timeout: 8_000 });
+    await expect(
+      page
+        .locator('#education')
+        .getByText(/Software Engineering Fundamentals.*Database Management Systems/)
+    ).toBeVisible({ timeout: 8_000 });
   });
 });
 

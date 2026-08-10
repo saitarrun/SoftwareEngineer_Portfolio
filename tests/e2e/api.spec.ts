@@ -1,13 +1,18 @@
 import { test, expect } from '@playwright/test';
+import { createRequire } from 'module';
+import { existsSync } from 'fs';
+import { resolve } from 'path';
 import {
   tokenize,
   scoreChunk,
   retrieveChunks,
   type KnowledgeChunk,
 } from '../../src/utils/retrieval';
-import knowledgeBase from '../../src/data/knowledge-base.json';
 
+const require = createRequire(import.meta.url);
+const knowledgeBase = require('../../src/data/knowledge-base.json') as KnowledgeChunk[];
 const chunks = knowledgeBase as KnowledgeChunk[];
+const repoRoot = resolve(import.meta.dirname, '../..');
 
 // ─── tokenize() ──────────────────────────────────────────────────────────────
 
@@ -45,17 +50,17 @@ test.describe('retrieval – scoreChunk()', () => {
     id: 'test-chunk',
     topic: 'experience',
     title: 'Pacific Life Software Engineer',
-    text: 'Automated claims triage using AWS Lambda and TensorFlow with LangChain orchestration.',
+    text: 'Built loan-triage services using AWS Lambda and LangChain orchestration.',
   };
 
   test('returns score > 0 when query token matches text', () => {
-    const score = scoreChunk(sampleChunk, tokenize('tensorflow'));
+    const score = scoreChunk(sampleChunk, tokenize('lambda'));
     expect(score).toBeGreaterThan(0);
   });
 
   test('title match scores higher than body-only match', () => {
     const titleScore = scoreChunk(sampleChunk, tokenize('pacific'));
-    const bodyScore = scoreChunk(sampleChunk, tokenize('tensorflow'));
+    const bodyScore = scoreChunk(sampleChunk, tokenize('lambda'));
     expect(titleScore).toBeGreaterThan(bodyScore);
   });
 
@@ -82,10 +87,16 @@ test.describe('retrieval – retrieveChunks() against knowledge base', () => {
     expect(ids).toContain('experience-pacific-life');
   });
 
-  test('Accenture query retrieves the Accenture experience chunk', () => {
-    const results = retrieveChunks('Accenture software engineer', chunks);
+  test('CSUF query retrieves the CSUF software developer experience chunk', () => {
+    const results = retrieveChunks('CSUF software developer FastAPI', chunks);
     const ids = results.map((c) => c.id);
-    expect(ids).toContain('experience-accenture');
+    expect(ids).toContain('experience-csuf-software-developer');
+  });
+
+  test('Uber query retrieves the Uber experience chunk', () => {
+    const results = retrieveChunks('Uber Eats checkout software engineer', chunks);
+    const ids = results.map((c) => c.id);
+    expect(ids).toContain('experience-uber');
   });
 
   test('Cognizant query retrieves the Cognizant experience chunk', () => {
@@ -95,21 +106,21 @@ test.describe('retrieval – retrieveChunks() against knowledge base', () => {
   });
 
   test('Python query retrieves the programming languages skills chunk', () => {
-    const results = retrieveChunks('Python programming languages', chunks);
+    const results = retrieveChunks('Java TypeScript HTML CSS', chunks);
     const ids = results.map((c) => c.id);
-    expect(ids).toContain('skills-languages');
+    expect(ids).toContain('skills-comprehensive');
   });
 
-  test('TensorFlow ML query retrieves the ML/AI skills chunk', () => {
-    const results = retrieveChunks('TensorFlow machine learning', chunks);
+  test('LangChain RAG query retrieves the AI skills chunk', () => {
+    const results = retrieveChunks('LangChain RAG reranking', chunks);
     const ids = results.map((c) => c.id);
-    expect(ids).toContain('skills-ml-ai');
+    expect(ids).toContain('skills-ai-ml-depth');
   });
 
   test('AWS Docker cloud query retrieves the cloud infrastructure chunk', () => {
     const results = retrieveChunks('AWS Docker cloud infrastructure', chunks);
     const ids = results.map((c) => c.id);
-    expect(ids).toContain('skills-cloud');
+    expect(ids).toContain('skills-cloud-devops-depth');
   });
 
   test('contact email query retrieves the contact info chunk', () => {
@@ -124,16 +135,25 @@ test.describe('retrieval – retrieveChunks() against knowledge base', () => {
     expect(ids).toContain('education-csuf');
   });
 
+  test('education GITAM query retrieves the bachelor degree chunk', () => {
+    const results = retrieveChunks(
+      'GITAM University CyberForensics Database Management Systems',
+      chunks
+    );
+    const ids = results.map((c) => c.id);
+    expect(ids).toContain('education-gitam');
+  });
+
   test('LLM project query retrieves the LLM knowledge retrieval project chunk', () => {
     const results = retrieveChunks('LLM knowledge retrieval platform', chunks);
     const ids = results.map((c) => c.id);
     expect(ids).toContain('project-llm-knowledge-retrieval');
   });
 
-  test('brain tumor query retrieves the brain tumor project chunk', () => {
-    const results = retrieveChunks('brain tumor detection', chunks);
+  test('Open-SWE query retrieves the open source contribution project chunk', () => {
+    const results = retrieveChunks('Open-SWE Docker sandbox contribution', chunks);
     const ids = results.map((c) => c.id);
-    expect(ids).toContain('project-brain-tumor');
+    expect(ids).toContain('project-open-swe');
   });
 
   test('availability/job query retrieves the availability chunk', () => {
@@ -182,8 +202,8 @@ test.describe('retrieval – retrieveChunks() against knowledge base', () => {
 // ─── knowledge-base.json schema validation ────────────────────────────────────
 
 test.describe('knowledge-base.json – schema', () => {
-  test('contains at least 20 chunks', () => {
-    expect(chunks.length).toBeGreaterThanOrEqual(20);
+  test('contains the expected resume-backed knowledge chunks', () => {
+    expect(chunks.length).toBeGreaterThanOrEqual(16);
   });
 
   test('every chunk has a unique id', () => {
@@ -212,23 +232,32 @@ test.describe('knowledge-base.json – schema', () => {
     });
   });
 
-  test('experience chunks cover all three companies', () => {
+  test('experience chunks cover all four experience entries', () => {
     const expIds = chunks.filter((c) => c.topic === 'experience').map((c) => c.id);
     expect(expIds).toContain('experience-pacific-life');
-    expect(expIds).toContain('experience-accenture');
+    expect(expIds).toContain('experience-csuf-software-developer');
+    expect(expIds).toContain('experience-uber');
     expect(expIds).toContain('experience-cognizant');
   });
 
-  test('project chunks cover all four projects', () => {
+  test('project chunks cover resume project entries', () => {
     const projIds = chunks.filter((c) => c.topic === 'projects').map((c) => c.id);
-    expect(projIds).toContain('project-llm-knowledge-retrieval');
-    expect(projIds).toContain('project-portfolio');
-    expect(projIds).toContain('project-ecommerce');
-    expect(projIds).toContain('project-brain-tumor');
+    expect(projIds).toEqual(['project-llm-knowledge-retrieval', 'project-open-swe']);
   });
 
-  test('skills chunks cover all 9 categories', () => {
+  test('skills chunks cover all knowledge-base skill categories', () => {
     const skillIds = chunks.filter((c) => c.topic === 'skills').map((c) => c.id);
-    expect(skillIds.length).toBe(9);
+    expect(skillIds).toEqual([
+      'skills-comprehensive',
+      'skills-ai-ml-depth',
+      'skills-cloud-devops-depth',
+      'skills-security-compliance',
+    ]);
+  });
+});
+
+test.describe('API route exposure', () => {
+  test('does not expose the local LinkedIn token generator as a production API route', () => {
+    expect(existsSync(resolve(repoRoot, 'api/linkedin-get-token.ts'))).toBe(false);
   });
 });

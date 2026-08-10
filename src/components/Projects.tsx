@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { useRef } from 'react';
 import { projects, type Project } from '../data/portfolio';
@@ -9,6 +9,10 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   // Mouse tracking for magnetic effect
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+
+  // Track absolute cursor coordinates inside the card for spotlight glow
+  const spotX = useMotionValue(0);
+  const spotY = useMotionValue(0);
 
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
@@ -21,18 +25,28 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
+    
+    // Magnetic tilt offsets
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
     const xPct = mouseX / width - 0.5;
     const yPct = mouseY / height - 0.5;
     x.set(xPct);
     y.set(yPct);
+
+    // Spotlight absolute coordinates
+    spotX.set(mouseX);
+    spotY.set(mouseY);
   };
 
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
   };
+
+  // Generate dynamic background style for spotlight overlay
+  const spotlightBg = useMotionTemplate`radial-gradient(450px circle at ${spotX}px ${spotY}px, rgba(249, 115, 22, 0.08), transparent 80%)`;
+
 
   return (
     <motion.div
@@ -48,15 +62,22 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-      className="group grid grid-cols-1 gap-6 items-start p-8 md:p-12 rounded-card-lg transition-all duration-700 bg-surface-container-low/40 hover:bg-surface-container-low ghost-border hover:border-primary/40 hover:shadow-card-hover h-full"
+      className="group grid grid-cols-1 gap-6 items-start p-8 md:p-12 rounded-card-lg transition-all duration-700 bg-surface-container-low/40 hover:bg-surface-container-low ghost-border hover:border-primary/40 hover:shadow-card-hover h-full relative overflow-hidden group/project"
     >
+      {/* Spotlight overlay effect layer */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover/project:opacity-100 transition-opacity duration-300 z-0"
+        style={{ background: spotlightBg }}
+      />
+
       {/* Number */}
       <span
         style={{ transform: 'translateZ(50px)' }}
-        className="text-4xl sm:text-6xl md:text-8xl font-black text-primary/10 group-hover:text-primary/30 transition-colors duration-500 leading-none md:col-span-1"
+        className="text-4xl sm:text-6xl md:text-8xl font-black text-primary/10 group-hover:text-primary/30 transition-colors duration-500 leading-none md:col-span-1 z-10"
       >
         {project.num}
       </span>
+
 
       {/* Content */}
       <div style={{ transform: 'translateZ(30px)' }}>
@@ -88,11 +109,12 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full ghost-border flex items-center justify-center text-on-surface-variant group-hover:border-primary group-hover:text-primary group-hover:bg-primary/5 transition-all duration-500 group-hover:rotate-45 inline-flex flex-shrink-0"
+          className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full ghost-border flex items-center justify-center text-on-surface-variant group-hover:border-primary group-hover:text-primary group-hover:bg-primary/5 transition-all duration-500 group-hover:rotate-45 inline-flex flex-shrink-0 focus-visible:ring-2 focus-visible:ring-primary outline-none"
         >
           <ArrowUpRight className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
         </a>
       </div>
+
     </motion.div>
   );
 };

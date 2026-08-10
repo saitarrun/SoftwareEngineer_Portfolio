@@ -15,7 +15,11 @@ const Skills = lazy(() => import('./components/Skills').then((m) => ({ default: 
 const Education = lazy(() =>
   import('./components/Education').then((m) => ({ default: m.Education }))
 );
+const Publications = lazy(() =>
+  import('./components/Publications').then((m) => ({ default: m.Publications }))
+);
 const Contact = lazy(() => import('./components/Contact').then((m) => ({ default: m.Contact })));
+
 
 const CanvasLoader = () => (
   <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
@@ -34,8 +38,13 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: '-10% 0px -10% 0px' }}
-    transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+    viewport={{ once: true, margin: '-8% 0px -8% 0px' }}
+    transition={{
+      type: 'spring',
+      stiffness: 45,
+      damping: 20,
+      mass: 0.8,
+    }}
   >
     {children}
   </motion.div>
@@ -46,14 +55,16 @@ function App() {
     <ReactLenis
       root
       options={{
-        lerp: 0.12,
-        duration: 1.2,
+        lerp: 0.07,
+        duration: 1.6,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         smoothWheel: true,
-        wheelMultiplier: 0.8,
+        wheelMultiplier: 1.0,
         touchMultiplier: 1.2,
         infinite: false,
       }}
     >
+
       <div className="min-h-screen font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
         {/* 3D particle background */}
         <Suspense fallback={<CanvasLoader />}>
@@ -82,8 +93,12 @@ function App() {
               <Education />
             </SectionWrapper>
             <SectionWrapper>
+              <Publications />
+            </SectionWrapper>
+            <SectionWrapper>
               <Contact />
             </SectionWrapper>
+
           </Suspense>
         </main>
       </div>

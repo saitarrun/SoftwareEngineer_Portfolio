@@ -21,25 +21,37 @@
     "id": "experience-pacific-life",
     "topic": "experience",
     "title": "Pacific Life - Software Engineer Intern",
-    "text": "Sai worked at Pacific Life as a Software Engineer Intern from May 2025 to December 2025 in Newport Beach, California. He automated 98% of claims triage workflows by architecting a serverless ML/LLM service using AWS Lambda, Amazon API Gateway, TensorFlow, and LangChain multi-agent orchestration. He reduced claims processing time by 75% (from 3 hours to 45 minutes) and workflow failures by 30% by implementing human-in-the-loop validation checkpoints. He accelerated policy lookup by 98% and boosted claims processor productivity by 50% by engineering a secure RAG pipeline with LLM embeddings, Pinecone semantic search, source-cited responses, and access-controlled retrieval. He built a TypeScript API aggregation layer with Redis distributed caching, reducing dashboard load time from 4 seconds to 2 seconds (50% improvement) and API p99 latency from 300ms to 210ms. He integrated ML inference into an event-driven Kafka pipeline achieving under 100ms latency for risk updates on 5,000+ weekly claims with 99.99% reliability."
+    "text": "Sai worked at Pacific Life as a Software Engineer Intern from June 2025 to March 2026 in Newport Beach, California. He built a serverless loan-triage service for commercial and residential underwriting that processed 15,000+ daily records using Python, AWS Lambda, and LangChain, reducing manual review across underwriting workflows. He reduced loan-policy research time by 96%, from 15 minutes of manual lookup to 30 seconds, by building a citation-backed policy-retrieval service with LangChain and Pinecone. He reduced manual address-processing effort by 75% by developing a Python and ESRI REST API geospatial enrichment pipeline that standardized addresses and generated coordinates for regional analysis."
   },
   {
-    "id": "experience-accenture",
+    "id": "experience-csuf-software-developer",
     "topic": "experience",
-    "title": "Accenture - Software Engineer",
-    "text": "Sai worked at Accenture as a Software Engineer from July 2022 to June 2024 in Hyderabad, India. He scaled a gRPC-based transaction microservice to process 2 million+ daily transactions with 20,000 transactions per second peak throughput and 99.99% uptime using Protocol Buffers, idempotency keys, and Redis distributed locking. He led AWS cloud infrastructure optimization using Amazon EKS auto-scaling and Amazon ElastiCache connection pooling, reducing compute costs by 50% and cloud spending by 35% (saving $15,000 per month). He optimized SQL queries across distributed transaction systems using composite indexes and query refactoring, reducing latency by 60% and database CPU usage by 73%. He designed a reliability architecture with Amazon CloudWatch, Prometheus, and Splunk monitoring pipelines with automated alerts, reducing mean time to recovery (MTTR) by 25 times for business-critical services."
+    "title": "California State University, Fullerton - Software Developer",
+    "text": "Sai worked at California State University, Fullerton as a Software Developer from September 2024 to May 2025 in Fullerton, California. He built a FastAPI-based university knowledge-search platform indexing 15,000+ documents across enrollment guides, academic calendars, student handbooks, and IT support resources, enabling semantic, citation-backed search. He reduced median response latency for repeated queries by 70% by implementing Redis-based semantic caching that reused responses for semantically similar requests. He routed up to 70% of low-complexity queries to quantized open-source LLMs by developing an intent-aware model-routing service that reserved commercial LLM APIs for higher-complexity requests."
+  },
+  {
+    "id": "experience-uber",
+    "topic": "experience",
+    "title": "Uber - Software Engineer",
+    "text": "Sai worked at Uber as a Software Engineer from August 2023 to July 2024 in Hyderabad, India. He reduced checkout timeout rates by 8% during peak traffic by implementing Redis-backed distributed session caching for Uber Eats cart and checkout workflows. He reduced Uber Eats order-history page load time by 22% by optimizing nested SQL queries and eliminating redundant joins across transactional order tables in Amazon RDS. He reduced regional checkout-configuration retrieval latency by 12% by optimizing Docstore data access and refactoring AWS Lambda request-routing workflows. He delivered reusable, accessible React and TypeScript components with Uber's Base Web design system, reducing rendering defects by 14% across global Uber Eats cart and checkout experiences."
   },
   {
     "id": "experience-cognizant",
     "topic": "experience",
-    "title": "Cognizant - Software Engineer",
-    "text": "Sai worked at Cognizant as a Software Engineer from May 2021 to April 2022 in Hyderabad, India. He improved PostgreSQL query performance and resolved lock contention in Spring Boot services, reducing API latency by 52% (from 2.5 seconds to 1.2 seconds) and lowering p99 latency by 30%. He engineered an ML churn prediction system using scikit-learn and TensorFlow with React dashboards across 50,000 customers, achieving 12% churn reduction and 87% forecast accuracy. He built REST APIs exposing real-time churn predictions for 5,000+ customers, enabling proactive retention operations. He implemented RBAC and input validation, remediating 40+ high-severity vulnerabilities for a clean security audit. He standardized CI/CD with Docker and GitHub Actions, reducing release lead time by 50% and enabling daily deployments."
+    "title": "Cognizant - Software Engineer Intern",
+    "text": "Sai worked at Cognizant as a Software Engineer Intern from January 2023 to June 2023 in Hyderabad, India. He engineered a customer-engagement scoring service for a B2B SaaS platform using Python and scikit-learn, achieving 87% recall and contributing to a 12% reduction in customer churn. He secured high-traffic e-commerce payment APIs by implementing OpenID Connect, JWT authentication, role-based access control, and Spring Security. He engineered SQL-based customer-analytics workflows and 2 normalized reporting tables in collaboration with 3 business stakeholders and 2 engineers, enabling churn segmentation, campaign tracking, and retention analysis."
   },
   {
     "id": "education-csuf",
     "topic": "education",
     "title": "California State University, Fullerton - Master of Science Computer Science",
     "text": "Sai is pursuing a Master of Science in Computer Science at California State University, Fullerton from August 2024 to May 2026. His coursework includes Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence, and Distributed Systems. He is focused on deep learning, security-first cloud architecture, and high-performance computing."
+  },
+  {
+    "id": "education-gitam",
+    "topic": "education",
+    "title": "GITAM University - Bachelor of Technology Computer Science",
+    "text": "Sai completed a Bachelor of Technology in Computer Science at GITAM University in India in June 2023. His coursework included Software Engineering Fundamentals, Object Oriented Programming, Cybersecurity, CyberForensics, and Database Management Systems."
   },
   {
     "id": "publication-ieee",
@@ -50,26 +62,14 @@
   {
     "id": "project-llm-knowledge-retrieval",
     "topic": "projects",
-    "title": "LLM-Powered Knowledge Retrieval Platform",
-    "text": "Sai built a distributed full-stack LLM-Powered Knowledge Retrieval Platform using LangChain, Pinecone, FastAPI, React, and TypeScript. The platform features semantic search, vector indexing, and NLP-driven query matching. It improved information retrieval accuracy by 25% and reduced user search time by 40% by leveraging RAG (Retrieval-Augmented Generation) architectures."
+    "title": "Semantic Code Intelligence Platform",
+    "text": "Sai built a local-first Python RAG platform indexing 50,000+ lines of code, combining dense-vector search, BM25, and Cross-Encoder reranking to deliver sub-second retrieval with file-path and line-level citations."
   },
   {
-    "id": "project-portfolio",
+    "id": "project-open-swe",
     "topic": "projects",
-    "title": "Production Portfolio & Personal Website",
-    "text": "Sai's production-grade portfolio is built with React, Vite, Tailwind CSS, and TypeScript, deployed on Vercel. It features an advanced UI with Three.js 3D backgrounds (Orange Smoke, Particle Field, Grid Plane), Framer Motion animations, and Lenis smooth scrolling. The site includes a custom AI chatbot using a RAG architecture with OpenRouter API integration. It follows high code quality standards with TypeScript strict mode, ESLint security rules, and automated CI/CD via GitHub Actions."
-  },
-  {
-    "id": "project-ecommerce",
-    "topic": "projects",
-    "title": "Event-Driven E-Commerce Modernization",
-    "text": "Sai architected a monolith-to-microservices migration using the Strangler pattern, REST APIs, and event-driven design with Node.js, Kafka, and PostgreSQL. This project enables zero-downtime canary deployments and scalable order, payment, and inventory workflows, leveraging Docker and Kubernetes for container orchestration in high-traffic environments."
-  },
-  {
-    "id": "project-brain-tumor",
-    "topic": "projects",
-    "title": "Brain Tumor Detection Pipeline",
-    "text": "Sai built an end-to-end brain tumor detection pipeline using TensorFlow, Apache Spark, GCP, and OpenCV. This distributed ML pipeline processes MRI scan data at scale, leveraging Spark for big data handling and GCP for cloud-native inference to achieve clinical-grade tumor detection accuracy."
+    "title": "Open-SWE Open-Source Contributor",
+    "text": "Sai delivered 5 merged pull requests to LangChain's Open-SWE framework by implementing Docker sandbox integration and extending compatibility across multiple large language model providers."
   },
   {
     "id": "engineering-philosophy",
@@ -81,24 +81,24 @@
     "id": "skills-comprehensive",
     "topic": "skills",
     "title": "Comprehensive Technical Skillset",
-    "text": "Sai is proficient in Python, Java, Go, TypeScript, and SQL. His backend expertise includes Spring Boot, Node.js, FastAPI, and gRPC. On the frontend, he specializes in React, Next.js, and Three.js. His infrastructure skills cover AWS, GCP, Docker, Kubernetes, and Terraform. He is also highly skilled in AI/ML tools like TensorFlow, LangChain, Pinecone, and RAG systems."
+    "text": "Sai is proficient in Java, Python, TypeScript, JavaScript, SQL, HTML, and CSS. His backend expertise includes Spring Boot, FastAPI, Node.js, Express.js, REST APIs, microservices, and distributed systems. On the frontend, he works with React.js and Base Web. His infrastructure skills cover AWS, AWS Lambda, Amazon RDS, Docker, Terraform, Infrastructure as Code, GitHub Actions, CI/CD, and Linux."
   },
   {
     "id": "skills-ai-ml-depth",
     "topic": "skills",
     "title": "AI/ML and RAG Expertise",
-    "text": "Sai has deep expertise in building RAG (Retrieval-Augmented Generation) systems and agentic AI workflows. He uses LangChain for multi-agent orchestration, Pinecone for vector search, and LLM embeddings for semantic retrieval. His experience includes automating claims triage and building knowledge retrieval platforms with human-in-the-loop validation."
+    "text": "Sai has deep expertise in building RAG (Retrieval-Augmented Generation) systems and AI workflows. He uses LangChain, Pinecone, pgvector, BM25, dense-vector search, and Cross-Encoder reranking for semantic retrieval. His experience includes building loan-triage, citation-backed policy retrieval, university knowledge-search, and code intelligence platforms."
   },
   {
     "id": "skills-cloud-devops-depth",
     "topic": "skills",
     "title": "Cloud Infrastructure and DevOps",
-    "text": "Sai is expert in AWS and GCP cloud architectures. He has experience with serverless computing (AWS Lambda), container orchestration (EKS, Kubernetes), and infrastructure as code (Terraform). He specializes in cloud cost optimization, having saved $15,000/month by optimizing EKS and ElastiCache usage."
+    "text": "Sai is experienced with AWS cloud architectures, AWS Lambda, Amazon RDS, Docker, Terraform, Infrastructure as Code, GitHub Actions, CI/CD, and Linux. He has built serverless workflows, cloud-backed retrieval systems, and production deployment pipelines."
   },
   {
     "id": "skills-security-compliance",
     "topic": "skills",
     "title": "Security, Compliance and Identity",
-    "text": "Sai implements high security standards including SOC 2, ISO 27001, and OWASP. He is experienced in RBAC, OAuth 2.0, OpenID Connect, and JWT for secure identity management. He has a track record of remediating high-severity vulnerabilities and securing transaction systems."
+    "text": "Sai is experienced in OpenID Connect, SAML, JWT, Spring Security, and RBAC for secure identity and access management. He has secured high-traffic e-commerce payment APIs and works with security-first engineering practices."
   }
 ]
