@@ -55,13 +55,18 @@ export const Navbar = () => {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       className="fixed top-0 left-0 right-0 z-50"
-      style={{
-        background: 'rgba(14, 14, 14, 0.45)',
-        backdropFilter: 'blur(25px) saturate(180%)',
-        WebkitBackdropFilter: 'blur(25px) saturate(180%)',
-        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
-      }}
     >
+      {/* Fallback overlay layer to force hardware-accelerated frosted glass render */}
+      <div 
+        className="absolute inset-0 -z-10"
+        style={{
+          background: 'rgba(14, 14, 14, 0.45)',
+          backdropFilter: 'blur(20px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+        }}
+      />
+
 
       {/* Sleek Scroll-driven Reading Progress Bar */}
       <motion.div
