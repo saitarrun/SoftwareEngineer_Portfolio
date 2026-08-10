@@ -64,7 +64,8 @@ function App() {
       }}
     >
 
-      <div className="min-h-screen font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
+      <div className="min-h-screen bg-[#0e0e0e] font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
+
         {/* 3D particle background */}
         <Suspense fallback={<CanvasLoader />}>
           <BackgroundCanvas />
