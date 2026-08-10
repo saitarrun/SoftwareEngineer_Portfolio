@@ -1,10 +1,11 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Mail, Github, Linkedin, ArrowRight, Shield } from 'lucide-react';
-import { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from 'framer-motion';
+import { Mail, Github, Linkedin, ArrowRight, Shield, Copy, Check } from 'lucide-react';
+import { useRef, useState } from 'react';
 import { MagneticElement } from './MagneticElement';
 
 export const Contact = () => {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [copied, setCopied] = useState(false);
 
   // Mouse tracking for magnetic effect
   const x = useMotionValue(0);
@@ -34,6 +35,18 @@ export const Contact = () => {
     y.set(0);
   };
 
+  const handleCopyEmail = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText('saitarrunpitta@gmail.com');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      // Clipboard fallback
+    }
+  };
+
   return (
     <section id="contact" className="py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -52,7 +65,7 @@ export const Contact = () => {
           viewport={{ once: true }}
           className="relative rounded-card-lg overflow-hidden mb-24 p-12 md:p-16 bg-surface-container-low/40 ghost-border group transition-all duration-700 hover:border-primary/40 hover:shadow-card-hover"
         >
-          <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+          <div className="relative z-10 grid lg:grid-cols-2 gap-24 items-center">
             <div style={{ transform: 'translateZ(40px)' }}>
               <span
                 className="text-primary font-bold uppercase tracking-[0.4em] mb-6 block"
@@ -76,63 +89,99 @@ export const Contact = () => {
               </p>
             </div>
 
-            <div
-              className="flex flex-col gap-10 items-center lg:items-center"
-              style={{ transform: 'translateZ(60px)' }}
-            >
-              <MagneticElement className="w-full lg:w-fit">
-                <a
-                  href="mailto:saitarrunpitta@gmail.com"
-                  className="flex items-center justify-center gap-2 sm:gap-4 px-4 sm:px-10 py-3 sm:py-8 bg-primary text-on-primary font-black uppercase tracking-widest rounded-3xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full lg:w-fit text-xs sm:text-base shadow-[0_20px_40px_rgba(255,123,4,0.3)] focus-visible:ring-2 focus-visible:ring-white outline-none min-h-[44px]"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
-                  <Mail className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0" />
-                  <span className="hidden sm:inline">Start a Conversation</span>
-                  <span className="sm:hidden">Connect</span>
-                  <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover/btn:translate-x-1 transition-transform flex-shrink-0" />
-                </a>
-              </MagneticElement>
+            <div className="flex flex-col gap-10 items-center w-full max-w-sm justify-self-center lg:justify-self-end">
+              {/* Email row - matches social row width */}
+              <div className="flex flex-row gap-4 items-center justify-between w-full">
+                <MagneticElement className="flex-1">
+                  <a
+                    href="mailto:saitarrunpitta@gmail.com"
+                    className="flex items-center justify-center gap-2 sm:gap-4 px-6 h-12 bg-primary text-on-primary font-black uppercase tracking-widest rounded-2xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full text-xs sm:text-sm shadow-[0_20px_40px_rgba(255,123,4,0.3)] focus-visible:ring-2 focus-visible:ring-white outline-none"
+                    style={{ fontFamily: 'var(--font-display)' }}
+                  >
+                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                    <span>saitarrunpitta@gmail.com</span>
+                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform flex-shrink-0" />
 
-              <div className="flex justify-center sm:justify-start gap-6 sm:gap-10 w-full sm:w-auto">
-                {[
-                  {
-                    icon: <Github className="w-6 h-6" />,
-                    label: 'GitHub',
-                    href: 'https://github.com/saitarrun',
-                  },
-                  {
-                    icon: <Linkedin className="w-6 h-6" />,
-                    label: 'LinkedIn',
-                    href: 'https://linkedin.com/in/saitarrun',
-                  },
-                  {
-                    icon: <Shield className="w-6 h-6" />,
-                    label: 'TryHackMe',
-                    href: 'https://tryhackme.com/p/TarrunXploit404',
-                  },
-                ].map((social, i) => (
-                  <div key={i} className="flex flex-col items-center gap-3 group/social-wrapper">
-                    <MagneticElement>
-                      <a
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={social.label}
-                        className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social shadow-xl focus-visible:ring-2 focus-visible:ring-primary outline-none"
-                      >
-                        {social.icon}
-                      </a>
-                    </MagneticElement>
-                    <span
-                      className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300 text-center"
-                      style={{ fontFamily: 'var(--font-label)' }}
-                    >
-                      {social.label}
-                    </span>
-                  </div>
-                ))}
+                  </a>
+                </MagneticElement>
+
+                <MagneticElement>
+                  <button
+                    onClick={handleCopyEmail}
+                    title="Copy email to clipboard"
+                    className="w-12 h-12 rounded-2xl bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 shadow-xl focus-visible:ring-2 focus-visible:ring-primary outline-none text-on-surface-variant relative overflow-hidden shrink-0"
+                  >
+                    <AnimatePresence mode="wait">
+                      {copied ? (
+                        <motion.div
+                          key="check"
+                          initial={{ scale: 0.7, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.7, opacity: 0 }}
+                          className="flex items-center justify-center"
+                        >
+                          <Check className="w-4 h-4 text-emerald-500" />
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="copy"
+                          initial={{ scale: 0.7, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          exit={{ scale: 0.7, opacity: 0 }}
+                          className="flex items-center justify-center"
+                        >
+                          <Copy className="w-4 h-4" />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </button>
+                </MagneticElement>
               </div>
-            </div>
+
+
+                {/* Socials row - spans exact same max-width end to end */}
+                <div className="flex flex-row justify-between w-full gap-4">
+                  {[
+                    {
+                      icon: <Github className="w-6 h-6" />,
+                      label: 'GitHub',
+                      href: 'https://github.com/saitarrun',
+                    },
+                    {
+                      icon: <Linkedin className="w-6 h-6" />,
+                      label: 'LinkedIn',
+                      href: 'https://linkedin.com/in/saitarrun',
+                    },
+                    {
+                      icon: <Shield className="w-6 h-6" />,
+                      label: 'TryHackMe',
+                      href: 'https://tryhackme.com/p/TarrunXploit404',
+                    },
+                  ].map((social, i) => (
+                    <div key={i} className="flex flex-col items-center gap-3 group/social-wrapper flex-1">
+                      <MagneticElement className="w-full">
+                        <a
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={social.label}
+                          className="w-full h-12 sm:h-14 rounded-2xl bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social shadow-xl focus-visible:ring-2 focus-visible:ring-primary outline-none"
+                        >
+                          {social.icon}
+                        </a>
+                      </MagneticElement>
+                      <span
+                        className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300 text-center"
+                        style={{ fontFamily: 'var(--font-label)' }}
+                      >
+                        {social.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+              </div>
+
           </div>
 
           {/* Visual Flare */}

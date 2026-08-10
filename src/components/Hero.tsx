@@ -85,7 +85,7 @@ export const Hero = () => {
   const lastName = 'Pitta';
 
   return (
-    <section id="about" className="relative overflow-hidden pt-20">
+    <section id="hero" className="relative overflow-hidden pt-20">
       {/* Content Container */}
       <div className="max-w-7xl mx-auto px-6 pt-12 relative z-10">
         {/* Available Badge */}

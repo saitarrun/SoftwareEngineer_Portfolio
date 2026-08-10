@@ -1,4 +1,4 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
+import type { ApiRequest, ApiResponse } from './types';
 
 interface LinkedInPost {
   id: string;
@@ -24,7 +24,7 @@ function isRateLimited(ip: string): boolean {
   return false;
 }
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: ApiRequest, res: ApiResponse) {
   const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 'unknown';
 
   if (isRateLimited(ip)) {

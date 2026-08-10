@@ -1,9 +1,42 @@
-import { motion } from 'framer-motion';
+import { motion, useScroll } from 'framer-motion';
 import { Linkedin, Github, Menu } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { MagneticElement } from './MagneticElement';
 
 export const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const { scrollYProgress } = useScroll();
+
+  const navItems = ['Experience', 'Projects', 'Skills', 'Publications', 'Contact'];
+
+  // Scroll spy active section tracker logic
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -45% 0px', // Focus window is top to middle region of viewport
+      threshold: 0.05,
+    };
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    // Watch all matching page sections
+    ['hero', 'experience', 'projects', 'skills', 'publications', 'contact'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
 
   return (
     <motion.nav
@@ -11,6 +44,12 @@ export const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       className="fixed top-0 left-0 right-0 z-50 glass-nav"
     >
+      {/* Sleek Scroll-driven Reading Progress Bar */}
+      <motion.div
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-orange-600 via-primary to-orange-400 origin-left"
+        style={{ scaleX: scrollYProgress }}
+      />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -39,18 +78,45 @@ export const Navbar = () => {
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
-          {['Experience', 'Projects', 'Skills', 'Contact'].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-sm font-medium transition-all duration-200 hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded px-2 py-1 outline-none"
-              style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}
-            >
-              {item}
-            </a>
-          ))}
+        <div className="hidden md:flex items-center gap-6">
+          {navItems.map((item) => {
+            const isCurrent = activeSection === item.toLowerCase();
+            return (
+              <MagneticElement key={item}>
+                <a
+                  href={`#${item.toLowerCase()}`}
+                  className={`text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-orange-500 rounded px-3 py-1.5 outline-none relative`}
+                  style={{
+                    color: isCurrent ? 'var(--primary)' : 'var(--on-surface-variant)',
+                    fontFamily: 'var(--font-body)',
+                  }}
+                >
+                  {item}
+                  {isCurrent && (
+                    <>
+                      {/* Active underline indicator with glowing drop shadow */}
+                      <motion.div
+                        layoutId="activeIndicator"
+                        className="absolute bottom-0 left-3 right-3 h-[2.5px] bg-primary rounded-full z-10 shadow-[0_0_12px_rgba(251,120,0,0.8)]"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                      {/* Highly visible ambient background glow */}
+                      <motion.div
+                        layoutId="activeGlow"
+                        className="absolute inset-0 bg-primary/20 blur-[5px] rounded-lg -z-10 border border-primary/30"
+                        transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                      />
+                    </>
+                  )}
+
+
+                </a>
+              </MagneticElement>
+            );
+          })}
         </div>
+
+
 
         {/* Right: socials + resume */}
         <div className="flex items-center gap-2 sm:gap-4">
@@ -74,7 +140,11 @@ export const Navbar = () => {
           >
             <Linkedin className="w-4 h-4" />
           </a>
-          <a href="/SaiTarrunPitta_Resume.html" target="_blank" rel="noopener noreferrer">
+          <a
+            href="/SaiTarrunPitta_SoftwareEngineer_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <span
               className="px-3 sm:px-5 py-2 text-black text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-200 hover:shadow-[0_0_15px_#fb7800] focus-visible:ring-2 focus-visible:ring-orange-500 flex items-center justify-center outline-none min-h-[44px]"
               style={{
@@ -99,7 +169,7 @@ export const Navbar = () => {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden px-4 sm:px-6 py-6 sm:py-10 flex flex-col gap-6 sm:gap-8 bg-surface/80 backdrop-blur-[20px] border-b border-white/10">
-          {['Experience', 'Projects', 'Skills', 'Contact'].map((item) => (
+          {['Experience', 'Projects', 'Skills', 'Publications', 'Contact'].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -112,6 +182,7 @@ export const Navbar = () => {
           ))}
         </div>
       )}
+
     </motion.nav>
   );
 };

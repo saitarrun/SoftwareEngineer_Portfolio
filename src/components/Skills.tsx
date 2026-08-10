@@ -102,7 +102,7 @@ export const Skills = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-24 text-center"
+          className="mb-24"
         >
           <h2
             className="text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase mb-4"
@@ -117,6 +117,7 @@ export const Skills = () => {
             Engineered for Performance
           </p>
         </motion.div>
+
 
         {/* Skills Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

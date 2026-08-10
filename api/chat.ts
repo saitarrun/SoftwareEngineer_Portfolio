@@ -1,5 +1,5 @@
-import { VercelRequest, VercelResponse } from '@vercel/node';
 import { createRequire } from 'module';
+import type { ApiRequest, ApiResponse } from './types';
 
 const require = createRequire(import.meta.url);
 const knowledgeBase = require('./knowledge-base.json') as KnowledgeChunk[];
@@ -266,7 +266,7 @@ function buildFallbackAnswer(query: string, chunks: KnowledgeChunk[]): string {
   return sentenceLimit(chunks[0].text, 3);
 }
 
-function writeSseAnswer(res: VercelResponse, answer: string): void {
+function writeSseAnswer(res: ApiResponse, answer: string): void {
   res.write(`data: ${JSON.stringify({ delta: answer })}\n\n`);
   res.write('data: [DONE]\n\n');
 }
@@ -302,7 +302,7 @@ function isRateLimited(ip: string): boolean {
 }
 
 // ── Handler ───────────────────────────────────────────────────────────────────
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+export default async function handler(req: ApiRequest, res: ApiResponse) {
   const origin = req.headers.origin as string | undefined;
 
   if (req.method === 'OPTIONS') {

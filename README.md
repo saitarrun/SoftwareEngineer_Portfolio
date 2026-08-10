@@ -18,7 +18,7 @@ A modern, interactive personal portfolio website built with React, TypeScript, a
 
 ### Frontend
 
-- **React 18** — UI library
+- **React 19** — UI library
 - **TypeScript** — Type safety
 - **Vite** — Fast build tool and dev server
 - **Tailwind CSS** — Utility-first styling
@@ -68,7 +68,6 @@ A modern, interactive personal portfolio website built with React, TypeScript, a
 │   ├── main.tsx             # Entry point
 │   └── index.css            # Global styles
 ├── public/                  # Static assets
-├── dist/                    # Built output
 ├── package.json
 ├── tsconfig.json
 ├── vite.config.ts
@@ -172,7 +171,7 @@ Update Tailwind config in `tailwind.config.js` to change the theme. Primary colo
 
 ### Content
 
-Edit component files in `src/components/` to update personal information, projects, and experiences.
+Edit `src/data/portfolio.tsx` and the knowledge-base JSON files to update personal information, projects, skills, experiences, and chatbot answers.
 
 ### 3D Effects
 

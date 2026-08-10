@@ -124,69 +124,78 @@ export const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-6 max-w-2xl mx-auto">
       {/* Name */}
-      <div className="flex flex-col gap-2">
-        <label htmlFor="name" className="text-sm font-semibold text-on-surface">
-          Name
-        </label>
+      <div className="relative pt-6">
         <input
           id="name"
           name="name"
           type="text"
           value={formData.name}
           onChange={handleChange}
-          placeholder="Your name"
+          placeholder=" "
           disabled={state.loading}
           required
-          className="px-4 py-3 bg-surface-container-low/40 border border-white/10 rounded-lg text-on-surface placeholder-on-surface-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+          className="peer w-full px-4 py-3 bg-surface-container-low/40 border border-white/10 rounded-lg text-on-surface placeholder-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
           maxLength={100}
         />
+        <label
+          htmlFor="name"
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-base font-semibold pointer-events-none transition-all duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:-translate-y-1/2 peer-[:not(:placeholder-shown)]:text-xs bg-[#0e0e0e] px-2 rounded"
+        >
+          Name
+        </label>
         {getFieldError('name') && (
-          <span className="text-xs text-error">{getFieldError('name')}</span>
+          <span className="text-xs text-error mt-2 block">{getFieldError('name')}</span>
         )}
       </div>
 
       {/* Email */}
-      <div className="flex flex-col gap-2">
-        <label htmlFor="email" className="text-sm font-semibold text-on-surface">
-          Email
-        </label>
+      <div className="relative pt-6">
         <input
           id="email"
           name="email"
           type="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="your.email@example.com"
+          placeholder=" "
           disabled={state.loading}
           required
-          className="px-4 py-3 bg-surface-container-low/40 border border-white/10 rounded-lg text-on-surface placeholder-on-surface-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+          className="peer w-full px-4 py-3 bg-surface-container-low/40 border border-white/10 rounded-lg text-on-surface placeholder-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
           maxLength={254}
         />
+        <label
+          htmlFor="email"
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant text-base font-semibold pointer-events-none transition-all duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:-translate-y-1/2 peer-[:not(:placeholder-shown)]:text-xs bg-[#0e0e0e] px-2 rounded"
+        >
+          Email
+        </label>
         {getFieldError('email') && (
-          <span className="text-xs text-error">{getFieldError('email')}</span>
+          <span className="text-xs text-error mt-2 block">{getFieldError('email')}</span>
         )}
       </div>
 
       {/* Message */}
-      <div className="flex flex-col gap-2">
-        <label htmlFor="message" className="text-sm font-semibold text-on-surface">
-          Message
-        </label>
+      <div className="relative pt-6">
         <textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Your message (10-5000 characters)"
+          placeholder=" "
           disabled={state.loading}
           required
           rows={6}
-          className="px-4 py-3 bg-surface-container-low/40 border border-white/10 rounded-lg text-on-surface placeholder-on-surface-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+          className="peer w-full px-4 py-3 bg-surface-container-low/40 border border-white/10 rounded-lg text-on-surface placeholder-transparent focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
           maxLength={5000}
         />
-        <div className="text-xs text-on-surface-variant">{formData.message.length}/5000</div>
+        <label
+          htmlFor="message"
+          className="absolute left-4 top-9 text-on-surface-variant text-base font-semibold pointer-events-none transition-all duration-300 peer-placeholder-shown:top-9 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-xs peer-focus:text-primary peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:text-xs bg-[#0e0e0e] px-2 rounded"
+        >
+          Message
+        </label>
+        <div className="text-[10px] text-on-surface-variant mt-1 text-right">{formData.message.length}/5000</div>
         {getFieldError('message') && (
-          <span className="text-xs text-error">{getFieldError('message')}</span>
+          <span className="text-xs text-error mt-1 block">{getFieldError('message')}</span>
         )}
       </div>
 
@@ -217,3 +226,4 @@ export const ContactForm = () => {
     </form>
   );
 };
+
