@@ -62,7 +62,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-      className="group grid grid-cols-1 gap-6 items-start p-8 md:p-12 rounded-card-lg transition-all duration-700 bg-surface-container-low/40 hover:bg-surface-container-low ghost-border hover:border-primary/40 hover:shadow-card-hover h-full relative overflow-hidden group/project"
+      className="group grid grid-cols-1 gap-6 items-start p-8 md:p-12 rounded-card-lg transition-all duration-700 glass-card hover:border-primary/40 hover:shadow-card-hover h-full relative overflow-hidden group/project"
     >
       {/* Spotlight overlay effect layer */}
       <motion.div

@@ -63,7 +63,8 @@ export const Contact = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative rounded-card-lg overflow-hidden mb-24 p-12 md:p-16 bg-surface-container-low/40 ghost-border group transition-all duration-700 hover:border-primary/40 hover:shadow-card-hover"
+          className="relative rounded-card-lg overflow-hidden mb-24 p-12 md:p-16 glass-card group transition-all duration-700 hover:border-primary/40 hover:shadow-card-hover"
+
         >
           <div className="relative z-10 grid lg:grid-cols-2 gap-24 items-center">
             <div style={{ transform: 'translateZ(40px)' }}>
