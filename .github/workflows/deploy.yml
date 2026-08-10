@@ -66,9 +66,11 @@ jobs:
       - name: Deploy to Vercel
         run: |
           npm install -g vercel
-          vercel deploy --token=${{ secrets.VERCEL_TOKEN }} --prod
+          vercel deploy --prod
         env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
           VITE_CONTACT_EMAIL: ${{ secrets.VITE_CONTACT_EMAIL }}
           VITE_TURNSTILE_SITE_KEY: ${{ secrets.VITE_TURNSTILE_SITE_KEY }}
+
