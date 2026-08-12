@@ -162,7 +162,7 @@ test.describe('Portfolio – Education section', () => {
       timeout: 8_000,
     });
     await expect(
-      page.locator('#education').getByText('Bachelor of Technology, Computer Science')
+      page.locator('#education').getByText('Bachelor of Technology in Computer Science')
     ).toBeVisible({ timeout: 8_000 });
     await expect(
       page
