@@ -84,7 +84,7 @@ export const experiences: Experience[] = [
   {
     num: '04',
     company: 'Cognizant',
-    role: 'Software Engineer Intern',
+    role: 'Software Engineer',
     period: 'Jan 2023 - Jun 2023',
     location: 'Hyderabad, India',
     description: [
@@ -277,8 +277,8 @@ export const education: Education[] = [
   {
     num: '01',
     school: 'California State University, Fullerton',
-    degree: 'Master of Science, Computer Science',
-    period: 'Aug 2024 – May 2026',
+    degree: 'Master of Science in Computer Science',
+    period: 'May 2026',
     location: 'Fullerton, CA',
     description: [
       'Published peer-reviewed IEEE conference paper: "Hardware Trojan Detection with Machine Learning and Power Side-Channels: A Post-Deployment Analysis" (IEEE CNS 2025)',
@@ -288,7 +288,7 @@ export const education: Education[] = [
   {
     num: '02',
     school: 'GITAM University',
-    degree: 'Bachelor of Technology, Computer Science',
+    degree: 'Bachelor of Technology in Computer Science',
     period: 'Jun 2023',
     location: 'India',
     description: [

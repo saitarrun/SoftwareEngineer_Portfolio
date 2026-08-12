@@ -38,14 +38,14 @@
   {
     "id": "experience-cognizant",
     "topic": "experience",
-    "title": "Cognizant - Software Engineer Intern",
-    "text": "Sai worked at Cognizant as a Software Engineer Intern from January 2023 to June 2023 in Hyderabad, India. He engineered a customer-engagement scoring service for a B2B SaaS platform using Python and scikit-learn, achieving 87% recall and contributing to a 12% reduction in customer churn. He secured high-traffic e-commerce payment APIs by implementing OpenID Connect, JWT authentication, role-based access control, and Spring Security. He engineered SQL-based customer-analytics workflows and 2 normalized reporting tables in collaboration with 3 business stakeholders and 2 engineers, enabling churn segmentation, campaign tracking, and retention analysis."
+    "title": "Cognizant - Software Engineer",
+    "text": "Sai worked at Cognizant as a Software Engineer from January 2023 to June 2023 in Hyderabad, India. He engineered a customer-engagement scoring service for a B2B SaaS platform using Python and scikit-learn, achieving 87% recall and contributing to a 12% reduction in customer churn. He secured high-traffic e-commerce payment APIs by implementing OpenID Connect, JWT authentication, role-based access control, and Spring Security. He engineered SQL-based customer-analytics workflows and 2 normalized reporting tables in collaboration with 3 business stakeholders and 2 engineers, enabling churn segmentation, campaign tracking, and retention analysis."
   },
   {
     "id": "education-csuf",
     "topic": "education",
     "title": "California State University, Fullerton - Master of Science Computer Science",
-    "text": "Sai is pursuing a Master of Science in Computer Science at California State University, Fullerton from August 2024 to May 2026. His coursework includes Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence, and Distributed Systems. He is focused on deep learning, security-first cloud architecture, and high-performance computing."
+    "text": "Sai earned a Master of Science in Computer Science at California State University, Fullerton in May 2026. His coursework includes Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence, and Distributed Systems. He is focused on deep learning, security-first cloud architecture, and high-performance computing."
   },
   {
     "id": "education-gitam",

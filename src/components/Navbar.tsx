@@ -167,7 +167,7 @@ export const Navbar = () => {
             <Linkedin className="w-4 h-4" />
           </a>
           <a
-            href="/SaiTarrunPitta_SoftwareEngineer_Resume.pdf"
+            href="/PittaSaiTarrun_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
