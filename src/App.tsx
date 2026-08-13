@@ -20,7 +20,6 @@ const Publications = lazy(() =>
 );
 const Contact = lazy(() => import('./components/Contact').then((m) => ({ default: m.Contact })));
 
-
 const CanvasLoader = () => (
   <div className="fixed inset-0 pointer-events-none" aria-hidden="true">
     <div className="absolute inset-0 bg-[#0e0e0e]" />
@@ -48,7 +47,6 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
-
 function App() {
   return (
     <ReactLenis
@@ -63,10 +61,7 @@ function App() {
         infinite: false,
       }}
     >
-
       <div className="min-h-screen bg-[#0e0e0e] grid-mesh font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
-
-
         {/* 3D particle background */}
         <Suspense fallback={<CanvasLoader />}>
           <BackgroundCanvas />
@@ -79,7 +74,6 @@ function App() {
         </Suspense>
 
         <main id="main" className="relative z-10 min-h-screen" role="main">
-
           <Hero />
           <Suspense fallback={null}>
             <SectionWrapper>
@@ -100,8 +94,6 @@ function App() {
             <SectionWrapper>
               <Contact />
             </SectionWrapper>
-
-
           </Suspense>
         </main>
       </div>

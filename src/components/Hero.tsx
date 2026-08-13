@@ -85,15 +85,15 @@ export const Hero = () => {
   const lastName = 'Pitta';
 
   return (
-    <section id="hero" className="relative overflow-hidden pt-20">
+    <section id="hero" className="relative overflow-hidden pt-16 sm:pt-20">
       {/* Content Container */}
-      <div className="max-w-7xl mx-auto px-6 pt-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-12 relative z-10">
         {/* Available Badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col gap-4 mb-16"
+          className="flex flex-col gap-4 mb-10 sm:mb-16"
         >
           <div
             className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-widest w-fit"
@@ -122,7 +122,7 @@ export const Hero = () => {
         {/* Massive Kinetic Typography */}
         <div className="relative mb-8">
           <h1
-            className="text-6xl sm:text-8xl md:text-[12vw] font-black leading-none tracking-tighter text-white whitespace-wrap sm:whitespace-nowrap select-none flex flex-wrap"
+            className="text-[clamp(3.25rem,17vw,6rem)] md:text-[12vw] font-black leading-none tracking-tighter text-white whitespace-nowrap select-none flex flex-wrap"
             style={{ lineHeight: 0.88, fontFamily: 'var(--font-display)' }}
           >
             {firstName.split('').map((char, index) => (
@@ -131,7 +131,7 @@ export const Hero = () => {
           </h1>
           <div className="flex items-end gap-2 sm:gap-6 mt-1 overflow-hidden">
             <h1
-              className="text-6xl sm:text-8xl md:text-[12vw] font-black leading-none tracking-tighter whitespace-wrap sm:whitespace-nowrap select-none flex flex-wrap"
+              className="text-[clamp(3.25rem,17vw,6rem)] md:text-[12vw] font-black leading-none tracking-tighter whitespace-nowrap select-none flex flex-wrap"
               style={{
                 lineHeight: 0.88,
                 fontFamily: 'var(--font-display)',
@@ -145,7 +145,7 @@ export const Hero = () => {
         </div>
 
         {/* Tagline & CTA - 2 column on desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-end pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-end pb-12 sm:pb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

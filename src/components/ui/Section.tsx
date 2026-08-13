@@ -20,7 +20,6 @@ export const Section = ({ children, id, className = '', title }: SectionProps) =
             className="text-5xl md:text-7xl font-black mb-24 text-left text-on-surface tracking-tighter uppercase"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-
             {title}
           </motion.h2>
         )}

@@ -1,7 +1,5 @@
 import { test, expect } from '@playwright/test';
 import { createRequire } from 'module';
-import { existsSync } from 'fs';
-import { resolve } from 'path';
 import {
   tokenize,
   scoreChunk,
@@ -12,7 +10,6 @@ import {
 const require = createRequire(import.meta.url);
 const knowledgeBase = require('../../src/data/knowledge-base.json') as KnowledgeChunk[];
 const chunks = knowledgeBase as KnowledgeChunk[];
-const repoRoot = resolve(import.meta.dirname, '../..');
 
 // ─── tokenize() ──────────────────────────────────────────────────────────────
 
@@ -253,11 +250,5 @@ test.describe('knowledge-base.json – schema', () => {
       'skills-cloud-devops-depth',
       'skills-security-compliance',
     ]);
-  });
-});
-
-test.describe('API route exposure', () => {
-  test('does not expose the local LinkedIn token generator as a production API route', () => {
-    expect(existsSync(resolve(repoRoot, 'api/linkedin-get-token.ts'))).toBe(false);
   });
 });

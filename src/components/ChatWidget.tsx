@@ -185,7 +185,7 @@ export const ChatWidget = () => {
       <motion.button
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? 'Close chat' : "Open chat with Sai's AI assistant"}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg focus-visible:ring-2 focus-visible:ring-orange-500 outline-none"
+        className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] right-4 sm:bottom-6 sm:right-6 z-50 w-14 h-14 rounded-full flex items-center justify-center shadow-lg focus-visible:ring-2 focus-visible:ring-orange-500 outline-none"
         style={{
           background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
         }}
@@ -240,13 +240,13 @@ export const ChatWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 24, scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-            className="fixed bottom-24 right-6 z-50 w-[22rem] md:w-96 flex flex-col rounded-2xl overflow-hidden shadow-2xl"
+            className="fixed inset-x-3 bottom-[calc(max(1rem,env(safe-area-inset-bottom))+4.5rem)] sm:inset-x-auto sm:bottom-24 sm:right-6 z-50 sm:w-96 flex flex-col rounded-2xl overflow-hidden shadow-2xl"
             style={{
               background: 'rgba(19, 19, 19, 0.95)',
               backdropFilter: 'blur(24px)',
               WebkitBackdropFilter: 'blur(24px)',
               border: '1px solid rgba(255,255,255,0.08)',
-              height: '520px',
+              height: 'min(520px, calc(100dvh - 7rem))',
             }}
           >
             {/* Header */}

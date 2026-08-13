@@ -25,7 +25,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
-    
+
     // Magnetic tilt offsets
     const mouseX = e.clientX - rect.left;
     const mouseY = e.clientY - rect.top;
@@ -47,7 +47,6 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   // Generate dynamic background style for spotlight overlay
   const spotlightBg = useMotionTemplate`radial-gradient(450px circle at ${spotX}px ${spotY}px, rgba(249, 115, 22, 0.08), transparent 80%)`;
 
-
   return (
     <motion.div
       ref={cardRef}
@@ -62,7 +61,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-      className="group grid grid-cols-1 gap-6 items-start p-8 md:p-12 rounded-card-lg transition-all duration-700 glass-card hover:border-primary/40 hover:shadow-card-hover h-full relative overflow-hidden group/project"
+      className="group grid grid-cols-1 gap-5 sm:gap-6 items-start p-5 sm:p-8 md:p-12 rounded-3xl md:rounded-card-lg transition-all duration-700 glass-card hover:border-primary/40 hover:shadow-card-hover h-full relative overflow-hidden group/project"
     >
       {/* Spotlight overlay effect layer */}
       <motion.div
@@ -77,7 +76,6 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       >
         {project.num}
       </span>
-
 
       {/* Content */}
       <div style={{ transform: 'translateZ(30px)' }}>
@@ -114,23 +112,22 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           <ArrowUpRight className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
         </a>
       </div>
-
     </motion.div>
   );
 };
 
 export const Projects = () => {
   return (
-    <section id="projects" className="py-32">
-      <div className="max-w-7xl mx-auto px-6">
+    <section id="projects" className="py-16 sm:py-24 md:py-32">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-24"
+          className="mb-10 sm:mb-16 md:mb-24"
         >
           <h2
-            className="text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase"
+            className="text-4xl sm:text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Selected Projects
@@ -138,7 +135,7 @@ export const Projects = () => {
         </motion.div>
 
         {/* Desktop: 2-3 column grid | Mobile: single column */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
           {projects.map((project, index) => (
             <ProjectCard key={index} project={project} index={index} />
           ))}

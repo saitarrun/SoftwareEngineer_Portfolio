@@ -47,8 +47,7 @@ const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-      className="group grid md:grid-cols-[100px_1fr] gap-8 md:gap-16 p-10 md:p-14 rounded-[2.5rem] transition-all duration-700 glass-card hover:border-primary/40 hover:shadow-[0_0_50px_rgba(255,146,73,0.1)] w-full relative"
-
+      className="group grid md:grid-cols-[100px_1fr] gap-4 sm:gap-8 md:gap-16 p-5 sm:p-8 md:p-14 rounded-3xl md:rounded-[2.5rem] transition-all duration-700 glass-card hover:border-primary/40 hover:shadow-[0_0_50px_rgba(255,146,73,0.1)] w-full relative"
     >
       {/* Number Layer */}
       <div style={{ transform: 'translateZ(50px)' }} className="pt-2">
@@ -64,7 +63,7 @@ const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) =>
       <div style={{ transform: 'translateZ(30px)' }}>
         <div className="flex flex-wrap items-baseline gap-4 mb-6">
           <h3
-            className="text-3xl md:text-5xl font-black text-on-surface group-hover:text-primary transition-colors duration-500"
+            className="text-2xl sm:text-3xl md:text-5xl font-black text-on-surface group-hover:text-primary transition-colors duration-500 break-words"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             {edu.school}
@@ -78,7 +77,10 @@ const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) =>
         </div>
 
         {/* Period + Location Chips Layer */}
-        <div className="flex flex-wrap gap-3 mb-10" style={{ transform: 'translateZ(40px)' }}>
+        <div
+          className="flex flex-wrap gap-2 sm:gap-3 mb-7 sm:mb-10"
+          style={{ transform: 'translateZ(40px)' }}
+        >
           <span
             className="text-[10px] font-bold uppercase tracking-[0.4em] px-5 py-2.5 rounded-lg bg-surface-container-highest/60 text-on-surface-variant border border-white/05 backdrop-blur-md"
             style={{ fontFamily: 'var(--font-label)' }}
@@ -98,7 +100,7 @@ const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) =>
             (item: string, i: number) => (
               <p
                 key={i}
-                className="text-xl text-on-surface-variant leading-relaxed group-hover:text-on-surface/90 transition-colors duration-500"
+                className="text-sm sm:text-base md:text-xl text-on-surface-variant leading-relaxed group-hover:text-on-surface/90 transition-colors duration-500"
                 style={{ fontFamily: 'var(--font-body)' }}
               >
                 {item}
@@ -113,17 +115,17 @@ const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) =>
 
 export const Education = () => {
   return (
-    <section id="education" className="py-24 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="education" className="py-16 sm:py-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-10 sm:mb-16"
         >
           <h2
-            className="text-5xl md:text-8xl font-black text-on-surface tracking-tighter uppercase"
+            className="text-4xl sm:text-5xl md:text-8xl font-black text-on-surface tracking-tighter uppercase"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Education
@@ -131,7 +133,7 @@ export const Education = () => {
         </motion.div>
 
         {/* Education list */}
-        <div className="flex flex-col gap-24">
+        <div className="flex flex-col gap-10 sm:gap-16 md:gap-24">
           {education.map((edu, index) => (
             <EducationCard key={index} edu={edu} index={index} />
           ))}

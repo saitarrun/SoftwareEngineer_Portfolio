@@ -23,7 +23,6 @@
       "@/*": ["./src/*"]
     },
     "types": ["node"]
-
   },
   "include": ["src", "api"],
   "references": [

@@ -48,7 +48,6 @@ const SkillCard = ({ group, index }: { group: SkillGroup; index: number }) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.05, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
       className="group p-8 md:p-12 rounded-card glass-card transition-all duration-500 hover:border-primary/40 hover:shadow-card-hover h-full"
-
     >
       <div style={{ transform: 'translateZ(30px)' }}>
         <div className="flex items-start justify-between mb-6 sm:mb-8 gap-4">
@@ -96,17 +95,17 @@ const SkillCard = ({ group, index }: { group: SkillGroup; index: number }) => {
 
 export const Skills = () => {
   return (
-    <section id="skills" className="py-32 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="skills" className="py-16 sm:py-24 md:py-32 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-24"
+          className="mb-10 sm:mb-16 md:mb-24"
         >
           <h2
-            className="text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase mb-4"
+            className="text-4xl sm:text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase mb-4"
             style={{ fontFamily: 'var(--font-display)' }}
           >
             Technical Stack
@@ -118,7 +117,6 @@ export const Skills = () => {
             Engineered for Performance
           </p>
         </motion.div>
-
 
         {/* Skills Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

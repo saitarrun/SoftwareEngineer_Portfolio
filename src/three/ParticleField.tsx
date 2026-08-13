@@ -28,7 +28,7 @@ export function ParticleField() {
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
-    
+
     // Normalized mouse position values
     const mx = mouse.current.x;
     const my = mouse.current.y;
@@ -44,8 +44,8 @@ export function ParticleField() {
       const mouseParallaxesY = my * 2.5;
 
       dummy.position.set(
-        p.position.x + sx + mouseParallaxesX * (p.position.z / 15), 
-        p.position.y + sy + mouseParallaxesY * (p.position.z / 15), 
+        p.position.x + sx + mouseParallaxesX * (p.position.z / 15),
+        p.position.y + sy + mouseParallaxesY * (p.position.z / 15),
         p.position.z + sz
       );
       dummy.scale.setScalar(p.scale);
@@ -62,4 +62,3 @@ export function ParticleField() {
     </instancedMesh>
   );
 }
-

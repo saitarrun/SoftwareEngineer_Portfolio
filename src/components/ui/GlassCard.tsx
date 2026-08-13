@@ -9,7 +9,7 @@ interface GlassCardProps {
 
 export const GlassCard = ({ children, className = '', hoverEffect = false }: GlassCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  
+
   // Track relative mouse position inside the card
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -24,7 +24,6 @@ export const GlassCard = ({ children, className = '', hoverEffect = false }: Gla
   // Generate dynamic background style
   const background = useMotionTemplate`radial-gradient(400px circle at ${mouseX}px ${mouseY}px, rgba(249, 115, 22, 0.08), transparent 80%)`;
 
-
   return (
     <motion.div
       ref={cardRef}
@@ -37,12 +36,9 @@ export const GlassCard = ({ children, className = '', hoverEffect = false }: Gla
         className="absolute inset-0 pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 z-0"
         style={{ background }}
       />
-      
+
       {/* Content wrapper to keep it on top of spotlight */}
-      <div className="relative z-10">
-        {children}
-      </div>
+      <div className="relative z-10">{children}</div>
     </motion.div>
   );
 };
-

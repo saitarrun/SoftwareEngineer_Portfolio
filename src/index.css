@@ -49,8 +49,21 @@
     scroll-behavior: auto !important;
     cursor: auto;
     overflow-x: hidden;
+    min-width: 320px;
+    touch-action: manipulation;
   }
 
+  html {
+    overflow-x: hidden;
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  img,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
 
   /* Default cursor for interactive elements */
   a,
@@ -64,6 +77,12 @@
     a,
     button {
       cursor: auto;
+    }
+
+    .glass-card {
+      backdrop-filter: blur(12px) saturate(140%);
+      -webkit-backdrop-filter: blur(12px) saturate(140%);
+      will-change: auto;
     }
   }
 
@@ -119,7 +138,6 @@
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-
   .grid-mesh {
     background-size: 50px 50px;
     background-image:
@@ -147,8 +165,8 @@
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 
-      0 4px 30px rgba(0, 0, 0, 0.2), 
+    box-shadow:
+      0 4px 30px rgba(0, 0, 0, 0.2),
       inset 0 1px 1px rgba(255, 255, 255, 0.05);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     transform: translateZ(0);
@@ -161,9 +179,6 @@
       background: rgba(20, 20, 20, 0.95);
     }
   }
-
-
-
 
   .surface-card {
     background: var(--surface-container-high);

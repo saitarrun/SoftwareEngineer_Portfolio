@@ -11,7 +11,7 @@ A modern, interactive personal portfolio website built with React, TypeScript, a
 - **Responsive Design** — Mobile-optimized layouts using Tailwind CSS
 - **Dark Mode** — Beautiful dark theme with orange accents
 - **Multi-section Layout** — Hero, Experience, Projects, Skills, Education, and Contact sections
-- **Contact Form** — Built-in contact form with validation
+- **Contact Links** — Direct email and professional profile links
 - **High Performance** — Lazy loading, code splitting, and optimized bundle size
 
 ## Tech Stack
@@ -40,7 +40,6 @@ A modern, interactive personal portfolio website built with React, TypeScript, a
 ├── src/
 │   ├── components/          # React components
 │   │   ├── Contact.tsx      # Contact section with form
-│   │   ├── ContactForm.tsx  # Reusable form component
 │   │   ├── Education.tsx    # Education history
 │   │   ├── Experience.tsx   # Work experience section
 │   │   ├── Hero.tsx         # Hero section
@@ -149,7 +148,7 @@ Academic background and certifications.
 
 ### Contact
 
-Contact information and functional contact form.
+Contact information with direct email, GitHub, LinkedIn, and TryHackMe links.
 
 ## 3D Graphics
 

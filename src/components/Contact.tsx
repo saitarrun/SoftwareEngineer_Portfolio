@@ -39,17 +39,17 @@ export const Contact = () => {
     e.preventDefault();
     e.stopPropagation();
     try {
-      await navigator.clipboard.writeText('saitarrunpitta@gmail.com');
+      await window.navigator.clipboard.writeText('saitarrunpitta@gmail.com');
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
+    } catch {
       // Clipboard fallback
     }
   };
 
   return (
-    <section id="contact" className="py-32 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <section id="contact" className="py-16 sm:py-24 md:py-32 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         {/* CTA Block with 3D Tilt */}
         <motion.div
           ref={cardRef}
@@ -63,10 +63,9 @@ export const Contact = () => {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative rounded-card-lg overflow-hidden mb-24 p-12 md:p-16 glass-card group transition-all duration-700 hover:border-primary/40 hover:shadow-card-hover"
-
+          className="relative rounded-3xl md:rounded-card-lg overflow-hidden mb-16 sm:mb-24 p-5 sm:p-8 md:p-16 glass-card group transition-all duration-700 hover:border-primary/40 hover:shadow-card-hover"
         >
-          <div className="relative z-10 grid lg:grid-cols-2 gap-24 items-center">
+          <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
             <div style={{ transform: 'translateZ(40px)' }}>
               <span
                 className="text-primary font-bold uppercase tracking-[0.4em] mb-6 block"
@@ -96,13 +95,12 @@ export const Contact = () => {
                 <MagneticElement className="flex-1">
                   <a
                     href="mailto:saitarrunpitta@gmail.com"
-                    className="flex items-center justify-center gap-2 sm:gap-4 px-6 h-12 bg-primary text-on-primary font-black uppercase tracking-widest rounded-2xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full text-xs sm:text-sm shadow-[0_20px_40px_rgba(255,123,4,0.3)] focus-visible:ring-2 focus-visible:ring-white outline-none"
+                    className="flex items-center justify-center gap-2 sm:gap-4 px-3 sm:px-6 min-h-12 bg-primary text-on-primary font-black rounded-2xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full text-[11px] sm:text-sm shadow-[0_20px_40px_rgba(255,123,4,0.3)] focus-visible:ring-2 focus-visible:ring-white outline-none min-w-0"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
                     <Mail className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                    <span>saitarrunpitta@gmail.com</span>
+                    <span className="truncate">saitarrunpitta@gmail.com</span>
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform flex-shrink-0" />
-
                   </a>
                 </MagneticElement>
 
@@ -139,50 +137,50 @@ export const Contact = () => {
                 </MagneticElement>
               </div>
 
-
-                {/* Socials row - spans exact same max-width end to end */}
-                <div className="flex flex-row justify-between w-full gap-4">
-                  {[
-                    {
-                      icon: <Github className="w-6 h-6" />,
-                      label: 'GitHub',
-                      href: 'https://github.com/saitarrun',
-                    },
-                    {
-                      icon: <Linkedin className="w-6 h-6" />,
-                      label: 'LinkedIn',
-                      href: 'https://linkedin.com/in/saitarrun',
-                    },
-                    {
-                      icon: <Shield className="w-6 h-6" />,
-                      label: 'TryHackMe',
-                      href: 'https://tryhackme.com/p/TarrunXploit404',
-                    },
-                  ].map((social, i) => (
-                    <div key={i} className="flex flex-col items-center gap-3 group/social-wrapper flex-1">
-                      <MagneticElement className="w-full">
-                        <a
-                          href={social.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label={social.label}
-                          className="w-full h-12 sm:h-14 rounded-2xl bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social shadow-xl focus-visible:ring-2 focus-visible:ring-primary outline-none"
-                        >
-                          {social.icon}
-                        </a>
-                      </MagneticElement>
-                      <span
-                        className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300 text-center"
-                        style={{ fontFamily: 'var(--font-label)' }}
+              {/* Socials row - spans exact same max-width end to end */}
+              <div className="flex flex-row justify-between w-full gap-4">
+                {[
+                  {
+                    icon: <Github className="w-6 h-6" />,
+                    label: 'GitHub',
+                    href: 'https://github.com/saitarrun',
+                  },
+                  {
+                    icon: <Linkedin className="w-6 h-6" />,
+                    label: 'LinkedIn',
+                    href: 'https://linkedin.com/in/saitarrun',
+                  },
+                  {
+                    icon: <Shield className="w-6 h-6" />,
+                    label: 'TryHackMe',
+                    href: 'https://tryhackme.com/p/TarrunXploit404',
+                  },
+                ].map((social, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col items-center gap-3 group/social-wrapper flex-1"
+                  >
+                    <MagneticElement className="w-full">
+                      <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                        className="w-full h-12 sm:h-14 rounded-2xl bg-surface-container-highest/60 backdrop-blur-md flex items-center justify-center border border-white/05 hover:border-primary/50 hover:text-primary transition-all duration-300 group/social shadow-xl focus-visible:ring-2 focus-visible:ring-primary outline-none"
                       >
-                        {social.label}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
+                        {social.icon}
+                      </a>
+                    </MagneticElement>
+                    <span
+                      className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-primary/40 group-hover/social-wrapper:text-primary transition-colors duration-300 text-center"
+                      style={{ fontFamily: 'var(--font-label)' }}
+                    >
+                      {social.label}
+                    </span>
+                  </div>
+                ))}
               </div>
-
+            </div>
           </div>
 
           {/* Visual Flare */}

@@ -370,7 +370,6 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
         messages: [{ role: 'system', content: systemPrompt }, ...messages],
         stream: true,
 
-
         max_tokens: isListQuery ? 1024 : 512,
         temperature: 0.4,
       }),

@@ -8,17 +8,32 @@ export const Navbar = () => {
   const [activeSection, setActiveSection] = useState('hero');
   const { scrollYProgress } = useScroll();
 
-  const navItems = ['About', 'Experience', 'Education', 'Projects', 'Skills', 'Publications', 'Contact'];
-
+  const navItems = [
+    'About',
+    'Experience',
+    'Education',
+    'Projects',
+    'Skills',
+    'Publications',
+    'Contact',
+  ];
 
   // Scroll spy active section tracker logic using real-time viewport bounding rect calculations
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'experience', 'education', 'projects', 'skills', 'publications', 'contact'];
-      
+      const sections = [
+        'hero',
+        'experience',
+        'education',
+        'projects',
+        'skills',
+        'publications',
+        'contact',
+      ];
+
       // Target trigger line is 200px from the top of the viewport
-      const triggerPoint = 200; 
-      
+      const triggerPoint = 200;
+
       let currentSection = 'hero';
 
       for (const sectionId of sections) {
@@ -26,7 +41,7 @@ export const Navbar = () => {
         if (!el) continue;
 
         const rect = el.getBoundingClientRect();
-        
+
         // If the top of the section has scrolled past the trigger point
         // and the bottom of the section is still below the trigger point
         if (rect.top <= triggerPoint && rect.bottom > triggerPoint) {
@@ -46,10 +61,6 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-
-
-
-
   return (
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
@@ -57,7 +68,7 @@ export const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50"
     >
       {/* Fallback overlay layer to force hardware-accelerated frosted glass render */}
-      <div 
+      <div
         className="absolute inset-0 -z-10"
         style={{
           background: 'rgba(14, 14, 14, 0.45)',
@@ -66,7 +77,6 @@ export const Navbar = () => {
           borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
         }}
       />
-
 
       {/* Sleek Scroll-driven Reading Progress Bar */}
       <motion.div
@@ -115,7 +125,6 @@ export const Navbar = () => {
                     fontFamily: 'var(--font-body)',
                   }}
                 >
-
                   {item}
                   {isCurrent && (
                     <>
@@ -133,16 +142,11 @@ export const Navbar = () => {
                       />
                     </>
                   )}
-
-
-
                 </a>
               </MagneticElement>
             );
           })}
         </div>
-
-
 
         {/* Right: socials + resume */}
         <div className="flex items-center gap-2 sm:gap-4">
@@ -166,11 +170,7 @@ export const Navbar = () => {
           >
             <Linkedin className="w-4 h-4" />
           </a>
-          <a
-            href="/PittaSaiTarrun_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="/PittaSaiTarrun_Resume.pdf" target="_blank" rel="noopener noreferrer">
             <span
               className="px-3 sm:px-5 py-2 text-black text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-200 hover:shadow-[0_0_15px_#fb7800] focus-visible:ring-2 focus-visible:ring-orange-500 flex items-center justify-center outline-none min-h-[44px]"
               style={{
@@ -184,7 +184,7 @@ export const Navbar = () => {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
-            className="md:hidden hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors outline-none p-2 -mr-2"
+            className="md:hidden hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors outline-none w-11 h-11 -mr-2 flex items-center justify-center"
             style={{ color: 'var(--on-surface-variant)' }}
           >
             <Menu className="w-5 h-5" />
@@ -195,7 +195,15 @@ export const Navbar = () => {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden px-4 sm:px-6 py-6 sm:py-10 flex flex-col gap-6 sm:gap-8 bg-surface/80 backdrop-blur-[20px] border-b border-white/10">
-          {['About', 'Experience', 'Education', 'Projects', 'Skills', 'Publications', 'Contact'].map((item) => (
+          {[
+            'About',
+            'Experience',
+            'Education',
+            'Projects',
+            'Skills',
+            'Publications',
+            'Contact',
+          ].map((item) => (
             <a
               key={item}
               href={item.toLowerCase() === 'about' ? '#hero' : `#${item.toLowerCase()}`}
@@ -208,9 +216,6 @@ export const Navbar = () => {
           ))}
         </div>
       )}
-
-
-
     </motion.nav>
   );
 };

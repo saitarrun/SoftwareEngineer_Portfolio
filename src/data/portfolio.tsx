@@ -202,12 +202,6 @@ export const projects: Project[] = [
   },
 ];
 
-
-
-
-
-
-
 export const skillGroups: SkillGroup[] = [
   {
     num: '01',
