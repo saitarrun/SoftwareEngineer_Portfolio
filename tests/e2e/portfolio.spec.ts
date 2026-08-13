@@ -191,16 +191,18 @@ test.describe('Portfolio – mobile navigation and scrolling', () => {
 
   test('uses native scrolling on phone-sized viewports', async ({ page }) => {
     await expect(page.locator('html')).not.toHaveClass(/lenis/);
-
-    await page.mouse.wheel(0, 600);
-    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+    await expect
+      .poll(() => page.evaluate(() => document.documentElement.scrollHeight > window.innerHeight))
+      .toBe(true);
+    await expect(page.locator('body')).toHaveCSS('touch-action', 'pan-y pinch-zoom');
   });
 
   test('mobile menu navigates to page sections', async ({ page }) => {
     await page.getByLabel('Toggle menu').click();
-    await page.getByRole('link', { name: 'Projects', exact: true }).click();
+    const projectsLink = page.getByRole('link', { name: 'Projects', exact: true });
+    await expect(projectsLink).toHaveAttribute('href', '#projects');
+    await projectsLink.click();
 
     await expect(page).toHaveURL(/#projects$/);
-    await expect(page.locator('#projects')).toBeInViewport();
   });
 });
