@@ -94,6 +94,126 @@ function tokenize(text: string): string[] {
     .map(stem);
 }
 
+// ── Subword Tokenization (Character N-Grams for Subword Units) ───────────
+function extractSubwordNgrams(word: string, nMin = 3, nMax = 5): string[] {
+  const ngrams: string[] = [];
+  const wrapped = `<${word}>`;
+  for (let len = nMin; len <= nMax; len++) {
+    for (let i = 0; i <= wrapped.length - len; i++) {
+      ngrams.push(wrapped.slice(i, i + len));
+    }
+  }
+  return ngrams;
+}
+
+function subwordSimilarity(a: string, b: string): number {
+  if (a === b) return 1.0;
+  const ngramsA = extractSubwordNgrams(a);
+  const ngramsB = extractSubwordNgrams(b);
+  if (ngramsA.length === 0 || ngramsB.length === 0) return 0;
+
+  const setB = new Set(ngramsB);
+  let matches = 0;
+  for (const ngram of ngramsA) {
+    if (setB.has(ngram)) matches++;
+  }
+  return (2.0 * matches) / (ngramsA.length + ngramsB.length);
+}
+
+// ── Contextual & Semantic Approximation Mappings ─────────────────────────
+const SEMANTIC_CLUSTERS: Record<string, string[]> = {
+  ai: [
+    'artificial intelligence',
+    'machine learning',
+    'ml',
+    'rag',
+    'llm',
+    'langchain',
+    'pinecone',
+    'agentic',
+    'agents',
+    'pytorch',
+    'scikit',
+    'embeddings',
+    'vector',
+  ],
+  cloud: [
+    'aws',
+    'lambda',
+    'rds',
+    'docker',
+    'terraform',
+    'infrastructure',
+    'serverless',
+    'devops',
+    'cicd',
+    'spark',
+    'cloud computing',
+  ],
+  backend: [
+    'spring boot',
+    'fastapi',
+    'nodejs',
+    'express',
+    'rest api',
+    'microservices',
+    'distributed systems',
+    'sql',
+    'postgresql',
+    'redis',
+    'mysql',
+    'database',
+  ],
+  frontend: ['react', 'typescript', 'javascript', 'html', 'css', 'base web', 'ui', 'frontend'],
+  security: [
+    'openid',
+    'saml',
+    'jwt',
+    'spring security',
+    'rbac',
+    'xploit404',
+    'trojan',
+    'penetration testing',
+    'authentication',
+    'security',
+  ],
+  experience: [
+    'uber',
+    'pacific life',
+    'csuf',
+    'cognizant',
+    'work',
+    'job',
+    'role',
+    'intern',
+    'career',
+  ],
+  projects: [
+    'devforge',
+    'sdlc',
+    'rent application',
+    'openclaw',
+    'open-swe',
+    'sanctuary',
+    'deepgesture',
+    'anpr',
+    'brain tumor',
+  ],
+};
+
+function expandSemanticTokens(tokens: string[]): string[] {
+  const expanded = new Set(tokens);
+  for (const token of tokens) {
+    for (const [cluster, terms] of Object.entries(SEMANTIC_CLUSTERS)) {
+      if (terms.some((term) => term.includes(token) || token.includes(term))) {
+        terms.forEach((t) => expanded.add(t));
+        expanded.add(cluster);
+      }
+    }
+  }
+  return Array.from(expanded);
+}
+
 function editDistance(a: string, b: string): number {
   if (Math.abs(a.length - b.length) > 3) return 99;
   const dp: number[][] = Array.from({ length: a.length + 1 }, (_, i) =>
@@ -111,12 +231,20 @@ function editDistance(a: string, b: string): number {
 }
 
 function fuzzyMatch(queryToken: string, chunkTokens: string[]): number {
-  if (chunkTokens.includes(queryToken)) return 1;
+  if (chunkTokens.includes(queryToken)) return 1.0;
+
+  let maxSubwordSim = 0;
+  for (const cToken of chunkTokens) {
+    const sim = subwordSimilarity(queryToken, cToken);
+    if (sim > maxSubwordSim) maxSubwordSim = sim;
+  }
+  if (maxSubwordSim >= 0.6) return maxSubwordSim;
+
   // prefix match (≥4 chars)
   if (queryToken.length >= 4) {
     if (chunkTokens.some((t) => t.startsWith(queryToken) || queryToken.startsWith(t))) return 0.7;
   }
-  // typo tolerance: edit distance ≤ 2 for tokens ≥ 5 chars
+  // edit distance fallback: edit distance ≤ 2 for tokens ≥ 5 chars
   if (queryToken.length >= 5) {
     if (chunkTokens.some((t) => t.length >= 4 && editDistance(queryToken, t) <= 2)) return 0.5;
   }
@@ -126,14 +254,16 @@ function fuzzyMatch(queryToken: string, chunkTokens: string[]): number {
 function scoreChunk(chunk: KnowledgeChunk, queryTokens: string[]): number {
   const chunkTokens = tokenize(chunk.title + ' ' + chunk.text);
   const titleTokens = tokenize(chunk.title);
+  const semanticExpanded = expandSemanticTokens(queryTokens);
+
   let score = 0;
-  for (const token of queryTokens) {
+  for (const token of semanticExpanded) {
     const titleMatch = fuzzyMatch(token, titleTokens);
     const bodyMatch = fuzzyMatch(token, chunkTokens);
-    if (titleMatch > 0) score += titleMatch * 2;
+    if (titleMatch > 0) score += titleMatch * 2.5;
     else if (bodyMatch > 0) score += bodyMatch;
   }
-  return score / Math.max(queryTokens.length, 1);
+  return score / Math.max(semanticExpanded.length, 1);
 }
 
 const TOPIC_KEYWORDS: Record<string, string[]> = {
