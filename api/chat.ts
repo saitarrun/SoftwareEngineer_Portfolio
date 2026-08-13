@@ -526,6 +526,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
       const reader = upstream.body.getReader();
       const decoder = new TextDecoder();
 
+      let chunksStreamed = 0;
       while (true) {
         const { done, value } = await reader.read();
         if (done) break;
@@ -542,14 +543,19 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
           try {
             const parsed = JSON.parse(data);
             const delta = parsed?.choices?.[0]?.delta?.content;
-            if (delta) res.write(`data: ${JSON.stringify({ delta })}\n\n`);
+            if (delta) {
+              res.write(`data: ${JSON.stringify({ delta })}\n\n`);
+              chunksStreamed++;
+            }
           } catch {
             // skip malformed chunks
           }
         }
       }
-      res.end();
-      return;
+      if (chunksStreamed > 0) {
+        res.end();
+        return;
+      }
     } catch (err) {
       console.error(`Chat handler error (${model}):`, err);
     }
