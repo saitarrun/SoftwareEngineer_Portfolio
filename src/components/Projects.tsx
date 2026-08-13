@@ -60,8 +60,8 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-      className="group grid grid-cols-1 gap-5 sm:gap-6 items-start p-5 sm:p-8 md:p-12 rounded-3xl md:rounded-card-lg transition-all duration-700 glass-card hover:border-primary/40 hover:shadow-card-hover h-full relative overflow-hidden group/project"
+      transition={{ delay: index * 0.08, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
+      className="group flex flex-col justify-between p-7 sm:p-10 md:p-12 glass-card transition-all duration-500 h-full relative overflow-hidden group/project cursor-pointer"
     >
       {/* Spotlight overlay effect layer */}
       <motion.div
@@ -69,47 +69,51 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         style={{ background: spotlightBg }}
       />
 
-      {/* Number */}
-      <span
-        style={{ transform: 'translateZ(50px)' }}
-        className="text-4xl sm:text-6xl md:text-8xl font-black text-primary/10 group-hover:text-primary/30 transition-colors duration-500 leading-none md:col-span-1 z-10"
-      >
-        {project.num}
-      </span>
+      <div className="relative z-10 flex flex-col">
+        {/* Giant Number on top left */}
+        <span
+          style={{ transform: 'translateZ(40px)' }}
+          className="text-6xl sm:text-7xl md:text-8xl font-black text-orange-950/40 dark:text-[#3d2a1d] group-hover:text-primary/30 transition-colors duration-500 leading-none mb-10 sm:mb-14 select-none"
+          aria-hidden="true"
+        >
+          {project.num}
+        </span>
 
-      {/* Content */}
-      <div style={{ transform: 'translateZ(30px)' }}>
+        {/* Uppercase Dot-Separated Tech Stack */}
         <p
-          className="text-primary-dim text-[8px] sm:text-[10px] font-bold uppercase tracking-[0.4em] mb-2 sm:mb-4"
-          style={{ fontFamily: 'var(--font-label)' }}
+          style={{ transform: 'translateZ(25px)', fontFamily: 'var(--font-label)' }}
+          className="text-[#ff7a00] text-[9px] sm:text-[11px] font-extrabold uppercase tracking-[0.25em] mb-3 sm:mb-4 leading-relaxed"
         >
-          {project.tech}
+          {project.tech.replace(/·/g, '•')}
         </p>
+
+        {/* Title */}
         <h3
-          className="text-xl sm:text-3xl md:text-5xl font-black text-on-surface mb-4 sm:mb-6 transition-all duration-500 group-hover:translate-x-2"
-          style={{ fontFamily: 'var(--font-display)' }}
+          style={{ transform: 'translateZ(35px)', fontFamily: 'var(--font-display)' }}
+          className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight group-hover:text-primary transition-colors duration-300"
         >
-          <span className="group-hover:text-gradient leading-[1.1] inline-block">
-            {project.title}
-          </span>
+          {project.title}
         </h3>
+
+        {/* Description */}
         <p
-          className="text-on-surface-variant text-sm sm:text-base md:text-xl leading-relaxed max-w-2xl"
-          style={{ fontFamily: 'var(--font-body)' }}
+          style={{ transform: 'translateZ(20px)', fontFamily: 'var(--font-body)' }}
+          className="text-white/70 text-sm sm:text-base md:text-lg leading-relaxed font-normal mb-8 sm:mb-12"
         >
           {project.description}
         </p>
       </div>
 
-      {/* Arrow link */}
-      <div className="md:pl-8 col-span-1 md:col-span-1" style={{ transform: 'translateZ(40px)' }}>
+      {/* Circular Arrow Button at bottom */}
+      <div className="relative z-10 pt-4" style={{ transform: 'translateZ(45px)' }}>
         <a
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-full ghost-border flex items-center justify-center text-on-surface-variant group-hover:border-primary group-hover:text-primary group-hover:bg-primary/5 transition-all duration-500 group-hover:rotate-45 inline-flex flex-shrink-0 focus-visible:ring-2 focus-visible:ring-primary outline-none"
+          aria-label={`View ${project.title}`}
+          className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#1b1713] border border-white/10 flex items-center justify-center text-white/70 group-hover:border-primary/50 group-hover:text-primary group-hover:bg-[#ff7b04]/10 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary outline-none group-hover:scale-105"
         >
-          <ArrowUpRight className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10" />
+          <ArrowUpRight className="w-6 h-6 sm:w-7 sm:h-7 group-hover:rotate-45 transition-transform duration-300" />
         </a>
       </div>
     </motion.div>

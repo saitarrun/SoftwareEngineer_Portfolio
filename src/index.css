@@ -161,24 +161,34 @@
   }
 
   .glass-card {
-    background: rgba(26, 26, 26, 0.45);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    background: rgba(22, 19, 16, 0.75);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 2.5rem;
     box-shadow:
-      0 4px 30px rgba(0, 0, 0, 0.2),
-      inset 0 1px 1px rgba(255, 255, 255, 0.05);
+      0 20px 50px rgba(0, 0, 0, 0.6),
+      inset 0 1px 1px rgba(255, 255, 255, 0.08);
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     transform: translateZ(0);
     backface-visibility: hidden;
   }
 
+  .glass-card:hover {
+    border-color: rgba(255, 146, 73, 0.3);
+    box-shadow:
+      0 30px 70px rgba(0, 0, 0, 0.7),
+      0 0 40px rgba(255, 123, 4, 0.12),
+      inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  }
+
   @media (max-width: 767px), (pointer: coarse) {
     .glass-card {
-      background: rgba(22, 22, 22, 0.65) !important;
-      backdrop-filter: blur(12px) saturate(140%) !important;
-      -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      background: rgba(22, 19, 16, 0.88) !important;
+      backdrop-filter: blur(16px) saturate(140%) !important;
+      -webkit-backdrop-filter: blur(16px) saturate(140%) !important;
+      border-radius: 2rem !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
   }
 
