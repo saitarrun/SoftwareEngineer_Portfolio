@@ -182,3 +182,25 @@ test.describe('Portfolio – Contact section', () => {
     await expect(page.locator('#contact')).toBeVisible({ timeout: 8_000 });
   });
 });
+
+test.describe('Portfolio – mobile navigation and scrolling', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 667 });
+    await page.goto('/');
+  });
+
+  test('uses native scrolling on phone-sized viewports', async ({ page }) => {
+    await expect(page.locator('html')).not.toHaveClass(/lenis/);
+
+    await page.mouse.wheel(0, 600);
+    await expect.poll(() => page.evaluate(() => window.scrollY)).toBeGreaterThan(0);
+  });
+
+  test('mobile menu navigates to page sections', async ({ page }) => {
+    await page.getByLabel('Toggle menu').click();
+    await page.getByRole('link', { name: 'Projects', exact: true }).click();
+
+    await expect(page).toHaveURL(/#projects$/);
+    await expect(page.locator('#projects')).toBeInViewport();
+  });
+});

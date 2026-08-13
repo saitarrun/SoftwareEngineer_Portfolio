@@ -50,7 +50,7 @@
     cursor: auto;
     overflow-x: hidden;
     min-width: 320px;
-    touch-action: manipulation;
+    touch-action: pan-y pinch-zoom;
   }
 
   html {

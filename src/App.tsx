@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { ReactLenis } from 'lenis/react';
 import { motion } from 'framer-motion';
 import { Navbar } from './components/Navbar';
@@ -47,7 +47,59 @@ const SectionWrapper = ({ children }: { children: React.ReactNode }) => (
   </motion.div>
 );
 
+const Portfolio = () => (
+  <div className="min-h-screen bg-[#0e0e0e] grid-mesh font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
+    <Suspense fallback={<CanvasLoader />}>
+      <BackgroundCanvas />
+    </Suspense>
+
+    <Navbar />
+
+    <Suspense fallback={null}>
+      <ChatWidget />
+    </Suspense>
+
+    <main id="main" className="relative z-10 min-h-screen" role="main">
+      <Hero />
+      <Suspense fallback={null}>
+        <SectionWrapper>
+          <Experience />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Education />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Projects />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Skills />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Publications />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Contact />
+        </SectionWrapper>
+      </Suspense>
+    </main>
+  </div>
+);
+
 function App() {
+  const [useNativeScroll, setUseNativeScroll] = useState(
+    () => window.matchMedia('(max-width: 767px), (pointer: coarse)').matches
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px), (pointer: coarse)');
+    const updateScrollMode = () => setUseNativeScroll(mediaQuery.matches);
+
+    mediaQuery.addEventListener('change', updateScrollMode);
+    return () => mediaQuery.removeEventListener('change', updateScrollMode);
+  }, []);
+
+  if (useNativeScroll) return <Portfolio />;
+
   return (
     <ReactLenis
       root
@@ -61,42 +113,7 @@ function App() {
         infinite: false,
       }}
     >
-      <div className="min-h-screen bg-[#0e0e0e] grid-mesh font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
-        {/* 3D particle background */}
-        <Suspense fallback={<CanvasLoader />}>
-          <BackgroundCanvas />
-        </Suspense>
-
-        <Navbar />
-
-        <Suspense fallback={null}>
-          <ChatWidget />
-        </Suspense>
-
-        <main id="main" className="relative z-10 min-h-screen" role="main">
-          <Hero />
-          <Suspense fallback={null}>
-            <SectionWrapper>
-              <Experience />
-            </SectionWrapper>
-            <SectionWrapper>
-              <Education />
-            </SectionWrapper>
-            <SectionWrapper>
-              <Projects />
-            </SectionWrapper>
-            <SectionWrapper>
-              <Skills />
-            </SectionWrapper>
-            <SectionWrapper>
-              <Publications />
-            </SectionWrapper>
-            <SectionWrapper>
-              <Contact />
-            </SectionWrapper>
-          </Suspense>
-        </main>
-      </div>
+      <Portfolio />
     </ReactLenis>
   );
 }
