@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
 import { useRef } from 'react';
 import { experiences, type Experience as ExperienceData } from '../data/portfolio';
 
@@ -8,6 +8,10 @@ const ExperienceCard = ({ exp, index }: { exp: ExperienceData; index: number }) 
   // Mouse tracking for magnetic effect
   const x = useMotionValue(0);
   const y = useMotionValue(0);
+
+  // Track absolute cursor coordinates inside the card for spotlight glow
+  const spotX = useMotionValue(0);
+  const spotY = useMotionValue(0);
 
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
@@ -26,12 +30,17 @@ const ExperienceCard = ({ exp, index }: { exp: ExperienceData; index: number }) 
     const yPct = mouseY / height - 0.5;
     x.set(xPct);
     y.set(yPct);
+    spotX.set(mouseX);
+    spotY.set(mouseY);
   };
 
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
   };
+
+  // Dynamic background style for spotlight overlay
+  const spotlightBg = useMotionTemplate`radial-gradient(500px circle at ${spotX}px ${spotY}px, rgba(249, 115, 22, 0.08), transparent 80%)`;
 
   return (
     <motion.div
@@ -47,8 +56,13 @@ const ExperienceCard = ({ exp, index }: { exp: ExperienceData; index: number }) 
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-      className="group grid grid-cols-1 sm:grid-cols-[60px_1fr] md:grid-cols-[100px_1fr] gap-4 sm:gap-6 md:gap-8 lg:gap-16 p-5 sm:p-6 md:p-10 lg:p-14 rounded-3xl md:rounded-[2.5rem] transition-all duration-700 glass-card hover:border-primary/40 hover:shadow-[0_0_50px_rgba(255,146,73,0.1)] w-full relative h-full"
+      className="group grid grid-cols-1 sm:grid-cols-[60px_1fr] md:grid-cols-[100px_1fr] gap-4 sm:gap-6 md:gap-8 lg:gap-16 p-5 sm:p-6 md:p-10 lg:p-14 rounded-3xl md:rounded-[2.5rem] transition-all duration-500 glass-card hover:border-primary/40 hover:shadow-card-hover w-full relative h-full overflow-hidden group/card"
     >
+      {/* Spotlight overlay effect layer */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 z-0"
+        style={{ background: spotlightBg }}
+      />
       {/* Number Layer */}
       <div style={{ transform: 'translateZ(50px)' }} className="pt-2">
         <span

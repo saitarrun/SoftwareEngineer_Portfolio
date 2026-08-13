@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
 import { useRef } from 'react';
 import { education, type Education as EducationData } from '../data/portfolio';
 
@@ -9,6 +9,10 @@ const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) =>
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
+  // Track absolute cursor coordinates inside the card for spotlight glow
+  const spotX = useMotionValue(0);
+  const spotY = useMotionValue(0);
+
   const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
   const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
 
@@ -16,7 +20,7 @@ const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) =>
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7deg', '7deg']);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || window.matchMedia('(pointer: coarse)').matches) return;
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;
@@ -26,12 +30,17 @@ const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) =>
     const yPct = mouseY / height - 0.5;
     x.set(xPct);
     y.set(yPct);
+    spotX.set(mouseX);
+    spotY.set(mouseY);
   };
 
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
   };
+
+  // Dynamic background style for spotlight overlay
+  const spotlightBg = useMotionTemplate`radial-gradient(500px circle at ${spotX}px ${spotY}px, rgba(249, 115, 22, 0.08), transparent 80%)`;
 
   return (
     <motion.div
@@ -47,8 +56,13 @@ const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-      className="group grid md:grid-cols-[100px_1fr] gap-4 sm:gap-8 md:gap-16 p-5 sm:p-8 md:p-14 rounded-3xl md:rounded-[2.5rem] transition-all duration-700 glass-card hover:border-primary/40 hover:shadow-[0_0_50px_rgba(255,146,73,0.1)] w-full relative"
+      className="group grid md:grid-cols-[100px_1fr] gap-4 sm:gap-8 md:gap-16 p-5 sm:p-8 md:p-14 rounded-3xl md:rounded-[2.5rem] transition-all duration-500 glass-card hover:border-primary/40 hover:shadow-card-hover w-full relative overflow-hidden group/card"
     >
+      {/* Spotlight overlay effect layer */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover/card:opacity-100 transition-opacity duration-300 z-0"
+        style={{ background: spotlightBg }}
+      />
       {/* Number Layer */}
       <div style={{ transform: 'translateZ(50px)' }} className="pt-2">
         <span
