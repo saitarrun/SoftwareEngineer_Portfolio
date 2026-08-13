@@ -356,65 +356,73 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
     return res.end();
   }
 
-  try {
-    const upstream = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://saitarrun.dev',
-        'X-Title': 'Sai Tarrun Portfolio',
-      },
-      body: JSON.stringify({
-        model: 'meta-llama/llama-3-8b-instruct:free',
-        messages: [{ role: 'system', content: systemPrompt }, ...messages],
-        stream: true,
+  const modelsToTry = [
+    'meta-llama/llama-3.3-70b-instruct:free',
+    'google/gemini-2.0-flash-lite-001',
+    'mistralai/mistral-7b-instruct:free',
+    'meta-llama/llama-3-8b-instruct:free',
+  ];
 
-        max_tokens: isListQuery ? 1024 : 512,
-        temperature: 0.4,
-      }),
-    });
+  for (const model of modelsToTry) {
+    try {
+      const upstream = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://saitarrun.dev',
+          'X-Title': 'Sai Tarrun Portfolio',
+        },
+        body: JSON.stringify({
+          model,
+          messages: [{ role: 'system', content: systemPrompt }, ...messages],
+          stream: true,
+          max_tokens: isListQuery ? 1024 : 512,
+          temperature: 0.4,
+        }),
+      });
 
-    if (!upstream.ok) {
-      console.error('OpenRouter error:', upstream.status, await upstream.text());
-      writeSseAnswer(res, fallbackAnswer);
-      return res.end();
-    }
+      if (!upstream.ok) {
+        console.error(`OpenRouter error (${model}):`, upstream.status, await upstream.text());
+        continue;
+      }
 
-    if (!upstream.body) {
-      writeSseAnswer(res, fallbackAnswer);
-      return res.end();
-    }
+      if (!upstream.body) {
+        continue;
+      }
 
-    const reader = upstream.body.getReader();
-    const decoder = new TextDecoder();
+      const reader = upstream.body.getReader();
+      const decoder = new TextDecoder();
 
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
 
-      const text = decoder.decode(value, { stream: true });
-      for (const line of text.split('\n')) {
-        const trimmed = line.trim();
-        if (!trimmed.startsWith('data:')) continue;
-        const data = trimmed.slice(5).trim();
-        if (data === '[DONE]') {
-          res.write('data: [DONE]\n\n');
-          continue;
-        }
-        try {
-          const parsed = JSON.parse(data);
-          const delta = parsed?.choices?.[0]?.delta?.content;
-          if (delta) res.write(`data: ${JSON.stringify({ delta })}\n\n`);
-        } catch {
-          // skip malformed chunks
+        const text = decoder.decode(value, { stream: true });
+        for (const line of text.split('\n')) {
+          const trimmed = line.trim();
+          if (!trimmed.startsWith('data:')) continue;
+          const data = trimmed.slice(5).trim();
+          if (data === '[DONE]') {
+            res.write('data: [DONE]\n\n');
+            continue;
+          }
+          try {
+            const parsed = JSON.parse(data);
+            const delta = parsed?.choices?.[0]?.delta?.content;
+            if (delta) res.write(`data: ${JSON.stringify({ delta })}\n\n`);
+          } catch {
+            // skip malformed chunks
+          }
         }
       }
+      res.end();
+      return;
+    } catch (err) {
+      console.error(`Chat handler error (${model}):`, err);
     }
-  } catch (err) {
-    console.error('Chat handler error:', err);
-    writeSseAnswer(res, fallbackAnswer);
   }
 
+  writeSseAnswer(res, fallbackAnswer);
   res.end();
 }
