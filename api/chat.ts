@@ -281,11 +281,9 @@ const ALLOWED_ORIGINS = new Set([
 ]);
 
 function isAllowedOrigin(origin: string | undefined): boolean {
-  if (!origin) return false;
+  if (!origin) return true; // allow same-origin requests (e.g. fetch('/api/chat'))
   if (ALLOWED_ORIGINS.has(origin)) return true;
-  return /^https:\/\/software-engineer-portfolio[a-z0-9-]*-saitarruns-projects\.vercel\.app$/.test(
-    origin
-  );
+  return /\.vercel\.app$/.test(origin) || /\.saitarrun\.dev$/.test(origin);
 }
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
