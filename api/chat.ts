@@ -273,6 +273,8 @@ function writeSseAnswer(res: ApiResponse, answer: string): void {
 
 // ── CORS & rate limiting ──────────────────────────────────────────────────────
 const ALLOWED_ORIGINS = new Set([
+  'https://saitarrunpitta.vercel.app',
+  'https://www.saitarrunpitta.vercel.app',
   'https://saitarrun.dev',
   'https://www.saitarrun.dev',
   'http://localhost:5173',
