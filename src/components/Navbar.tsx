@@ -67,12 +67,15 @@ export const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       className="fixed top-0 left-0 right-0 z-50"
     >
-      {/* Fallback overlay layer to force hardware-accelerated frosted glass render */}
+      {/* Frosted Glassmorphic background layer */}
       <div
         className="absolute inset-0 -z-10"
         style={{
-          background: 'rgba(14, 14, 14, 0.85)',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+          background: 'rgba(12, 12, 12, 0.55)',
+          backdropFilter: 'blur(24px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.37), inset 0 -1px 0 rgba(255, 255, 255, 0.05)',
         }}
       />
 
@@ -190,9 +193,16 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu drawer */}
       {menuOpen && (
-        <div className="md:hidden px-4 sm:px-6 py-6 sm:py-10 flex flex-col gap-6 sm:gap-8 bg-surface/80 backdrop-blur-[20px] border-b border-white/10">
+        <div
+          className="md:hidden px-4 sm:px-6 py-6 sm:py-10 flex flex-col gap-6 sm:gap-8 border-b border-white/10"
+          style={{
+            background: 'rgba(12, 12, 12, 0.82)',
+            backdropFilter: 'blur(24px) saturate(180%)',
+            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+          }}
+        >
           {[
             'About',
             'Experience',
