@@ -19,7 +19,7 @@ const FluidLetter = ({
   const springY = useSpring(y, { stiffness: 120, damping: 25, mass: 0.5 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
+    if (!ref.current || window.matchMedia('(pointer: coarse)').matches) return;
     const rect = ref.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
@@ -46,6 +46,8 @@ const FluidLetter = ({
     y.set(0);
   };
 
+  const isTouch = typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches;
+
   return (
     <motion.span
       ref={ref}
@@ -61,8 +63,8 @@ const FluidLetter = ({
         ease: [0.25, 0.1, 0.25, 1],
       }}
       style={{
-        x: springX,
-        y: springY,
+        x: isTouch ? 0 : springX,
+        y: isTouch ? 0 : springY,
         display: 'inline-block',
         ...(isGradient
           ? {

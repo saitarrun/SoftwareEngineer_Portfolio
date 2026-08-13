@@ -102,7 +102,7 @@ const fragmentShader = `
   }
 `;
 
-export function OrangeSmoke() {
+export function OrangeSmoke({ isMobile = false }: { isMobile?: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
 
   const uniforms1 = useMemo(
@@ -132,19 +132,23 @@ export function OrangeSmoke() {
   useFrame((state) => {
     const t = state.clock.elapsedTime;
     uniforms1.uTime.value = t;
-    uniforms2.uTime.value = t + 100;
-    uniforms3.uTime.value = t + 200;
+    if (!isMobile) {
+      uniforms2.uTime.value = t + 100;
+      uniforms3.uTime.value = t + 200;
+    }
 
     if (groupRef.current) {
       groupRef.current.rotation.z += 0.00008;
     }
   });
 
+  const geoSegs = isMobile ? 16 : 64;
+
   return (
     <group ref={groupRef}>
       {/* First flowing smoke layer */}
       <mesh position={[0, 2, 3]} scale={[12, 10, 1]} frustumCulled={false} renderOrder={1}>
-        <planeGeometry args={[1, 1, 64, 64]} />
+        <planeGeometry args={[1, 1, geoSegs, geoSegs]} />
         <shaderMaterial
           vertexShader={vertexShader}
           fragmentShader={fragmentShader}
@@ -156,33 +160,36 @@ export function OrangeSmoke() {
         />
       </mesh>
 
-      {/* Second flowing smoke layer */}
-      <mesh position={[-1.5, 1, 3.2]} scale={[10, 8, 1]} frustumCulled={false} renderOrder={1}>
-        <planeGeometry args={[1, 1, 64, 64]} />
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-          uniforms={uniforms2}
-          transparent
-          depthTest={false}
-          depthWrite={false}
-          blending={THREE.NormalBlending}
-        />
-      </mesh>
+      {/* Additional layers disabled on mobile to prevent GPU strain */}
+      {!isMobile && (
+        <>
+          <mesh position={[-1.5, 1, 3.2]} scale={[10, 8, 1]} frustumCulled={false} renderOrder={1}>
+            <planeGeometry args={[1, 1, geoSegs, geoSegs]} />
+            <shaderMaterial
+              vertexShader={vertexShader}
+              fragmentShader={fragmentShader}
+              uniforms={uniforms2}
+              transparent
+              depthTest={false}
+              depthWrite={false}
+              blending={THREE.NormalBlending}
+            />
+          </mesh>
 
-      {/* Third flowing smoke layer */}
-      <mesh position={[1.5, 3, 2.8]} scale={[9, 7, 1]} frustumCulled={false} renderOrder={1}>
-        <planeGeometry args={[1, 1, 64, 64]} />
-        <shaderMaterial
-          vertexShader={vertexShader}
-          fragmentShader={fragmentShader}
-          uniforms={uniforms3}
-          transparent
-          depthTest={false}
-          depthWrite={false}
-          blending={THREE.NormalBlending}
-        />
-      </mesh>
+          <mesh position={[1.5, 3, 2.8]} scale={[9, 7, 1]} frustumCulled={false} renderOrder={1}>
+            <planeGeometry args={[1, 1, geoSegs, geoSegs]} />
+            <shaderMaterial
+              vertexShader={vertexShader}
+              fragmentShader={fragmentShader}
+              uniforms={uniforms3}
+              transparent
+              depthTest={false}
+              depthWrite={false}
+              blending={THREE.NormalBlending}
+            />
+          </mesh>
+        </>
+      )}
     </group>
   );
 }

@@ -71,9 +71,7 @@ export const Navbar = () => {
       <div
         className="absolute inset-0 -z-10"
         style={{
-          background: 'rgba(14, 14, 14, 0.45)',
-          backdropFilter: 'blur(20px) saturate(180%)',
-          WebkitBackdropFilter: 'blur(20px) saturate(180%)',
+          background: 'rgba(14, 14, 14, 0.85)',
           borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
         }}
       />

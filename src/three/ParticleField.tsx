@@ -4,14 +4,16 @@ import * as THREE from 'three';
 import { PARTICLE_COUNT } from './constants';
 import { useMousePosition } from './useMousePosition';
 
-export function ParticleField() {
+export function ParticleField({ isMobile = false }: { isMobile?: boolean }) {
   const meshRef = useRef<THREE.InstancedMesh>(null!);
   const dummy = useMemo(() => new THREE.Object3D(), []);
   const mouse = useMousePosition();
 
+  const count = isMobile ? 40 : PARTICLE_COUNT;
+
   const particles = useMemo(() => {
     const arr = [];
-    for (let i = 0; i < PARTICLE_COUNT; i++) {
+    for (let i = 0; i < count; i++) {
       arr.push({
         position: new THREE.Vector3(
           (Math.random() - 0.5) * 100,
@@ -24,7 +26,7 @@ export function ParticleField() {
       });
     }
     return arr;
-  }, []);
+  }, [count]);
 
   useFrame((state) => {
     const t = state.clock.elapsedTime;
@@ -56,8 +58,8 @@ export function ParticleField() {
   });
 
   return (
-    <instancedMesh ref={meshRef} args={[undefined, undefined, PARTICLE_COUNT]}>
-      <sphereGeometry args={[1, 6, 6]} />
+    <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
+      <sphereGeometry args={[1, 4, 4]} />
       <meshBasicMaterial color="#F97316" transparent opacity={0.15} />
     </instancedMesh>
   );

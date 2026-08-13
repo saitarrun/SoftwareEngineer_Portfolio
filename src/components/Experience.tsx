@@ -16,7 +16,7 @@ const ExperienceCard = ({ exp, index }: { exp: ExperienceData; index: number }) 
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7deg', '7deg']);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || window.matchMedia('(pointer: coarse)').matches) return;
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
     const height = rect.height;

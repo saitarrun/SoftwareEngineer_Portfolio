@@ -27,13 +27,13 @@ export const MagneticElement = ({ children, className, distance = 0.4 }: Magneti
   const springY = useSpring(y, { stiffness: 150, damping: 15 });
 
   const handleMouseEnter = () => {
-    if (ref.current && !prefersReducedMotion) {
+    if (ref.current && !prefersReducedMotion && !window.matchMedia('(pointer: coarse)').matches) {
       rectRef.current = ref.current.getBoundingClientRect();
     }
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion || window.matchMedia('(pointer: coarse)').matches) return;
     const { clientX, clientY } = e;
     if (!rectRef.current) return;
     const { left, top, width, height } = rectRef.current;

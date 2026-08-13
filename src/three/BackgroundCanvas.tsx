@@ -1,9 +1,23 @@
+import { useState, useEffect } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { ParticleField } from './ParticleField';
 import { GridPlane } from './GridPlane';
 import { OrangeSmoke } from './OrangeSmoke';
 
 export function BackgroundCanvas() {
+  const [isMobile, setIsMobile] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      window.matchMedia('(max-width: 767px), (pointer: coarse)').matches
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px), (pointer: coarse)');
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches);
+    mediaQuery.addEventListener('change', updateIsMobile);
+    return () => mediaQuery.removeEventListener('change', updateIsMobile);
+  }, []);
+
   return (
     <div
       style={{
@@ -22,11 +36,11 @@ export function BackgroundCanvas() {
       <Canvas
         camera={{ position: [0, 2, 8], fov: 60 }}
         gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
-        dpr={[1, 1.5]}
+        dpr={isMobile ? [1, 1] : [1, 1.5]}
         style={{ background: 'transparent' }}
       >
-        <OrangeSmoke />
-        <ParticleField />
+        <OrangeSmoke isMobile={isMobile} />
+        <ParticleField isMobile={isMobile} />
         <GridPlane />
       </Canvas>
     </div>

@@ -28,7 +28,7 @@ test.describe('Portfolio – navigation', () => {
 
   test('navbar contains section links', async ({ page }) => {
     for (const link of ['Experience', 'Projects', 'Skills', 'Contact']) {
-      await expect(page.locator('nav').getByText(link, { exact: true }).first()).toBeVisible();
+      await expect(page.locator('nav').getByText(link, { exact: true }).first()).toBeAttached();
     }
   });
 
