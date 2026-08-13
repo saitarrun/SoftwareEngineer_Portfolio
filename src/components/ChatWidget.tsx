@@ -242,10 +242,11 @@ export const ChatWidget = () => {
             transition={{ type: 'spring', stiffness: 300, damping: 28 }}
             className="fixed inset-x-3 bottom-[calc(max(1rem,env(safe-area-inset-bottom))+4.5rem)] sm:inset-x-auto sm:bottom-24 sm:right-6 z-50 sm:w-96 flex flex-col rounded-2xl overflow-hidden shadow-2xl"
             style={{
-              background: 'rgba(19, 19, 19, 0.95)',
-              backdropFilter: 'blur(24px)',
-              WebkitBackdropFilter: 'blur(24px)',
-              border: '1px solid rgba(255,255,255,0.08)',
+              background: 'rgba(12, 12, 12, 0.72)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
               height: 'min(520px, calc(100dvh - 7rem))',
             }}
           >
