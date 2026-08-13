@@ -18,6 +18,12 @@
     "text": "Sai Tarrun Pitta is currently available for work and actively seeking full-time software engineer positions. He is open to backend, full-stack, and AI/ML engineering roles. He is based in California and has experience working both in the US and India."
   },
   {
+    "id": "engineering-philosophy",
+    "topic": "profile",
+    "title": "Engineering Philosophy & Core Principles",
+    "text": "Sai's engineering philosophy centers on 'Performance by Design' and 'Security as a Default.' He prioritizes architectural reliability (99.99% uptime target), observability (reducing MTTR), and performance optimization (reducing p99 latencies). He believes in building software systems that are maintainable, modular, resilient under peak loads, and cost-efficient."
+  },
+  {
     "id": "experience-pacific-life",
     "topic": "experience",
     "title": "Pacific Life - Software Engineer Intern",
@@ -60,7 +66,31 @@
     "text": "Sai published a peer-reviewed IEEE conference paper titled 'Hardware Trojan Detection with Machine Learning and Power Side-Channels: A Post-Deployment Analysis' at IEEE CNS 2025. The research explores using power side-channel analysis and Random Forest models to detect dormant hardware Trojans in integrated circuits. By analyzing power consumption data from an Artix FPGA running AES-128, the model achieved 98% detection accuracy while reducing computational costs and improving noise robustness. Co-authored with Ashwin Koshy John, Jaya Dofe, and Jai Gopal Pandey."
   },
   {
-    "id": "project-llm-knowledge-retrieval",
+    "id": "project-devforge-ai",
+    "topic": "projects",
+    "title": "DevForge-AI - Agentic SDLC Orchestrator",
+    "text": "Sai created DevForge-AI, an agentic SDLC orchestrator featuring 10 role-specific AI agents (Product Manager, UX Designer, Architect, Security Engineer, QA, DevOps, etc.) that automate the complete software delivery pipeline across structured feedback loops and automated quality gates."
+  },
+  {
+    "id": "project-sdlc-ai-workflow",
+    "topic": "projects",
+    "title": "SDLC AI Workflow Plugin",
+    "text": "Sai created the SDLC AI Workflow plugin for Claude Code, featuring 20 role-specific agents, 12 specialized knowledge skills, and 8 custom commands designed to automate complex software engineering lifecycles and pipeline iterations."
+  },
+  {
+    "id": "project-rent-application",
+    "topic": "projects",
+    "title": "Rent Application - Decentralized Property Management",
+    "text": "Sai built a decentralized property management and rental agreement portal using Solidity, Ethereum, React, Vite, Node.js, and Prisma. Features include smart contract rent collection, tamper-proof digital leases, secure e-signatures, and tenant repair request workflows."
+  },
+  {
+    "id": "project-agentic-context-compression",
+    "topic": "projects",
+    "title": "Agentic Context Compression Framework",
+    "text": "Sai developed a Headroom-inspired context management framework in TypeScript/Node.js that dynamically summarizes, prunes, and consolidates agent conversation history and tool execution logs to prevent token rot and minimize API token costs during long agentic sessions."
+  },
+  {
+    "id": "project-semantic-code-intelligence",
     "topic": "projects",
     "title": "Semantic Code Intelligence Platform",
     "text": "Sai built a local-first Python RAG platform indexing 50,000+ lines of code, combining dense-vector search, BM25, and Cross-Encoder reranking to deliver sub-second retrieval with file-path and line-level citations."
@@ -72,33 +102,69 @@
     "text": "Sai delivered 5 merged pull requests to LangChain's Open-SWE framework by implementing Docker sandbox integration and extending compatibility across multiple large language model providers."
   },
   {
-    "id": "engineering-philosophy",
-    "topic": "profile",
-    "title": "Engineering Philosophy",
-    "text": "Sai's engineering philosophy centers on 'Performance by Design' and 'Security as a Default.' He prioritizes architectural reliability (99.99% uptime), observability (MTTR reduction), and performance optimization (reducing p99 latencies). He believes in building systems that are not just functional but also scalable, maintainable, and cost-efficient."
+    "id": "project-openclaw",
+    "topic": "projects",
+    "title": "OpenClaw Open-Source Contributor",
+    "text": "Sai contributed Exa.ai neural search provider integration to OpenClaw using TypeScript and Node.js. He also debugged and resolved configuration regression issues related to local dotenv parsing safety."
+  },
+  {
+    "id": "project-knowledge-retrieval-platform",
+    "topic": "projects",
+    "title": "LLM-Powered Knowledge Retrieval Platform",
+    "text": "Sai built a high-performance knowledge retrieval platform using Python, FastAPI, Pinecone, LangChain, and Vector DBs featuring custom document parsing, dense embedding vectorization, semantic caching, and citation-backed Q&A loops."
+  },
+  {
+    "id": "project-sanctuary-therapist",
+    "topic": "projects",
+    "title": "Sanctuary Personal Therapist",
+    "text": "Sai developed Sanctuary Personal Therapist, a voice-enabled therapeutic assistant built with Python, LLMs, Speech-to-Text, and Conversational AI agents utilizing sentiment classification models, speech recognition, and empathetic response synthesis pipelines."
+  },
+  {
+    "id": "project-deepgesture",
+    "topic": "projects",
+    "title": "DeepGesture Real-Time Computer Vision",
+    "text": "Sai created DeepGesture, a convolutional neural network (CNN) model built with Python and PyTorch designed for high-accuracy, real-time hand gesture recognition and camera control triggers."
+  },
+  {
+    "id": "project-anpr-vision",
+    "topic": "projects",
+    "title": "ANPR Computer Vision System",
+    "text": "Sai built an Automated Number Plate Recognition (ANPR) system combining Python, OpenCV, YOLO object detection bounding boxes, and PyTesseract OCR engines for high-speed license plate capture."
+  },
+  {
+    "id": "project-brain-tumor-spark",
+    "topic": "projects",
+    "title": "Brain Tumor Prediction System",
+    "text": "Sai engineered a distributed machine learning pipeline built on Apache Spark processing large MRI medical imaging datasets to detect and predict brain tumor formations using Python and Big Data tools."
+  },
+  {
+    "id": "project-xploit404",
+    "topic": "projects",
+    "title": "Xploit404 Security Toolkit",
+    "text": "Sai created Xploit404, a penetration testing toolkit built in Python designed for network security scanning, vulnerability identification, and automated security auditing operations."
   },
   {
     "id": "skills-comprehensive",
     "topic": "skills",
     "title": "Comprehensive Technical Skillset",
-    "text": "Sai is proficient in Java, Python, TypeScript, JavaScript, SQL, HTML, and CSS. His backend expertise includes Spring Boot, FastAPI, Node.js, Express.js, REST APIs, microservices, and distributed systems. On the frontend, he works with React.js and Base Web. His infrastructure skills cover AWS, AWS Lambda, Amazon RDS, Docker, Terraform, Infrastructure as Code, GitHub Actions, CI/CD, and Linux."
+    "text": "Sai is proficient in Java, Python, TypeScript, JavaScript, Solidity, SQL, HTML, and CSS. His backend expertise includes Spring Boot, FastAPI, Node.js, Express.js, REST APIs, microservices, and distributed systems. On the frontend, he works with React.js, Vite, and Base Web. His infrastructure skills cover AWS, AWS Lambda, Amazon RDS, Docker, Terraform, Infrastructure as Code, GitHub Actions, CI/CD, and Linux."
   },
   {
     "id": "skills-ai-ml-depth",
     "topic": "skills",
-    "title": "AI/ML and RAG Expertise",
-    "text": "Sai has deep expertise in building RAG (Retrieval-Augmented Generation) systems and AI workflows. He uses LangChain, Pinecone, pgvector, BM25, dense-vector search, and Cross-Encoder reranking for semantic retrieval. His experience includes building loan-triage, citation-backed policy retrieval, university knowledge-search, and code intelligence platforms."
+    "title": "AI/ML, RAG and Agentic Frameworks",
+    "text": "Sai has deep expertise in building RAG (Retrieval-Augmented Generation) systems, multi-agent orchestrators, and AI workflows. He uses LangChain, Claude Code, Pinecone, pgvector, BM25, dense-vector search, PyTorch, scikit-learn, and Cross-Encoder reranking for semantic retrieval. His experience includes building agentic SDLC orchestrators, loan-triage pipelines, citation-backed policy retrieval, university knowledge-search, and code intelligence platforms."
   },
   {
     "id": "skills-cloud-devops-depth",
     "topic": "skills",
-    "title": "Cloud Infrastructure and DevOps",
-    "text": "Sai is experienced with AWS cloud architectures, AWS Lambda, Amazon RDS, Docker, Terraform, Infrastructure as Code, GitHub Actions, CI/CD, and Linux. He has built serverless workflows, cloud-backed retrieval systems, and production deployment pipelines."
+    "title": "Cloud Infrastructure, DevOps and Distributed Systems",
+    "text": "Sai is experienced with AWS cloud architectures, AWS Lambda, Amazon RDS, Docker, Terraform, Infrastructure as Code, Apache Spark, GitHub Actions, CI/CD, and Linux. He has built serverless workflows, distributed session caching (Redis), cloud-backed retrieval systems, and production deployment pipelines."
   },
   {
     "id": "skills-security-compliance",
     "topic": "skills",
     "title": "Security, Compliance and Identity",
-    "text": "Sai is experienced in OpenID Connect, SAML, JWT, Spring Security, and RBAC for secure identity and access management. He has secured high-traffic e-commerce payment APIs and works with security-first engineering practices."
+    "text": "Sai is experienced in OpenID Connect, SAML, JWT, Spring Security, and RBAC for secure identity and access management. He has secured high-traffic e-commerce payment APIs, built penetration testing toolkits (Xploit404), conducted side-channel Trojan detection research (IEEE published), and adheres to security-first engineering practices."
   }
 ]
