@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141414" />
+      <stop offset="50%" stop-color="#0e0e0e" />
+      <stop offset="100%" stop-color="#080808" />
+    </linearGradient>
+
+    <!-- Orange Neon Gradient -->
+    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff9249" />
+      <stop offset="50%" stop-color="#ff7b04" />
+      <stop offset="100%" stop-color="#fb7800" />
+    </linearGradient>
+
+    <!-- Subtle Orange Radial Glow -->
+    <radialGradient id="ambient-glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#ff7b04" stop-opacity="0.12" />
+      <stop offset="60%" stop-color="#ff7b04" stop-opacity="0.02" />
+      <stop offset="100%" stop-color="#ff7b04" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1" />
+    </pattern>
+  </defs>
+
+  <style>
+    .title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Plus Jakarta Sans', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-size: 64px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      fill: #ffffff;
+    }
+    .badge-text {
+      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      fill: #ff9249;
+      text-transform: uppercase;
+    }
+    .subtext {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      fill: #adaaaa;
+    }
+    .pill-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      fill: #85807e;
+      letter-spacing: 0.04em;
+    }
+  </style>
+
+  <!-- Base Card Background with rounded corners and border -->
+  <rect x="2" y="2" width="1196" height="356" rx="24" fill="url(#bg-grad)" stroke="#262626" stroke-width="1.5" />
+
+  <!-- Subtle Grid Overlay -->
+  <rect x="2" y="2" width="1196" height="356" rx="24" fill="url(#grid)" />
+
+  <!-- Ambient Glow -->
+  <rect x="2" y="2" width="1196" height="356" rx="24" fill="url(#ambient-glow)" />
+
+  <!-- Corner Minimalist Accent Dots/Lines -->
+  <circle cx="48" cy="48" r="3" fill="#ff7b04" fill-opacity="0.6" />
+  <circle cx="64" cy="48" r="3" fill="#ffffff" fill-opacity="0.15" />
+  <circle cx="80" cy="48" r="3" fill="#ffffff" fill-opacity="0.1" />
+
+  <!-- Top Badge / Category -->
+  <g transform="translate(600, 92)" text-anchor="middle">
+    <rect x="-110" y="-16" width="220" height="32" rx="16" fill="#1b1713" stroke="#ff7b04" stroke-opacity="0.3" stroke-width="1" />
+    <circle cx="-88" cy="0" r="4" fill="#ff7b04" />
+    <text x="8" y="4.5" class="badge-text" text-anchor="middle">SAI TARRUN PITTA</text>
+  </g>
+
+  <!-- Main Banner Title: PORTFOLIO -->
+  <!-- Subtle back-glow text -->
+  <text x="608" y="196" text-anchor="middle" class="title" fill="#ff7b04" opacity="0.15" filter="blur(8px)">PORTFOLIO</text>
+  <!-- Sharp main title -->
+  <text x="600" y="192" text-anchor="middle" class="title">
+    PORT<tspan fill="url(#accent-grad)">FOLIO</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="240" text-anchor="middle" class="subtext">
+    Interactive 3D Engineering Portfolio • React • TypeScript • Three.js
+  </text>
+
+  <!-- Tech Badges / Pills -->
+  <g transform="translate(600, 290)" text-anchor="middle">
+    <!-- Stack Line -->
+    <text x="0" y="0" class="pill-text" text-anchor="middle">
+      React 19 &nbsp;•&nbsp; TypeScript &nbsp;•&nbsp; Three.js &nbsp;•&nbsp; Tailwind CSS &nbsp;•&nbsp; Framer Motion &nbsp;•&nbsp; Lenis Scroll
+    </text>
+  </g>
+</svg>

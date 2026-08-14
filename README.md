@@ -1,8 +1,21 @@
-# Software Engineer Portfolio
+<p align="center">
+  <img src="public/banner.svg" alt="Portfolio Banner" width="100%" />
+</p>
 
-A modern, interactive personal portfolio website built with React, TypeScript, and Three.js. Features 3D graphics, smooth animations, and a responsive design showcasing professional experience, projects, and skills.
+<h1 align="center">Portfolio</h1>
 
-**[🚀 Live Demo](https://saitarrunpitta.vercel.app)** | [Repository](https://github.com/saitarrun/SoftwareEngineer_Portfolio)
+<p align="center">
+  <strong>Sai Tarrun Pitta</strong> — Software Engineer Portfolio
+  <br />
+  A modern, interactive personal portfolio website built with React, TypeScript, and Three.js.
+  <br />
+  <br />
+  <a href="https://saitarrunpitta.vercel.app"><strong>🚀 Live Demo</strong></a> •
+  <a href="https://github.com/saitarrun/SoftwareEngineer_Portfolio"><strong>Repository</strong></a> •
+  <a href="https://linkedin.com/in/saitarrunpitta"><strong>LinkedIn</strong></a>
+</p>
+
+---
 
 ## Features
 
