@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/banner.svg" alt="Portfolio Banner" width="100%" />
+  <img src="public/banner.png" alt="Portfolio Banner" width="100%" />
 </p>
 
 <h1 align="center">Sai Tarrun Pitta — Portfolio</h1>
