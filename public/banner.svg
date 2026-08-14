@@ -1,103 +1,175 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" width="100%" height="100%">
   <defs>
     <!-- Background Gradient -->
-    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#141414" />
-      <stop offset="50%" stop-color="#0e0e0e" />
-      <stop offset="100%" stop-color="#080808" />
+    <linearGradient id="canvas-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d0d0d" />
+      <stop offset="50%" stop-color="#080808" />
+      <stop offset="100%" stop-color="#050505" />
     </linearGradient>
 
     <!-- Orange Neon Gradient -->
-    <linearGradient id="accent-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <linearGradient id="neon-orange" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#ff9249" />
       <stop offset="50%" stop-color="#ff7b04" />
       <stop offset="100%" stop-color="#fb7800" />
     </linearGradient>
 
-    <!-- Subtle Orange Radial Glow -->
-    <radialGradient id="ambient-glow" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#ff7b04" stop-opacity="0.12" />
-      <stop offset="60%" stop-color="#ff7b04" stop-opacity="0.02" />
+    <!-- Subdued Text Gradient -->
+    <linearGradient id="white-fade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#a3a3a3" />
+    </linearGradient>
+
+    <!-- Subtle Ambient Radial Glow -->
+    <radialGradient id="center-glow" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#ff7b04" stop-opacity="0.14" />
+      <stop offset="45%" stop-color="#ff7b04" stop-opacity="0.03" />
       <stop offset="100%" stop-color="#ff7b04" stop-opacity="0" />
     </radialGradient>
 
-    <!-- Grid Pattern -->
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-opacity="0.03" stroke-width="1" />
+    <!-- Corner Decorative Glow -->
+    <radialGradient id="top-left-glow" cx="0%" cy="0%" r="40%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Minimal Dot Grid -->
+    <pattern id="dot-grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#ffffff" fill-opacity="0.06" />
+    </pattern>
+
+    <!-- Fine Grid Lines -->
+    <pattern id="line-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#ffffff" stroke-opacity="0.02" stroke-width="1" />
     </pattern>
   </defs>
 
   <style>
-    .title {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Plus Jakarta Sans', Roboto, 'Helvetica Neue', Arial, sans-serif;
-      font-size: 64px;
-      font-weight: 900;
-      letter-spacing: 0.18em;
-      fill: #ffffff;
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700;800;900&amp;family=Space+Grotesk:wght@500;700&amp;family=JetBrains+Mono:wght@400;600&amp;display=swap');
+
+    .mono-meta {
+      font-family: 'JetBrains Mono', 'Space Grotesk', ui-monospace, SFMono-Regular, monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      fill: #808080;
     }
-    .badge-text {
-      font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace;
-      font-size: 13px;
+    .badge-label {
+      font-family: 'Space Grotesk', ui-monospace, monospace;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.22em;
       fill: #ff9249;
-      text-transform: uppercase;
     }
-    .subtext {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
-      font-size: 16px;
+    .hero-title {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 76px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      fill: url(#white-fade);
+    }
+    .hero-sub {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 15px;
       font-weight: 400;
-      letter-spacing: 0.05em;
-      fill: #adaaaa;
+      letter-spacing: 0.06em;
+      fill: #9c9997;
     }
-    .pill-text {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      fill: #85807e;
-      letter-spacing: 0.04em;
+    .tech-pill-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      fill: #c4c1be;
+      letter-spacing: 0.06em;
     }
   </style>
 
-  <!-- Base Card Background with rounded corners and border -->
-  <rect x="2" y="2" width="1196" height="356" rx="24" fill="url(#bg-grad)" stroke="#262626" stroke-width="1.5" />
+  <!-- Outer Card Frame -->
+  <rect x="2" y="2" width="1196" height="376" rx="20" fill="url(#canvas-bg)" stroke="#222222" stroke-width="1.5" />
 
-  <!-- Subtle Grid Overlay -->
-  <rect x="2" y="2" width="1196" height="356" rx="24" fill="url(#grid)" />
+  <!-- Background Grids & Glows -->
+  <rect x="2" y="2" width="1196" height="376" rx="20" fill="url(#dot-grid)" />
+  <rect x="2" y="2" width="1196" height="376" rx="20" fill="url(#line-grid)" />
+  <rect x="2" y="2" width="1196" height="376" rx="20" fill="url(#center-glow)" />
+  <rect x="2" y="2" width="1196" height="376" rx="20" fill="url(#top-left-glow)" />
 
-  <!-- Ambient Glow -->
-  <rect x="2" y="2" width="1196" height="356" rx="24" fill="url(#ambient-glow)" />
+  <!-- Top System Status Header Bar -->
+  <g transform="translate(40, 36)">
+    <!-- Terminal Indicators -->
+    <circle cx="0" cy="0" r="4.5" fill="#ff5f56" fill-opacity="0.8" />
+    <circle cx="15" cy="0" r="4.5" fill="#ffbd2e" fill-opacity="0.8" />
+    <circle cx="30" cy="0" r="4.5" fill="#27c93f" fill-opacity="0.8" />
 
-  <!-- Corner Minimalist Accent Dots/Lines -->
-  <circle cx="48" cy="48" r="3" fill="#ff7b04" fill-opacity="0.6" />
-  <circle cx="64" cy="48" r="3" fill="#ffffff" fill-opacity="0.15" />
-  <circle cx="80" cy="48" r="3" fill="#ffffff" fill-opacity="0.1" />
-
-  <!-- Top Badge / Category -->
-  <g transform="translate(600, 92)" text-anchor="middle">
-    <rect x="-110" y="-16" width="220" height="32" rx="16" fill="#1b1713" stroke="#ff7b04" stroke-opacity="0.3" stroke-width="1" />
-    <circle cx="-88" cy="0" r="4" fill="#ff7b04" />
-    <text x="8" y="4.5" class="badge-text" text-anchor="middle">SAI TARRUN PITTA</text>
+    <!-- File/System ID -->
+    <text x="54" y="3.5" class="mono-meta">SAITARRUN // PORTFOLIO_BUILD_2026.08</text>
   </g>
 
-  <!-- Main Banner Title: PORTFOLIO -->
-  <!-- Subtle back-glow text -->
-  <text x="608" y="196" text-anchor="middle" class="title" fill="#ff7b04" opacity="0.15" filter="blur(8px)">PORTFOLIO</text>
-  <!-- Sharp main title -->
-  <text x="600" y="192" text-anchor="middle" class="title">
-    PORT<tspan fill="url(#accent-grad)">FOLIO</tspan>
-  </text>
+  <!-- Top Right Status -->
+  <g transform="translate(1160, 36)" text-anchor="end">
+    <circle cx="-135" cy="0" r="3.5" fill="#ff7b04">
+      <animate attributeName="opacity" values="1;0.3;1" dur="2.4s" repeatCount="indefinite" />
+    </circle>
+    <text x="0" y="3.5" class="mono-meta">AVAILABLE FOR WORK &bull; CALIFORNIA, USA</text>
+  </g>
 
-  <!-- Subtitle -->
-  <text x="600" y="240" text-anchor="middle" class="subtext">
-    Interactive 3D Engineering Portfolio • React • TypeScript • Three.js
-  </text>
+  <!-- Thin Separator Rule -->
+  <line x1="40" y1="58" x2="1160" y2="58" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1" />
 
-  <!-- Tech Badges / Pills -->
-  <g transform="translate(600, 290)" text-anchor="middle">
-    <!-- Stack Line -->
-    <text x="0" y="0" class="pill-text" text-anchor="middle">
-      React 19 &nbsp;•&nbsp; TypeScript &nbsp;•&nbsp; Three.js &nbsp;•&nbsp; Tailwind CSS &nbsp;•&nbsp; Framer Motion &nbsp;•&nbsp; Lenis Scroll
+  <!-- Role Badge -->
+  <g transform="translate(600, 102)" text-anchor="middle">
+    <rect x="-115" y="-14" width="230" height="28" rx="14" fill="#171310" stroke="#ff7b04" stroke-opacity="0.4" stroke-width="1" />
+    <circle cx="-90" cy="0" r="3.5" fill="#ff7b04" />
+    <text x="8" y="4" class="badge-label">SOFTWARE ENGINEER</text>
+  </g>
+
+  <!-- Main Hero Title: PORTFOLIO -->
+  <g transform="translate(600, 196)" text-anchor="middle">
+    <!-- Ambient Blur Halo -->
+    <text x="0" y="0" class="hero-title" fill="#ff7b04" opacity="0.12" filter="blur(16px)">PORTFOLIO</text>
+    <!-- Crisp Foreground Text -->
+    <text x="0" y="0" class="hero-title">
+      PORT<tspan fill="url(#neon-orange)">FOLIO</tspan>
     </text>
   </g>
+
+  <!-- Subtitle -->
+  <text x="600" y="246" text-anchor="middle" class="hero-sub">
+    Interactive 3D WebGL Experience &bull; Scalable Systems &bull; AI-Powered Applications
+  </text>
+
+  <!-- Bottom Interactive Tech Stack Chips -->
+  <g transform="translate(600, 310)" text-anchor="middle">
+    <!-- React 19 -->
+    <g transform="translate(-320, 0)">
+      <rect x="-55" y="-15" width="110" height="30" rx="8" fill="#141414" stroke="#2b2b2b" stroke-width="1" />
+      <text x="0" y="5" class="tech-pill-text">React 19</text>
+    </g>
+    <!-- TypeScript -->
+    <g transform="translate(-195, 0)">
+      <rect x="-60" y="-15" width="120" height="30" rx="8" fill="#141414" stroke="#2b2b2b" stroke-width="1" />
+      <text x="0" y="5" class="tech-pill-text">TypeScript</text>
+    </g>
+    <!-- Three.js / WebGL -->
+    <g transform="translate(-55, 0)">
+      <rect x="-70" y="-15" width="140" height="30" rx="8" fill="#191512" stroke="#ff7b04" stroke-opacity="0.3" stroke-width="1" />
+      <text x="0" y="5" class="tech-pill-text" fill="#ff9249">Three.js / WebGL</text>
+    </g>
+    <!-- Tailwind CSS -->
+    <g transform="translate(95, 0)">
+      <rect x="-65" y="-15" width="130" height="30" rx="8" fill="#141414" stroke="#2b2b2b" stroke-width="1" />
+      <text x="0" y="5" class="tech-pill-text">Tailwind CSS</text>
+    </g>
+    <!-- Framer Motion -->
+    <g transform="translate(245, 0)">
+      <rect x="-75" y="-15" width="150" height="30" rx="8" fill="#141414" stroke="#2b2b2b" stroke-width="1" />
+      <text x="0" y="5" class="tech-pill-text">Framer Motion</text>
+    </g>
+    <!-- Vercel AI -->
+    <g transform="translate(385, 0)">
+      <rect x="-55" y="-15" width="110" height="30" rx="8" fill="#141414" stroke="#2b2b2b" stroke-width="1" />
+      <text x="0" y="5" class="tech-pill-text">Vercel AI</text>
+    </g>
+  </g>
+
+  <!-- Subtle Bottom Edge Accent -->
+  <line x1="300" y1="378" x2="900" y2="378" stroke="url(#neon-orange)" stroke-width="1.5" stroke-opacity="0.5" />
 </svg>
