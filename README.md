@@ -53,24 +53,22 @@ SoftwareEngineer_Portfolio/
 │   └── types.ts                          # Chat API request & response TypeScript definitions
 │
 ├── 📁 public/                            # Static Web Assets & Documents
-│   ├── banner.svg                        # Minimalistic high-resolution portfolio banner
+│   ├── banner.png                        # High-resolution (Retina 2x) portfolio banner
+│   ├── banner.svg                        # Minimalistic vector portfolio banner
 │   ├── og-image.png                      # OpenGraph social share card
 │   ├── PittaSaiTarrun_Resume.pdf         # Downloadable software engineering resume (PDF)
 │   ├── profile.webp                      # Compressed webp headshot
 │   ├── robots.txt                        # Search engine crawler instructions
-│   └── sitemap.xml                       # SEO XML sitemap
+│   ├── sitemap.xml                       # SEO XML sitemap
+│   └── vite.svg                          # Web favicon
 │
 ├── 📁 src/                               # Application Frontend Source Code
 │   ├── 📁 components/                    # React UI Section Components
-│   │   ├── 📁 ui/                        # Low-level reusable UI primitives
-│   │   │   ├── Button.tsx                # Accessible action buttons
-│   │   │   ├── Card.tsx                  # Base card container
+│   │   ├── 📁 ui/                        # Reusable UI primitives
 │   │   │   ├── GlassCard.tsx             # Glassmorphic container with frosted border
-│   │   │   ├── Section.tsx               # Section wrapper with standard max-width & padding
-│   │   │   └── ShinyButton.tsx           # Shimmer accent CTA button
+│   │   │   └── Section.tsx               # Section wrapper with standard max-width & padding
 │   │   ├── ChatWidget.tsx                # Interactive AI assistant floating modal & drawer
 │   │   ├── Contact.tsx                   # Contact section with interactive links & social channels
-│   │   ├── CustomCursor.tsx              # Custom mouse trailing cursor effect
 │   │   ├── Education.tsx                 # Academic milestones, degrees, and coursework highlights
 │   │   ├── Experience.tsx                # Work experience timeline with company deliverables
 │   │   ├── Hero.tsx                      # Hero header with fluid kinetic typography & quick stats
@@ -85,20 +83,12 @@ SoftwareEngineer_Portfolio/
 │   │   └── knowledge-base.json           # Client-side knowledge base for instant offline chatbot answers
 │   │
 │   ├── 📁 three/                         # Three.js 3D WebGL Rendering Pipeline
-│   │   ├── 📁 hooks/                     # Custom graphics hooks
 │   │   ├── BackgroundCanvas.tsx          # Master R3F Canvas wrapper with performance presets
-│   │   ├── HeroScene.tsx                 # Composed 3D scene orchestrating mesh components
-│   │   ├── ParticleField.tsx             # Interactive GPU floating particle constellation
-│   │   ├── LiquidBlob.tsx                # Perlin noise vertex-displaced liquid sphere
-│   │   ├── WireframeGlobe.tsx            # Geodesic rotating wireframe globe
-│   │   ├── MatrixRain.tsx                # Cascading vertical character stream in 3D coordinates
 │   │   ├── OrangeSmoke.tsx               # Volumetric animated smoke shader particles
-│   │   ├── FloatingGeometry.tsx          # Geometric polyhedrons rotating in 3D space
+│   │   ├── ParticleField.tsx             # Interactive GPU floating particle constellation
 │   │   ├── GridPlane.tsx                 # Perspective infinite floor grid
-│   │   ├── PostEffects.tsx               # Post-processing bloom and chromatic aberration
 │   │   ├── constants.ts                  # 3D color palettes, particle counts, and camera parameters
-│   │   ├── useMousePosition.ts           # Normalized viewport mouse coordinate tracker (-1 to 1)
-│   │   └── useScrollProgress.ts          # Window scroll progress tracker for 3D camera transitions
+│   │   └── useMousePosition.ts           # Normalized viewport mouse coordinate tracker (-1 to 1)
 │   │
 │   ├── 📁 utils/                         # Helper Utilities
 │   │   └── retrieval.ts                  # Keyword extraction & TF-IDF style semantic search for chatbot
