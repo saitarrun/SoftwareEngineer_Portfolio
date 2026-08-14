@@ -2,7 +2,7 @@
 
 A modern, interactive personal portfolio website built with React, TypeScript, and Three.js. Features 3D graphics, smooth animations, and a responsive design showcasing professional experience, projects, and skills.
 
-**[🚀 Live Demo](https://saitarrun.vercel.app)** | [Repository](https://github.com/saitarrun/SoftwareEngineer_Portfolio)
+**[🚀 Live Demo](https://saitarrunpitta.vercel.app)** | [Repository](https://github.com/saitarrun/SoftwareEngineer_Portfolio)
 
 ## Features
 
