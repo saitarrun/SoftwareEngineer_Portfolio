@@ -142,11 +142,11 @@ export function OrangeSmoke({ isMobile = false }: { isMobile?: boolean }) {
     }
   });
 
-  const geoSegs = isMobile ? 16 : 64;
+  const geoSegs = isMobile ? 16 : 32;
 
   return (
     <group ref={groupRef}>
-      {/* First flowing smoke layer */}
+      {/* High-efficiency flowing ambient smoke layer */}
       <mesh position={[0, 2, 3]} scale={[12, 10, 1]} frustumCulled={false} renderOrder={1}>
         <planeGeometry args={[1, 1, geoSegs, geoSegs]} />
         <shaderMaterial
@@ -159,37 +159,6 @@ export function OrangeSmoke({ isMobile = false }: { isMobile?: boolean }) {
           blending={THREE.NormalBlending}
         />
       </mesh>
-
-      {/* Additional layers disabled on mobile to prevent GPU strain */}
-      {!isMobile && (
-        <>
-          <mesh position={[-1.5, 1, 3.2]} scale={[10, 8, 1]} frustumCulled={false} renderOrder={1}>
-            <planeGeometry args={[1, 1, geoSegs, geoSegs]} />
-            <shaderMaterial
-              vertexShader={vertexShader}
-              fragmentShader={fragmentShader}
-              uniforms={uniforms2}
-              transparent
-              depthTest={false}
-              depthWrite={false}
-              blending={THREE.NormalBlending}
-            />
-          </mesh>
-
-          <mesh position={[1.5, 3, 2.8]} scale={[9, 7, 1]} frustumCulled={false} renderOrder={1}>
-            <planeGeometry args={[1, 1, geoSegs, geoSegs]} />
-            <shaderMaterial
-              vertexShader={vertexShader}
-              fragmentShader={fragmentShader}
-              uniforms={uniforms3}
-              transparent
-              depthTest={false}
-              depthWrite={false}
-              blending={THREE.NormalBlending}
-            />
-          </mesh>
-        </>
-      )}
     </group>
   );
 }

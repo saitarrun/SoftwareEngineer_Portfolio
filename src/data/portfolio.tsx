@@ -114,6 +114,14 @@ export const projects: Project[] = [
   },
   {
     num: '03',
+    title: 'Apple Music MCP Server',
+    tech: 'TypeScript · Model Context Protocol (MCP) · Apple Music API · macOS JXA · REST · Smart Caching',
+    description:
+      'High-efficiency Model Context Protocol (MCP) server for Apple Music featuring dual native macOS JXA and cloud REST engines, cross-platform chart discovery, async batching, and sub-millisecond cached lookups.',
+    link: 'https://github.com/saitarrun/apple-music-mcp',
+  },
+  {
+    num: '04',
     title: 'Rent Application',
     tech: 'Solidity · Ethereum · React · Vite · Node.js · Prisma',
     description:
@@ -121,7 +129,7 @@ export const projects: Project[] = [
     link: 'https://github.com/saitarrun/Rent_Application',
   },
   {
-    num: '04',
+    num: '05',
     title: 'Agentic Context Compression Framework',
     tech: 'TypeScript · Node.js · LLM Context Optimization · Agentic Systems',
     description:
@@ -129,7 +137,7 @@ export const projects: Project[] = [
     link: 'https://github.com/saitarrun/agentic_context_compression_framework',
   },
   {
-    num: '05',
+    num: '06',
     title: 'Semantic Code Intelligence Platform',
     tech: 'Python · RAG · BM25 · Dense Vector Search · Cross-Encoder Reranking',
     description:
@@ -137,7 +145,7 @@ export const projects: Project[] = [
     link: 'https://github.com/saitarrun',
   },
   {
-    num: '06',
+    num: '07',
     title: 'Open-SWE Open-Source Contributor',
     tech: 'Open-SWE · Docker · LLM Providers · Sandbox Integration',
     description:
@@ -145,7 +153,7 @@ export const projects: Project[] = [
     link: 'https://github.com/langchain-ai/open-swe',
   },
   {
-    num: '07',
+    num: '08',
     title: 'OpenClaw Open-Source Contributor',
     tech: 'OpenClaw · TypeScript · Node.js · Exa.ai API · Neural Web Search',
     description:
@@ -153,7 +161,7 @@ export const projects: Project[] = [
     link: 'https://github.com/saitarrun/openclaw',
   },
   {
-    num: '08',
+    num: '09',
     title: 'LLM-Powered Knowledge Retrieval Platform',
     tech: 'Python · FastAPI · Pinecone · LangChain · Vector DB',
     description:
@@ -161,7 +169,7 @@ export const projects: Project[] = [
     link: 'https://github.com/saitarrun/LLM-Powered-Knowledge-Retrieval-Platform',
   },
   {
-    num: '09',
+    num: '10',
     title: 'Sanctuary Personal Therapist',
     tech: 'Python · LLMs · Speech-to-Text · AI Agents · Conversational AI',
     description:
@@ -169,7 +177,7 @@ export const projects: Project[] = [
     link: 'https://github.com/saitarrun/Sanctuary-Personal-Therapist.git',
   },
   {
-    num: '10',
+    num: '11',
     title: 'DeepGesture',
     tech: 'Python · PyTorch · Computer Vision · Deep Learning · Real-time Inference',
     description:
@@ -177,7 +185,7 @@ export const projects: Project[] = [
     link: 'https://github.com/saitarrun/DeepGesture',
   },
   {
-    num: '11',
+    num: '12',
     title: 'ANPR Computer Vision',
     tech: 'Python · OpenCV · YOLO · PyTesseract · OCR',
     description:
@@ -185,7 +193,7 @@ export const projects: Project[] = [
     link: 'https://github.com/saitarrun/ANPR_ComputerVision',
   },
   {
-    num: '12',
+    num: '13',
     title: 'Brain Tumor Prediction System',
     tech: 'Python · Machine Learning · Big Data · Spark · Deep Learning',
     description:
@@ -193,7 +201,7 @@ export const projects: Project[] = [
     link: 'https://github.com/saitarrun/Brain-Tumor-Prediction-Using-Machine-Learning-and-Big-Data',
   },
   {
-    num: '13',
+    num: '14',
     title: 'Xploit404',
     tech: 'Python · Penetration Testing · Network Security · Security Auditing',
     description:

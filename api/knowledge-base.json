@@ -78,6 +78,12 @@
     "text": "Sai created the SDLC AI Workflow plugin for Claude Code, featuring 20 role-specific agents, 12 specialized knowledge skills, and 8 custom commands designed to automate complex software engineering lifecycles and pipeline iterations."
   },
   {
+    "id": "project-apple-music-mcp",
+    "topic": "projects",
+    "title": "Apple Music MCP Server",
+    "text": "Sai built a high-performance Model Context Protocol (MCP) server for Apple Music featuring dual native macOS JXA and cloud REST engines, cross-platform chart discovery from Shazam, Spotify, YouTube, and Apple Music, async batching, and sub-millisecond cached lookups with zero-timeout execution. Available via npx and uvx."
+  },
+  {
     "id": "project-rent-application",
     "topic": "projects",
     "title": "Rent Application - Decentralized Property Management",

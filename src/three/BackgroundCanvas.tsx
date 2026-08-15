@@ -35,8 +35,14 @@ export function BackgroundCanvas() {
     >
       <Canvas
         camera={{ position: [0, 2, 8], fov: 60 }}
-        gl={{ antialias: false, alpha: true, powerPreference: 'high-performance' }}
-        dpr={isMobile ? [1, 1] : [1, 1.5]}
+        gl={{
+          antialias: false,
+          alpha: true,
+          powerPreference: 'high-performance',
+          stencil: false,
+          depth: false,
+        }}
+        dpr={isMobile ? [1, 1] : [1, 1.25]}
         style={{ background: 'transparent' }}
       >
         <OrangeSmoke isMobile={isMobile} />

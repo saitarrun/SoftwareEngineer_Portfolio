@@ -1,5 +1,5 @@
-import { motion, useScroll } from 'framer-motion';
-import { Linkedin, Github, Menu } from 'lucide-react';
+import { motion, useScroll, AnimatePresence } from 'framer-motion';
+import { Linkedin, Github, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { MagneticElement } from './MagneticElement';
 
@@ -18,22 +18,21 @@ export const Navbar = () => {
     'Contact',
   ];
 
-  // Scroll spy active section tracker logic using real-time viewport bounding rect calculations
+  // Scroll spy active section tracker logic with RAF throttling to prevent layout thrashing
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = [
-        'hero',
-        'experience',
-        'education',
-        'projects',
-        'skills',
-        'publications',
-        'contact',
-      ];
+    let ticking = false;
+    const sections = [
+      'hero',
+      'experience',
+      'education',
+      'projects',
+      'skills',
+      'publications',
+      'contact',
+    ];
 
-      // Target trigger line is 200px from the top of the viewport
+    const updateActiveSection = () => {
       const triggerPoint = 200;
-
       let currentSection = 'hero';
 
       for (const sectionId of sections) {
@@ -41,22 +40,25 @@ export const Navbar = () => {
         if (!el) continue;
 
         const rect = el.getBoundingClientRect();
-
-        // If the top of the section has scrolled past the trigger point
-        // and the bottom of the section is still below the trigger point
         if (rect.top <= triggerPoint && rect.bottom > triggerPoint) {
           currentSection = sectionId;
           break;
         }
       }
 
-      // Map 'hero' back to 'about' for navbar activation comparison
       setActiveSection(currentSection === 'hero' ? 'about' : currentSection);
+      ticking = false;
+    };
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateActiveSection);
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    // Trigger immediately
-    handleScroll();
+    updateActiveSection();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -65,13 +67,14 @@ export const Navbar = () => {
     <motion.nav
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className="fixed top-0 left-0 right-0 z-50"
     >
       {/* Frosted Glassmorphic background layer */}
       <div
         className="absolute inset-0 -z-10"
         style={{
-          background: 'rgba(12, 12, 12, 0.55)',
+          background: 'rgba(12, 12, 12, 0.65)',
           backdropFilter: 'blur(24px) saturate(180%)',
           WebkitBackdropFilter: 'blur(24px) saturate(180%)',
           borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
@@ -133,13 +136,13 @@ export const Navbar = () => {
                       <motion.div
                         layoutId="activeIndicator"
                         className="absolute bottom-0 left-3 right-3 h-[2.5px] bg-primary rounded-full z-10 shadow-[0_0_12px_rgba(251,120,0,0.8)]"
-                        transition={{ type: 'spring', stiffness: 80, damping: 15, mass: 0.8 }}
+                        transition={{ type: 'spring', stiffness: 120, damping: 18, mass: 0.6 }}
                       />
                       {/* Highly visible ambient background glow */}
                       <motion.div
                         layoutId="activeGlow"
                         className="absolute inset-0 bg-primary/20 blur-[5px] rounded-lg -z-10 border border-primary/30"
-                        transition={{ type: 'spring', stiffness: 80, damping: 15, mass: 0.8 }}
+                        transition={{ type: 'spring', stiffness: 120, damping: 18, mass: 0.6 }}
                       />
                     </>
                   )}
@@ -156,7 +159,7 @@ export const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub profile"
-            className="hidden md:flex hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors outline-none p-2"
+            className="hidden md:flex hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors duration-200 outline-none p-2"
             style={{ color: 'var(--on-surface-variant)' }}
           >
             <Github className="w-4 h-4" />
@@ -166,14 +169,14 @@ export const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn profile"
-            className="hidden md:flex hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors outline-none p-2"
+            className="hidden md:flex hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors duration-200 outline-none p-2"
             style={{ color: 'var(--on-surface-variant)' }}
           >
             <Linkedin className="w-4 h-4" />
           </a>
           <a href="/PittaSaiTarrun_Resume.pdf" target="_blank" rel="noopener noreferrer">
             <span
-              className="px-3 sm:px-5 py-2 text-black text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-200 hover:shadow-[0_0_15px_#fb7800] focus-visible:ring-2 focus-visible:ring-orange-500 flex items-center justify-center outline-none min-h-[44px]"
+              className="px-3 sm:px-5 py-2 text-black text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-[0_0_18px_#fb7800] hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-orange-500 flex items-center justify-center outline-none min-h-[44px]"
               style={{
                 background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
               }}
@@ -185,45 +188,73 @@ export const Navbar = () => {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
             aria-expanded={menuOpen}
-            className="md:hidden hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors outline-none w-11 h-11 -mr-2 flex items-center justify-center"
+            className="md:hidden hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors outline-none w-11 h-11 -mr-2 flex items-center justify-center cursor-pointer"
             style={{ color: 'var(--on-surface-variant)' }}
           >
-            <Menu className="w-5 h-5" />
+            <AnimatePresence mode="wait" initial={false}>
+              {menuOpen ? (
+                <motion.span
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <X className="w-5 h-5 text-white" />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.15 }}
+                >
+                  <Menu className="w-5 h-5" />
+                </motion.span>
+              )}
+            </AnimatePresence>
           </button>
         </div>
       </div>
 
-      {/* Mobile menu drawer */}
-      {menuOpen && (
-        <div
-          className="md:hidden px-4 sm:px-6 py-6 sm:py-10 flex flex-col gap-6 sm:gap-8 border-b border-white/10"
-          style={{
-            background: 'rgba(12, 12, 12, 0.82)',
-            backdropFilter: 'blur(24px) saturate(180%)',
-            WebkitBackdropFilter: 'blur(24px) saturate(180%)',
-          }}
-        >
-          {[
-            'About',
-            'Experience',
-            'Education',
-            'Projects',
-            'Skills',
-            'Publications',
-            'Contact',
-          ].map((item) => (
-            <a
-              key={item}
-              href={item.toLowerCase() === 'about' ? '#hero' : `#${item.toLowerCase()}`}
-              className="text-sm hover:text-white transition-colors py-2 px-3 -mx-3 rounded focus-visible:ring-2 focus-visible:ring-orange-500 outline-none min-h-[44px] flex items-center"
-              style={{ color: 'var(--on-surface-variant)' }}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item}
-            </a>
-          ))}
-        </div>
-      )}
+      {/* Mobile menu drawer with smooth spring animation */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, y: -8 }}
+            animate={{ opacity: 1, height: 'auto', y: 0 }}
+            exit={{ opacity: 0, height: 0, y: -8 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden px-4 sm:px-6 py-6 sm:py-8 flex flex-col gap-4 sm:gap-6 border-b border-white/10 overflow-hidden"
+            style={{
+              background: 'rgba(12, 12, 12, 0.94)',
+              backdropFilter: 'blur(24px) saturate(180%)',
+              WebkitBackdropFilter: 'blur(24px) saturate(180%)',
+            }}
+          >
+            {[
+              'About',
+              'Experience',
+              'Education',
+              'Projects',
+              'Skills',
+              'Publications',
+              'Contact',
+            ].map((item) => (
+              <a
+                key={item}
+                href={item.toLowerCase() === 'about' ? '#hero' : `#${item.toLowerCase()}`}
+                className="text-sm font-medium hover:text-white transition-colors duration-200 py-2 px-3 -mx-3 rounded focus-visible:ring-2 focus-visible:ring-orange-500 outline-none min-h-[44px] flex items-center"
+                style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };

@@ -66,6 +66,12 @@
     "text": "Sai built a local-first Python RAG platform indexing 50,000+ lines of code, combining dense-vector search, BM25, and Cross-Encoder reranking to deliver sub-second retrieval with file-path and line-level citations."
   },
   {
+    "id": "project-apple-music-mcp",
+    "topic": "projects",
+    "title": "Apple Music MCP Server",
+    "text": "Sai built a high-performance Model Context Protocol (MCP) server for Apple Music featuring dual native macOS JXA and cloud REST engines, cross-platform chart discovery from Shazam, Spotify, YouTube, and Apple Music, async batching, and sub-millisecond cached lookups with zero-timeout execution. Available via npx and uvx."
+  },
+  {
     "id": "project-open-swe",
     "topic": "projects",
     "title": "Open-SWE Open-Source Contributor",

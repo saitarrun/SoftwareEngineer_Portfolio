@@ -239,7 +239,9 @@ test.describe('knowledge-base.json – schema', () => {
 
   test('project chunks cover resume project entries', () => {
     const projIds = chunks.filter((c) => c.topic === 'projects').map((c) => c.id);
-    expect(projIds).toEqual(['project-llm-knowledge-retrieval', 'project-open-swe']);
+    expect(projIds).toContain('project-llm-knowledge-retrieval');
+    expect(projIds).toContain('project-open-swe');
+    expect(projIds).toContain('project-apple-music-mcp');
   });
 
   test('skills chunks cover all knowledge-base skill categories', () => {

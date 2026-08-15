@@ -1,7 +1,6 @@
 import { useRef, useMemo } from 'react';
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
-import { PARTICLE_COUNT } from './constants';
 import { useMousePosition } from './useMousePosition';
 
 export function ParticleField({ isMobile = false }: { isMobile?: boolean }) {
@@ -9,7 +8,7 @@ export function ParticleField({ isMobile = false }: { isMobile?: boolean }) {
   const dummy = useMemo(() => new THREE.Object3D(), []);
   const mouse = useMousePosition();
 
-  const count = isMobile ? 40 : PARTICLE_COUNT;
+  const count = isMobile ? 0 : 36;
 
   const particles = useMemo(() => {
     const arr = [];
