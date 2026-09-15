@@ -11,6 +11,7 @@ import { Publications } from './components/Publications';
 import { Contact } from './components/Contact';
 import { ResumeModal } from './components/ResumeModal';
 import { CommandPalette } from './components/CommandPalette';
+import { ImpactMetrics } from './components/ImpactMetrics';
 
 const BackgroundCanvas = lazy(() =>
   import('./three/BackgroundCanvas').then((m) => ({ default: m.BackgroundCanvas }))
@@ -107,6 +108,7 @@ const Portfolio = ({ isMobile }: { isMobile: boolean }) => {
 
       <main id="main" className="relative z-10 min-h-screen" role="main">
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
+        <ImpactMetrics />
         <SectionWrapper>
           <Experience />
         </SectionWrapper>

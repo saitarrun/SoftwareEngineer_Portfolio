@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { MagneticElement } from './MagneticElement';
+import { SystemArchitectureModal } from './SystemArchitectureModal';
 
 const FluidLetter = ({
   char,
@@ -214,6 +215,9 @@ export const Hero = ({ onOpenResume }: HeroProps) => {
                 >
                   Let's connect
                 </motion.a>
+              </MagneticElement>
+              <MagneticElement className="w-full sm:w-auto">
+                <SystemArchitectureModal />
               </MagneticElement>
             </motion.div>
           </motion.div>
