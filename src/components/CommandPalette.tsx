@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   LucideIcon,
@@ -153,6 +153,8 @@ export const CommandPalette = ({
     setSelectedIndex(0);
   }, [query]);
 
+  const listRef = useRef<HTMLDivElement>(null);
+
   // Key navigation inside search palette
   useEffect(() => {
     if (!isOpen) return;
@@ -162,10 +164,20 @@ export const CommandPalette = ({
         onClose();
       } else if (e.key === 'ArrowDown') {
         e.preventDefault();
-        setSelectedIndex((prev) => (prev + 1) % (filteredItems.length || 1));
+        setSelectedIndex((prev) => {
+          const next = (prev + 1) % (filteredItems.length || 1);
+          const el = listRef.current?.children[next] as HTMLElement;
+          if (el) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          return next;
+        });
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
-        setSelectedIndex((prev) => (prev - 1 + filteredItems.length) % (filteredItems.length || 1));
+        setSelectedIndex((prev) => {
+          const next = (prev - 1 + filteredItems.length) % (filteredItems.length || 1);
+          const el = listRef.current?.children[next] as HTMLElement;
+          if (el) el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          return next;
+        });
       } else if (e.key === 'Enter') {
         e.preventDefault();
         if (filteredItems[selectedIndex]) {
@@ -219,8 +231,11 @@ export const CommandPalette = ({
               </kbd>
             </div>
 
-            {/* List */}
-            <div className="max-h-[360px] overflow-y-auto p-2 space-y-1">
+            {/* List with Ref & Auto-scroll */}
+            <div
+              ref={listRef}
+              className="max-h-[300px] overflow-y-auto p-2 space-y-1 scrollbar-thin scrollbar-thumb-amber-500/40 scrollbar-track-black/20"
+            >
               {filteredItems.length === 0 ? (
                 <div className="py-10 text-center text-zinc-500 text-sm">
                   No matching results found for &quot;{query}&quot;
