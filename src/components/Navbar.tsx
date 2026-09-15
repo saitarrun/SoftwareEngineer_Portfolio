@@ -165,7 +165,7 @@ export const Navbar = () => {
             <Github className="w-4 h-4" />
           </a>
           <a
-            href="https://linkedin.com/in/saitarrunpitta"
+            href="https://linkedin.com/in/tarrunpitta"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn profile"

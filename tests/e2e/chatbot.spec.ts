@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 const SSE_RESPONSE = [
   'data: {"delta":"Sai worked at "}\n\n',
   'data: {"delta":"**Pacific Life**"}\n\n',
-  'data: {"delta":", **CSUF**, **Uber**, and **Cognizant**."}\n\n',
+  'data: {"delta":", **CSUF**, and **Accenture**."}\n\n',
   'data: [DONE]\n\n',
 ].join('');
 

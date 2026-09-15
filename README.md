@@ -12,7 +12,7 @@
   <br />
   <a href="https://saitarrunpitta.vercel.app"><strong>🚀 Live Demo</strong></a> •
   <a href="https://github.com/saitarrun/SoftwareEngineer_Portfolio"><strong>GitHub Repository</strong></a> •
-  <a href="https://linkedin.com/in/saitarrunpitta"><strong>LinkedIn Profile</strong></a>
+  <a href="https://linkedin.com/in/tarrunpitta"><strong>LinkedIn Profile</strong></a>
 </p>
 
 <p align="center">
@@ -232,5 +232,5 @@ Distributed under the **MIT License**. See `LICENSE` for details.
 ---
 
 <p align="center">
-  Crafted with precision by <strong><a href="https://linkedin.com/in/saitarrunpitta">Sai Tarrun Pitta</a></strong>
+  Crafted with precision by <strong><a href="https://linkedin.com/in/tarrunpitta">Sai Tarrun Pitta</a></strong>
 </p>

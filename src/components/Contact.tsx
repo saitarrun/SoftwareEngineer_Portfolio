@@ -39,7 +39,7 @@ export const Contact = () => {
     e.preventDefault();
     e.stopPropagation();
     try {
-      await window.navigator.clipboard.writeText('saitarrunpitta@gmail.com');
+      await window.navigator.clipboard.writeText('pittatarrun@gmail.com');
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -94,12 +94,12 @@ export const Contact = () => {
               <div className="flex flex-row gap-4 items-center justify-between w-full">
                 <MagneticElement className="flex-1">
                   <a
-                    href="mailto:saitarrunpitta@gmail.com"
+                    href="mailto:pittatarrun@gmail.com"
                     className="flex items-center justify-center gap-2 sm:gap-4 px-3 sm:px-6 min-h-12 bg-primary text-on-primary font-black rounded-2xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full text-[11px] sm:text-sm shadow-[0_20px_40px_rgba(255,123,4,0.3)] focus-visible:ring-2 focus-visible:ring-white outline-none min-w-0"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
                     <Mail className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
-                    <span className="truncate">saitarrunpitta@gmail.com</span>
+                    <span className="truncate">pittatarrun@gmail.com</span>
                     <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform flex-shrink-0" />
                   </a>
                 </MagneticElement>
@@ -148,7 +148,7 @@ export const Contact = () => {
                   {
                     icon: <Linkedin className="w-6 h-6" />,
                     label: 'LinkedIn',
-                    href: 'https://linkedin.com/in/saitarrun',
+                    href: 'https://linkedin.com/in/tarrunpitta',
                   },
                   {
                     icon: <Shield className="w-6 h-6" />,
@@ -198,7 +198,7 @@ export const Contact = () => {
                 Engineered By
               </span>
               <span className="text-on-surface-variant font-medium text-xs text-center md:text-left">
-                Tarun Pitta
+                Sai Tarrun Pitta
               </span>
             </div>
           </div>

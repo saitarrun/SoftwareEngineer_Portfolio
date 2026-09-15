@@ -84,22 +84,22 @@ test.describe('retrieval – retrieveChunks() against knowledge base', () => {
     expect(ids).toContain('experience-pacific-life');
   });
 
-  test('CSUF query retrieves the CSUF software developer experience chunk', () => {
-    const results = retrieveChunks('CSUF software developer FastAPI', chunks);
+  test('CSUF query retrieves the CSUF research assistant experience chunk', () => {
+    const results = retrieveChunks('CSUF graduate research assistant FPGA', chunks);
     const ids = results.map((c) => c.id);
-    expect(ids).toContain('experience-csuf-software-developer');
+    expect(ids).toContain('experience-csuf-research-assistant');
   });
 
-  test('Uber query retrieves the Uber experience chunk', () => {
-    const results = retrieveChunks('Uber Eats checkout software engineer', chunks);
+  test('Accenture query retrieves the Accenture experience chunk', () => {
+    const results = retrieveChunks('Accenture Walmart inventory microservices', chunks);
     const ids = results.map((c) => c.id);
-    expect(ids).toContain('experience-uber');
+    expect(ids).toContain('experience-accenture-se');
   });
 
-  test('Cognizant query retrieves the Cognizant experience chunk', () => {
-    const results = retrieveChunks('Cognizant job', chunks);
+  test('Accenture Co-Op query retrieves the Accenture Co-Op experience chunk', () => {
+    const results = retrieveChunks('Accenture software engineer co-op endpoints', chunks);
     const ids = results.map((c) => c.id);
-    expect(ids).toContain('experience-cognizant');
+    expect(ids).toContain('experience-accenture-coop');
   });
 
   test('Python query retrieves the programming languages skills chunk', () => {
@@ -141,10 +141,10 @@ test.describe('retrieval – retrieveChunks() against knowledge base', () => {
     expect(ids).toContain('education-gitam');
   });
 
-  test('LLM project query retrieves the LLM knowledge retrieval project chunk', () => {
-    const results = retrieveChunks('LLM knowledge retrieval platform', chunks);
+  test('Semantic code intelligence project query retrieves the project chunk', () => {
+    const results = retrieveChunks('Semantic Code Intelligence Platform FAISS BM25', chunks);
     const ids = results.map((c) => c.id);
-    expect(ids).toContain('project-llm-knowledge-retrieval');
+    expect(ids).toContain('project-semantic-code-intelligence');
   });
 
   test('Open-SWE query retrieves the open source contribution project chunk', () => {
@@ -232,14 +232,14 @@ test.describe('knowledge-base.json – schema', () => {
   test('experience chunks cover all four experience entries', () => {
     const expIds = chunks.filter((c) => c.topic === 'experience').map((c) => c.id);
     expect(expIds).toContain('experience-pacific-life');
-    expect(expIds).toContain('experience-csuf-software-developer');
-    expect(expIds).toContain('experience-uber');
-    expect(expIds).toContain('experience-cognizant');
+    expect(expIds).toContain('experience-csuf-research-assistant');
+    expect(expIds).toContain('experience-accenture-se');
+    expect(expIds).toContain('experience-accenture-coop');
   });
 
   test('project chunks cover resume project entries', () => {
     const projIds = chunks.filter((c) => c.topic === 'projects').map((c) => c.id);
-    expect(projIds).toContain('project-llm-knowledge-retrieval');
+    expect(projIds).toContain('project-semantic-code-intelligence');
     expect(projIds).toContain('project-open-swe');
     expect(projIds).toContain('project-apple-music-mcp');
   });
@@ -250,7 +250,7 @@ test.describe('knowledge-base.json – schema', () => {
       'skills-comprehensive',
       'skills-ai-ml-depth',
       'skills-cloud-devops-depth',
-      'skills-security-compliance',
+      'skills-observability-testing',
     ]);
   });
 });

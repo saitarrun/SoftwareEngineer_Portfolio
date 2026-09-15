@@ -73,20 +73,16 @@ test.describe('Portfolio – Experience section', () => {
     });
   });
 
-  test('CSUF software developer experience card is visible', async ({ page }) => {
+  test('CSUF research assistant experience card is visible', async ({ page }) => {
     await expect(
       page.locator('#experience').getByText('California State University, Fullerton')
     ).toBeVisible({ timeout: 8_000 });
   });
 
-  test('Uber experience card is visible', async ({ page }) => {
-    await expect(page.locator('#experience').getByRole('heading', { name: 'Uber' })).toBeVisible({
-      timeout: 8_000,
-    });
-  });
-
-  test('Cognizant experience card is visible', async ({ page }) => {
-    await expect(page.locator('#experience').getByText('Cognizant')).toBeVisible({
+  test('Accenture experience cards are visible', async ({ page }) => {
+    await expect(
+      page.locator('#experience').getByRole('heading', { name: 'Accenture' }).first()
+    ).toBeVisible({
       timeout: 8_000,
     });
   });

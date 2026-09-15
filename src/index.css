@@ -4,34 +4,36 @@
 /* ── Design System: "The Neon Architect" ── */
 
 :root {
-  /* Surface hierarchy */
-  --surface: #0e0e0e;
+  /* Apple Dark Mode Surface Hierarchy */
+  --surface: #000000;
   --surface-container-lowest: #000000;
-  --surface-container-low: #131313;
-  --surface-container: #1a1a1a;
-  --surface-container-high: #201f1f;
-  --surface-container-highest: #2a2828;
-  --surface-variant: rgba(32, 31, 31, 0.6);
+  --surface-container-low: #0a0a0c;
+  --surface-container: #121215;
+  --surface-container-high: #1c1c1e;
+  --surface-container-highest: #2c2c2e;
+  --surface-variant: rgba(255, 255, 255, 0.05);
 
-  /* Primary Accent */
-  --primary: #ff9249;
-  --primary-fixed: #ff7a00;
-  --primary-container: #ff7b04;
-  --primary-dim: #fb7800;
+  /* Primary Accent - Apple Subtle Warm Amber/Bronze */
+  --primary: #f59e0b;
+  --primary-fixed: #d97706;
+  --primary-container: #b45309;
+  --primary-dim: #f59e0b;
   --on-primary: #000000;
 
-  /* Text & Content */
-  --on-surface: #ffffff;
-  --on-surface-variant: #adaaaa;
-  --outline-variant: rgba(119, 117, 115, 0.1);
+  /* Text & Content - Apple System Colors */
+  --on-surface: #f5f5f7;
+  --on-surface-variant: #86868b;
+  --outline-variant: rgba(255, 255, 255, 0.08);
 
   /* Error */
-  --error: #ff7351;
+  --error: #ff453a;
 
-  /* Typography */
-  --font-display: 'Plus Jakarta Sans', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-label: 'Space Grotesk', monospace;
+  /* Typography - Apple System Fonts */
+  --font-display:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  --font-body:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', sans-serif;
+  --font-label: -apple-system, BlinkMacSystemFont, 'SF Mono', 'Menlo', monospace;
 }
 
 @layer base {
@@ -132,32 +134,32 @@
 
 @layer utilities {
   .glass-nav {
-    background: rgba(14, 14, 14, 0.45) !important;
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(0, 0, 0, 0.72) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.12);
   }
 
   .grid-mesh {
-    background-size: 50px 50px;
+    background-size: 80px 80px;
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
   }
 
   .text-gradient {
-    background: linear-gradient(135deg, var(--primary), var(--primary-container));
+    background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .neon-glow {
-    box-shadow: 0 0 15px var(--primary-dim);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
   }
 
   .ghost-border {
-    border: 1px solid var(--outline-variant);
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
   }
 
   .section-contain {
@@ -173,17 +175,18 @@
   }
 
   .glass-card {
-    background: rgba(18, 16, 14, 0.88);
-    backdrop-filter: blur(10px) saturate(140%);
-    -webkit-backdrop-filter: blur(10px) saturate(140%);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 2.5rem;
+    background: rgba(22, 22, 26, 0.65);
+    backdrop-filter: blur(30px) saturate(190%);
+    -webkit-backdrop-filter: blur(30px) saturate(190%);
+    border: 0.5px solid rgba(255, 255, 255, 0.12);
+    border-radius: 2rem;
     box-shadow:
-      0 16px 40px rgba(0, 0, 0, 0.5),
-      inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      0 20px 40px rgba(0, 0, 0, 0.4),
+      inset 0 1px 0.5px rgba(255, 255, 255, 0.15);
     transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
+      border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     transform: translate3d(0, 0, 0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -191,10 +194,10 @@
   }
 
   .glass-card:hover {
-    border-color: rgba(255, 146, 73, 0.35);
+    border-color: rgba(255, 255, 255, 0.25);
     box-shadow:
-      0 24px 50px rgba(0, 0, 0, 0.6),
-      0 0 30px rgba(255, 123, 4, 0.1);
+      0 30px 60px rgba(0, 0, 0, 0.6),
+      inset 0 1px 1px rgba(255, 255, 255, 0.25);
   }
 
   @media (max-width: 767px), (pointer: coarse) {
