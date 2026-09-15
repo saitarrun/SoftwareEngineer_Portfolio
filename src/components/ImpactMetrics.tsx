@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Zap, ShieldCheck, Cpu, Code2 } from 'lucide-react';
+import { Zap, ShieldCheck, Cpu, Code2, Layers, Server, Sparkles, Database } from 'lucide-react';
 
 export const ImpactMetrics = () => {
   const metrics = [
@@ -27,45 +27,79 @@ export const ImpactMetrics = () => {
       detail: 'Full-stack & Distributed Systems',
       icon: Code2,
     },
+    {
+      num: '15K+',
+      label: 'Daily Underwritings',
+      detail: 'Automated Loan Processing',
+      icon: Server,
+    },
+    {
+      num: '400K+',
+      label: 'Lines Code Base RAG',
+      detail: 'Vectorized Semantic Search',
+      icon: Database,
+    },
+    {
+      num: '98%',
+      label: 'RAG Retrieval Accuracy',
+      detail: 'LLM Contextual Grounding',
+      icon: Sparkles,
+    },
+    {
+      num: '250ms',
+      label: 'Sync Latency SLO',
+      detail: 'High-throughput API endpoints',
+      icon: Layers,
+    },
   ];
 
+  // Duplicate array to enable seamless infinite continuous scroll loop
+  const duplicatedMetrics = [...metrics, ...metrics];
+
   return (
-    <div className="w-full py-6 sm:py-8 my-8 border-y border-white/10 bg-white/[0.015] backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {metrics.map((m, idx) => {
-            const Icon = m.icon;
-            return (
-              <motion.div
-                key={m.label}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="flex flex-col space-y-1.5 p-4 rounded-2xl bg-zinc-950/60 border border-white/5 hover:border-amber-500/30 transition-all duration-300 group"
-              >
-                <div className="flex items-center justify-between">
-                  <span
-                    className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white group-hover:text-amber-400 transition-colors"
-                    style={{ fontFamily: 'var(--font-display)' }}
-                  >
-                    {m.num}
-                  </span>
-                  <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4" />
-                  </div>
+    <div className="w-full py-6 my-8 border-y border-white/10 bg-zinc-950/60 backdrop-blur-md overflow-hidden relative select-none">
+      {/* Side Vignette Fades */}
+      <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+
+      {/* Infinite Seamless Scrolling Track */}
+      <motion.div
+        className="flex items-center gap-4 sm:gap-6 w-max"
+        animate={{ x: ['0%', '-50%'] }}
+        transition={{
+          duration: 30,
+          repeat: Infinity,
+          ease: 'linear',
+        }}
+      >
+        {duplicatedMetrics.map((m, idx) => {
+          const Icon = m.icon;
+          return (
+            <div
+              key={`${m.label}-${idx}`}
+              className="w-64 sm:w-72 p-4 rounded-2xl bg-zinc-900/50 border border-white/10 hover:border-amber-500/40 transition-all duration-300 shrink-0 group hover:bg-zinc-900/80"
+            >
+              <div className="flex items-center justify-between mb-1.5">
+                <span
+                  className="text-2xl sm:text-3xl font-black tracking-tight text-white group-hover:text-amber-400 transition-colors"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  {m.num}
+                </span>
+                <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
+                  <Icon className="w-4 h-4" />
                 </div>
-                <span className="text-xs sm:text-sm font-bold text-zinc-200 tracking-wide">
-                  {m.label}
-                </span>
-                <span className="text-[11px] text-zinc-500 font-mono leading-tight">
-                  {m.detail}
-                </span>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
+              </div>
+              <div className="text-xs sm:text-sm font-bold text-zinc-200 tracking-wide truncate">
+                {m.label}
+              </div>
+              <div className="text-[11px] text-zinc-500 font-mono leading-tight truncate mt-0.5">
+                {m.detail}
+              </div>
+            </div>
+          );
+        })}
+      </motion.div>
     </div>
   );
 };
