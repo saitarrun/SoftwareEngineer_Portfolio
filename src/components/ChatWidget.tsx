@@ -88,18 +88,23 @@ export const ChatWidget = () => {
       });
 
       if (!res.ok || !res.body) {
-        let userMessage = 'Sorry, something went wrong. Please try again.';
         if (res.status === 429) {
-          userMessage = "You've sent too many messages. Please wait a moment and try again.";
-        } else if (res.status === 500 || res.status === 503) {
-          userMessage =
-            'The chat service is temporarily unavailable. Please try again in a moment.';
-        } else if (res.status === 403) {
-          userMessage = 'Access denied. Please try refreshing the page.';
+          const e = new Error('Rate limit') as Error & { userMessage: string };
+          e.userMessage = "You've sent too many messages. Please wait a moment and try again.";
+          throw e;
         }
-        const e = new Error('Request failed') as Error & { userMessage: string };
-        e.userMessage = userMessage;
-        throw e;
+        // Fallback response for any API connection issue
+        const fallbackText =
+          "Tarrun Pitta is a Software Engineer with a Master's in Computer Science from CSU Fullerton. He has experience at Pacific Life, CSU Fullerton, and Accenture building enterprise web applications, cloud microservices, and AI integrations.";
+        setMessages((prev) => {
+          const updated = [...prev];
+          const last = updated[updated.length - 1];
+          if (last.role === 'assistant') {
+            updated[updated.length - 1] = { ...last, content: fallbackText, streaming: false };
+          }
+          return updated;
+        });
+        return;
       }
 
       const reader = res.body.getReader();

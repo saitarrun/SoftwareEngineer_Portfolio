@@ -421,9 +421,13 @@ const ALLOWED_ORIGINS = new Set([
 ]);
 
 function isAllowedOrigin(origin: string | undefined): boolean {
-  if (!origin) return true; // allow same-origin requests (e.g. fetch('/api/chat'))
+  if (!origin) return true; // allow same-origin requests
   if (ALLOWED_ORIGINS.has(origin)) return true;
-  return /\.vercel\.app$/.test(origin) || /\.saitarrun\.dev$/.test(origin);
+  return (
+    /\.vercel\.app$/.test(origin) ||
+    /\.saitarrun\.dev$/.test(origin) ||
+    /^http:\/\/localhost(:\d+)?$/.test(origin)
+  );
 }
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
@@ -460,33 +464,59 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
   const ip = (req.headers['x-forwarded-for'] as string)?.split(',')[0]?.trim() || 'unknown';
   if (isRateLimited(ip)) return res.status(429).json({ error: 'Too many requests' });
 
-  const { message, history = [] } = req.body as { message: string; history?: Message[] };
-  const sanitized = (message ?? '').replace(/[<>]/g, '').slice(0, 500).trim();
-  if (!sanitized) return res.status(400).json({ error: 'Empty message' });
+  let sanitized: string;
+  let fallbackAnswer =
+    "Tarrun Pitta is a Software Engineer with a Master's in Computer Science from CSU Fullerton. He has experience at Pacific Life, CSU Fullerton, and Accenture.";
+  let systemPrompt = '';
+  let isListQuery = false;
+  let messages: { role: string; content: string }[] = [];
 
-  const trimmedHistory = (history as Message[])
-    .slice(-10)
-    .filter(
-      (m) =>
-        (m.role === 'user' || m.role === 'assistant') &&
-        typeof m.content === 'string' &&
-        m.content.trim().length > 0
-    )
-    .map((m) => ({ role: m.role, content: m.content.replace(/[<>]/g, '').slice(0, 500) }));
+  try {
+    let bodyObj: Record<string, unknown> = {};
+    if (typeof req.body === 'string') {
+      try {
+        bodyObj = JSON.parse(req.body);
+      } catch {
+        bodyObj = {};
+      }
+    } else if (req.body && typeof req.body === 'object') {
+      bodyObj = req.body as Record<string, unknown>;
+    }
 
-  const isListQuery = detectListTopic(tokenize(sanitized)) !== null;
-  const chunks = retrieveLocal(sanitized);
-  const systemPrompt = buildSystemPrompt(chunks, isListQuery);
-  const fallbackAnswer = buildFallbackAnswer(sanitized, chunks);
+    const rawMessage = typeof bodyObj.message === 'string' ? bodyObj.message : '';
+    const rawHistory = Array.isArray(bodyObj.history) ? bodyObj.history : [];
 
-  const messages = [
-    ...trimmedHistory.map((m) => ({ role: m.role, content: m.content })),
-    { role: 'user' as const, content: sanitized },
-  ];
+    sanitized = rawMessage.replace(/[<>]/g, '').slice(0, 500).trim();
+    if (!sanitized) return res.status(400).json({ error: 'Empty message' });
 
-  res.setHeader('Content-Type', 'text/event-stream');
-  res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('Connection', 'keep-alive');
+    const trimmedHistory = (rawHistory as Message[])
+      .slice(-10)
+      .filter(
+        (m) =>
+          (m.role === 'user' || m.role === 'assistant') &&
+          typeof m.content === 'string' &&
+          m.content.trim().length > 0
+      )
+      .map((m) => ({ role: m.role, content: m.content.replace(/[<>]/g, '').slice(0, 500) }));
+
+    isListQuery = detectListTopic(tokenize(sanitized)) !== null;
+    const chunks = retrieveLocal(sanitized);
+    systemPrompt = buildSystemPrompt(chunks, isListQuery);
+    fallbackAnswer = buildFallbackAnswer(sanitized, chunks);
+
+    messages = [
+      ...trimmedHistory.map((m) => ({ role: m.role, content: m.content })),
+      { role: 'user' as const, content: sanitized },
+    ];
+  } catch (err) {
+    console.error('Request parsing error:', err);
+  }
+
+  if (!res.headersSent) {
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+  }
 
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) {

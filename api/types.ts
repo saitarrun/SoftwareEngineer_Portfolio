@@ -12,4 +12,5 @@ export interface ApiResponse {
   send(body: string): void;
   write(chunk: string): void;
   end(): void;
+  headersSent?: boolean;
 }
