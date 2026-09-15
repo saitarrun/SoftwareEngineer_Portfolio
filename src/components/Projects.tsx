@@ -4,7 +4,7 @@ import { useRef } from 'react';
 import { projects, type Project } from '../data/portfolio';
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<React.ElementRef<'a'>>(null);
 
   // Mouse tracking for magnetic effect
   const x = useMotionValue(0);
@@ -20,7 +20,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ['7deg', '-7deg']);
   const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ['-7deg', '7deg']);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
     if (!cardRef.current || window.matchMedia('(pointer: coarse)').matches) return;
     const rect = cardRef.current.getBoundingClientRect();
     const width = rect.width;
@@ -48,8 +48,12 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
   const spotlightBg = useMotionTemplate`radial-gradient(450px circle at ${spotX}px ${spotY}px, rgba(249, 115, 22, 0.08), transparent 80%)`;
 
   return (
-    <motion.div
+    <motion.a
       ref={cardRef}
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`View GitHub repository for ${project.title}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{
@@ -61,7 +65,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.08, ease: [0.16, 1, 0.3, 1], duration: 0.8 }}
-      className="group flex flex-col justify-between p-7 sm:p-10 md:p-12 glass-card transition-all duration-500 h-full relative overflow-hidden group/project cursor-pointer"
+      className="group flex flex-col justify-between p-7 sm:p-10 md:p-12 glass-card transition-all duration-500 h-full relative overflow-hidden group/project cursor-pointer no-underline block"
     >
       {/* Spotlight overlay effect layer */}
       <motion.div
@@ -104,19 +108,20 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         </p>
       </div>
 
-      {/* Circular Arrow Button at bottom */}
-      <div className="relative z-10 pt-4" style={{ transform: 'translateZ(45px)' }}>
-        <a
-          href={project.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`View ${project.title}`}
-          className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#1b1713] border border-white/10 flex items-center justify-center text-white/70 group-hover:border-primary/50 group-hover:text-primary group-hover:bg-[#ff7b04]/10 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary outline-none group-hover:scale-105"
-        >
-          <ArrowUpRight className="w-6 h-6 sm:w-7 sm:h-7 group-hover:rotate-45 transition-transform duration-300" />
-        </a>
+      {/* Circular Arrow Button + GitHub Text at bottom */}
+      <div
+        className="relative z-10 pt-4 flex items-center justify-between"
+        style={{ transform: 'translateZ(45px)' }}
+      >
+        <span className="text-xs font-bold uppercase tracking-widest text-primary/80 group-hover:text-primary transition-colors flex items-center gap-2">
+          View Repository{' '}
+          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+        </span>
+        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#1b1713] border border-white/10 flex items-center justify-center text-white/70 group-hover:border-primary/50 group-hover:text-primary group-hover:bg-[#ff7b04]/10 transition-all duration-300 group-hover:scale-105">
+          <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-45 transition-transform duration-300" />
+        </div>
       </div>
-    </motion.div>
+    </motion.a>
   );
 };
 
