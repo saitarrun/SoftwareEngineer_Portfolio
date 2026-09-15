@@ -94,39 +94,25 @@ export const Hero = ({ onOpenResume }: HeroProps) => {
     <section id="hero" className="relative overflow-hidden pt-16 sm:pt-20">
       {/* Content Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-12 relative z-10">
-        {/* Available Badge & Work Status */}
+        {/* Sleek Unified Glassmorphic Status Bar */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col gap-3 mb-8 sm:mb-12"
+          className="mb-8 sm:mb-12"
         >
-          <div className="flex flex-wrap items-center gap-2.5">
-            <div
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wide w-fit border border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
-              style={{
-                fontFamily: 'var(--font-body)',
-              }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-              Available for opportunities
-            </div>
-            <div
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wide w-fit border border-orange-500/30 bg-orange-500/10 text-orange-300"
-              style={{
-                fontFamily: 'var(--font-body)',
-              }}
-            >
-              <span>📍 Greater Los Angeles Area, CA • Open to Remote & Relocation</span>
-            </div>
-            <div
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wide w-fit border border-blue-500/30 bg-blue-500/10 text-blue-300"
-              style={{
-                fontFamily: 'var(--font-body)',
-              }}
-            >
-              <span>🇺🇸 US Work Authorized</span>
-            </div>
+          <div
+            className="inline-flex flex-wrap items-center gap-2 sm:gap-3 px-4 py-2 rounded-full text-xs font-medium border border-white/10 bg-white/[0.03] backdrop-blur-md shadow-lg"
+            style={{ fontFamily: 'var(--font-body)' }}
+          >
+            <span className="inline-flex items-center gap-2 text-emerald-400 font-semibold">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+              Available for Opportunities
+            </span>
+            <span className="text-zinc-600 hidden sm:inline">•</span>
+            <span className="text-zinc-300">Greater Los Angeles, CA</span>
+            <span className="text-zinc-600 hidden sm:inline">•</span>
+            <span className="text-orange-400/90 font-medium">US Work Authorized</span>
           </div>
         </motion.div>
 
