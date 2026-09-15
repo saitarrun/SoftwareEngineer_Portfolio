@@ -234,11 +234,9 @@ export const CommandPalette = ({
                     <button
                       key={item.id}
                       type="button"
-                      onClick={() => {
-                        item.action();
-                      }}
+                      onClick={() => item.action()}
                       onMouseEnter={() => setSelectedIndex(idx)}
-                      className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-left transition-all duration-150 cursor-pointer ${
+                      className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-left transition-colors duration-75 cursor-pointer outline-none ${
                         isSelected
                           ? 'bg-amber-500/20 border border-amber-500/40 text-white shadow-sm'
                           : 'text-zinc-300 hover:bg-amber-500/15 hover:border-amber-500/30 hover:text-white border border-transparent'
