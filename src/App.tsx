@@ -10,6 +10,7 @@ import { Education } from './components/Education';
 import { Publications } from './components/Publications';
 import { Contact } from './components/Contact';
 import { ResumeModal } from './components/ResumeModal';
+import { CommandPalette } from './components/CommandPalette';
 
 const BackgroundCanvas = lazy(() =>
   import('./three/BackgroundCanvas').then((m) => ({ default: m.BackgroundCanvas }))
@@ -83,12 +84,22 @@ const DesktopBackground = () => {
 
 const Portfolio = ({ isMobile }: { isMobile: boolean }) => {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
+
+  useEffect(() => {
+    const handleToggle = () => setIsCommandPaletteOpen((prev) => !prev);
+    window.addEventListener('toggle-command-palette', handleToggle);
+    return () => window.removeEventListener('toggle-command-palette', handleToggle);
+  }, []);
 
   return (
     <div className="min-h-screen bg-black grid-mesh font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
       {isMobile ? <MobileBackground /> : <DesktopBackground />}
 
-      <Navbar onOpenResume={() => setIsResumeOpen(true)} />
+      <Navbar
+        onOpenResume={() => setIsResumeOpen(true)}
+        onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
+      />
 
       <Suspense fallback={null}>
         <ChatWidget />
@@ -120,6 +131,18 @@ const Portfolio = ({ isMobile }: { isMobile: boolean }) => {
         isOpen={isResumeOpen}
         onClose={() => setIsResumeOpen(false)}
         pdfUrl="/TarrunPitta_SoftwareEngineer_Resume.pdf"
+      />
+
+      <CommandPalette
+        isOpen={isCommandPaletteOpen}
+        onClose={() => setIsCommandPaletteOpen(false)}
+        onOpenResume={() => setIsResumeOpen(true)}
+        onOpenChat={() => {
+          const chatBtn = document.querySelector('button[aria-label*="Open chat"]');
+          if (chatBtn && 'click' in chatBtn && typeof chatBtn.click === 'function') {
+            (chatBtn as { click: () => void }).click();
+          }
+        }}
       />
     </div>
   );

@@ -354,6 +354,32 @@ export const ChatWidget = () => {
               <div ref={bottomRef} />
             </div>
 
+            {/* AI Prompt Discovery Pills */}
+            {messages.length <= 2 && !streaming && (
+              <div className="flex-shrink-0 px-3 py-2 flex flex-wrap gap-1.5 border-t border-white/5 bg-white/[0.01]">
+                {[
+                  'Tech stack & skills?',
+                  'AWS & GM experience?',
+                  'Top AI projects?',
+                  'Education background?',
+                ].map((promptText) => (
+                  <button
+                    key={promptText}
+                    type="button"
+                    onClick={() => {
+                      setInput(promptText);
+                      setTimeout(() => {
+                        inputRef.current?.focus();
+                      }, 50);
+                    }}
+                    className="text-[11px] px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-zinc-300 hover:text-amber-400 hover:border-amber-500/40 hover:bg-white/10 transition-all text-left outline-none cursor-pointer"
+                  >
+                    {promptText}
+                  </button>
+                ))}
+              </div>
+            )}
+
             {/* Input area */}
             <div
               className="flex-shrink-0 px-3 py-3"

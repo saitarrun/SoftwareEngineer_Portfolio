@@ -1,13 +1,14 @@
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
-import { Linkedin, Github, Menu, X } from 'lucide-react';
+import { Linkedin, Github, Menu, X, Search } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { MagneticElement } from './MagneticElement';
 
 interface NavbarProps {
   onOpenResume?: () => void;
+  onOpenCommandPalette?: () => void;
 }
 
-export const Navbar = ({ onOpenResume }: NavbarProps) => {
+export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const { scrollYProgress } = useScroll();
@@ -156,8 +157,21 @@ export const Navbar = ({ onOpenResume }: NavbarProps) => {
           })}
         </div>
 
-        {/* Right: socials + resume */}
+        {/* Right: search + socials + resume */}
         <div className="flex items-center gap-2 sm:gap-4">
+          <button
+            type="button"
+            onClick={onOpenCommandPalette}
+            aria-label="Open Spotlight Search"
+            className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-amber-500/40 hover:bg-white/10 text-zinc-400 hover:text-white transition-all text-xs outline-none focus-visible:ring-2 focus-visible:ring-orange-500 cursor-pointer"
+          >
+            <Search className="w-3.5 h-3.5 text-amber-400" />
+            <span className="hidden sm:inline text-zinc-300">Search</span>
+            <kbd className="hidden sm:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] text-zinc-400 bg-black/40 rounded border border-white/10 font-mono">
+              ⌘K
+            </kbd>
+          </button>
+
           <a
             href="https://github.com/saitarrun"
             target="_blank"
