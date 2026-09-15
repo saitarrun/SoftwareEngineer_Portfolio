@@ -231,10 +231,10 @@ export const CommandPalette = ({
               </kbd>
             </div>
 
-            {/* List with Ref & Auto-scroll */}
+            {/* List with Ref & Auto-scroll - Exact 4 item visible height */}
             <div
               ref={listRef}
-              className="max-h-[300px] overflow-y-auto p-2 space-y-1 scrollbar-thin scrollbar-thumb-amber-500/40 scrollbar-track-black/20"
+              className="max-h-[260px] overflow-y-auto p-2 space-y-1 scrollbar-thin scrollbar-thumb-amber-500/40 scrollbar-track-black/20"
             >
               {filteredItems.length === 0 ? (
                 <div className="py-10 text-center text-zinc-500 text-sm">
