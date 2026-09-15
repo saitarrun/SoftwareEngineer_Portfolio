@@ -94,30 +94,40 @@ export const Hero = ({ onOpenResume }: HeroProps) => {
     <section id="hero" className="relative overflow-hidden pt-16 sm:pt-20">
       {/* Content Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-10 sm:pt-12 relative z-10">
-        {/* Available Badge */}
+        {/* Available Badge & Work Status */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col gap-4 mb-10 sm:mb-16"
+          className="flex flex-col gap-3 mb-8 sm:mb-12"
         >
-          <div
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-medium tracking-wide w-fit border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"
-            style={{
-              fontFamily: 'var(--font-body)',
-            }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-            Available for opportunities
+          <div className="flex flex-wrap items-center gap-2.5">
+            <div
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wide w-fit border border-emerald-500/30 bg-emerald-500/10 text-emerald-400"
+              style={{
+                fontFamily: 'var(--font-body)',
+              }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+              Available for opportunities
+            </div>
+            <div
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wide w-fit border border-orange-500/30 bg-orange-500/10 text-orange-300"
+              style={{
+                fontFamily: 'var(--font-body)',
+              }}
+            >
+              <span>📍 Greater Los Angeles Area, CA • Open to Remote & Relocation</span>
+            </div>
+            <div
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-wide w-fit border border-blue-500/30 bg-blue-500/10 text-blue-300"
+              style={{
+                fontFamily: 'var(--font-body)',
+              }}
+            >
+              <span>🇺🇸 US Work Authorized</span>
+            </div>
           </div>
-          <p
-            className="text-xs sm:text-sm font-medium"
-            style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}
-          >
-            Software Engineer based in
-            <br />
-            <span className="text-white font-semibold">California</span>
-          </p>
         </motion.div>
 
         {/* Massive Kinetic Typography */}

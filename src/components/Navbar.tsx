@@ -16,6 +16,7 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
   const navItems = [
     'About',
     'Experience',
+    'Testimonials',
     'Education',
     'Projects',
     'Skills',
@@ -29,6 +30,7 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
     const sections = [
       'hero',
       'experience',
+      'testimonials',
       'education',
       'projects',
       'skills',

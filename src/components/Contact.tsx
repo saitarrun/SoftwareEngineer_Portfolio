@@ -137,6 +137,21 @@ export const Contact = () => {
                 </MagneticElement>
               </div>
 
+              {/* Schedule Call Button */}
+              <div className="w-full">
+                <MagneticElement className="w-full">
+                  <a
+                    href="mailto:pittatarrun@gmail.com?subject=Schedule%20a%2015-min%20intro%20call%20with%20Tarrun"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 px-6 min-h-12 bg-white/5 border border-white/10 hover:border-orange-500/50 hover:bg-white/10 text-white font-semibold rounded-full transition-all duration-300 w-full text-xs sm:text-sm shadow-lg outline-none cursor-pointer"
+                    style={{ fontFamily: 'var(--font-body)' }}
+                  >
+                    <span>📅 Schedule a 15-Min Intro Call</span>
+                  </a>
+                </MagneticElement>
+              </div>
+
               {/* Socials row - spans exact same max-width end to end */}
               <div className="flex flex-row justify-between w-full gap-4">
                 {[
