@@ -68,7 +68,7 @@ const FluidLetter = ({
         display: 'inline-block',
         ...(isGradient
           ? {
-              background: 'linear-gradient(180deg, #ffffff 10%, #d97706 100%)',
+              background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
