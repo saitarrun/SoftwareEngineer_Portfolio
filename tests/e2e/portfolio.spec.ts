@@ -3,13 +3,13 @@ import { test, expect } from '@playwright/test';
 test.describe('Portfolio – page load and metadata', () => {
   test('has correct title', async ({ page }) => {
     await page.goto('/');
-    await expect(page).toHaveTitle(/Sai Tarrun Pitta/);
+    await expect(page).toHaveTitle(/Tarrun Pitta/);
   });
 
   test('has correct Open Graph meta tags', async ({ page }) => {
     await page.goto('/');
     const ogTitle = page.locator('meta[property="og:title"]');
-    await expect(ogTitle).toHaveAttribute('content', /Sai Tarrun Pitta/);
+    await expect(ogTitle).toHaveAttribute('content', /Tarrun Pitta/);
     const ogImage = page.locator('meta[property="og:image"]');
     await expect(ogImage).toHaveAttribute('content', /og-image\.png/);
   });
@@ -23,7 +23,7 @@ test.describe('Portfolio – navigation', () => {
   test('navbar is visible with logo and name', async ({ page }) => {
     const nav = page.locator('nav');
     await expect(nav).toBeVisible();
-    await expect(nav).toContainText('Sai Tarrun Pitta');
+    await expect(nav).toContainText('Tarrun Pitta');
   });
 
   test('navbar contains section links', async ({ page }) => {

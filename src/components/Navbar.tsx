@@ -104,7 +104,7 @@ export const Navbar = () => {
               className="font-black text-xs sm:text-base text-white tracking-tight truncate"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              Sai Tarrun Pitta
+              Tarrun Pitta
             </span>
             <span
               className="text-[8px] sm:text-[10px] uppercase tracking-widest mt-0.5"

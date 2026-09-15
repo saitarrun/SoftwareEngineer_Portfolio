@@ -83,7 +83,7 @@ const FluidLetter = ({
 };
 
 export const Hero = () => {
-  const firstName = 'Sai Tarrun';
+  const firstName = 'Tarrun';
   const lastName = 'Pitta';
 
   return (

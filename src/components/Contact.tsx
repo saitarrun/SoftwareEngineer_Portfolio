@@ -198,7 +198,7 @@ export const Contact = () => {
                 Engineered By
               </span>
               <span className="text-on-surface-variant font-medium text-xs text-center md:text-left">
-                Sai Tarrun Pitta
+                Tarrun Pitta
               </span>
             </div>
           </div>

@@ -38,7 +38,7 @@ export const Publications = () => {
 
               <div className="space-y-4">
                 <p className="text-sm text-primary-dim font-medium uppercase tracking-wider">
-                  Ashwin Koshy John, Sai Tarrun Pitta, Jaya Dofe, Jai Gopal Pandey
+                  Ashwin Koshy John, Tarrun Pitta, Jaya Dofe, Jai Gopal Pandey
                 </p>
                 <div className="h-px bg-white/5 w-full" />
                 <p className="text-on-surface-variant text-base leading-relaxed">
