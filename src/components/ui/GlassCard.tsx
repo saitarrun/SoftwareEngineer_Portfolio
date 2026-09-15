@@ -21,8 +21,8 @@ export const GlassCard = ({ children, className = '', hoverEffect = false }: Gla
     mouseY.set(e.clientY - top);
   };
 
-  // Generate dynamic background style
-  const background = useMotionTemplate`radial-gradient(400px circle at ${mouseX}px ${mouseY}px, rgba(249, 115, 22, 0.08), transparent 80%)`;
+  // Generate dynamic background style with vivid bright orange radial glow
+  const background = useMotionTemplate`radial-gradient(450px circle at ${mouseX}px ${mouseY}px, rgba(255, 122, 0, 0.16), transparent 80%)`;
 
   return (
     <motion.div
