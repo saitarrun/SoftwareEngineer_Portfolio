@@ -3,7 +3,7 @@ Allow: /
 Disallow: /api/
 Disallow: /.well-known/
 
-Sitemap: https://saitarrun.dev/sitemap.xml
+Sitemap: https://software-engineer-portfolio-brown.vercel.app/sitemap.xml
 
 # Crawl delay (milliseconds)
 Crawl-delay: 1

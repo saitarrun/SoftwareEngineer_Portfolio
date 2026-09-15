@@ -231,17 +231,25 @@ export const Hero = ({ onOpenResume }: HeroProps) => {
             className="hidden lg:grid grid-cols-2 gap-4"
           >
             {[
-              { label: '3+', desc: 'Years Experience' },
-              { label: '20+', desc: 'Projects Shipped' },
-              { label: '5+', desc: 'Tech Stacks' },
-              { label: '100%', desc: 'Uptime Avg' },
+              { label: '400K+', desc: 'Lines Indexed in RAG' },
+              { label: '15K+', desc: 'Daily Loan Underwritings' },
+              { label: '98%', desc: 'RAG Retrieval Accuracy' },
+              { label: '250ms', desc: 'Sync Latency SLO' },
             ].map((stat, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-card bg-surface-container-low/40 ghost-border text-center"
+                className="p-5 sm:p-6 rounded-2xl bg-black border border-white/10 text-center shadow-lg transition-all duration-300 hover:border-primary/40 group/stat"
               >
-                <div className="text-2xl font-black text-primary mb-2">{stat.label}</div>
-                <div className="text-xs font-semibold uppercase tracking-widest text-on-surface-variant">
+                <div
+                  className="text-2xl sm:text-3xl font-black text-white group-hover/stat:text-primary transition-colors mb-1"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
+                  {stat.label}
+                </div>
+                <div
+                  className="text-[10px] font-bold uppercase tracking-[0.18em] text-white/50"
+                  style={{ fontFamily: 'var(--font-label)' }}
+                >
                   {stat.desc}
                 </div>
               </div>

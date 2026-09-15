@@ -1,6 +1,13 @@
-import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
+import { useState, useRef } from 'react';
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useMotionTemplate,
+  AnimatePresence,
+} from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { useRef } from 'react';
 import { projects, type Project } from '../data/portfolio';
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
@@ -126,29 +133,103 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
 };
 
 export const Projects = () => {
+  const [activeFilter, setActiveFilter] = useState<string>('All');
+
+  const categories = ['All', 'AI & Agentic Systems', 'Distributed & Cloud', 'Open Source'];
+
+  const filteredProjects = projects.filter((project) => {
+    if (activeFilter === 'All') return true;
+    if (activeFilter === 'AI & Agentic Systems') {
+      return (
+        project.tech.includes('AI') ||
+        project.tech.includes('Agentic') ||
+        project.tech.includes('LangChain') ||
+        project.tech.includes('LLM') ||
+        project.tech.includes('FAISS') ||
+        project.tech.includes('MCP')
+      );
+    }
+    if (activeFilter === 'Distributed & Cloud') {
+      return (
+        project.tech.includes('Docker') ||
+        project.tech.includes('FastAPI') ||
+        project.tech.includes('Node.js') ||
+        project.tech.includes('REST') ||
+        project.tech.includes('Ethereum')
+      );
+    }
+    if (activeFilter === 'Open Source') {
+      return (
+        project.title.toLowerCase().includes('open') ||
+        project.title.toLowerCase().includes('contributor')
+      );
+    }
+    return true;
+  });
+
   return (
     <section id="projects" className="py-16 sm:py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-10 sm:mb-16 md:mb-24"
-        >
-          <h2
-            className="text-4xl sm:text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase"
-            style={{ fontFamily: 'var(--font-display)' }}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10 sm:mb-16 md:mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
           >
-            Selected Projects
-          </h2>
-        </motion.div>
+            <span
+              className="text-primary text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] mb-2 block"
+              style={{ fontFamily: 'var(--font-label)' }}
+            >
+              Engineering Portfolio
+            </span>
+            <h2
+              className="text-4xl sm:text-5xl md:text-7xl font-black text-on-surface tracking-tighter uppercase"
+              style={{ fontFamily: 'var(--font-display)' }}
+            >
+              Selected Projects
+            </h2>
+          </motion.div>
 
-        {/* Desktop: 2-3 column grid | Mobile: single column */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
-          {projects.map((project, index) => (
-            <ProjectCard key={index} project={project} index={index} />
-          ))}
+          {/* Minimalist Apple Segmented Filter Control */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-center flex-wrap gap-2 p-1.5 bg-black/60 rounded-full border border-white/10 backdrop-blur-xl w-fit"
+          >
+            {categories.map((cat) => {
+              const isSelected = activeFilter === cat;
+              return (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setActiveFilter(cat)}
+                  className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 relative outline-none ${
+                    isSelected ? 'text-black font-bold shadow-sm' : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="activeProjectFilter"
+                      className="absolute inset-0 bg-primary rounded-full -z-10"
+                      transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                  {cat}
+                </button>
+              );
+            })}
+          </motion.div>
         </div>
+
+        {/* Desktop: 2 column grid | Mobile: single column */}
+        <motion.div layout className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-16">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );
