@@ -18,6 +18,7 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:site_name" content="Tarrun Pitta Portfolio" />
     <meta property="og:url" content="https://software-engineer-portfolio-brown.vercel.app" />
     <meta property="og:title" content="Tarrun Pitta | Software Engineer – Backend & AI Systems" />
@@ -25,7 +26,10 @@
       property="og:description"
       content="Explore production systems, RAG retrieval platforms, and cloud microservices engineered by Tarrun Pitta."
     />
-    <meta property="og:image" content="/og-image.png" />
+    <meta
+      property="og:image"
+      content="https://software-engineer-portfolio-brown.vercel.app/og-image.png"
+    />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
 
@@ -40,7 +44,10 @@
       property="twitter:description"
       content="Explore production systems, RAG retrieval platforms, and cloud microservices engineered by Tarrun Pitta."
     />
-    <meta property="twitter:image" content="/og-image.png" />
+    <meta
+      property="twitter:image"
+      content="https://software-engineer-portfolio-brown.vercel.app/og-image.png"
+    />
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://software-engineer-portfolio-brown.vercel.app" />
@@ -64,51 +71,100 @@
 
     <title>Tarrun Pitta | Software Engineer – Backend & AI Systems</title>
 
-    <!-- Enhanced Structured Data (JSON-LD) for Google Rich Snippets & Search Recognition -->
+    <!-- Enhanced Multi-Graph Structured Data (JSON-LD) for Google Rich Snippets & Search Recognition -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "ProfilePage",
-        "dateCreated": "2026-09-15T00:00:00-05:00",
-        "dateModified": "2026-09-15T00:00:00-05:00",
-        "mainEntity": {
-          "@type": "Person",
-          "name": "Tarrun Pitta",
-          "alternateName": ["Sai Tarrun Pitta", "Tarrun"],
-          "jobTitle": "Software Engineer",
-          "worksFor": [
-            {
-              "@type": "Organization",
-              "name": "Pacific Life"
-            },
-            {
-              "@type": "Organization",
-              "name": "Accenture"
-            }
-          ],
-          "alumniOf": {
-            "@type": "EducationalOrganization",
-            "name": "California State University, Fullerton",
-            "sameAs": "https://www.fullerton.edu"
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://software-engineer-portfolio-brown.vercel.app/#website",
+            "url": "https://software-engineer-portfolio-brown.vercel.app",
+            "name": "Tarrun Pitta Software Engineer Portfolio",
+            "description": "Portfolio of Tarrun Pitta – Software Engineer specializing in Distributed Backend Systems, RAG Pipelines, and Cloud Infrastructure.",
+            "inLanguage": "en-US"
           },
-          "url": "https://software-engineer-portfolio-brown.vercel.app",
-          "sameAs": ["https://github.com/saitarrun", "https://linkedin.com/in/tarrunpitta"],
-          "knowsAbout": [
-            "Distributed Systems",
-            "Backend Engineering",
-            "Spring Boot",
-            "Java 17",
-            "Python",
-            "Retrieval-Augmented Generation",
-            "Amazon Web Services",
-            "Docker",
-            "Event-Driven Architecture",
-            "TypeScript",
-            "Microservices"
-          ],
-          "image": "https://software-engineer-portfolio-brown.vercel.app/og-image.png",
-          "description": "Software Engineer with a Master of Science in Computer Science from CSU Fullerton. Specializes in scalable backend microservices, event-driven pipelines, and AI system engineering."
-        }
+          {
+            "@type": "ProfilePage",
+            "@id": "https://software-engineer-portfolio-brown.vercel.app/#profilepage",
+            "url": "https://software-engineer-portfolio-brown.vercel.app",
+            "name": "Tarrun Pitta | Software Engineer",
+            "isPartOf": {
+              "@id": "https://software-engineer-portfolio-brown.vercel.app/#website"
+            },
+            "dateCreated": "2026-09-15T00:00:00-05:00",
+            "dateModified": "2026-09-15T00:00:00-05:00",
+            "mainEntity": {
+              "@type": "Person",
+              "@id": "https://software-engineer-portfolio-brown.vercel.app/#person",
+              "name": "Tarrun Pitta",
+              "alternateName": ["Sai Tarrun Pitta", "Tarrun"],
+              "jobTitle": "Software Engineer",
+              "worksFor": [
+                {
+                  "@type": "Organization",
+                  "name": "Pacific Life"
+                },
+                {
+                  "@type": "Organization",
+                  "name": "Accenture"
+                }
+              ],
+              "alumniOf": {
+                "@type": "EducationalOrganization",
+                "name": "California State University, Fullerton",
+                "sameAs": "https://www.fullerton.edu"
+              },
+              "url": "https://software-engineer-portfolio-brown.vercel.app",
+              "sameAs": ["https://github.com/saitarrun", "https://linkedin.com/in/tarrunpitta"],
+              "knowsAbout": [
+                "Distributed Systems",
+                "Backend Engineering",
+                "Spring Boot",
+                "Java 17",
+                "Python",
+                "Retrieval-Augmented Generation",
+                "Amazon Web Services",
+                "Docker",
+                "Event-Driven Architecture",
+                "TypeScript",
+                "Microservices"
+              ],
+              "image": "https://software-engineer-portfolio-brown.vercel.app/og-image.png",
+              "description": "Software Engineer with a Master of Science in Computer Science from CSU Fullerton. Specializes in scalable backend microservices, event-driven pipelines, and AI system engineering."
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://software-engineer-portfolio-brown.vercel.app/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://software-engineer-portfolio-brown.vercel.app"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Experience",
+                "item": "https://software-engineer-portfolio-brown.vercel.app/#experience"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Projects",
+                "item": "https://software-engineer-portfolio-brown.vercel.app/#projects"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Contact",
+                "item": "https://software-engineer-portfolio-brown.vercel.app/#contact"
+              }
+            ]
+          }
+        ]
       }
     </script>
   </head>
