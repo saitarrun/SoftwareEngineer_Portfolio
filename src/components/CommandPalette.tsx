@@ -95,7 +95,7 @@ export const CommandPalette = ({
     {
       id: 'nav-experience',
       title: 'Experience & Roles',
-      subtitle: 'AWS, GM, Indiana University, AI & Full Stack Engineering',
+      subtitle: 'Pacific Life, CSU Fullerton, Accenture, AI & Software Engineering',
       category: 'Navigation',
       icon: Briefcase,
       action: () => scrollToSection('experience'),
@@ -119,7 +119,7 @@ export const CommandPalette = ({
     {
       id: 'nav-education',
       title: 'Education & Honors',
-      subtitle: 'MS in CS from Indiana University Bloomington',
+      subtitle: 'MS in Computer Science from CSU Fullerton',
       category: 'Navigation',
       icon: GraduationCap,
       action: () => scrollToSection('education'),
