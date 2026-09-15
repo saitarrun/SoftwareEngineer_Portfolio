@@ -47,7 +47,7 @@ test.describe('Portfolio – navigation', () => {
 test.describe('Portfolio – Hero section', () => {
   test('hero contains engineer name', async ({ page }) => {
     await page.goto('/');
-    await expect(page.getByText(/Sai/i).first()).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByText(/Tarrun/i).first()).toBeVisible({ timeout: 10_000 });
   });
 
   test('chat FAB button is visible on the page', async ({ page }) => {
