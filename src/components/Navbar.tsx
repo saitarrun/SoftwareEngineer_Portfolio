@@ -13,12 +13,12 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
   const [activeSection, setActiveSection] = useState('hero');
   const { scrollYProgress } = useScroll();
 
-  const navItems = ['About', 'Experience', 'Projects', 'Skills', 'Testimonials', 'Contact'];
+  const navItems = ['About', 'Experience', 'Projects', 'Skills', 'Contact'];
 
   // Scroll spy active section tracker logic with RAF throttling to prevent layout thrashing
   useEffect(() => {
     let ticking = false;
-    const sections = ['hero', 'experience', 'projects', 'skills', 'testimonials', 'contact'];
+    const sections = ['hero', 'experience', 'projects', 'skills', 'contact'];
 
     const updateActiveSection = () => {
       const triggerPoint = 200;
