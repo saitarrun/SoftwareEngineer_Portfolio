@@ -96,27 +96,27 @@ const ExperienceCard = ({ exp, index }: { exp: ExperienceData; index: number }) 
           style={{ transform: 'translateZ(40px)' }}
         >
           <span
-            className="text-[10px] font-bold uppercase tracking-[0.2em] px-5 py-2.5 rounded-lg bg-surface-container-highest/60 text-on-surface-variant border border-white/05 backdrop-blur-md"
+            className="text-[11px] font-semibold tracking-wider px-3.5 py-1.5 rounded-full bg-white/[0.06] text-white/70 border border-white/10 backdrop-blur-md"
             style={{ fontFamily: 'var(--font-label)' }}
           >
             {exp.period}
           </span>
           <span
-            className="text-[10px] font-bold uppercase tracking-[0.2em] px-5 py-2.5 rounded-lg bg-surface-container-highest/60 text-on-surface-variant border border-white/05 backdrop-blur-md"
+            className="text-[11px] font-semibold tracking-wider px-3.5 py-1.5 rounded-full bg-white/[0.06] text-white/70 border border-white/10 backdrop-blur-md"
             style={{ fontFamily: 'var(--font-label)' }}
           >
             {exp.location}
           </span>
         </div>
 
-        <ul className="space-y-6 max-w-4xl">
+        <ul className="space-y-4 max-w-4xl">
           {exp.description.map((item: string, i: number) => (
             <li
               key={i}
-              className="flex gap-3 sm:gap-6 text-sm sm:text-base md:text-lg leading-relaxed text-on-surface-variant group-hover:text-on-surface/90 transition-colors duration-500"
+              className="flex gap-3.5 sm:gap-4 text-sm sm:text-base leading-relaxed text-white/70 group-hover:text-white/95 transition-colors duration-400"
               style={{ fontFamily: 'var(--font-body)' }}
             >
-              <span className="w-1.5 h-1.5 rounded-full mt-3 shrink-0 bg-primary neon-glow opacity-80" />
+              <span className="w-1.5 h-1.5 rounded-full mt-2.5 shrink-0 bg-primary/90" />
               {item}
             </li>
           ))}

@@ -88,7 +88,7 @@ export const Navbar = ({ onOpenResume }: NavbarProps) => {
 
       {/* Sleek Scroll-driven Reading Progress Bar */}
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-orange-600 via-primary to-orange-400 origin-left"
+        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-amber-600 via-primary to-amber-300 origin-left"
         style={{ scaleX: scrollYProgress }}
       />
 
@@ -101,7 +101,7 @@ export const Navbar = ({ onOpenResume }: NavbarProps) => {
               background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
             }}
           >
-            <span className="text-black text-[10px] sm:text-xs font-black">S</span>
+            <span className="text-black text-[10px] sm:text-xs font-black">T</span>
           </div>
           <div className="flex flex-col leading-none min-w-0">
             <span
@@ -139,14 +139,14 @@ export const Navbar = ({ onOpenResume }: NavbarProps) => {
                       {/* Active underline indicator with glowing drop shadow */}
                       <motion.div
                         layoutId="activeIndicator"
-                        className="absolute bottom-0 left-3 right-3 h-[2.5px] bg-primary rounded-full z-10 shadow-[0_0_12px_rgba(251,120,0,0.8)]"
-                        transition={{ type: 'spring', stiffness: 120, damping: 18, mass: 0.6 }}
+                        className="absolute bottom-0 left-3 right-3 h-[2px] bg-primary rounded-full z-10 shadow-[0_0_8px_rgba(245,158,11,0.6)]"
+                        transition={{ type: 'spring', stiffness: 140, damping: 20, mass: 0.5 }}
                       />
-                      {/* Highly visible ambient background glow */}
+                      {/* Ambient background glow */}
                       <motion.div
                         layoutId="activeGlow"
-                        className="absolute inset-0 bg-primary/20 blur-[5px] rounded-lg -z-10 border border-primary/30"
-                        transition={{ type: 'spring', stiffness: 120, damping: 18, mass: 0.6 }}
+                        className="absolute inset-0 bg-primary/10 blur-[4px] rounded-lg -z-10 border border-primary/20"
+                        transition={{ type: 'spring', stiffness: 140, damping: 20, mass: 0.5 }}
                       />
                     </>
                   )}

@@ -96,32 +96,31 @@ const EducationCard = ({ edu, index }: { edu: EducationData; index: number }) =>
           style={{ transform: 'translateZ(40px)' }}
         >
           <span
-            className="text-[10px] font-bold uppercase tracking-[0.4em] px-5 py-2.5 rounded-lg bg-surface-container-highest/60 text-on-surface-variant border border-white/05 backdrop-blur-md"
+            className="text-[11px] font-semibold tracking-wider px-3.5 py-1.5 rounded-full bg-white/[0.06] text-white/70 border border-white/10 backdrop-blur-md"
             style={{ fontFamily: 'var(--font-label)' }}
           >
             {edu.period}
           </span>
           <span
-            className="text-[10px] font-bold uppercase tracking-[0.4em] px-5 py-2.5 rounded-lg bg-surface-container-highest/60 text-on-surface-variant border border-white/05 backdrop-blur-md"
+            className="text-[11px] font-semibold tracking-wider px-3.5 py-1.5 rounded-full bg-white/[0.06] text-white/70 border border-white/10 backdrop-blur-md"
             style={{ fontFamily: 'var(--font-label)' }}
           >
             {edu.location}
           </span>
         </div>
 
-        <div className="space-y-4 max-w-4xl">
-          {(Array.isArray(edu.description) ? edu.description : [edu.description]).map(
-            (item: string, i: number) => (
-              <p
-                key={i}
-                className="text-sm sm:text-base md:text-xl text-on-surface-variant leading-relaxed group-hover:text-on-surface/90 transition-colors duration-500"
-                style={{ fontFamily: 'var(--font-body)' }}
-              >
-                {item}
-              </p>
-            )
-          )}
-        </div>
+        <ul className="space-y-4 max-w-4xl">
+          {edu.description.map((item: string, i: number) => (
+            <li
+              key={i}
+              className="flex gap-3.5 sm:gap-4 text-sm sm:text-base leading-relaxed text-white/70 group-hover:text-white/95 transition-colors duration-400"
+              style={{ fontFamily: 'var(--font-body)' }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full mt-2.5 shrink-0 bg-primary/90" />
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
     </motion.div>
   );

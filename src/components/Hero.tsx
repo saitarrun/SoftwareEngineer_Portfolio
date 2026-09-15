@@ -68,7 +68,7 @@ const FluidLetter = ({
         display: 'inline-block',
         ...(isGradient
           ? {
-              background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
+              background: 'linear-gradient(180deg, #ffffff 10%, #d97706 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -102,18 +102,13 @@ export const Hero = ({ onOpenResume }: HeroProps) => {
           className="flex flex-col gap-4 mb-10 sm:mb-16"
         >
           <div
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold uppercase tracking-widest w-fit"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-medium tracking-wide w-fit border border-emerald-500/20 bg-emerald-500/10 text-emerald-400"
             style={{
-              background: 'rgba(255, 146, 73, 0.1)',
-              color: 'var(--primary)',
-              fontFamily: 'var(--font-label)',
+              fontFamily: 'var(--font-body)',
             }}
           >
-            <span
-              className="w-1.5 h-1.5 rounded-full animate-pulse neon-glow"
-              style={{ background: 'var(--primary-dim)' }}
-            />
-            Available for work
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+            Available for opportunities
           </div>
           <p
             className="text-xs sm:text-sm font-medium"

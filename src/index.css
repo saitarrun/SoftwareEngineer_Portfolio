@@ -7,28 +7,28 @@
   /* Apple Dark Mode Surface Hierarchy */
   --surface: #000000;
   --surface-container-lowest: #000000;
-  --surface-container-low: #0a0a0c;
-  --surface-container: #121215;
-  --surface-container-high: #1c1c1e;
-  --surface-container-highest: #2c2c2e;
-  --surface-variant: rgba(255, 255, 255, 0.05);
+  --surface-container-low: #08080a;
+  --surface-container: #0f0f12;
+  --surface-container-high: #161619;
+  --surface-container-highest: #222226;
+  --surface-variant: rgba(255, 255, 255, 0.04);
 
-  /* Primary Accent - Apple Subtle Warm Amber/Bronze */
+  /* Primary Accent - Apple Warm Amber/Ochre Gold */
   --primary: #f59e0b;
-  --primary-fixed: #d97706;
-  --primary-container: #b45309;
+  --primary-fixed: #e59005;
+  --primary-container: #d97706;
   --primary-dim: #f59e0b;
   --on-primary: #000000;
 
-  /* Text & Content - Apple System Colors */
+  /* Text & Content - Apple System Dynamic Gray Scale */
   --on-surface: #f5f5f7;
-  --on-surface-variant: #86868b;
+  --on-surface-variant: #98989f;
   --outline-variant: rgba(255, 255, 255, 0.08);
 
   /* Error */
   --error: #ff453a;
 
-  /* Typography - Apple System Fonts */
+  /* Typography - Apple Native System Stack */
   --font-display:
     -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
   --font-body:
@@ -127,7 +127,7 @@
     background: var(--surface);
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(255, 146, 73, 0.4);
+    background: rgba(245, 158, 11, 0.35);
     border-radius: 3px;
   }
 }
@@ -155,11 +155,11 @@
   }
 
   .neon-glow {
-    box-shadow: 0 0 20px rgba(245, 158, 11, 0.25);
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.2);
   }
 
   .ghost-border {
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
   }
 
   .section-contain {

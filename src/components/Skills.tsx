@@ -84,19 +84,19 @@ const SkillCard = ({ group, index }: { group: SkillGroup; index: number }) => {
           </div>
         </div>
 
-        <div className="flex flex-wrap gap-1.5 sm:gap-2">
+        <div className="flex flex-wrap gap-2">
           {group.skills.map((skill: string) => (
             <motion.span
               key={skill}
               whileHover={{
-                scale: 1.08,
-                borderColor: 'rgba(255, 146, 73, 0.5)',
-                color: 'rgba(255, 146, 73, 1)',
-                backgroundColor: 'rgba(255, 146, 73, 0.05)',
+                scale: 1.04,
+                borderColor: 'rgba(255, 255, 255, 0.3)',
+                color: '#ffffff',
+                backgroundColor: 'rgba(255, 255, 255, 0.08)',
               }}
               transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-              className="px-2.5 sm:px-4 py-1.5 sm:py-2 text-[7px] sm:text-[9px] font-bold uppercase tracking-[0.15em] text-on-surface-variant bg-surface-container-highest/40 rounded-lg border border-white/05 cursor-default backdrop-blur-sm"
-              style={{ fontFamily: 'var(--font-label)' }}
+              className="px-3 py-1.5 text-[11px] font-semibold tracking-wide text-white/80 bg-white/[0.04] rounded-full border border-white/10 cursor-default backdrop-blur-sm transition-colors"
+              style={{ fontFamily: 'var(--font-body)' }}
             >
               {skill}
             </motion.span>

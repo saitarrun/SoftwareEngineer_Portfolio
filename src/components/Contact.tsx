@@ -95,12 +95,12 @@ export const Contact = () => {
                 <MagneticElement className="flex-1">
                   <a
                     href="mailto:pittatarrun@gmail.com"
-                    className="flex items-center justify-center gap-2 sm:gap-4 px-3 sm:px-6 min-h-12 bg-primary text-on-primary font-black rounded-2xl hover:bg-primary-fixed hover:neon-glow transition-all duration-500 hover:-translate-y-1 group/btn w-full text-[11px] sm:text-sm shadow-[0_20px_40px_rgba(255,123,4,0.3)] focus-visible:ring-2 focus-visible:ring-white outline-none min-w-0"
-                    style={{ fontFamily: 'var(--font-display)' }}
+                    className="flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 min-h-12 bg-primary text-black font-bold rounded-full hover:bg-primary-fixed transition-all duration-300 hover:-translate-y-0.5 group/btn w-full text-xs sm:text-sm shadow-md focus-visible:ring-2 focus-visible:ring-white outline-none min-w-0"
+                    style={{ fontFamily: 'var(--font-body)' }}
                   >
-                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
+                    <Mail className="w-4 h-4 sm:w-4.5 sm:h-4.5 flex-shrink-0" />
                     <span className="truncate">pittatarrun@gmail.com</span>
-                    <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform flex-shrink-0" />
+                    <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform flex-shrink-0" />
                   </a>
                 </MagneticElement>
 
