@@ -170,7 +170,7 @@ export const Projects = () => {
   return (
     <section id="projects" className="py-16 sm:py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10 sm:mb-16 md:mb-20">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
