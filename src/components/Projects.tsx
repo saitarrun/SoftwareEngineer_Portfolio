@@ -84,7 +84,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         {/* Giant Number on top left */}
         <span
           style={{ transform: 'translateZ(40px)' }}
-          className="text-6xl sm:text-7xl md:text-8xl font-black text-orange-950/40 dark:text-[#3d2a1d] group-hover:text-primary/30 transition-colors duration-500 leading-none mb-10 sm:mb-14 select-none"
+          className="text-6xl sm:text-7xl md:text-8xl font-black text-white/10 group-hover:text-amber-400/25 transition-colors duration-500 leading-none mb-10 sm:mb-14 select-none"
           aria-hidden="true"
         >
           {project.num}
@@ -93,7 +93,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         {/* Uppercase Dot-Separated Tech Stack */}
         <p
           style={{ transform: 'translateZ(25px)', fontFamily: 'var(--font-label)' }}
-          className="text-[#ff7a00] text-[9px] sm:text-[11px] font-extrabold uppercase tracking-[0.25em] mb-3 sm:mb-4 leading-relaxed"
+          className="text-amber-400 text-[9px] sm:text-[11px] font-bold uppercase tracking-[0.25em] mb-3 sm:mb-4 leading-relaxed opacity-90"
         >
           {project.tech.replace(/·/g, '•')}
         </p>
@@ -101,7 +101,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         {/* Title */}
         <h3
           style={{ transform: 'translateZ(35px)', fontFamily: 'var(--font-display)' }}
-          className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight group-hover:text-primary transition-colors duration-300"
+          className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight group-hover:text-amber-400 transition-colors duration-300"
         >
           {project.title}
         </h3>
@@ -109,7 +109,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         {/* Description */}
         <p
           style={{ transform: 'translateZ(20px)', fontFamily: 'var(--font-body)' }}
-          className="text-white/70 text-sm sm:text-base md:text-lg leading-relaxed font-normal mb-8 sm:mb-12"
+          className="text-zinc-400 text-sm sm:text-base md:text-lg leading-relaxed font-normal mb-8 sm:mb-12"
         >
           {project.description}
         </p>
@@ -120,12 +120,12 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         className="relative z-10 pt-4 flex items-center justify-between"
         style={{ transform: 'translateZ(45px)' }}
       >
-        <span className="text-xs font-bold uppercase tracking-widest text-primary/80 group-hover:text-primary transition-colors flex items-center gap-2">
+        <span className="text-xs font-bold uppercase tracking-widest text-zinc-400 group-hover:text-white transition-colors flex items-center gap-2">
           View Repository{' '}
-          <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+          <ArrowUpRight className="w-4 h-4 text-amber-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
         </span>
-        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#1b1713] border border-white/10 flex items-center justify-center text-white/70 group-hover:border-primary/50 group-hover:text-primary group-hover:bg-[#ff7b04]/10 transition-all duration-300 group-hover:scale-105">
-          <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-45 transition-transform duration-300" />
+        <div className="w-11 h-11 sm:w-13 sm:h-13 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-300 group-hover:border-amber-500/50 group-hover:text-amber-400 group-hover:bg-amber-500/10 transition-all duration-300 group-hover:scale-105">
+          <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform duration-300" />
         </div>
       </div>
     </motion.a>
