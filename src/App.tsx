@@ -9,6 +9,7 @@ import { Skills } from './components/Skills';
 import { Education } from './components/Education';
 import { Publications } from './components/Publications';
 import { Contact } from './components/Contact';
+import { ResumeModal } from './components/ResumeModal';
 
 const BackgroundCanvas = lazy(() =>
   import('./three/BackgroundCanvas').then((m) => ({ default: m.BackgroundCanvas }))
@@ -80,39 +81,49 @@ const DesktopBackground = () => {
   );
 };
 
-const Portfolio = ({ isMobile }: { isMobile: boolean }) => (
-  <div className="min-h-screen bg-[#0e0e0e] grid-mesh font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
-    {isMobile ? <MobileBackground /> : <DesktopBackground />}
+const Portfolio = ({ isMobile }: { isMobile: boolean }) => {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
-    <Navbar />
+  return (
+    <div className="min-h-screen bg-black grid-mesh font-sans selection:bg-orange-500/30 selection:text-orange-200 transition-colors duration-300">
+      {isMobile ? <MobileBackground /> : <DesktopBackground />}
 
-    <Suspense fallback={null}>
-      <ChatWidget />
-    </Suspense>
+      <Navbar onOpenResume={() => setIsResumeOpen(true)} />
 
-    <main id="main" className="relative z-10 min-h-screen" role="main">
-      <Hero />
-      <SectionWrapper>
-        <Experience />
-      </SectionWrapper>
-      <SectionWrapper>
-        <Education />
-      </SectionWrapper>
-      <SectionWrapper>
-        <Projects />
-      </SectionWrapper>
-      <SectionWrapper>
-        <Skills />
-      </SectionWrapper>
-      <SectionWrapper>
-        <Publications />
-      </SectionWrapper>
-      <SectionWrapper>
-        <Contact />
-      </SectionWrapper>
-    </main>
-  </div>
-);
+      <Suspense fallback={null}>
+        <ChatWidget />
+      </Suspense>
+
+      <main id="main" className="relative z-10 min-h-screen" role="main">
+        <Hero onOpenResume={() => setIsResumeOpen(true)} />
+        <SectionWrapper>
+          <Experience />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Education />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Projects />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Skills />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Publications />
+        </SectionWrapper>
+        <SectionWrapper>
+          <Contact />
+        </SectionWrapper>
+      </main>
+
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+        pdfUrl="/TarrunPitta_SoftwareEngineer_Resume.pdf"
+      />
+    </div>
+  );
+};
 
 function App() {
   const [useNativeScroll, setUseNativeScroll] = useState(

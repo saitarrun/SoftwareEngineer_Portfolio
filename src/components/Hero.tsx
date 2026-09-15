@@ -82,7 +82,11 @@ const FluidLetter = ({
   );
 };
 
-export const Hero = () => {
+interface HeroProps {
+  onOpenResume?: () => void;
+}
+
+export const Hero = ({ onOpenResume }: HeroProps) => {
   const firstName = 'Tarrun';
   const lastName = 'Pitta';
 
@@ -180,6 +184,17 @@ export const Hero = () => {
                   See my work
                 </a>
               </MagneticElement>
+              {onOpenResume && (
+                <MagneticElement className="w-full sm:w-auto">
+                  <button
+                    type="button"
+                    onClick={onOpenResume}
+                    className="px-6 sm:px-8 py-3 sm:py-4 text-white font-bold text-sm rounded-full border border-white/20 transition-all duration-300 hover:border-primary hover:text-primary hover:bg-white/5 backdrop-blur-sm w-full sm:w-auto text-center min-h-[44px] flex items-center justify-center cursor-pointer"
+                  >
+                    View Resume
+                  </button>
+                </MagneticElement>
+              )}
               <MagneticElement className="w-full sm:w-auto">
                 <motion.a
                   href="#contact"

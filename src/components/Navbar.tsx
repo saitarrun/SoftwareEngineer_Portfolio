@@ -3,7 +3,11 @@ import { Linkedin, Github, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { MagneticElement } from './MagneticElement';
 
-export const Navbar = () => {
+interface NavbarProps {
+  onOpenResume?: () => void;
+}
+
+export const Navbar = ({ onOpenResume }: NavbarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
   const { scrollYProgress } = useScroll();
@@ -174,16 +178,38 @@ export const Navbar = () => {
           >
             <Linkedin className="w-4 h-4" />
           </a>
-          <a href="/PittaSaiTarrun_Resume.pdf" target="_blank" rel="noopener noreferrer">
-            <span
-              className="px-3 sm:px-5 py-2 text-black text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-[0_0_18px_#fb7800] hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-orange-500 flex items-center justify-center outline-none min-h-[44px]"
-              style={{
-                background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
-              }}
+          {onOpenResume ? (
+            <button
+              type="button"
+              onClick={onOpenResume}
+              aria-label="Open Resume Viewer"
+              className="outline-none"
             >
-              Resume
-            </span>
-          </a>
+              <span
+                className="px-3 sm:px-5 py-2 text-black text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-[0_0_18px_#fb7800] hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-orange-500 flex items-center justify-center outline-none min-h-[44px] cursor-pointer"
+                style={{
+                  background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
+                }}
+              >
+                Resume
+              </span>
+            </button>
+          ) : (
+            <a
+              href="/TarrunPitta_SoftwareEngineer_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span
+                className="px-3 sm:px-5 py-2 text-black text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-[0_0_18px_#fb7800] hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-orange-500 flex items-center justify-center outline-none min-h-[44px]"
+                style={{
+                  background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
+                }}
+              >
+                Resume
+              </span>
+            </a>
+          )}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
@@ -252,6 +278,17 @@ export const Navbar = () => {
                 {item}
               </a>
             ))}
+            <button
+              type="button"
+              onClick={() => {
+                setMenuOpen(false);
+                if (onOpenResume) onOpenResume();
+                else window.open('/TarrunPitta_SoftwareEngineer_Resume.pdf', '_blank');
+              }}
+              className="text-sm font-bold text-primary hover:text-primary-dim transition-colors py-2 px-3 -mx-3 rounded flex items-center gap-2 min-h-[44px] text-left"
+            >
+              <span>📄 View Resume PDF</span>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
