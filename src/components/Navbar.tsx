@@ -104,15 +104,15 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
           </div>
         </div>
 
-        {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+        {/* Desktop Nav - Absolutely Centered */}
+        <div className="hidden lg:flex items-center gap-1 xl:gap-3 absolute left-1/2 -translate-x-1/2">
           {navItems.map((item) => {
             const isCurrent = activeSection === item.toLowerCase();
             return (
               <MagneticElement key={item}>
                 <a
                   href={item.toLowerCase() === 'about' ? '#hero' : `#${item.toLowerCase()}`}
-                  className={`text-xs xl:text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-orange-500 rounded px-2.5 py-1.5 outline-none relative whitespace-nowrap`}
+                  className={`text-xs xl:text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-orange-500 rounded-full px-3 py-1.5 outline-none relative whitespace-nowrap`}
                   style={{
                     color: isCurrent ? 'var(--primary)' : 'var(--on-surface-variant)',
                     fontFamily: 'var(--font-body)',
@@ -142,12 +142,12 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
         </div>
 
         {/* Right: search + socials + resume */}
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             type="button"
             onClick={onOpenCommandPalette}
             aria-label="Open Spotlight Search"
-            className="flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-amber-500/40 hover:bg-white/10 text-zinc-400 hover:text-white transition-all text-xs outline-none focus-visible:ring-2 focus-visible:ring-orange-500 cursor-pointer"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-white/5 border border-white/10 hover:border-amber-500/40 hover:bg-white/10 text-zinc-400 hover:text-white transition-all text-xs outline-none focus-visible:ring-2 focus-visible:ring-orange-500 cursor-pointer"
           >
             <Search className="w-3.5 h-3.5 text-amber-400" />
             <span className="hidden sm:inline text-zinc-300">Search</span>
@@ -161,7 +161,7 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub profile"
-            className="hidden md:flex hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors duration-200 outline-none p-2"
+            className="hidden md:flex hover:text-orange-400 focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors duration-200 outline-none p-1.5"
             style={{ color: 'var(--on-surface-variant)' }}
           >
             <Github className="w-4 h-4" />
@@ -171,11 +171,12 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn profile"
-            className="hidden md:flex hover:text-white focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors duration-200 outline-none p-2"
+            className="hidden md:flex hover:text-orange-400 focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors duration-200 outline-none p-1.5"
             style={{ color: 'var(--on-surface-variant)' }}
           >
             <Linkedin className="w-4 h-4" />
           </a>
+
           {onOpenResume ? (
             <button
               type="button"
@@ -183,12 +184,7 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
               aria-label="Open Resume Viewer"
               className="outline-none"
             >
-              <span
-                className="px-3 sm:px-5 py-2 text-black text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-[0_0_18px_#fb7800] hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-orange-500 flex items-center justify-center outline-none min-h-[44px] cursor-pointer"
-                style={{
-                  background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
-                }}
-              >
+              <span className="px-3.5 py-1.5 text-xs font-semibold rounded-full border border-orange-500/40 bg-orange-500/10 text-orange-400 hover:bg-orange-500 hover:text-black transition-all duration-300 flex items-center justify-center cursor-pointer shadow-sm shadow-orange-500/10">
                 Resume
               </span>
             </button>
@@ -198,12 +194,7 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <span
-                className="px-3 sm:px-5 py-2 text-black text-[10px] sm:text-xs font-bold uppercase tracking-wider rounded-full transition-all duration-300 hover:shadow-[0_0_18px_#fb7800] hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-orange-500 flex items-center justify-center outline-none min-h-[44px]"
-                style={{
-                  background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
-                }}
-              >
+              <span className="px-3.5 py-1.5 text-xs font-semibold rounded-full border border-orange-500/40 bg-orange-500/10 text-orange-400 hover:bg-orange-500 hover:text-black transition-all duration-300 flex items-center justify-center cursor-pointer shadow-sm shadow-orange-500/10">
                 Resume
               </span>
             </a>
