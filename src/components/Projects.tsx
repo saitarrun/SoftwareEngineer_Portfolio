@@ -195,7 +195,7 @@ export const Projects = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex items-center flex-wrap gap-2 p-1.5 bg-black/60 rounded-full border border-white/10 backdrop-blur-xl w-fit"
+            className="flex items-center gap-1 sm:gap-2 p-1.5 bg-zinc-950/80 rounded-full sm:rounded-full border border-white/10 backdrop-blur-xl w-full sm:w-auto overflow-x-auto scrollbar-none"
           >
             {categories.map((cat) => {
               const isSelected = activeFilter === cat;
@@ -204,8 +204,8 @@ export const Projects = () => {
                   key={cat}
                   type="button"
                   onClick={() => setActiveFilter(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 relative outline-none ${
-                    isSelected ? 'text-black font-bold shadow-sm' : 'text-white/60 hover:text-white'
+                  className={`px-3.5 sm:px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 relative outline-none whitespace-nowrap shrink-0 cursor-pointer ${
+                    isSelected ? 'text-black font-bold shadow-sm' : 'text-zinc-400 hover:text-white'
                   }`}
                 >
                   {isSelected && (
