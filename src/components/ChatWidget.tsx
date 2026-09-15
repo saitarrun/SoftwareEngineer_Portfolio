@@ -359,7 +359,7 @@ export const ChatWidget = () => {
               <div className="flex-shrink-0 px-3 py-2 flex flex-wrap gap-1.5 border-t border-white/5 bg-white/[0.01]">
                 {[
                   'Tech stack & skills?',
-                  'AWS & GM experience?',
+                  'Pacific Life & Accenture?',
                   'Top AI projects?',
                   'Education background?',
                 ].map((promptText) => (
