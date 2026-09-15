@@ -110,8 +110,6 @@ export const Hero = ({ onOpenResume }: HeroProps) => {
               Available for Opportunities
             </span>
             <span className="text-zinc-600 hidden sm:inline">•</span>
-            <span className="text-zinc-300">Greater Los Angeles, CA</span>
-            <span className="text-zinc-600 hidden sm:inline">•</span>
             <span className="text-orange-400/90 font-medium">US Work Authorized</span>
           </div>
         </motion.div>
