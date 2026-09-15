@@ -175,17 +175,20 @@
   }
 
   .glass-card {
-    background: #0d0d0f;
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 1.5rem;
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6);
+    background: rgba(10, 10, 12, 0.65);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1.75rem;
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12),
+      inset 0 0 20px rgba(255, 255, 255, 0.01);
     transition:
-      border-color 0.3s ease,
-      box-shadow 0.3s ease,
-      transform 0.3s ease,
-      background 0.3s ease;
+      border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     transform: translate3d(0, 0, 0);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
@@ -193,20 +196,21 @@
   }
 
   .glass-card:hover {
-    background: #121215;
-    border-color: rgba(245, 158, 11, 0.4);
+    background: rgba(16, 16, 20, 0.75);
+    border-color: rgba(245, 158, 11, 0.35);
     box-shadow:
-      0 20px 40px rgba(0, 0, 0, 0.8),
-      0 0 20px rgba(245, 158, 11, 0.15);
+      0 30px 60px rgba(0, 0, 0, 0.9),
+      0 0 25px rgba(245, 158, 11, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   @media (max-width: 767px), (pointer: coarse) {
     .glass-card {
-      background: rgba(12, 12, 15, 0.95) !important;
-      backdrop-filter: blur(12px) !important;
-      -webkit-backdrop-filter: blur(12px) !important;
-      border-radius: 2rem !important;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      background: rgba(10, 10, 12, 0.88) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border-radius: 1.5rem !important;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
     }
   }
 
