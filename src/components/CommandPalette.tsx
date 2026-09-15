@@ -234,11 +234,11 @@ export const CommandPalette = ({
                     <button
                       key={item.id}
                       onClick={item.action}
-                      onMouseEnter={() => setSelectedIndex(idx)}
+                      onMouseMove={() => setSelectedIndex(idx)}
                       className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-left transition-all duration-150 ${
                         isSelected
                           ? 'bg-amber-500/15 border border-amber-500/30 text-white'
-                          : 'text-zinc-300 hover:bg-white/5 border border-transparent'
+                          : 'text-zinc-300 hover:bg-white/10 hover:text-white border border-transparent'
                       }`}
                     >
                       <div className="flex items-center gap-3 min-w-0">
