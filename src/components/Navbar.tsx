@@ -13,30 +13,12 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
   const [activeSection, setActiveSection] = useState('hero');
   const { scrollYProgress } = useScroll();
 
-  const navItems = [
-    'About',
-    'Experience',
-    'Testimonials',
-    'Education',
-    'Projects',
-    'Skills',
-    'Publications',
-    'Contact',
-  ];
+  const navItems = ['About', 'Experience', 'Projects', 'Skills', 'Testimonials', 'Contact'];
 
   // Scroll spy active section tracker logic with RAF throttling to prevent layout thrashing
   useEffect(() => {
     let ticking = false;
-    const sections = [
-      'hero',
-      'experience',
-      'testimonials',
-      'education',
-      'projects',
-      'skills',
-      'publications',
-      'contact',
-    ];
+    const sections = ['hero', 'experience', 'projects', 'skills', 'testimonials', 'contact'];
 
     const updateActiveSection = () => {
       const triggerPoint = 200;
@@ -95,26 +77,26 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
         style={{ scaleX: scrollYProgress }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-4">
         {/* Logo */}
-        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+        <div className="flex items-center gap-2.5 shrink-0">
           <div
-            className="w-6 sm:w-7 h-6 sm:h-7 rounded-full flex items-center justify-center flex-shrink-0"
+            className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0"
             style={{
               background: 'linear-gradient(135deg, var(--primary), var(--primary-container))',
             }}
           >
-            <span className="text-black text-[10px] sm:text-xs font-black">T</span>
+            <span className="text-black text-xs font-black">T</span>
           </div>
-          <div className="flex flex-col leading-none min-w-0">
+          <div className="flex flex-col leading-none shrink-0">
             <span
-              className="font-black text-xs sm:text-base text-white tracking-tight truncate"
+              className="font-black text-sm sm:text-base text-white tracking-tight whitespace-nowrap shrink-0"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               Tarrun Pitta
             </span>
             <span
-              className="text-[8px] sm:text-[10px] uppercase tracking-widest mt-0.5"
+              className="text-[9px] uppercase tracking-widest mt-0.5 whitespace-nowrap"
               style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-label)' }}
             >
               Software Engineer
@@ -123,14 +105,14 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-1 xl:gap-2">
           {navItems.map((item) => {
             const isCurrent = activeSection === item.toLowerCase();
             return (
               <MagneticElement key={item}>
                 <a
                   href={item.toLowerCase() === 'about' ? '#hero' : `#${item.toLowerCase()}`}
-                  className={`text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-orange-500 rounded px-3 py-1.5 outline-none relative`}
+                  className={`text-xs xl:text-sm font-medium transition-all duration-300 focus-visible:ring-2 focus-visible:ring-orange-500 rounded px-2.5 py-1.5 outline-none relative whitespace-nowrap`}
                   style={{
                     color: isCurrent ? 'var(--primary)' : 'var(--on-surface-variant)',
                     fontFamily: 'var(--font-body)',
