@@ -302,14 +302,4 @@ export const education: Education[] = [
       'Coursework: Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence, Distributed Systems',
     ],
   },
-  {
-    num: '02',
-    school: 'GITAM University',
-    degree: 'Bachelor of Technology in Computer Science',
-    period: 'Jun 2023',
-    location: 'India',
-    description: [
-      'Coursework: Software Engineering Fundamentals, Object Oriented Programming, Cybersecurity, CyberForensics, Database Management Systems.',
-    ],
-  },
 ];

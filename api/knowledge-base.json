@@ -54,12 +54,6 @@
     "text": "Sai is pursuing a Master of Science in Computer Science at California State University, Fullerton (August 2024 - May 2026). His coursework includes Advanced Algorithms, Cloud Computing, System Design, Machine Learning, Artificial Intelligence, and Distributed Systems. He is focused on deep learning, security-first cloud architecture, and high-performance computing."
   },
   {
-    "id": "education-gitam",
-    "topic": "education",
-    "title": "GITAM University - Bachelor of Technology Computer Science",
-    "text": "Sai completed a Bachelor of Technology in Computer Science at GITAM University in India in June 2023. His coursework included Software Engineering Fundamentals, Object Oriented Programming, Cybersecurity, CyberForensics, and Database Management Systems."
-  },
-  {
     "id": "publication-ieee",
     "topic": "education",
     "title": "IEEE Publication: Hardware Trojan Detection",

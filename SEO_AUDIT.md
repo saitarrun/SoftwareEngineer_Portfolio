@@ -24,7 +24,7 @@ This document establishes the technical SEO baseline for the portfolio applicati
 Google relies on multi-graph JSON-LD to render Knowledge Graph panels, entity relationships, and rich search snippets:
 
 - **`WebSite` Schema**: Includes `@id`, `name`, `url`, and `inLanguage`.
-- **`ProfilePage` Schema**: Specifies `mainEntity` as a `Person` schema (`Tarrun Pitta`) with `jobTitle`, `worksFor` (Pacific Life & Accenture with Wikidata entity IDs), `alumniOf` (CSU Fullerton & GITAM with Wikidata entity IDs), `sameAs` (GitHub & LinkedIn), and `knowsAbout` entities.
+- **`ProfilePage` Schema**: Specifies `mainEntity` as a `Person` schema (`Tarrun Pitta`) with `jobTitle`, `worksFor` (Pacific Life & Accenture with Wikidata entity IDs), `alumniOf` (CSU Fullerton with Wikidata entity ID), `sameAs` (GitHub & LinkedIn), and `knowsAbout` entities.
 - **`FAQPage` Schema**: Embedded direct answer Q&A nodes for search engine answer cards and AI Overview extraction (_technologies, RAG experience, education, work history, contact_).
 - **`BreadcrumbList` Schema**: Hierarchical navigation elements mapping `#experience`, `#projects`, and `#contact` sections.
 

@@ -152,20 +152,6 @@ test.describe('Portfolio – Education section', () => {
       page.locator('#education').getByText(/California State University|Cal State Fullerton/i)
     ).toBeVisible({ timeout: 8_000 });
   });
-
-  test('GITAM bachelor degree is listed', async ({ page }) => {
-    await expect(page.locator('#education').getByText('GITAM University')).toBeVisible({
-      timeout: 8_000,
-    });
-    await expect(
-      page.locator('#education').getByText('Bachelor of Technology in Computer Science')
-    ).toBeVisible({ timeout: 8_000 });
-    await expect(
-      page
-        .locator('#education')
-        .getByText(/Software Engineering Fundamentals.*Database Management Systems/)
-    ).toBeVisible({ timeout: 8_000 });
-  });
 });
 
 test.describe('Portfolio – Contact section', () => {

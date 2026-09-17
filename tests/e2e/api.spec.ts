@@ -132,15 +132,6 @@ test.describe('retrieval – retrieveChunks() against knowledge base', () => {
     expect(ids).toContain('education-csuf');
   });
 
-  test('education GITAM query retrieves the bachelor degree chunk', () => {
-    const results = retrieveChunks(
-      'GITAM University CyberForensics Database Management Systems',
-      chunks
-    );
-    const ids = results.map((c) => c.id);
-    expect(ids).toContain('education-gitam');
-  });
-
   test('Semantic code intelligence project query retrieves the project chunk', () => {
     const results = retrieveChunks('Semantic Code Intelligence Platform FAISS BM25', chunks);
     const ids = results.map((c) => c.id);
