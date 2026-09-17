@@ -1,11 +1,67 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MessageCircle, X, Send, Bot } from 'lucide-react';
+import knowledgeBase from '../data/knowledge-base.json';
+import { retrieveChunks } from '../utils/retrieval';
 
 interface Message {
   role: 'user' | 'assistant';
   content: string;
   streaming?: boolean;
+}
+
+function getClientRAGResponse(query: string): string {
+  const lower = query.toLowerCase().trim();
+  if (/^(hi|hello|hey|howdy|yo|greetings)\b/i.test(lower)) {
+    return "Hi! I'm Sai's AI assistant. Ask me anything about his experience, projects, or skills.";
+  }
+
+  const entityKeywords = [
+    { key: 'pacific', id: 'experience-pacific-life' },
+    { key: 'accenture co-op', id: 'experience-accenture-coop' },
+    { key: 'accenture coop', id: 'experience-accenture-coop' },
+    { key: 'accenture', id: 'experience-accenture-se' },
+    { key: 'csuf', id: 'experience-csuf-research-assistant' },
+    { key: 'fullerton', id: 'experience-csuf-research-assistant' },
+    { key: 'devforge', id: 'project-devforge-ai' },
+    { key: 'apple music', id: 'project-apple-music-mcp' },
+    { key: 'mcp', id: 'project-apple-music-mcp' },
+    { key: 'rent', id: 'project-rent-application' },
+    { key: 'semantic code', id: 'project-semantic-code-intelligence' },
+    { key: 'open-swe', id: 'project-open-swe' },
+    { key: 'openclaw', id: 'project-openclaw' },
+    { key: 'sanctuary', id: 'project-sanctuary-therapist' },
+    { key: 'deepgesture', id: 'project-deepgesture' },
+    { key: 'anpr', id: 'project-anpr-vision' },
+    { key: 'brain tumor', id: 'project-brain-tumor-spark' },
+    { key: 'trojan', id: 'publication-ieee' },
+    { key: 'ieee', id: 'publication-ieee' },
+    { key: 'xploit404', id: 'project-xploit404' },
+    { key: 'gitam', id: 'education-gitam' },
+    { key: 'skills', id: 'skills-comprehensive' },
+    { key: 'tech stack', id: 'skills-comprehensive' },
+  ];
+
+  let matchedChunk = null;
+  for (const item of entityKeywords) {
+    if (lower.includes(item.key)) {
+      matchedChunk = knowledgeBase.find((c) => c.id === item.id);
+      if (matchedChunk) break;
+    }
+  }
+
+  if (!matchedChunk) {
+    const retrieved = retrieveChunks(query, knowledgeBase, 3);
+    if (retrieved.length > 0) {
+      matchedChunk = retrieved[0];
+    }
+  }
+
+  if (matchedChunk) {
+    return `**${matchedChunk.title}**: ${matchedChunk.text}`;
+  }
+
+  return "Tarrun Pitta is a Software Engineer with a Master's in CS from CSU Fullerton. He specializes in distributed backend microservices, AI/RAG platforms, and cloud systems.";
 }
 
 // Converts **text** → <strong>text</strong>, strips other markdown noise
@@ -93,9 +149,8 @@ export const ChatWidget = () => {
           e.userMessage = "You've sent too many messages. Please wait a moment and try again.";
           throw e;
         }
-        // Fallback response for any API connection issue
-        const fallbackText =
-          "Tarrun Pitta is a Software Engineer with a Master's in Computer Science from CSU Fullerton. He has experience at Pacific Life, CSU Fullerton, and Accenture building enterprise web applications, cloud microservices, and AI integrations.";
+        // Fallback response for any API connection issue or local Vite dev environment
+        const fallbackText = getClientRAGResponse(text);
         setMessages((prev) => {
           const updated = [...prev];
           const last = updated[updated.length - 1];
