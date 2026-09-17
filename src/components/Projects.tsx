@@ -9,7 +9,6 @@ import {
 } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { projects, type Project } from '../data/portfolio';
-import { GithubContributionGraph } from './GithubContributionGraph';
 
 const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
   const cardRef = useRef<React.ElementRef<'a'>>(null);
@@ -231,9 +230,6 @@ export const Projects = () => {
             ))}
           </AnimatePresence>
         </motion.div>
-
-        {/* Live GitHub Contribution Graph */}
-        <GithubContributionGraph />
       </div>
     </section>
   );

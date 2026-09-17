@@ -118,11 +118,6 @@ test.describe('Portfolio – Projects section', () => {
     const githubLinks = page.locator('#projects a[href*="github.com"]');
     await expect(githubLinks.first()).toBeAttached({ timeout: 8_000 });
   });
-
-  test('GitHub Contribution Graph is rendered with live activity header', async ({ page }) => {
-    await expect(page.getByText('Open Source Activity')).toBeVisible({ timeout: 8_000 });
-    await expect(page.getByText('contributions in')).toBeVisible({ timeout: 8_000 });
-  });
 });
 
 test.describe('Portfolio – Skills section', () => {
