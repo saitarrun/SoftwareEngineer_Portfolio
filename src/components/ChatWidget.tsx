@@ -18,28 +18,67 @@ function getClientRAGResponse(query: string): string {
 
   const entityKeywords = [
     { key: 'pacific', id: 'experience-pacific-life' },
+    { key: 'underwriting', id: 'experience-pacific-life' },
+    { key: 'presidio', id: 'experience-pacific-life' },
+    { key: 'pinecone', id: 'experience-pacific-life' },
     { key: 'accenture co-op', id: 'experience-accenture-coop' },
     { key: 'accenture coop', id: 'experience-accenture-coop' },
     { key: 'accenture', id: 'experience-accenture-se' },
+    { key: 'kafka', id: 'experience-accenture-se' },
+    { key: 'splunk', id: 'experience-accenture-se' },
     { key: 'csuf', id: 'experience-csuf-research-assistant' },
     { key: 'fullerton', id: 'experience-csuf-research-assistant' },
+    { key: 'graduate developer', id: 'experience-csuf-research-assistant' },
     { key: 'devforge', id: 'project-devforge-ai' },
+    { key: 'sdlc ai', id: 'project-sdlc-ai-workflow' },
+    { key: 'sdlc plugin', id: 'project-sdlc-ai-workflow' },
     { key: 'apple music', id: 'project-apple-music-mcp' },
     { key: 'mcp', id: 'project-apple-music-mcp' },
     { key: 'rent', id: 'project-rent-application' },
+    { key: 'property management', id: 'project-rent-application' },
+    { key: 'context compression', id: 'project-agentic-context-compression' },
     { key: 'semantic code', id: 'project-semantic-code-intelligence' },
+    { key: 'faiss', id: 'project-semantic-code-intelligence' },
     { key: 'open-swe', id: 'project-open-swe' },
+    { key: 'open swe', id: 'project-open-swe' },
     { key: 'openclaw', id: 'project-openclaw' },
+    { key: 'exa', id: 'project-openclaw' },
+    { key: 'knowledge retrieval', id: 'project-knowledge-retrieval-platform' },
     { key: 'sanctuary', id: 'project-sanctuary-therapist' },
+    { key: 'therapist', id: 'project-sanctuary-therapist' },
     { key: 'deepgesture', id: 'project-deepgesture' },
+    { key: 'gesture', id: 'project-deepgesture' },
     { key: 'anpr', id: 'project-anpr-vision' },
+    { key: 'number plate', id: 'project-anpr-vision' },
     { key: 'brain tumor', id: 'project-brain-tumor-spark' },
+    { key: 'spark', id: 'project-brain-tumor-spark' },
+    { key: 'xploit404', id: 'project-xploit404' },
+    { key: 'penetration', id: 'project-xploit404' },
     { key: 'trojan', id: 'publication-ieee' },
     { key: 'ieee', id: 'publication-ieee' },
-    { key: 'xploit404', id: 'project-xploit404' },
+    { key: 'side-channel', id: 'publication-ieee' },
+    { key: 'fpga', id: 'publication-ieee' },
     { key: 'gitam', id: 'education-gitam' },
+    { key: 'master', id: 'education-csuf' },
+    { key: 'bachelor', id: 'education-gitam' },
     { key: 'skills', id: 'skills-comprehensive' },
     { key: 'tech stack', id: 'skills-comprehensive' },
+    { key: 'languages', id: 'skills-comprehensive' },
+    { key: 'frameworks', id: 'skills-comprehensive' },
+    { key: 'cloud', id: 'skills-cloud-devops-depth' },
+    { key: 'devops', id: 'skills-cloud-devops-depth' },
+    { key: 'observability', id: 'skills-observability-testing' },
+    { key: 'testing', id: 'skills-observability-testing' },
+    { key: 'contact', id: 'contact-info' },
+    { key: 'email', id: 'contact-info' },
+    { key: 'phone', id: 'contact-info' },
+    { key: 'linkedin', id: 'contact-info' },
+    { key: 'github', id: 'contact-info' },
+    { key: 'availability', id: 'availability' },
+    { key: 'job', id: 'availability' },
+    { key: 'hire', id: 'availability' },
+    { key: 'philosophy', id: 'engineering-philosophy' },
+    { key: 'principles', id: 'engineering-philosophy' },
   ];
 
   let matchedChunk = null;
@@ -58,7 +97,11 @@ function getClientRAGResponse(query: string): string {
   }
 
   if (matchedChunk) {
-    return `**${matchedChunk.title}**: ${matchedChunk.text}`;
+    let answer = `**${matchedChunk.title}**: ${matchedChunk.text}`;
+    if (answer.length > 297) {
+      answer = answer.slice(0, 294).trim() + '...';
+    }
+    return answer;
   }
 
   return "Tarrun Pitta is a Software Engineer with a Master's in CS from CSU Fullerton. He specializes in distributed backend microservices, AI/RAG platforms, and cloud systems.";
