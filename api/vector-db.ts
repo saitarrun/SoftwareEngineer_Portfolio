@@ -34,8 +34,8 @@ function fnv32(str: string): number {
   return hash >>> 0;
 }
 
-function extractSubwordNgrams(word: string, nMin = 3, nMax = 5): string[] {
-  const ngrams: string[] = [];
+function extractSubwordNgrams(word: string, nMin = 3, nMax = 6): string[] {
+  const ngrams: string[] = [word.toLowerCase()];
   const wrapped = `<${word.toLowerCase()}>`;
   for (let len = nMin; len <= nMax; len++) {
     for (let i = 0; i <= wrapped.length - len; i++) {
@@ -57,7 +57,7 @@ export function generateDenseQueryEmbedding(query: string): number[] {
     const ngrams = extractSubwordNgrams(word);
     for (const ng of ngrams) {
       const idx = fnv32(ng) % VECTOR_DIM;
-      vec[idx] += 1.5;
+      vec[idx] += 2.0;
     }
   }
 
@@ -170,7 +170,7 @@ export class VectorDatabase {
 
       const textScore = scoreBM25(queryTokens, textTokens);
       const titleScore = scoreBM25(queryTokens, titleTokens);
-      const totalScore = textScore + titleScore * 2.5;
+      const totalScore = textScore + titleScore * 4.0;
 
       return { record, score: totalScore, lexicalScore: totalScore };
     });

@@ -708,7 +708,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
           messages: [{ role: 'system', content: systemPrompt }, ...messages],
           stream: true,
           max_tokens: 150,
-          temperature: 0.3,
+          temperature: 0.5,
         }),
       });
 

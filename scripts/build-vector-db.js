@@ -17,8 +17,8 @@ function fnv32(str) {
   return hash >>> 0;
 }
 
-function extractSubwordNgrams(word, nMin = 3, nMax = 5) {
-  const ngrams = [];
+function extractSubwordNgrams(word, nMin = 3, nMax = 6) {
+  const ngrams = [word.toLowerCase()];
   const wrapped = `<${word.toLowerCase()}>`;
   for (let len = nMin; len <= nMax; len++) {
     for (let i = 0; i <= wrapped.length - len; i++) {
@@ -47,23 +47,23 @@ function generateDenseEmbedding(title, text, topic) {
     .split(/\s+/)
     .filter(Boolean);
 
-  // Topic features
+  // Topic features (4.0 weight)
   for (const tw of topicWords) {
     const idx = fnv32(`topic:${tw}`) % VECTOR_DIM;
-    vec[idx] += 3.0;
+    vec[idx] += 4.0;
   }
 
-  // Title subword n-grams (3.0 weight)
+  // Title subword n-grams & exact words (4.0 weight)
   for (const word of titleWords) {
     if (word.length < 2) continue;
     const ngrams = extractSubwordNgrams(word);
     for (const ng of ngrams) {
       const idx = fnv32(ng) % VECTOR_DIM;
-      vec[idx] += 3.0;
+      vec[idx] += 4.0;
     }
   }
 
-  // Text subword n-grams (1.0 weight)
+  // Text subword n-grams & exact words (1.0 weight)
   for (const word of textWords) {
     if (word.length < 2) continue;
     const ngrams = extractSubwordNgrams(word);
