@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Zap, ShieldCheck, Cpu, Code2, Layers, Server, Sparkles, Database } from 'lucide-react';
+import { Zap, ShieldCheck, Cpu, Code2, Layers, Sparkles, Database } from 'lucide-react';
 
 export const ImpactMetrics = () => {
   const metrics = [
@@ -26,12 +26,6 @@ export const ImpactMetrics = () => {
       label: 'Enterprise Engineering',
       detail: 'Full-stack & Distributed Systems',
       icon: Code2,
-    },
-    {
-      num: '15K+',
-      label: 'Daily Underwritings',
-      detail: 'Automated Loan Processing',
-      icon: Server,
     },
     {
       num: '400K+',

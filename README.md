@@ -225,6 +225,18 @@ This project is preconfigured for zero-config deployments on **Vercel**:
 
 ---
 
+## 🔍 Search Engine Optimization (SEO) & Audit Guidelines
+
+This project implements technical SEO standards for **Googlebot** (Google Search Console) and **Bingbot** (Bing Webmaster Tools):
+
+- **Multi-Graph JSON-LD Schema**: Implements Schema.org `WebSite`, `ProfilePage`, `Person`, and `BreadcrumbList` nodes for Google rich snippets.
+- **Core Web Vitals**: Font preloading, LCP optimization, and deferred 3D WebGL initialization.
+- **Bingbot Compatibility & IndexNow**: Optimized for fast crawler discovery, social card preview rendering, and clean fragment URL architecture.
+
+For full audit specifications, Core Web Vitals criteria, and verification tools, read [`SEO_AUDIT.md`](./SEO_AUDIT.md).
+
+---
+
 ## 📄 License
 
 Distributed under the **MIT License**. See `LICENSE` for details.

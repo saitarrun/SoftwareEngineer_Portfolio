@@ -15,6 +15,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
 }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [viewMode, setViewMode] = useState<'pdf' | 'html'>('pdf');
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -76,9 +77,9 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
             }`}
           >
             {/* Modal Header Bar */}
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 bg-[#000000]/90 backdrop-blur-md">
+            <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 bg-[#000000]/90 backdrop-blur-md">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary">
+                <div className="w-8 h-8 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary shrink-0">
                   <FileText className="w-4 h-4" />
                 </div>
                 <div>
@@ -94,8 +95,33 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
                 </div>
               </div>
 
-              {/* Action Buttons */}
+              {/* View Mode Switcher & Action Buttons */}
               <div className="flex items-center gap-1.5 sm:gap-2">
+                <div className="flex items-center bg-white/5 p-1 rounded-full border border-white/10 text-xs font-semibold mr-1 sm:mr-2">
+                  <button
+                    type="button"
+                    onClick={() => setViewMode('pdf')}
+                    className={`px-3 py-1 rounded-full transition-all ${
+                      viewMode === 'pdf'
+                        ? 'bg-primary text-black font-bold shadow-sm'
+                        : 'text-white/70 hover:text-white'
+                    }`}
+                  >
+                    PDF
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setViewMode('html')}
+                    className={`px-3 py-1 rounded-full transition-all ${
+                      viewMode === 'html'
+                        ? 'bg-primary text-black font-bold shadow-sm'
+                        : 'text-white/70 hover:text-white'
+                    }`}
+                  >
+                    HTML
+                  </button>
+                </div>
+
                 <button
                   type="button"
                   onClick={handleCopyLink}
@@ -159,19 +185,39 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
               </div>
             </div>
 
-            {/* Modal Body: High performance embedded iframe viewer */}
+            {/* Modal Body */}
             <div className="relative flex-1 w-full bg-[#000000] overflow-hidden">
-              <iframe
-                src={`${pdfUrl}#toolbar=0&navpanes=0&scrollbar=1`}
-                title="Tarrun Pitta Resume PDF Viewer"
-                className="w-full h-full border-none bg-[#0a0a0c]"
-              />
+              {viewMode === 'pdf' ? (
+                <iframe
+                  src={pdfUrl}
+                  title="Tarrun Pitta Resume PDF Viewer"
+                  className="w-full h-full border-none bg-[#0a0a0c]"
+                />
+              ) : (
+                <iframe
+                  src="/SaiTarrunPitta_Resume.html"
+                  title="Tarrun Pitta HTML Resume Viewer"
+                  className="w-full h-full border-none bg-white"
+                />
+              )}
             </div>
 
             {/* Modal Footer Info Bar */}
             <div className="flex items-center justify-between px-4 sm:px-6 py-2.5 bg-[#000000] border-t border-white/10 text-[11px] text-white/50 font-medium">
-              <span>PDF format • ATS-friendly</span>
-              <span className="hidden sm:inline">Press ESC to close</span>
+              <span>
+                {viewMode === 'pdf' ? 'PDF format • ATS-friendly' : 'Interactive HTML Format'}
+              </span>
+              <div className="flex items-center gap-4">
+                <a
+                  href={pdfUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors underline"
+                >
+                  Direct PDF Link
+                </a>
+                <span className="hidden sm:inline">Press ESC to close</span>
+              </div>
             </div>
           </motion.div>
         </div>

@@ -221,7 +221,7 @@ export const Hero = ({ onOpenResume }: HeroProps) => {
           >
             {[
               { label: '400K+', desc: 'Lines Indexed in RAG' },
-              { label: '15K+', desc: 'Daily Loan Underwritings' },
+              { label: '99.9%', desc: 'Microservice Reliability' },
               { label: '98%', desc: 'RAG Retrieval Accuracy' },
               { label: '250ms', desc: 'Sync Latency SLO' },
             ].map((stat, idx) => (

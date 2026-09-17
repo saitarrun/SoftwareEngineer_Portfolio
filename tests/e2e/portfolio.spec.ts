@@ -27,7 +27,7 @@ test.describe('Portfolio – navigation', () => {
   });
 
   test('navbar contains section links', async ({ page }) => {
-    for (const link of ['Experience', 'Projects', 'Skills', 'Contact']) {
+    for (const link of ['Experience', 'Projects', 'Skills', 'Publications', 'Contact']) {
       await expect(page.locator('nav').getByText(link, { exact: true }).first()).toBeAttached();
     }
   });
@@ -37,7 +37,7 @@ test.describe('Portfolio – navigation', () => {
   });
 
   test('section anchor links have correct hrefs', async ({ page }) => {
-    const links = ['experience', 'projects', 'skills', 'contact'];
+    const links = ['experience', 'projects', 'skills', 'publications', 'contact'];
     for (const id of links) {
       await expect(page.locator(`nav a[href="#${id}"]`).first()).toBeAttached();
     }

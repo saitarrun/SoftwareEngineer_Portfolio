@@ -103,18 +103,27 @@
               "worksFor": [
                 {
                   "@type": "Organization",
-                  "name": "Pacific Life"
+                  "name": "Pacific Life",
+                  "sameAs": "https://www.wikidata.org/wiki/Q7122533"
                 },
                 {
                   "@type": "Organization",
-                  "name": "Accenture"
+                  "name": "Accenture",
+                  "sameAs": "https://www.wikidata.org/wiki/Q134107"
                 }
               ],
-              "alumniOf": {
-                "@type": "EducationalOrganization",
-                "name": "California State University, Fullerton",
-                "sameAs": "https://www.fullerton.edu"
-              },
+              "alumniOf": [
+                {
+                  "@type": "EducationalOrganization",
+                  "name": "California State University, Fullerton",
+                  "sameAs": ["https://www.fullerton.edu", "https://www.wikidata.org/wiki/Q1026933"]
+                },
+                {
+                  "@type": "EducationalOrganization",
+                  "name": "GITAM University",
+                  "sameAs": ["https://www.gitam.edu", "https://www.wikidata.org/wiki/Q5513813"]
+                }
+              ],
               "url": "https://software-engineer-portfolio-brown.vercel.app",
               "sameAs": ["https://github.com/saitarrun", "https://linkedin.com/in/tarrunpitta"],
               "knowsAbout": [
@@ -133,6 +142,52 @@
               "image": "https://software-engineer-portfolio-brown.vercel.app/og-image.png",
               "description": "Software Engineer with a Master of Science in Computer Science from CSU Fullerton. Specializes in scalable backend microservices, event-driven pipelines, and AI system engineering."
             }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://software-engineer-portfolio-brown.vercel.app/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What technologies and backend tech stack does Tarrun Pitta specialize in?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Tarrun Pitta specializes in Distributed Systems, Java (Spring Boot), Python, TypeScript, AWS (Lambda, ECS, DynamoDB, S3), Docker, Microservices, and Event-Driven Architectures."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is Tarrun Pitta's experience with RAG and AI Engineering?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Tarrun Pitta has engineered high-accuracy Retrieval-Augmented Generation (RAG) platforms using FAISS vector search, Gemini and OpenAI LLM orchestration, hybrid reranking, and semantic code intelligence."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What is Tarrun Pitta's educational background?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Tarrun Pitta holds a Master of Science in Computer Science from California State University, Fullerton (CSUF) and a Bachelor of Technology in Computer Science from GITAM University."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Where has Tarrun Pitta worked as a Software Engineer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Tarrun Pitta has worked as a Software Engineer at Pacific Life (building loan-triage microservices), Accenture (developing inventory sync services), and as a Graduate Research Assistant at CSUF."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How can I contact Tarrun Pitta for software engineering opportunities?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "You can connect with Tarrun Pitta via LinkedIn at linkedin.com/in/tarrunpitta or via GitHub at github.com/saitarrun."
+                }
+              }
+            ]
           },
           {
             "@type": "BreadcrumbList",
