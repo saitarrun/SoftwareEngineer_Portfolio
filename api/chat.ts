@@ -1,10 +1,6 @@
 import { createRequire } from 'module';
 import type { ApiRequest, ApiResponse } from './types';
-import {
-  defaultVectorDB,
-  generateDenseQueryEmbedding,
-  fetchOpenRouterEmbedding,
-} from './vector-db';
+import { defaultVectorDB, generateDenseQueryEmbedding } from './vector-db';
 
 const require = createRequire(import.meta.url);
 const knowledgeBase = require('./knowledge-base.json') as KnowledgeChunk[];
@@ -442,7 +438,6 @@ function retrieveLocal(query: string, history: Message[] = [], topK = 6): Knowle
 export async function retrieveVectorRAG(
   query: string,
   history: Message[] = [],
-  apiKey?: string,
   topK = 6
 ): Promise<KnowledgeChunk[]> {
   const combinedQuery = rephraseQueryWithHistory(query, history);
@@ -454,14 +449,8 @@ export async function retrieveVectorRAG(
     return topics.flatMap((t) => knowledgeBase.filter((c) => c.topic === t).slice(0, 1));
   }
 
-  // 1. Dense Vector Embedding (OpenRouter API or Local Dense Vectorizer)
-  let queryVector: number[] | null = null;
-  if (apiKey) {
-    queryVector = await fetchOpenRouterEmbedding(combinedQuery, apiKey);
-  }
-  if (!queryVector) {
-    queryVector = generateDenseQueryEmbedding(combinedQuery);
-  }
+  // 1. Local Dense Vector Embedding Model (384-dim subword vectorizer)
+  const queryVector = generateDenseQueryEmbedding(combinedQuery);
 
   // 2. Hybrid Search (Dense Vector Cosine Sim + BM25 Lexical + RRF Reranking)
   const hybridHits = defaultVectorDB.hybridSearch(queryVector, queryTokens, 12);
@@ -670,9 +659,8 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
       )
       .map((m) => ({ role: m.role, content: m.content.replace(/[<>]/g, '').slice(0, 500) }));
 
-    const apiKey = process.env.OPENROUTER_API_KEY;
     const isDetailedOrMultiQuery = detectListTopic(tokenize(sanitized), sanitized);
-    const chunks = await retrieveVectorRAG(sanitized, trimmedHistory, apiKey);
+    const chunks = await retrieveVectorRAG(sanitized, trimmedHistory);
     systemPrompt = buildSystemPrompt(chunks, isDetailedOrMultiQuery);
     fallbackAnswer = buildFallbackAnswer(sanitized, chunks);
 
