@@ -186,7 +186,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
             </div>
 
             {/* Modal Body */}
-            <div className="relative flex-1 w-full bg-[#000000] overflow-hidden">
+            <div className="relative flex-1 w-full bg-[#000000] overflow-y-auto overflow-x-hidden touch-pan-y">
               {viewMode === 'pdf' ? (
                 <iframe
                   src={pdfUrl}
