@@ -1,7 +1,6 @@
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
 import { useRef } from 'react';
 import { experiences, type Experience as ExperienceData } from '../data/portfolio';
-import { RagSandbox } from './RagSandbox';
 
 const ExperienceCard = ({ exp, index }: { exp: ExperienceData; index: number }) => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -152,9 +151,6 @@ export const Experience = () => {
             <ExperienceCard key={index} exp={exp} index={index} />
           ))}
         </div>
-
-        {/* Live Interactive RAG Sandbox */}
-        <RagSandbox />
       </div>
     </section>
   );

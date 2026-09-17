@@ -86,13 +86,6 @@ test.describe('Portfolio – Experience section', () => {
       timeout: 8_000,
     });
   });
-
-  test('RAG & Underwriting Pipeline Sandbox is visible and functional', async ({ page }) => {
-    await expect(page.getByText('Interactive RAG & Underwriting Pipeline Sandbox')).toBeVisible({
-      timeout: 8_000,
-    });
-    await expect(page.getByText('Presidio PII Redaction')).toBeVisible({ timeout: 8_000 });
-  });
 });
 
 test.describe('Portfolio – Projects section', () => {
