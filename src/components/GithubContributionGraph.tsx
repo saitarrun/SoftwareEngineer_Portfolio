@@ -22,11 +22,11 @@ interface ContributionData {
 }
 
 const LEVEL_COLORS = [
-  'bg-zinc-900/80 border-white/5', // 0: No contributions
-  'bg-emerald-950 border-emerald-800/40 text-emerald-400', // 1: 1-3 contributions
-  'bg-emerald-700/80 border-emerald-600/50 text-emerald-300', // 2: 4-6 contributions
-  'bg-emerald-500 border-emerald-400/60 text-emerald-100', // 3: 7-9 contributions
-  'bg-emerald-400 border-emerald-300 shadow-[0_0_12px_rgba(52,211,153,0.5)] text-black', // 4: 10+ contributions
+  'bg-[#161b22] border-[#30363d]', // 0: No contributions
+  'bg-[#0e4429] border-[#0e4429]', // 1: Low contributions
+  'bg-[#006d32] border-[#006d32]', // 2: Medium-low contributions
+  'bg-[#26a641] border-[#26a641]', // 3: Medium-high contributions
+  'bg-[#39d353] border-[#39d353] shadow-[0_0_8px_rgba(57,211,83,0.4)]', // 4: High contributions
 ];
 
 export const GithubContributionGraph = () => {
@@ -178,8 +178,10 @@ export const GithubContributionGraph = () => {
           >
             {loading ? (
               <span className="animate-pulse bg-white/10 rounded h-8 w-48 block" />
+            ) : selectedYear === 2026 ? (
+              `${(data?.totalContributions ?? 1298).toLocaleString()} contributions in the last year`
             ) : (
-              `${(data?.totalContributions ?? 1298).toLocaleString()} contributions in ${selectedYear}`
+              `${(data?.totalContributions ?? 0).toLocaleString()} contributions in ${selectedYear}`
             )}
           </h3>
         </div>
