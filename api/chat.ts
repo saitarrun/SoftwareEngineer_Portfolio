@@ -1,5 +1,10 @@
 import { createRequire } from 'module';
 import type { ApiRequest, ApiResponse } from './types';
+import {
+  defaultVectorDB,
+  generateDenseQueryEmbedding,
+  fetchOpenRouterEmbedding,
+} from './vector-db';
 
 const require = createRequire(import.meta.url);
 const knowledgeBase = require('./knowledge-base.json') as KnowledgeChunk[];
@@ -433,6 +438,94 @@ function retrieveLocal(query: string, history: Message[] = [], topK = 6): Knowle
     .slice(0, topK);
 }
 
+// ── Vector Database RAG Retrieval Pipeline ─────────────────────────────────
+export async function retrieveVectorRAG(
+  query: string,
+  history: Message[] = [],
+  apiKey?: string,
+  topK = 6
+): Promise<KnowledgeChunk[]> {
+  const combinedQuery = rephraseQueryWithHistory(query, history);
+  const queryTokens = tokenize(combinedQuery);
+  const lowerQuery = combinedQuery.toLowerCase();
+
+  if (queryTokens.length === 0 || queryTokens.every((t) => GREETING_TOKENS.has(t))) {
+    const topics = ['profile', 'experience', 'projects', 'skills'];
+    return topics.flatMap((t) => knowledgeBase.filter((c) => c.topic === t).slice(0, 1));
+  }
+
+  // 1. Dense Vector Embedding (OpenRouter API or Local Dense Vectorizer)
+  let queryVector: number[] | null = null;
+  if (apiKey) {
+    queryVector = await fetchOpenRouterEmbedding(combinedQuery, apiKey);
+  }
+  if (!queryVector) {
+    queryVector = generateDenseQueryEmbedding(combinedQuery);
+  }
+
+  // 2. Hybrid Search (Dense Vector Cosine Sim + BM25 Lexical + RRF Reranking)
+  const hybridHits = defaultVectorDB.hybridSearch(queryVector, queryTokens, 12);
+
+  // 3. Diversity Reranking using Maximal Marginal Relevance (MMR)
+  const rerankedHits = defaultVectorDB.rerankMMR(hybridHits, topK);
+
+  // 4. Entity Match Boosting
+  const entityMatches: KnowledgeChunk[] = [];
+  const entityKeywords = [
+    { key: 'pacific', id: 'experience-pacific-life' },
+    { key: 'accenture', id: 'experience-accenture-se' },
+    { key: 'accenture co-op', id: 'experience-accenture-coop' },
+    { key: 'csuf', id: 'experience-csuf-research-assistant' },
+    { key: 'fullerton', id: 'experience-csuf-research-assistant' },
+    { key: 'devforge', id: 'project-devforge-ai' },
+    { key: 'apple music', id: 'project-apple-music-mcp' },
+    { key: 'mcp', id: 'project-apple-music-mcp' },
+    { key: 'rent', id: 'project-rent-application' },
+    { key: 'semantic code', id: 'project-semantic-code-intelligence' },
+    { key: 'open-swe', id: 'project-open-swe' },
+    { key: 'openclaw', id: 'project-openclaw' },
+    { key: 'sanctuary', id: 'project-sanctuary-therapist' },
+    { key: 'deepgesture', id: 'project-deepgesture' },
+    { key: 'anpr', id: 'project-anpr-vision' },
+    { key: 'brain tumor', id: 'project-brain-tumor-spark' },
+    { key: 'trojan', id: 'publication-ieee' },
+    { key: 'ieee', id: 'publication-ieee' },
+    { key: 'xploit404', id: 'project-xploit404' },
+    { key: 'gitam', id: 'education-gitam' },
+    { key: 'presidio', id: 'experience-pacific-life' },
+    { key: 'pinecone', id: 'experience-pacific-life' },
+    { key: 'kafka', id: 'experience-accenture-se' },
+  ];
+
+  for (const item of entityKeywords) {
+    if (lowerQuery.includes(item.key)) {
+      const found = knowledgeBase.find((c) => c.id === item.id);
+      if (found && !entityMatches.some((e) => e.id === found.id)) {
+        entityMatches.push(found);
+      }
+    }
+  }
+
+  const resultList: KnowledgeChunk[] = [...entityMatches];
+  for (const hit of rerankedHits) {
+    const chunk = knowledgeBase.find((c) => c.id === hit.record.id) || {
+      id: hit.record.id,
+      topic: hit.record.topic,
+      title: hit.record.title,
+      text: hit.record.text,
+    };
+    if (!resultList.some((c) => c.id === chunk.id)) {
+      resultList.push(chunk);
+    }
+  }
+
+  if (resultList.length > 0) {
+    return resultList.slice(0, topK);
+  }
+
+  return retrieveLocal(query, history, topK);
+}
+
 // ── LangChain RAG System Prompt Builder ─────────────────────────────────────
 function buildSystemPrompt(chunks: KnowledgeChunk[], isDetailedOrMultiQuery: boolean): string {
   const context = chunks
@@ -577,8 +670,9 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
       )
       .map((m) => ({ role: m.role, content: m.content.replace(/[<>]/g, '').slice(0, 500) }));
 
+    const apiKey = process.env.OPENROUTER_API_KEY;
     const isDetailedOrMultiQuery = detectListTopic(tokenize(sanitized), sanitized);
-    const chunks = retrieveLocal(sanitized, trimmedHistory);
+    const chunks = await retrieveVectorRAG(sanitized, trimmedHistory, apiKey);
     systemPrompt = buildSystemPrompt(chunks, isDetailedOrMultiQuery);
     fallbackAnswer = buildFallbackAnswer(sanitized, chunks);
 
