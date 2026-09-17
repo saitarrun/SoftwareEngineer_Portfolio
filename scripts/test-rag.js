@@ -165,15 +165,23 @@ function hybridSearch(queryVector, queryTokens, topK = 3, rrfK = 60) {
   return combined.slice(0, topK);
 }
 
-const testQueries = [
-  'How does PII redaction work at Pacific Life?',
-  "Tell me about Sai's open source contributions to Open-SWE and OpenClaw",
-  'What microservices and Kafka work did he do at Accenture?',
-  'What is his education background and IEEE research paper on Hardware Trojans?',
-  'How did he use Redis semantic caching at CSUF?',
-];
+const testQueries = ['accenture', 'accenture experience', 'pacific life', 'devforge', 'skills'];
 
 console.log('=== RAG VECTOR DATABASE LIVE VERIFICATION ===\n');
+
+function buildFallbackAnswer(query, chunks) {
+  if (!chunks || chunks.length === 0) return 'No info';
+  const topChunk = chunks[0];
+  const secChunk = chunks[1];
+  let answer = `**${topChunk.title}**: ${topChunk.text}`;
+  if (secChunk && answer.length < 180) {
+    answer += ` **${secChunk.title}**: ${secChunk.text}`;
+  }
+  if (answer.length > 297) {
+    return answer.slice(0, 294).trim() + '...';
+  }
+  return answer;
+}
 
 for (const query of testQueries) {
   console.log(`🔍 Query: "${query}"`);
@@ -186,12 +194,10 @@ for (const query of testQueries) {
     .filter(Boolean);
 
   const hits = hybridSearch(queryVec, queryTokens, 3);
+  const chunks = hits.map((h) => h.record);
+  const answer = buildFallbackAnswer(query, chunks);
 
-  hits.forEach((hit, idx) => {
-    console.log(
-      `  [Rank ${idx + 1}] ID: ${hit.record.id} | RRF Score: ${hit.score.toFixed(4)} | Title: ${hit.record.title}`
-    );
-    console.log(`     Snippet: ${hit.record.text.slice(0, 110)}...\n`);
-  });
+  console.log(`  Top Chunk: ${chunks[0].id} (${chunks[0].title})`);
+  console.log(`  Synthesized Answer: ${answer}\n`);
   console.log('-'.repeat(75));
 }

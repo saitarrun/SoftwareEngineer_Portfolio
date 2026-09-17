@@ -556,13 +556,22 @@ function buildFallbackAnswer(query: string, chunks: KnowledgeChunk[]): string {
   if (isGreeting(query)) {
     return "Hi! I'm Sai's AI assistant. Ask me about his experience, projects, skills, education, or contact details.";
   }
-  if (chunks.length === 0) {
+  if (!chunks || chunks.length === 0) {
     return "I don't have enough information to answer that from Sai's portfolio. Please check Sai's LinkedIn or GitHub for more details.";
   }
 
-  const rawText = chunks.map((c) => `${c.title}: ${c.text}`).join(' ');
-  if (rawText.length <= 300) return rawText;
-  return rawText.slice(0, 297).trim() + '...';
+  const topChunk = chunks[0];
+  const secChunk = chunks[1];
+
+  let answer = `**${topChunk.title}**: ${topChunk.text}`;
+  if (secChunk && answer.length < 180) {
+    answer += ` **${secChunk.title}**: ${secChunk.text}`;
+  }
+
+  if (answer.length > 297) {
+    return answer.slice(0, 294).trim() + '...';
+  }
+  return answer;
 }
 
 function writeSseAnswer(res: ApiResponse, answer: string): void {
