@@ -75,12 +75,16 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
       });
     }
 
+    // Ensure days are sorted chronologically by date
+    days.sort((a, b) => a.date.localeCompare(b.date));
+
     const data: ContributionData = {
       totalContributions,
       years: [2026, 2025, 2024, 2023, 2022],
       days,
     };
 
+    res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=600');
     return res.status(200).json(data);
   } catch (error) {
     console.error('Error fetching GitHub contribution graph:', error);
