@@ -9,10 +9,16 @@ interface ContributionDay {
   text: string;
 }
 
+interface MonthLabel {
+  name: string;
+  index: number;
+}
+
 interface ContributionData {
   totalContributions: number;
   years: number[];
   days: ContributionDay[];
+  months?: MonthLabel[];
 }
 
 const LEVEL_COLORS = [
@@ -239,12 +245,12 @@ export const GithubContributionGraph = () => {
         ) : (
           <div className="flex flex-col gap-2 min-w-[700px]">
             {/* Month Labels Header */}
-            <div className="flex text-[10px] font-medium text-zinc-500 pl-8 relative h-4">
-              {monthLabels.map((m) => (
+            <div className="flex text-[10px] font-medium text-zinc-500 pl-8 relative h-4 select-none">
+              {(data?.months && data.months.length > 0 ? data.months : monthLabels).map((m) => (
                 <div
                   key={m.name + m.index}
                   className="absolute"
-                  style={{ left: `${m.index * 14 + 32}px` }}
+                  style={{ left: `${m.index * 16 + 32}px` }}
                 >
                   {m.name}
                 </div>

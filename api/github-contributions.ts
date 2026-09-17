@@ -7,10 +7,16 @@ export interface ContributionDay {
   text: string;
 }
 
+export interface MonthLabel {
+  name: string;
+  index: number;
+}
+
 export interface ContributionData {
   totalContributions: number;
   years: number[];
   days: ContributionDay[];
+  months: MonthLabel[];
 }
 
 export default async function handler(req: ApiRequest, res: ApiResponse) {
@@ -18,10 +24,6 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
   const year = req.query.year as string | undefined;
 
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader(
-    'Cache-Control',
-    'public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400'
-  );
 
   try {
     const targetUrl = year
@@ -47,6 +49,19 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
     // Total count parsing
     const totalMatch = html.match(/([0-9,]+)\s+contributions/i);
     const totalContributions = totalMatch ? parseInt(totalMatch[1].replace(/,/g, ''), 10) : 0;
+
+    // Month label parsing with colspan indices
+    const monthTdRegex =
+      /<td[^>]*class="ContributionCalendar-label"[^>]*colspan="(\d+)"[^>]*>[\s\S]*?<span aria-hidden="true"[^>]*>([^<]+)<\/span>/g;
+    const months: MonthLabel[] = [];
+    let mMatch: RegExpExecArray | null;
+    let colAccumulator = 0;
+    while ((mMatch = monthTdRegex.exec(html)) !== null) {
+      const colspan = parseInt(mMatch[1], 10);
+      const name = mMatch[2].trim();
+      months.push({ name, index: colAccumulator });
+      colAccumulator += colspan;
+    }
 
     // Tooltip mapping
     const tooltipRegex = /<tool-tip[^>]*for="([^"]+)"[^>]*>([^<]+)<\/tool-tip>/g;
@@ -82,6 +97,7 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
       totalContributions,
       years: [2026, 2025, 2024, 2023, 2022],
       days,
+      months,
     };
 
     res.setHeader('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=600');
