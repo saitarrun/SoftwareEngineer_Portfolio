@@ -87,7 +87,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({
                     id="resume-modal-title"
                     className="text-sm sm:text-base font-bold text-white tracking-tight leading-none"
                   >
-                    Tarrun Pitta — Curriculum Vitae
+                    Tarrun Pitta — Resume
                   </h3>
                   <p className="text-[11px] text-white/50 font-medium mt-1">
                     Software Engineer • Master of Science in Computer Science
