@@ -561,17 +561,7 @@ function buildFallbackAnswer(query: string, chunks: KnowledgeChunk[]): string {
   }
 
   const topChunk = chunks[0];
-  const secChunk = chunks[1];
-
-  let answer = `**${topChunk.title}**: ${topChunk.text}`;
-  if (secChunk && answer.length < 180) {
-    answer += ` **${secChunk.title}**: ${secChunk.text}`;
-  }
-
-  if (answer.length > 297) {
-    return answer.slice(0, 294).trim() + '...';
-  }
-  return answer;
+  return `**${topChunk.title}**: ${topChunk.text}`;
 }
 
 function writeSseAnswer(res: ApiResponse, answer: string): void {

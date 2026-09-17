@@ -97,11 +97,7 @@ function getClientRAGResponse(query: string): string {
   }
 
   if (matchedChunk) {
-    let answer = `**${matchedChunk.title}**: ${matchedChunk.text}`;
-    if (answer.length > 297) {
-      answer = answer.slice(0, 294).trim() + '...';
-    }
-    return answer;
+    return `**${matchedChunk.title}**: ${matchedChunk.text}`;
   }
 
   return "Tarrun Pitta is a Software Engineer with a Master's in CS from CSU Fullerton. He specializes in distributed backend microservices, AI/RAG platforms, and cloud systems.";
