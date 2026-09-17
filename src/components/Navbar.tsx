@@ -1,5 +1,5 @@
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
-import { Linkedin, Github, Menu, X, Search } from 'lucide-react';
+import { Linkedin, Github, Shield, Menu, X, Search } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { MagneticElement } from './MagneticElement';
 
@@ -191,6 +191,16 @@ export const Navbar = ({ onOpenResume, onOpenCommandPalette }: NavbarProps) => {
             style={{ color: 'var(--on-surface-variant)' }}
           >
             <Linkedin className="w-4 h-4" />
+          </a>
+          <a
+            href="https://tryhackme.com/p/TarrunXploit404"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TryHackMe profile"
+            className="hidden md:flex hover:text-orange-400 focus-visible:ring-2 focus-visible:ring-orange-500 rounded transition-colors duration-200 outline-none p-1.5"
+            style={{ color: 'var(--on-surface-variant)' }}
+          >
+            <Shield className="w-4 h-4" />
           </a>
 
           {onOpenResume ? (

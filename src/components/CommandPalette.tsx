@@ -12,6 +12,7 @@ import {
   Terminal,
   ArrowRight,
   Sparkles,
+  Shield,
 } from 'lucide-react';
 
 interface CommandPaletteProps {
@@ -90,6 +91,17 @@ export const CommandPalette = ({
       action: () => {
         onClose();
         onOpenChat();
+      },
+    },
+    {
+      id: 'action-tryhackme',
+      title: 'TryHackMe Profile (TarrunXploit404)',
+      subtitle: 'Open Tarrun’s TryHackMe cybersecurity profile',
+      category: 'Actions',
+      icon: Shield,
+      action: () => {
+        onClose();
+        window.open('https://tryhackme.com/p/TarrunXploit404', '_blank');
       },
     },
     {
