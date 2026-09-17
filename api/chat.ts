@@ -412,7 +412,10 @@ function buildFallbackAnswer(query: string, chunks: KnowledgeChunk[]): string {
   if (chunks.length === 0) {
     return "I don't have enough information to answer that from Sai's portfolio. Please check Sai's LinkedIn or GitHub for more details.";
   }
-  return chunks.map((c) => `**${c.title}**: ${c.text}`).join(' ');
+
+  const formatted = chunks.map((c) => `**${c.title}**\n${c.text}`).join('\n\n');
+
+  return formatted;
 }
 
 function writeSseAnswer(res: ApiResponse, answer: string): void {
